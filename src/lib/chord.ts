@@ -193,7 +193,7 @@ export function getChordNotes(root: string, chordType: ChordType): string[] {
   });
 }
 
-export function getAllChords(root: string): any[] {
+export function getAllChords(root: string): ({ notes: string[] } & typeof CHORD_TYPES[number])[] {
   const rootIndex = NOTES_SHARP.indexOf(root);
   if (rootIndex === -1) throw new Error(`Invalid root note: ${root}`);
 
