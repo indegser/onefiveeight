@@ -1,7 +1,8 @@
-import { Chord, ChordType } from "tonal";
+import { get } from "@tonaljs/chord";
+import { names } from "@tonaljs/chord-type";
 
 // 1. 가능한 모든 코드 타입 가져오기
-const chordTypes = ChordType.names();
+const chordTypes = names();
 
 export const getAllChords = (rootNote: string) => {
   // 2. 루트를 기준으로 모든 코드 생성
@@ -9,14 +10,8 @@ export const getAllChords = (rootNote: string) => {
 
   // 3. 코드 이름과 구성음을 출력
   const rootChordDetails = rootChords.map((chordName) => {
-    const chord = Chord.get(chordName);
-
-    return {
-      id: chordName,
-      label: chord.type,
-      notes: chord.notes,
-      formula: chord.intervals,
-    };
+    const chord = get(chordName);
+    return chord;
   });
 
   return rootChordDetails;
