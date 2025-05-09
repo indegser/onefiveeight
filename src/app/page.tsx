@@ -1,6 +1,6 @@
 "use client";
 
-import { getAllChords, NOTES_SHARP } from "@/lib/chord";
+import { getAllChords, NOTES } from "@/lib/chord";
 import { useState } from "react";
 
 export default function Home() {
@@ -17,7 +17,7 @@ export default function Home() {
             onChange={(e) => setRootNote(e.target.value)}
             value={rootNote}
           >
-            {NOTES_SHARP.map((note) => (
+            {NOTES.map((note) => (
               <option key={note} value={note}>
                 {note}
               </option>
