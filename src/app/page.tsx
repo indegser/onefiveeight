@@ -2,17 +2,17 @@
 
 import { getAllChords, NOTES } from "@/lib/chord";
 import { useState } from "react";
-import { ChordForm } from "./chord-form";
+import { Fretboard } from "./fretboard";
 
 export default function Home() {
   const [rootNote, setRootNote] = useState("C"); // Default root note
-  const chords = getAllChords(rootNote);
+  const chords = getAllChords(rootNote).slice(0, 1);
 
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <div className="flex gap-4 items-center">
-          <h1 className="text-3xl font-bold text-center">Chord Types</h1>
+    <div className="grid min-h-screen grid-rows-[20px_1fr_20px] items-center justify-items-center gap-16 bg-white p-8 pb-20 font-[family-name:var(--font-geist-sans)] text-gray-900 sm:p-20">
+      <main className="row-start-2 flex flex-col items-center gap-[32px] sm:items-start">
+        <div className="flex items-center gap-4">
+          <h1 className="text-center text-3xl font-bold">Chord Types</h1>
           <select
             className="text-center text-2xl font-bold"
             onChange={(e) => setRootNote(e.target.value)}
@@ -29,23 +29,11 @@ export default function Home() {
           {chords.map((chord) => (
             <div
               key={chord.symbol}
-              className="flex flex-col gap-2 items-center sm:items-start"
+              className="flex flex-col items-center gap-2 sm:items-start"
             >
               <h2 className="text-sm font-bold">{chord.name}</h2>
-              <div className="flex gap-4">
-                {chord.notes.map((note, index) => (
-                  <div key={note} className="flex flex-col gap-2 items-center">
-                    <div className="flex items-center justify-center w-8 h-8 text-gray-300 font-semibold text-xs bg-gray-700 rounded-full">
-                      {note}
-                    </div>
-                    <div className="text-xs text-gray-400">
-                      {chord.intervals[index]}
-                    </div>
-                  </div>
-                ))}
-              </div>
               <div>
-                <ChordForm chord={chord} />
+                <Fretboard chord={chord} />
               </div>
             </div>
           ))}
