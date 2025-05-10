@@ -23,6 +23,7 @@ export interface FretboardPosition {
   fret: number; // ≥0
   interval: string; // "1P", "3M" …
   note: string; // pitch‑class
+  tonic: string;
 }
 
 export function getFretboardPositions(
@@ -54,6 +55,7 @@ export function getFretboardPositions(
             fret,
             interval: iv,
             note: chord.notes[index],
+            tonic: chord.tonic!,
           });
         }
       }

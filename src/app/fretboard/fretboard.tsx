@@ -1,8 +1,8 @@
 import { getFretboardPositions } from "@/lib/guitar";
 import { Chord } from "@tonaljs/chord";
-import { Strings } from "./fretboard/strings";
-import { Frets } from "./fretboard/frets";
-import { Note } from "./fretboard/note";
+import { Strings } from "./strings";
+import { Frets } from "./frets";
+import { Finger } from "./finger";
 
 interface Props {
   chord: Chord;
@@ -25,7 +25,7 @@ export const Fretboard = ({ chord, frets = 14 }: Props) => {
         <Frets frets={frets} />
         {/* SVG overlay for lines */}
         {fretboardPositions.map(({ fret, string, ...extra }) => (
-          <Note
+          <Finger
             key={`${string}-${fret}`}
             fret={fret}
             string={string}
