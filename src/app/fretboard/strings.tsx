@@ -9,7 +9,7 @@ const Component = () => {
         <div
           key={r}
           className="col-span-full h-px self-center bg-gray-300"
-          style={{ gridRowStart: r + 1 }}
+          style={{ gridRowStart: r + 1, gridColumnStart: 2 }}
         />
       ))}
     </>

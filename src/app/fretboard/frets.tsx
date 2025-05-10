@@ -21,7 +21,7 @@ const Component = ({ frets }: Props) => {
             //  Use scaleY to prevent fret overflow top and bottom. It's 5/6 of the height
             className={clsx`-left-1/2 row-span-full -translate-x-1/2 scale-y-[0.84] transform ${fretColor} ${fretWidth}`}
             style={{
-              gridColumnStart: fret + 1,
+              gridColumnStart: fret + 2,
             }}
           />
         );
