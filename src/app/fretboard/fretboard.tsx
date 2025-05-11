@@ -13,7 +13,7 @@ export const Fretboard = ({ chord, frets = 14 }: Props) => {
   const fretboardPositions = getFretboardPositions(chord, frets);
 
   return (
-    <div className="relative">
+    <div className="relative w-full overflow-x-scroll">
       <div
         className="relative grid"
         style={{
