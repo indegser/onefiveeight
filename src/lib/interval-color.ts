@@ -8,11 +8,11 @@ import clsx from "clsx";
  * key: diatonic degree (1–7), value: HEX color
  */
 const DEGREE_TO_COLOR: Record<number, string> = {
-  1: clsx`bg-gray-100 text-gray-900 border-1 border-gray-500 shadow-sm shadow-gray-900/40`,
+  1: clsx`bg-gray-100 text-gray-900 border-1 border-gray-500`,
   2: clsx`bg-rose-300 text-rose-900`,
   3: clsx`bg-orange-300 text-orange-900`,
   4: clsx`bg-amber-300 text-amber-900`,
-  5: clsx`bg-green-300 text-green-900`,
+  5: clsx`bg-emerald-300 text-emerald-900`,
   6: clsx`bg-indigo-300 text-indigo-800`,
   7: clsx`bg-violet-300 text-violet-900`,
 };

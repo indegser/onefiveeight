@@ -1,13 +1,14 @@
 import { intervalColorMap } from "@/lib/interval-color";
 import clsx from "clsx";
+import { useDisplayType } from "../use-display-type";
 
 interface Props {
   note: string;
   interval: string;
-  displayNote?: boolean;
 }
 
-export const Note = ({ note, interval, displayNote = false }: Props) => {
+export const Note = ({ note, interval }: Props) => {
+  const { isNote } = useDisplayType();
   return (
     <div
       className={clsx(
@@ -16,7 +17,7 @@ export const Note = ({ note, interval, displayNote = false }: Props) => {
       )}
     >
       <div className="flex h-full w-full items-center justify-center">
-        {displayNote ? note : interval}
+        {isNote ? note : interval}
       </div>
     </div>
   );

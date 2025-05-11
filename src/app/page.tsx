@@ -4,10 +4,11 @@ import { getAllChords, NOTES } from "@/lib/chord";
 import { useState } from "react";
 import { Fretboard } from "./fretboard/fretboard";
 import { Note } from "./note/note";
+import { Toggle } from "./toggle";
 
 export default function Home() {
   const [rootNote, setRootNote] = useState("C"); // Default root note
-  const chords = getAllChords(rootNote);
+  const chords = getAllChords(rootNote).slice(0, 16);
 
   return (
     <div className="min-h-screen bg-white p-8 font-[family-name:var(--font-geist-sans)] text-gray-900 md:p-12 lg:p-20">
@@ -25,16 +26,14 @@ export default function Home() {
             ))}
           </select>
           <h1 className="text-center text-3xl font-bold">Chord</h1>
+          <Toggle />
         </div>
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-20">
           {chords.map((chord) => (
-            <div
-              key={chord.symbol}
-              className="flex flex-col items-center gap-2 sm:items-start"
-            >
-              <div className="mb-2 flex w-full items-center justify-between border-b border-gray-300 pb-2">
+            <div key={chord.symbol} className="flex flex-col items-start gap-2">
+              <div className="flex flex-col gap-3 pb-3">
                 <div className="flex items-center gap-1">
-                  <div className="text-lg leading-none font-bold">
+                  <div className="leading-none font-bold lg:text-lg">
                     {chord.name}
                   </div>
                   <div className="text-sm leading-none font-semibold">
@@ -45,11 +44,7 @@ export default function Home() {
                   {chord.intervals.map((interval, index) => {
                     return (
                       <div key={interval}>
-                        <Note
-                          note={chord.notes[index]}
-                          interval={interval}
-                          displayNote
-                        />
+                        <Note note={chord.notes[index]} interval={interval} />
                       </div>
                     );
                   })}
