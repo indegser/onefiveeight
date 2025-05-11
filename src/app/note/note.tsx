@@ -1,3 +1,4 @@
+import { intervalColorMap } from "@/lib/interval-color";
 import clsx from "clsx";
 
 interface Props {
@@ -7,13 +8,11 @@ interface Props {
 }
 
 export const Note = ({ note, interval, displayNote = false }: Props) => {
-  const isRoot = interval === "1P";
-
   return (
     <div
       className={clsx(
-        isRoot && "bg-gray-800! text-white/90!",
-        `h-6 w-6 rounded-full bg-gray-300 text-[10px] font-semibold text-gray-500`,
+        intervalColorMap[interval] || "bg-gray-300",
+        `h-6 w-6 rounded-full text-[10px] font-semibold`,
       )}
     >
       <div className="flex h-full w-full items-center justify-center">
