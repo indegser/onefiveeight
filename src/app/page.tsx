@@ -5,6 +5,7 @@ import { Suspense, useState } from "react";
 import { Fretboard } from "./fretboard/fretboard";
 import { Note } from "./note/note";
 import { Toggle } from "./toggle";
+import { Scales } from "./scales/scales";
 
 export default function Home() {
   const [rootNote, setRootNote] = useState("C"); // Default root note
@@ -28,6 +29,9 @@ export default function Home() {
             </select>
             <h1 className="text-center text-3xl font-bold">Chord</h1>
             <Toggle />
+          </div>
+          <div>
+            <Scales tonic={rootNote} />
           </div>
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-20">
             {chords.map((chord) => (

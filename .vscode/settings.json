@@ -7,5 +7,7 @@
     "typescript",
     "typescriptreact"
   ],
-  "editor.scrollBeyondLastLine": false
+  "editor.scrollBeyondLastLine": false,
+  "editor.tabSize": 2,
+  "editor.wordWrap": "wordWrapColumn"
 }
