@@ -20,18 +20,36 @@ export function Scales({ tonic }: Props) {
           tonic: chordScaleTonic,
         } = Scale.get(chordScale);
         const intervalsWithOctave = [...intervals, "8M"];
-        const distanceFromTonic = Interval.distance(tonic, chordScaleTonic!);
+        const offset = Interval.semitones(
+          Interval.distance(tonic, chordScaleTonic!),
+        );
 
         return (
-          <div key={chordScale} className="flex flex-col gap-2">
-            <div>
+          <div
+            key={chordScale}
+            className="grid grid-cols-[repeat(24,32px)] gap-y-2"
+          >
+            <div
+              className="row-start-2 flex items-center"
+              style={{
+                gridColumnStart: `${offset + 1}`,
+                gridColumnEnd: "span 12",
+              }}
+            >
+              <div className="h-0.5 w-full bg-gray-200" />
+            </div>
+            <div
+              className="-col-end-1"
+              style={{ gridColumnStart: `${offset + 1}` }}
+            >
               <div className="text-sm font-semibold">{chordScaleName}</div>
             </div>
-            <div className="grid grid-cols-[repeat(24,32px)]">
+            <div
+              className="-col-end-1 row-start-2 grid grid-cols-subgrid"
+              style={{ gridColumnStart: `${offset + 1}` }}
+            >
               {intervalsWithOctave.map((interval, intervalIndex) => {
-                const semitones = Interval.semitones(
-                  Interval.add(interval, distanceFromTonic)!,
-                );
+                const semitones = Interval.semitones(interval);
 
                 return (
                   <div
