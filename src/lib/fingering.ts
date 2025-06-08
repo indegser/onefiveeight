@@ -20,16 +20,23 @@ export function getFretboardPositionsOfScale(scaleName: string) {
   return STANDARD_TUNING.flatMap((openNote, standardTuningIndex) => {
     const string = 6 - standardTuningIndex; // 0 -> 6
 
-    return notes.map((note, index) => {
-      const fret = Interval.semitones(Interval.distance(openNote, note));
-      return {
+    return notes.flatMap((note, index) => {
+      const frets = [];
+      let fret = Interval.semitones(Interval.distance(openNote, note));
+
+      while (fret <= 22) {
+        frets.push(fret);
+        fret += 12;
+      }
+
+      return frets.map((fret) => ({
         tonic: tonic!,
         fret,
         note,
         interval: intervals[index],
         openNote,
         string,
-      };
+      }));
     });
   });
 }
