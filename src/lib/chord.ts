@@ -15,29 +15,29 @@ const chordTypes = [
   "augmented",
   "dominant ninth",
   "major ninth",
-  "dominant thirteenth",
-  "major thirteenth",
-  "suspended fourth seventh", // 7sus4
-  "dominant flat ninth", // 7♭9
-  "dominant sharp ninth", // 7♯9
-  "lydian dominant seventh", // 7♯11
-  "major sharp eleventh (lydian)",
-  "major seventh sharp eleventh",
-  "eleventh",
-  "half-diminished", // m7♭5
-  "diminished seventh", // dim7
-  "altered", // 7alt
-  "augmented seventh", // 7♯5
-  "major seventh flat sixth",
-  "sixth added ninth", // 6/9
   "minor ninth",
-  "minor eleventh",
-  "minor thirteenth",
-  "minor/major seventh",
-  "minor/major ninth",
-  "minor augmented", // m+5
-  "suspended fourth flat ninth", // 7sus4♭9 — 가장 희소
-  "fifth", // (= power chord, 1-5)        ↑ 가장 많이 쓰이는 기본형
+  // "dominant thirteenth",
+  // "major thirteenth",
+  // "suspended fourth seventh", // 7sus4
+  // "dominant flat ninth", // 7♭9
+  // "dominant sharp ninth", // 7♯9
+  // "lydian dominant seventh", // 7♯11
+  // "major sharp eleventh (lydian)",
+  // "major seventh sharp eleventh",
+  // "eleventh",
+  // "half-diminished", // m7♭5
+  // "diminished seventh", // dim7
+  // "altered", // 7alt
+  // "augmented seventh", // 7♯5
+  // "major seventh flat sixth",
+  // "sixth added ninth", // 6/9
+  // "minor eleventh",
+  // "minor thirteenth",
+  // "minor/major seventh",
+  // "minor/major ninth",
+  // "minor augmented", // m+5
+  // "suspended fourth flat ninth", // 7sus4♭9 — 가장 희소
+  // "fifth", // (= power chord, 1-5)        ↑ 가장 많이 쓰이는 기본형
 ];
 
 export const getAllChords = (rootNote: string) => {

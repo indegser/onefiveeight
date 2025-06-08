@@ -1,4 +1,4 @@
-import { FretboardPosition } from "@/lib/guitar";
+import { FretboardPosition } from "@/lib/fingering";
 import { Note } from "../note/note";
 
 export const Finger = ({ string, fret, note, interval }: FretboardPosition) => {

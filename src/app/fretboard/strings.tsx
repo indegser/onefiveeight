@@ -1,20 +1,19 @@
-import { memo } from "react";
+const strings = [...Array.from({ length: 6 })];
 
-const strings = Array.from({ length: 6 });
+interface Props {
+  hasOpenFret: boolean;
+}
 
-const Component = () => {
+export const Strings = ({ hasOpenFret }: Props) => {
   return (
     <>
       {strings.map((_, r) => (
         <div
           key={r}
           className="col-span-full h-px self-center bg-gray-300"
-          style={{ gridRowStart: r + 1, gridColumnStart: 2 }}
+          style={{ gridColumnStart: hasOpenFret ? 2 : 1, gridRowStart: r + 1 }}
         />
       ))}
     </>
   );
 };
-
-Component.displayName = "Strings";
-export const Strings = memo(Component);

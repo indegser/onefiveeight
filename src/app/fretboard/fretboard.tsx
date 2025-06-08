@@ -1,19 +1,23 @@
-import { getFretboardPositions } from "@/lib/guitar";
-import { Chord } from "@tonaljs/chord";
 import { Strings } from "./strings";
 import { Frets } from "./frets";
 import { Finger } from "./finger";
+import { FretboardPosition } from "@/lib/fingering";
 
 interface Props {
-  chord: Chord;
-  frets?: number;
+  fretboardPositions: FretboardPosition[];
+  startFret?: number;
+  endFret?: number;
 }
 
-export const Fretboard = ({ chord, frets = 14 }: Props) => {
-  const fretboardPositions = getFretboardPositions(chord, frets);
+export const Fretboard = ({
+  fretboardPositions,
+  startFret = 0,
+  endFret = 14,
+}: Props) => {
+  const frets = endFret - startFret;
 
   return (
-    <div className="relative w-full overflow-x-scroll">
+    <div className="relative w-full">
       <div
         className="relative grid"
         style={{
@@ -21,17 +25,21 @@ export const Fretboard = ({ chord, frets = 14 }: Props) => {
           gridTemplateColumns: `repeat(${frets + 1}, 40px)`,
         }}
       >
-        <Strings />
-        <Frets frets={frets} />
-        {/* SVG overlay for lines */}
-        {fretboardPositions.map(({ fret, string, ...extra }) => (
-          <Finger
-            key={`${string}-${fret}`}
-            fret={fret}
-            string={string}
-            {...extra}
-          />
-        ))}
+        <Strings hasOpenFret={startFret === 0} />
+        <Frets startFret={startFret} endFret={endFret} />
+        {fretboardPositions.map(({ fret, string, ...extra }) => {
+          if (fret > endFret) return null;
+          if (fret < startFret) return null;
+
+          return (
+            <Finger
+              key={`${string}-${fret}`}
+              fret={fret - startFret}
+              string={string}
+              {...extra}
+            />
+          );
+        })}
       </div>
     </div>
   );

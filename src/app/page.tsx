@@ -2,14 +2,13 @@
 
 import { getAllChords, NOTES } from "@/lib/chord";
 import { Suspense, useState } from "react";
-import { Fretboard } from "./fretboard/fretboard";
 import { Note } from "./note/note";
 import { Toggle } from "./toggle";
-import { Scales } from "./scales/scales";
+import { Caged } from "./caged/Caged";
 
 export default function Home() {
   const [rootNote, setRootNote] = useState("C"); // Default root note
-  const chords = getAllChords(rootNote).slice(0, 16);
+  const chords = getAllChords(rootNote);
 
   return (
     <Suspense>
@@ -27,11 +26,11 @@ export default function Home() {
                 </option>
               ))}
             </select>
-            <h1 className="text-center text-3xl font-bold">Chord</h1>
+            <h1 className="text-center text-3xl font-bold">Key</h1>
             <Toggle />
           </div>
           <div>
-            <Scales tonic={rootNote} />
+            <Caged tonic={rootNote} />
           </div>
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-20">
             {chords.map((chord) => (
@@ -58,7 +57,6 @@ export default function Home() {
                     })}
                   </div>
                 </div>
-                <Fretboard chord={chord} />
               </div>
             ))}
           </div>

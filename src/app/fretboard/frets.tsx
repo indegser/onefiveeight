@@ -1,17 +1,25 @@
 import clsx from "clsx";
-import { memo, useMemo } from "react";
+import { useMemo } from "react";
 
 interface Props {
-  frets: number;
+  startFret: number;
+  endFret: number;
 }
 
 const mainFrets = ["0", "3", "5", "7", "9", "12"];
 
-const Component = ({ frets }: Props) => {
-  const arr = useMemo(() => Array.from({ length: frets + 1 }), [frets]);
+const Component = ({ startFret, endFret }: Props) => {
+  const frets = useMemo(
+    () =>
+      Array.from({ length: endFret - startFret + 1 }).map(
+        (_, i) => i + startFret,
+      ),
+    [startFret, endFret],
+  );
+
   return (
     <>
-      {arr.map((_, fret) => {
+      {frets.map((fret, index) => {
         const isMainFret = mainFrets.includes(fret.toString());
         const fretWidth = isMainFret ? "w-[3px]" : "w-px";
         const fretColor = isMainFret ? "bg-gray-400" : "bg-gray-300";
@@ -19,15 +27,21 @@ const Component = ({ frets }: Props) => {
           <div
             key={fret}
             //  Use scaleY to prevent fret overflow top and bottom. It's 5/6 of the height
-            className={clsx`-left-1/2 row-span-full -translate-x-1/2 scale-y-[0.84] transform ${fretColor} ${fretWidth}`}
+            className={clsx`relative row-span-full -translate-x-1/2 scale-y-[0.84] transform ${fretColor} ${fretWidth}`}
             style={{
-              gridColumnStart: fret + 2,
+              gridColumnStart: index + 1 + 1, // +1 because grid starts at 1
             }}
-          />
+          >
+            {isMainFret ? (
+              <div className="absolute -top-[20px] text-xs text-gray-600">
+                {fret}
+              </div>
+            ) : null}
+          </div>
         );
       })}
     </>
   );
 };
 
-export const Frets = memo(Component, (a, b) => b.frets === a.frets);
+export const Frets = Component;
