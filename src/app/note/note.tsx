@@ -12,6 +12,7 @@ export const Note = ({ note, interval }: Props) => {
   return (
     <div
       className={clsx(
+        "relative",
         intervalColorMap[interval] || "bg-gray-300",
         `h-6 w-6 rounded-full text-[10px] font-semibold`,
       )}

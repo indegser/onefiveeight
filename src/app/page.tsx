@@ -1,14 +1,12 @@
 "use client";
 
-import { getAllChords, NOTES } from "@/lib/chord";
+import { NOTES } from "@/lib/chord";
 import { Suspense, useState } from "react";
-import { Note } from "./note/note";
 import { Toggle } from "./toggle";
 import { Caged } from "./caged/Caged";
 
 export default function Home() {
   const [rootNote, setRootNote] = useState("C"); // Default root note
-  const chords = getAllChords(rootNote);
 
   return (
     <Suspense>
@@ -31,34 +29,6 @@ export default function Home() {
           </div>
           <div>
             <Caged tonic={rootNote} />
-          </div>
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-20">
-            {chords.map((chord) => (
-              <div
-                key={chord.symbol}
-                className="flex flex-col items-start gap-2"
-              >
-                <div className="flex flex-col gap-3 pb-3">
-                  <div className="flex items-center gap-1">
-                    <div className="leading-none font-bold lg:text-lg">
-                      {chord.name}
-                    </div>
-                    <div className="text-sm leading-none font-semibold">
-                      {`(${chord.symbol})`}
-                    </div>
-                  </div>
-                  <div className="flex gap-2">
-                    {chord.intervals.map((interval, index) => {
-                      return (
-                        <div key={interval}>
-                          <Note note={chord.notes[index]} interval={interval} />
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              </div>
-            ))}
           </div>
         </main>
       </div>

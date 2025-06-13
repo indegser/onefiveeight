@@ -22,7 +22,7 @@ export const Fretboard = ({
         className="relative grid"
         style={{
           gridTemplateRows: "repeat(6, 1fr)",
-          gridTemplateColumns: `repeat(${frets + 1}, 40px)`,
+          gridTemplateColumns: `repeat(${frets + 1}, 60px)`,
         }}
       >
         <Strings hasOpenFret={startFret === 0} />

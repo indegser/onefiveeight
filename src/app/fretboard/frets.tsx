@@ -6,7 +6,7 @@ interface Props {
   endFret: number;
 }
 
-const mainFrets = ["0", "3", "5", "7", "9", "12"];
+const mainFrets = ["0", "3", "5", "7", "9", "12", "15", "17", "19", "22"];
 
 const Component = ({ startFret, endFret }: Props) => {
   const frets = useMemo(
