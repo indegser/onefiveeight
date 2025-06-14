@@ -1,22 +1,19 @@
 import { getFretboardPositionsOfScale } from "@/lib/fingering";
-import * as Scale from "@tonaljs/scale";
 import { Fretboard } from "../fretboard/fretboard";
 import { getCAGED } from "@/lib/caged";
-import { ScaleInterval } from "./scale-interval";
 
 interface Props {
   tonic: string;
   scaleName: string;
 }
 
-export function MotherScale({ tonic, scaleName }: Props) {
-  const scale = Scale.get(scaleName);
+export function ScaleFretboard({ scaleName }: Props) {
   const fretboardPositions = getFretboardPositionsOfScale(scaleName);
   const caged = getCAGED(fretboardPositions);
 
   return (
-    <div className="flex flex-col gap-8">
-      <ScaleInterval tonic={tonic} scale={scale} useAbsolutePosition />
+    <div className="flex flex-col gap-y-2">
+      <div className="text-sm font-semibold">Scale Fretboard</div>
       <div className="hidden md:block">
         <Fretboard
           startFret={0}

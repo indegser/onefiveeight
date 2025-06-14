@@ -1,6 +1,6 @@
 import { intervalColorMap } from "@/lib/interval-color";
+import { useDisplayType } from "@/lib/stores";
 import clsx from "clsx";
-import { useDisplayType } from "../use-display-type";
 
 interface Props {
   note: string;
@@ -8,7 +8,8 @@ interface Props {
 }
 
 export const Note = ({ note, interval }: Props) => {
-  const { isNote } = useDisplayType();
+  const isNote = useDisplayType() === "note";
+
   return (
     <div
       className={clsx(

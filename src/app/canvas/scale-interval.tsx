@@ -6,21 +6,16 @@ import { useMemo } from "react";
 
 interface Props {
   tonic: string;
-  scale: Scale.Scale;
+  scaleName: string;
   useAbsolutePosition?: boolean;
 }
 
 export function ScaleInterval({
   tonic,
-  scale,
+  scaleName,
   useAbsolutePosition = false,
 }: Props) {
-  const {
-    name: chordScaleName,
-    notes,
-    intervals,
-    tonic: chordScaleTonic,
-  } = scale;
+  const { notes, intervals, tonic: chordScaleTonic } = Scale.get(scaleName);
 
   const fullIntervals = useMemo(() => {
     return [...new Array(13)].map((_, index) => {
@@ -48,7 +43,7 @@ export function ScaleInterval({
   return (
     <div className="grid grid-cols-[repeat(7,32px)] gap-y-2 md:grid-cols-[repeat(24,32px)]">
       <div className="-col-end-1" style={{ gridColumnStart: `${offset + 1}` }}>
-        <div className="text-sm font-semibold">{chordScaleName}</div>
+        <div className="text-sm font-semibold">Intervals & Notes</div>
       </div>
       <div
         className="-col-end-1 row-start-2 grid grid-cols-subgrid gap-y-2"
