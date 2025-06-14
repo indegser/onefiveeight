@@ -1,3 +1,5 @@
+"use client";
+
 import { ScaleFretboard } from "./scale-fretboard";
 import { useScale, useTonic } from "@/lib/stores";
 import { ScaleInterval } from "./scale-interval";

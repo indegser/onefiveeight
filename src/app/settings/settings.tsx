@@ -1,3 +1,5 @@
+"use client";
+
 import { DisplayTypeSelector } from "./display-type-selector";
 import { ScaleSelector } from "./scale-selector";
 import { TonicSelector } from "./tonic-selector";

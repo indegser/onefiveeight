@@ -1,5 +1,3 @@
-"use client";
-
 import { store, useScale } from "@/lib/stores";
 import {
   Select,

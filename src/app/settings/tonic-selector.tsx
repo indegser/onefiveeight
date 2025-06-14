@@ -1,5 +1,3 @@
-"use client";
-
 import { store, useTonic } from "@/lib/stores";
 import {
   Select,
