@@ -12,8 +12,8 @@ export function ScaleFretboard({ scaleName }: Props) {
   const caged = getCAGED(fretboardPositions);
 
   return (
-    <div className="flex flex-col gap-y-2">
-      <div className="text-sm font-semibold">Scale Fretboard</div>
+    <div className="flex flex-col gap-4">
+      <h1 className="text-xl font-bold">Scale Fretboard</h1>
       <div className="hidden md:block">
         <Fretboard
           startFret={0}

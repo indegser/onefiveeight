@@ -10,3 +10,10 @@ export const useTonic = () => useStore(store, (state) => state.tonic);
 export const useScale = () => useStore(store, (state) => state.scale);
 export const useDisplayType = () =>
   useStore(store, (state) => state.displayType);
+
+export const scaleChordsSettingsStore = new Store({
+  displayType: "seventh",
+});
+
+export const useScaleChordsDisplayType = () =>
+  useStore(scaleChordsSettingsStore, (state) => state.displayType);

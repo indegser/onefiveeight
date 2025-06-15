@@ -3,8 +3,9 @@
 import { ScaleFretboard } from "./scale-fretboard";
 import { useScale, useTonic } from "@/lib/stores";
 import { ScaleInterval } from "./scale-interval";
+import { ScaleChords } from "./scale-chords";
 
-export function Caged() {
+export function Canvas() {
   const tonic = useTonic();
   const scale = useScale();
   const scaleName = `${tonic} ${scale}`;
@@ -14,6 +15,7 @@ export function Caged() {
       <h1 className="text-3xl font-bold">{scaleName}</h1>
       <ScaleInterval tonic={tonic} scaleName={scaleName} useAbsolutePosition />
       <ScaleFretboard tonic={tonic} scaleName={scaleName} />
+      <ScaleChords scaleName={scaleName} />
     </div>
   );
 }

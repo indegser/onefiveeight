@@ -1,4 +1,4 @@
-import { Caged } from "./canvas/Canvas";
+import { Canvas } from "./canvas/Canvas";
 import { Settings } from "./settings/settings";
 
 export default function Home() {
@@ -7,7 +7,7 @@ export default function Home() {
       <main className="row-start-2 flex flex-col gap-[32px]">
         <Settings />
         <div>
-          <Caged />
+          <Canvas />
         </div>
       </main>
     </div>
