@@ -1,5 +1,6 @@
 import { Canvas } from "./canvas/Canvas";
 import { Settings } from "./settings/settings";
+import { Tracker } from "./tracker";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
           <Canvas />
         </div>
       </main>
+      <Tracker />
     </div>
   );
 }
