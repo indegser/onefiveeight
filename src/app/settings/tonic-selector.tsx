@@ -21,7 +21,7 @@ export const TonicSelector = () => {
 
   return (
     <Select value={tonic} onValueChange={onChange}>
-      <SelectTrigger className="w-[60px]">
+      <SelectTrigger className="w-[70px]">
         <SelectValue placeholder="Tonic" />
       </SelectTrigger>
       <SelectContent>

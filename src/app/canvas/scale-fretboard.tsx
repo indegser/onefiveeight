@@ -1,6 +1,6 @@
 import { getFretboardPositionsOfScale } from "@/lib/fingering";
-import { Fretboard } from "../fretboard/fretboard";
 import { getCAGED } from "@/lib/caged";
+import { Fretboard } from "@/components/fretboard/fretboard";
 
 interface Props {
   tonic: string;

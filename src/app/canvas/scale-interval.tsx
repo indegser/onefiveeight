@@ -1,6 +1,6 @@
 import * as Scale from "@tonaljs/scale";
 import * as Interval from "@tonaljs/interval";
-import { Note } from "../note/note";
+import { Note } from "../../components/note/note";
 import { cn } from "@/lib/utils";
 import { useMemo } from "react";
 

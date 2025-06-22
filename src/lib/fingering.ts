@@ -1,30 +1,16 @@
+import type { Chord as ChordType } from "@tonaljs/chord";
+import type { Scale as ScaleType } from "@tonaljs/scale";
 import * as Scale from "@tonaljs/scale";
 import * as Interval from "@tonaljs/interval";
-
-const STANDARD_TUNING = [
-  "E2", // 6th
-  "A2", // 5th
-  "D3", // 4th
-  "G3", // 3rd
-  "B3", // 2nd
-  "E4", // 1st
-];
+import { STANDARD_TUNING } from "./tuning";
 
 export type FretboardPosition = ReturnType<
   typeof getFretboardPositionsOfScale
 >[0];
 
-type GetFretboardPositionsParameters = {
-  tonic: string | null;
-  notes: string[];
-  intervals: string[];
-};
+export function getFretboardPositionsOfScale(scaleName: string) {
+  const { tonic, notes, intervals } = Scale.get(scaleName);
 
-export function getFretboardPositions({
-  tonic,
-  notes,
-  intervals,
-}: GetFretboardPositionsParameters) {
   return STANDARD_TUNING.flatMap((openNote, standardTuningIndex) => {
     const string = 6 - standardTuningIndex; // 0 -> 6
 
@@ -38,7 +24,7 @@ export function getFretboardPositions({
       }
 
       return frets.map((fret) => ({
-        tonic,
+        tonic: tonic!,
         fret,
         note,
         interval: intervals[index],
@@ -49,8 +35,8 @@ export function getFretboardPositions({
   });
 }
 
-export function getFretboardPositionsOfScale(scaleName: string) {
-  const { tonic, notes, intervals } = Scale.get(scaleName);
+export function getFretboardPositions(chordOrScale: ChordType | ScaleType) {
+  const { tonic, notes, intervals } = chordOrScale;
 
   return STANDARD_TUNING.flatMap((openNote, standardTuningIndex) => {
     const string = 6 - standardTuningIndex; // 0 -> 6

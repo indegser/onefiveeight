@@ -1,14 +1,14 @@
 import { getDiatonicChords } from "@/lib/chord";
 import * as Scale from "@tonaljs/scale";
 import { ChordInterval } from "./chord-interval";
-import { ScaleChordsSettings } from "./scale-chords-settings";
+import { ScaleChordsSettings } from "./diatonic-chords-settings";
 import { useScaleChordsDisplayType } from "@/lib/stores";
 
 interface Props {
   scaleName: string;
 }
 
-export function ScaleChords({ scaleName }: Props) {
+export function DiatonicChords({ scaleName }: Props) {
   const displayType = useScaleChordsDisplayType();
   const chords = getDiatonicChords(scaleName);
   const scale = Scale.get(scaleName);
