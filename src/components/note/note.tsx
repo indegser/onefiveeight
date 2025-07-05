@@ -5,11 +5,12 @@ import clsx from "clsx";
 interface Props {
   note: string;
   interval: string;
+  forceNote?: boolean;
   dimmed?: boolean;
 }
 
-export const Note = ({ note, interval, dimmed = false }: Props) => {
-  const isNote = useDisplayType() === "note";
+export const Note = ({ note, interval, forceNote, dimmed = false }: Props) => {
+  const isNote = useDisplayType() === "note" || forceNote;
 
   return (
     <div
