@@ -38,9 +38,18 @@ importers:
       '@tonaljs/interval':
         specifier: ^5.1.0
         version: 5.1.0
+      '@tonaljs/key':
+        specifier: ^4.11.2
+        version: 4.11.2
       '@tonaljs/note':
         specifier: ^4.12.0
         version: 4.12.1
+      '@tonaljs/progression':
+        specifier: ^4.9.1
+        version: 4.9.1
+      '@tonaljs/scale':
+        specifier: ^4.13.3
+        version: 4.13.3
       ai:
         specifier: ^5.0.112
         version: 5.0.112(zod@3.25.76)
