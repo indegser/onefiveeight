@@ -1,5 +1,5 @@
 import { getFretboardPositionsOfScale } from "@/lib/fingering";
-import { getCAGED } from "@/lib/caged";
+import { getCAGED, getForms } from "@/lib/caged";
 import { Fretboard } from "@/components/fretboard/fretboard";
 
 interface Props {
@@ -9,26 +9,19 @@ interface Props {
 
 export function ScaleFretboard({ scaleName }: Props) {
   const fretboardPositions = getFretboardPositionsOfScale(scaleName);
-  const caged = getCAGED(fretboardPositions);
+  const forms = getForms(fretboardPositions);
 
   return (
     <div className="flex flex-col gap-4">
       <h1 className="text-xl font-bold">Scale Fretboard</h1>
-      <div className="hidden md:block">
-        <Fretboard
-          startFret={0}
-          endFret={13}
-          fretboardPositions={fretboardPositions}
-        />
-      </div>
-      <div className="flex flex-col gap-4 md:hidden">
-        {caged
+      <div className="flex flex-col gap-4">
+        {forms
           .sort((a, b) => a.startFret - b.startFret)
           .map((form) => (
             <Fretboard
+              key={form.interval}
               startFret={form.startFret}
               endFret={form.endFret}
-              key={form.form}
               fretboardPositions={fretboardPositions}
             />
           ))}

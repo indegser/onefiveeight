@@ -31,3 +31,33 @@ export function getCAGED(fretboardPositions: FretboardPosition[]) {
     };
   });
 }
+
+const fingerings = [
+  { interval: "3M", range: [0, 3] },
+  { interval: "5P", range: [-1, 3] },
+  { interval: "7M", range: [-1, 3] },
+  { interval: "2M", range: [-1, 3] },
+  { interval: "6M", range: [-1, 3] },
+];
+
+export function getForms(fretboardPositions: FretboardPosition[]) {
+  return fingerings.map((form) => {
+    const { fret } = fretboardPositions.find(({ interval, string }) => {
+      return string === 6 && interval === form.interval;
+    })!;
+
+    const startFret = fret + form.range[0];
+    const endFret = fret + form.range[1];
+    let adjust = 0;
+
+    if (startFret < 0) {
+      adjust = 12;
+    }
+
+    return {
+      interval: form.interval,
+      startFret: startFret + adjust,
+      endFret: endFret + adjust,
+    };
+  });
+}

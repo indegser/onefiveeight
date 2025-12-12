@@ -3,7 +3,6 @@
 import { ScaleFretboard } from "./scale-fretboard";
 import { useScale, useTonic } from "@/lib/stores";
 import { ScaleInterval } from "./scale-interval";
-import { DiatonicChords } from "./diatonic-chords";
 
 export function Canvas() {
   const tonic = useTonic();
