@@ -15,7 +15,6 @@ export function Canvas() {
       <h1 className="text-3xl font-bold">{scaleName}</h1>
       <ScaleInterval tonic={tonic} scaleName={scaleName} useAbsolutePosition />
       <ScaleFretboard tonic={tonic} scaleName={scaleName} />
-      <DiatonicChords scaleName={scaleName} />
     </div>
   );
 }
