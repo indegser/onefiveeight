@@ -13,18 +13,21 @@ export function ScaleFretboard({ scaleName }: Props) {
 
   return (
     <div className="flex flex-col gap-4">
-      <h1 className="text-xl font-bold">Scale Fretboard</h1>
-      <div className="flex flex-col gap-4">
-        {forms
-          .sort((a, b) => a.startFret - b.startFret)
-          .map((form) => (
+      <h1 className="text-xl font-bold">Fingering</h1>
+      <div className="flex flex-wrap gap-12">
+        {forms.map((form) => (
+          <div key={form.interval}>
+            <div>
+              <div className="text-sm font-semibold">Form {form.form}</div>
+            </div>
             <Fretboard
               key={form.interval}
               startFret={form.startFret}
               endFret={form.endFret}
               fretboardPositions={fretboardPositions}
             />
-          ))}
+          </div>
+        ))}
       </div>
     </div>
   );
