@@ -21,7 +21,7 @@ export function Chord({ chordName }: Props) {
   const chord = TonalChord.get(simplifedChordName);
 
   const handlePlayChord = async () => {
-    await playChordNotes(chord.notes);
+    await playChordNotes(chord);
   };
 
   return (
