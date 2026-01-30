@@ -64,7 +64,7 @@ export default function ChordsPage() {
           <DisplayTypeSelector />
         </div>
         <div>Diatonic</div>
-        <div className="grid grid-cols-7 gap-8">
+        <div className="grid gap-8 md:grid-cols-7">
           {chords.map((chordName) => {
             return (
               <div key={chordName} className="">
@@ -74,7 +74,7 @@ export default function ChordsPage() {
           })}
         </div>
         <div>Secondary Dominants Minor Relative</div>
-        <div className="grid grid-cols-7 gap-8">
+        <div className="grid gap-8 md:grid-cols-7">
           {secondaryDominantsMinorRelative.map((chordName, index) => {
             return (
               <div key={chordName + index}>
@@ -84,7 +84,7 @@ export default function ChordsPage() {
           })}
         </div>
         <div>Secondary Dominants</div>
-        <div className="grid grid-cols-7 gap-8">
+        <div className="grid gap-8 md:grid-cols-7">
           {secondaryDominants.map((chordName, index) => {
             return (
               <div key={chordName + index}>
@@ -94,7 +94,7 @@ export default function ChordsPage() {
           })}
         </div>
         <div>Related Two Minor</div>
-        <div className="grid grid-cols-7 gap-8">
+        <div className="grid gap-8 md:grid-cols-7">
           {relatedTwoMinor.map((chordName, index) => {
             return (
               <div key={chordName + index}>
@@ -104,7 +104,7 @@ export default function ChordsPage() {
           })}
         </div>
         <div>Tritone Substitutes</div>
-        <div className="grid grid-cols-7 gap-8">
+        <div className="grid gap-8 md:grid-cols-7">
           {tritoneSubstitutes.map((chordName, index) => {
             return (
               <div key={chordName + index}>
