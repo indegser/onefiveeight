@@ -1,6 +1,10 @@
+"use client";
+
 import { Note } from "@/components/note/note";
+import { playChordNotes } from "@/lib/chord-playback";
 import * as TonalChord from "@tonaljs/chord";
 import * as TonalNote from "@tonaljs/note";
+import { PlayButton } from "./play-button";
 
 interface Props {
   chordName: string;
@@ -16,9 +20,19 @@ export function Chord({ chordName }: Props) {
   );
   const chord = TonalChord.get(simplifedChordName);
 
+  const handlePlayChord = async () => {
+    await playChordNotes(chord.notes);
+  };
+
   return (
     <div className="flex flex-col gap-2">
-      <div className="text-sm font-semibold">{chord.symbol}</div>
+      <div className="flex items-center justify-between gap-2">
+        <div className="text-sm font-semibold">{chord.symbol}</div>
+        <PlayButton
+          label={`${chord.symbol} 코드 재생`}
+          onClick={handlePlayChord}
+        />
+      </div>
       <div className="flex gap-2">
         {chord.notes.map((note, index) => {
           return (
