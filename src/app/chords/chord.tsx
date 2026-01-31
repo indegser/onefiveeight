@@ -20,8 +20,30 @@ export function Chord({ chordName }: Props) {
   );
   const chord = TonalChord.get(simplifedChordName);
 
+  const progression = [
+    ["D", "D/F#", "G", "A"],
+    ["Bm", "F#m", "G", "A"],
+    ["D", "A", "Bm", "F#m"],
+    ["G", "D", "Em", "A"],
+    ["Bm", "G", "D", "A"],
+    ["G", "A", "D", "A"],
+  ].flat();
+
   const handlePlayChord = async () => {
-    await playChordNotes(chord);
+    let index = 0;
+
+    playChordNotes(chord);
+    // while (true) {
+    //   await new Promise((resolve) =>
+    //     setTimeout(() => {
+    //       playChordNotes(
+    //         TonalChord.get(progression[index % progression.length]),
+    //       );
+    //       resolve(true);
+    //       index += 1;
+    //     }, 1500),
+    //   );
+    // }
   };
 
   return (
