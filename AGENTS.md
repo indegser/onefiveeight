@@ -11,6 +11,12 @@
 - Shared state is the source of truth. Agents must read from and write to the active run directory under `./.ai/runs/<run_id>`.
 - Supervisor commands that operate on an existing run must require an explicit `run_id`; do not rely on any repo-global active-run pointer.
 - Repo-local helper scripts and action wrappers must also require an explicit `run_id`; do not infer a target run from global or recent state.
+- At the start of each new session, check the current git branch before doing substantive work.
+- Prefer starting from `main`. If the current branch is not `main`, do not assume that branch should be reused; report the branch state and choose deliberately.
+- When already on `main`, check whether `main` is behind its remote and fast-forward pull it before starting work when safe.
+- Before choosing whether to reuse a branch or open a new PR, check the remote state explicitly: fetch remotes, compare the local branch against its upstream, and verify whether any related PR is still open, already merged, or closed.
+- Do not assume an existing local feature branch is still the correct target just because it has the right name. Remote branch status and PR status take precedence over local assumptions.
+- Do not auto-pull if the worktree has local changes, if the pull would require a merge or rebase decision, or if updating would risk overwriting in-progress work. In those cases, report the state instead.
 - Agent outputs must be valid JSON that conforms to a schema in `./.ai/schemas`.
 - The system uses a strict phase loop: `plan -> design -> build -> verify -> review -> refine/done`.
 - The `Supervisor` is the only agent allowed to route work to another agent.
