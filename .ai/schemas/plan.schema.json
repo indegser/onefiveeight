@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Plan",
+  "type": "object",
+  "required": ["epics", "assumptions", "risks"],
+  "properties": {
+    "epics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "tasks"],
+        "properties": {
+          "id": { "type": "string" },
+          "title": { "type": "string" },
+          "tasks": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["id", "title", "acceptance_criteria", "dependencies"],
+              "properties": {
+                "id": { "type": "string" },
+                "title": { "type": "string" },
+                "acceptance_criteria": {
+                  "type": "array",
+                  "items": { "type": "string" }
+                },
+                "dependencies": {
+                  "type": "array",
+                  "items": { "type": "string" }
+                },
+                "done_definition": {
+                  "type": "array",
+                  "items": { "type": "string" }
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "assumptions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "risks": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "additionalProperties": false
+}

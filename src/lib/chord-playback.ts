@@ -80,7 +80,7 @@ const piano = (midi: number, volume = 1) => {
     timeIndex += lengthOfNote;
   }
 
-  let sound = new Howl({
+  const sound = new Howl({
     src: ["/pianosprite.mp3"],
     sprite,
     rate: 1,

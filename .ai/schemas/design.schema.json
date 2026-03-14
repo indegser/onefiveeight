@@ -1,0 +1,163 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DesignSpec",
+  "type": "object",
+  "required": [
+    "screens",
+    "ux_rules",
+    "component_map",
+    "human_checkpoints",
+    "design_rule_engine",
+    "screen_contexts",
+    "builder_constraints",
+    "review_targets"
+  ],
+  "properties": {
+    "screens": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "purpose", "screen_type"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "purpose": { "type": "string" },
+          "screen_type": { "type": "string" },
+          "primary_action": { "type": "string" },
+          "states": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "ux_rules": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "component_map": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["screen_id", "components"],
+        "properties": {
+          "screen_id": { "type": "string" },
+          "components": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "design_rule_engine": {
+      "type": "object",
+      "required": [
+        "profile_id",
+        "hard_rule_sets",
+        "heuristic_sets",
+        "allowed_pattern_sets",
+        "banned_pattern_sets",
+        "review_rubric_id"
+      ],
+      "properties": {
+        "profile_id": {
+          "type": ["string", "null"]
+        },
+        "hard_rule_sets": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "heuristic_sets": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "allowed_pattern_sets": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "banned_pattern_sets": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "review_rubric_id": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "screen_contexts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "screen_id",
+          "screen_type",
+          "layout_intent",
+          "interaction_risks",
+          "required_states"
+        ],
+        "properties": {
+          "screen_id": { "type": "string" },
+          "screen_type": { "type": "string" },
+          "layout_intent": { "type": "string" },
+          "interaction_risks": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "required_states": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "notes": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "builder_constraints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["screen_id", "constraints", "open_decisions"],
+        "properties": {
+          "screen_id": { "type": "string" },
+          "constraints": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "open_decisions": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "review_targets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["screen_id", "critical_judgments", "must_not_regress"],
+        "properties": {
+          "screen_id": { "type": "string" },
+          "critical_judgments": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "must_not_regress": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "human_checkpoints": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "additionalProperties": false
+}
