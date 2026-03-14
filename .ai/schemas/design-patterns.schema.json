@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DesignPatterns",
+  "type": "object",
+  "required": ["version", "pattern_set_id", "patterns"],
+  "properties": {
+    "version": { "type": "string" },
+    "pattern_set_id": { "type": "string" },
+    "patterns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "layer", "title", "description", "applies_to", "enforcement"],
+        "properties": {
+          "id": { "type": "string" },
+          "layer": {
+            "type": "string",
+            "enum": ["hard_rule", "ux_heuristic", "aesthetic_support"]
+          },
+          "title": { "type": "string" },
+          "description": { "type": "string" },
+          "applies_to": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "enforcement": {
+            "type": "string",
+            "enum": ["required", "preferred", "avoid", "forbidden"]
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

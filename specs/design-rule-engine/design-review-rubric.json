@@ -1,0 +1,95 @@
+{
+  "$schema": "../../.ai/schemas/design-review-rubric.schema.json",
+  "version": "0.1.0",
+  "rubric_id": "core-design-review",
+  "gating_policy": {
+    "auto_fail_conditions": [
+      "critical hard-rule violation",
+      "missing destructive-flow safeguard",
+      "missing required state coverage on a critical screen"
+    ],
+    "requires_refinement_when": [
+      "any high severity finding remains open",
+      "average heuristic score is below 3",
+      "average aesthetic score is below 3 and the screen is user-facing or brand-critical"
+    ]
+  },
+  "sections": [
+    {
+      "id": "hard_rules",
+      "title": "Hard Rules",
+      "weight": 0.4,
+      "items": [
+        {
+          "id": "state_coverage",
+          "prompt": "Are required states defined for each relevant screen?",
+          "scoring_mode": "pass_fail"
+        },
+        {
+          "id": "action_hierarchy",
+          "prompt": "Is there one clear primary action per region or an explicit reason not to have one?",
+          "scoring_mode": "pass_fail"
+        },
+        {
+          "id": "destructive_safety",
+          "prompt": "Are destructive actions clearly separated, confirmed, and recoverable when possible?",
+          "scoring_mode": "pass_fail"
+        }
+      ]
+    },
+    {
+      "id": "ux_heuristics",
+      "title": "UX Heuristics",
+      "weight": 0.35,
+      "items": [
+        {
+          "id": "clarity_of_next_step",
+          "prompt": "Can a user identify the next likely action quickly?",
+          "scoring_mode": "1_to_5"
+        },
+        {
+          "id": "scanability",
+          "prompt": "Does layout and hierarchy support rapid scanning and comprehension?",
+          "scoring_mode": "1_to_5"
+        },
+        {
+          "id": "consistency",
+          "prompt": "Are patterns and interactions consistent with sibling surfaces?",
+          "scoring_mode": "1_to_5"
+        },
+        {
+          "id": "error_recovery",
+          "prompt": "Does the design support safe error handling and recovery?",
+          "scoring_mode": "1_to_5"
+        }
+      ]
+    },
+    {
+      "id": "aesthetic_judgment",
+      "title": "Aesthetic Judgment",
+      "weight": 0.25,
+      "items": [
+        {
+          "id": "hierarchy_quality",
+          "prompt": "Does the composition create clear visual hierarchy with restrained emphasis rather than loud contrast or theatrical focal points?",
+          "scoring_mode": "1_to_5"
+        },
+        {
+          "id": "spacing_rhythm",
+          "prompt": "Is spacing rhythmic and editorial in feel, separating meaningful groups without creating throughput-killing emptiness?",
+          "scoring_mode": "1_to_5"
+        },
+        {
+          "id": "balance_and_density",
+          "prompt": "Does the density fit a prosumer utility task while preserving calm balance and navigability?",
+          "scoring_mode": "1_to_5"
+        },
+        {
+          "id": "profile_fit",
+          "prompt": "Does the result fit the warm restrained editorial utility profile, including warm low-saturation color use and quiet material treatment, while avoiding known anti-patterns?",
+          "scoring_mode": "1_to_5"
+        }
+      ]
+    }
+  ]
+}

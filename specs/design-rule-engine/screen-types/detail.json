@@ -1,0 +1,27 @@
+{
+  "screen_type": "detail",
+  "purpose_template": "Help the user understand one object deeply and take contextual actions safely.",
+  "required_regions": [
+    "identity header",
+    "core attributes",
+    "contextual actions",
+    "history or supporting data"
+  ],
+  "required_states": [
+    "loading",
+    "not found",
+    "error",
+    "success feedback after mutation"
+  ],
+  "default_review_focus": [
+    "information grouping",
+    "destructive action safety",
+    "contextual clarity",
+    "supporting detail discoverability"
+  ],
+  "common_risks": [
+    "actions detached from object state",
+    "critical metadata buried below secondary content",
+    "danger actions too easy to trigger"
+  ]
+}

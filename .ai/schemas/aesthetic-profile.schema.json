@@ -1,0 +1,93 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AestheticProfile",
+  "type": "object",
+  "required": [
+    "version",
+    "selection_status",
+    "selected_profile_id",
+    "project_binding",
+    "candidate_profiles",
+    "reference_strategy",
+    "anti_pattern_candidates",
+    "open_questions"
+  ],
+  "properties": {
+    "version": { "type": "string" },
+    "selection_status": {
+      "type": "string",
+      "enum": ["draft", "selected", "needs_discussion"]
+    },
+    "selected_profile_id": {
+      "type": ["string", "null"]
+    },
+    "project_binding": {
+      "type": "object",
+      "required": ["product_type", "brand_mode", "library_binding", "token_source"],
+      "properties": {
+        "product_type": { "type": "string" },
+        "brand_mode": { "type": "string" },
+        "library_binding": { "type": "string" },
+        "token_source": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "candidate_profiles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "summary", "fit_signals", "judgment_axes"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "summary": { "type": "string" },
+          "fit_signals": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "judgment_axes": {
+            "type": "object",
+            "required": ["hierarchy", "density", "tone", "motion"],
+            "properties": {
+              "hierarchy": { "type": "string" },
+              "density": { "type": "string" },
+              "tone": { "type": "string" },
+              "motion": { "type": "string" }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "reference_strategy": {
+      "type": "object",
+      "required": ["method", "notes"],
+      "properties": {
+        "method": { "type": "string" },
+        "notes": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": false
+    },
+    "anti_pattern_candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "description"],
+        "properties": {
+          "id": { "type": "string" },
+          "description": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "open_questions": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "additionalProperties": false
+}

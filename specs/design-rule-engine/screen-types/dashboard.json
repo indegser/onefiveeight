@@ -1,0 +1,27 @@
+{
+  "screen_type": "dashboard",
+  "purpose_template": "Give a fast overview, highlight anomalies, and route the user into focused follow-up actions.",
+  "required_regions": [
+    "page header",
+    "summary metrics or status",
+    "primary work queue or main content",
+    "follow-up actions"
+  ],
+  "required_states": [
+    "loading",
+    "empty",
+    "error",
+    "partial data"
+  ],
+  "default_review_focus": [
+    "scanability",
+    "landmark hierarchy",
+    "signal-to-noise ratio",
+    "action prioritization"
+  ],
+  "common_risks": [
+    "too many equal-priority cards",
+    "oversized header area",
+    "weak path from summary to action"
+  ]
+}

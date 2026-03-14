@@ -1,0 +1,94 @@
+{
+  "$schema": "../../.ai/schemas/design-patterns.schema.json",
+  "version": "0.1.0",
+  "pattern_set_id": "core-banned-patterns",
+  "patterns": [
+    {
+      "id": "multiple-primary-ctas-same-plane",
+      "layer": "hard_rule",
+      "title": "Multiple Primary CTAs On Same Plane",
+      "description": "Two or more actions compete as the obvious next step in the same region.",
+      "applies_to": [
+        "all"
+      ],
+      "enforcement": "forbidden"
+    },
+    {
+      "id": "destructive-primary-styling",
+      "layer": "hard_rule",
+      "title": "Destructive Action Styled As Default Primary",
+      "description": "Dangerous actions are visually equivalent to routine forward actions without safeguard context.",
+      "applies_to": [
+        "detail",
+        "form",
+        "settings",
+        "table"
+      ],
+      "enforcement": "forbidden"
+    },
+    {
+      "id": "state-less-surface",
+      "layer": "hard_rule",
+      "title": "Missing State Definitions",
+      "description": "A data-dependent or async surface omits loading, empty, or error behavior.",
+      "applies_to": [
+        "all"
+      ],
+      "enforcement": "forbidden"
+    },
+    {
+      "id": "visual-noise-stack",
+      "layer": "aesthetic_support",
+      "title": "Visual Noise Stack",
+      "description": "Shadows, borders, gradients, pills, badges, and accent colors all compete at once.",
+      "applies_to": [
+        "all"
+      ],
+      "enforcement": "avoid"
+    },
+    {
+      "id": "marketing-shell-for-ops",
+      "layer": "aesthetic_support",
+      "title": "Marketing Shell For Operational Workflows",
+      "description": "Hero sections, oversized headlines, and excessive whitespace displace working content.",
+      "applies_to": [
+        "dashboard",
+        "table",
+        "settings"
+      ],
+      "enforcement": "avoid"
+    },
+    {
+      "id": "cool-techno-chrome",
+      "layer": "aesthetic_support",
+      "title": "Cool Techno Chrome",
+      "description": "Cold gray-blue UI, glossy highlights, or futuristic contrast that conflicts with the warm restrained reference set.",
+      "applies_to": [
+        "all"
+      ],
+      "enforcement": "avoid"
+    },
+    {
+      "id": "hyper-saturated-highlighting",
+      "layer": "aesthetic_support",
+      "title": "Hyper Saturated Highlighting",
+      "description": "High-chroma badges, buttons, or section fills that dominate a low-saturation composition.",
+      "applies_to": [
+        "all"
+      ],
+      "enforcement": "avoid"
+    },
+    {
+      "id": "gratuitous-luxury-whitespace",
+      "layer": "aesthetic_support",
+      "title": "Gratuitous Luxury Whitespace",
+      "description": "Large empty margins and sparse content blocks that mimic fashion/editorial layouts while degrading task efficiency.",
+      "applies_to": [
+        "dashboard",
+        "table",
+        "detail"
+      ],
+      "enforcement": "avoid"
+    }
+  ]
+}

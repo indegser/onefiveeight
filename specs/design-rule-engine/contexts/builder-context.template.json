@@ -1,0 +1,48 @@
+{
+  "$schema": "../../../.ai/schemas/builder-design-context.schema.json",
+  "version": "0.1.0",
+  "goal": "Implement approved design decisions without redefining design scope.",
+  "project_context": {
+    "frontend": "nextjs-app-router",
+    "ui_library": "shadcn-ui + radix-ui + tailwind-css-v4",
+    "design_token_source": "current-repo-tailwind-layer"
+  },
+  "design_inputs": {
+    "design_artifact": ".ai/runs/<run_id>/design.json",
+    "selected_profile_id": null,
+    "allowed_pattern_sets": [
+      "core-allowed-patterns"
+    ],
+    "banned_pattern_sets": [
+      "core-banned-patterns"
+    ]
+  },
+  "implementation_constraints": [
+    {
+      "screen_id": "example-screen",
+      "must_preserve": [
+        "single obvious primary action",
+        "declared empty state",
+        "declared error recovery path"
+      ],
+      "must_not_introduce": [
+        "extra primary buttons in same region",
+        "unstyled destructive actions",
+        "visual containers without semantic grouping"
+      ],
+      "needs_follow_up_if_blocked": [
+        "required component does not exist",
+        "selected UI library cannot express the hierarchy cleanly"
+      ]
+    }
+  ],
+  "expected_output_contract": {
+    "artifact": ".ai/runs/<run_id>/build.json",
+    "must_include": [
+      "completed tasks",
+      "changed files",
+      "open issues",
+      "design deviations with reason"
+    ]
+  }
+}
