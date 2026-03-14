@@ -8,26 +8,41 @@ import { songs } from "@/lib/songs";
 export function SongsWorkspace() {
   const [selectedSongId, setSelectedSongId] = useState<string | null>(null);
 
-  const selectedSong =
-    songs.find((song) => song.id === selectedSongId) ?? null;
+  const selectedSong = songs.find((song) => song.id === selectedSongId) ?? null;
+  const styles = new Set(songs.map((song) => song.style)).size;
 
   return (
-    <section className="grid gap-6 xl:grid-cols-[24rem_minmax(0,1fr)]">
+    <section className="grid gap-5 xl:grid-cols-[23rem_minmax(0,1fr)]">
       <aside className="space-y-4">
-        <div className="rounded-[2rem] border border-gray-200 bg-gray-50 p-5">
-          <p className="text-sm font-medium uppercase tracking-[0.24em] text-gray-400">
+        <div className="border-b border-stone-300/80 pb-5">
+          <p className="text-xs font-semibold tracking-[0.24em] text-stone-500 uppercase">
             Library
           </p>
-          <h2 className="mt-3 text-2xl font-semibold text-gray-950">
-            Copied Songs
+          <h2 className="mt-3 text-[1.75rem] font-semibold tracking-[-0.03em] text-stone-950">
+            Copied songs
           </h2>
-          <p className="mt-2 text-sm leading-6 text-gray-500">
-            Keep your copied charts in one place and open any song into the score viewer with a single click.
+          <p className="mt-2 text-sm leading-6 text-stone-600">
+            Keep scanning on the left and open a single score on the right
+            without losing context.
           </p>
-          <div className="mt-4 flex items-center justify-between rounded-2xl bg-white px-4 py-3 text-sm text-gray-600">
-            <span>Total songs</span>
-            <span className="font-semibold text-gray-900">{songs.length}</span>
-          </div>
+          <dl className="mt-5 grid grid-cols-2 gap-x-4 gap-y-3 text-sm">
+            <div className="border-l border-stone-300/80 pl-3">
+              <dt className="text-[11px] tracking-[0.18em] text-stone-500 uppercase">
+                Total songs
+              </dt>
+              <dd className="mt-1 text-lg font-semibold text-stone-900">
+                {songs.length}
+              </dd>
+            </div>
+            <div className="border-l border-stone-300/80 pl-3">
+              <dt className="text-[11px] tracking-[0.18em] text-stone-500 uppercase">
+                Styles
+              </dt>
+              <dd className="mt-1 text-lg font-semibold text-stone-900">
+                {styles}
+              </dd>
+            </div>
+          </dl>
         </div>
         <SongList
           songs={songs}

@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-import fs from "node:fs/promises"
-import path from "node:path"
-import { buildTaskMemory } from "./memory.mjs"
-import { schemas } from "./schemas.mjs"
+import fs from "node:fs/promises";
+import path from "node:path";
+import { buildTaskMemory } from "./memory.mjs";
+import { schemas } from "./schemas.mjs";
 import {
   ensureStateDirs,
   fileExists,
@@ -15,58 +15,63 @@ import {
   readJson,
   setCurrentRun,
   timestamp,
-  writeJson
-} from "./shared-state.mjs"
+  writeJson,
+} from "./shared-state.mjs";
 
-const [, , command, ...restArgs] = process.argv
+const [, , command, ...restArgs] = process.argv;
 
 async function main() {
   switch (command) {
     case "init":
-      await initRun(restArgs[0])
-      return
+      await initRun(restArgs[0]);
+      return;
+    case "refine":
+      await refineRun(restArgs);
+      return;
     case "route":
-      await routeRun()
-      return
+      await routeRun();
+      return;
     case "work":
-      await printWorkPackage(restArgs[0])
-      return
+      await printWorkPackage(restArgs[0]);
+      return;
     case "validate":
-      await validateState()
-      return
+      await validateState();
+      return;
     default:
-      printUsage()
+      printUsage();
   }
 }
 
 function printUsage() {
   console.log(`Usage:
   npm run ai:init -- <idea-file>
+  npm run ai:refine -- [agent] <note>
   npm run ai:route
   npm run ai:work -- <agent>
-  npm run ai:validate`)
+  npm run ai:validate`);
 }
 
 async function initRun(ideaFileArg) {
-  const ideaFile = ideaFileArg ?? "docs/idea.md"
-  const absoluteIdeaFile = path.resolve(process.cwd(), ideaFile)
+  const ideaFile = ideaFileArg ?? "docs/idea.md";
+  const absoluteIdeaFile = path.resolve(process.cwd(), ideaFile);
 
   if (!(await fileExists(absoluteIdeaFile))) {
-    throw new Error(`Idea file not found: ${absoluteIdeaFile}`)
+    throw new Error(`Idea file not found: ${absoluteIdeaFile}`);
   }
 
-  await ensureStateDirs()
-  const runId = makeRunId(ideaFile)
-  const stateFiles = getStateFiles(runId)
+  await ensureStateDirs();
+  const runId = makeRunId(ideaFile);
+  const stateFiles = getStateFiles(runId);
   const memory = await buildTaskMemory({
     ideaFilePath: absoluteIdeaFile,
     goal: `Build an app from ${ideaFile}`,
-    constraints: []
-  })
+    constraints: [],
+  });
 
   const run = {
     run_id: runId,
     goal: `Build an app from ${ideaFile}`,
+    revision: 1,
     phase: "plan",
     status: "in_progress",
     next_agent: "planner",
@@ -74,100 +79,160 @@ async function initRun(ideaFileArg) {
       frontend: "nextjs",
       ui: "shadcn-ui",
       backend: "supabase",
-      language: "typescript"
+      language: "typescript",
     },
     inputs: {
       idea_file: ideaFile,
       constraints: [],
-      brand_critical: false
+      brand_critical: false,
     },
     artifacts: {
       plan: path.relative(process.cwd(), stateFiles.plan),
       memory: path.relative(process.cwd(), stateFiles.memory),
       design: path.relative(process.cwd(), stateFiles.design),
       build: path.relative(process.cwd(), stateFiles.build),
-      verify: path.relative(process.cwd(), stateFiles.verify)
+      verify: path.relative(process.cwd(), stateFiles.verify),
     },
     approvals: {
       brand: false,
       data_model: false,
-      destructive_flows: false
+      destructive_flows: false,
     },
     blockers: [],
     decisions: [],
     risks: [],
+    refinement_notes: [],
     history: [
       {
         at: timestamp(),
-        event: `Initialized run from ${ideaFile}`
-      }
-    ]
+        event: `Initialized run from ${ideaFile}`,
+      },
+    ],
+  };
+
+  schemas.run.parse(run);
+  await writeJson(stateFiles.run, run);
+  schemas.memory.parse(memory);
+  await writeJson(stateFiles.memory, memory);
+  await setCurrentRun(runId);
+
+  console.log(`Initialized run ${run.run_id}`);
+  console.log(`Next agent: ${run.next_agent}`);
+  console.log(`Run state: ${stateFiles.run}`);
+}
+
+async function refineRun(args) {
+  const allowedAgents = new Set([
+    "planner",
+    "design-agent",
+    "builder",
+    "verifier",
+    "design-critic",
+    "code-critic",
+  ]);
+  const firstArg = args[0];
+  const targetAgent = allowedAgents.has(firstArg) ? firstArg : "builder";
+  const note = allowedAgents.has(firstArg)
+    ? args.slice(1).join(" ").trim()
+    : args.join(" ").trim();
+
+  if (!note) {
+    throw new Error(
+      "Missing refinement note. Example: npm run ai:refine -- builder tighten screenshot evidence flow",
+    );
   }
 
-  schemas.run.parse(run)
-  await writeJson(stateFiles.run, run)
-  schemas.memory.parse(memory)
-  await writeJson(stateFiles.memory, memory)
-  await setCurrentRun(runId)
+  const { run, stateFiles } = await getRunContext();
+  const filesToClear = getArtifactsToClearForAgent(targetAgent, stateFiles);
 
-  console.log(`Initialized run ${run.run_id}`)
-  console.log(`Next agent: ${run.next_agent}`)
-  console.log(`Run state: ${stateFiles.run}`)
+  for (const filePath of filesToClear) {
+    if (await fileExists(filePath)) {
+      await fs.rm(filePath);
+    }
+  }
+
+  const nextRun = {
+    ...run,
+    revision: (run.revision ?? 1) + 1,
+    phase: mapAgentToPhase(targetAgent),
+    status: "in_progress",
+    next_agent: targetAgent,
+    blockers: [],
+    refinement_notes: [
+      ...(run.refinement_notes ?? []),
+      {
+        at: timestamp(),
+        note,
+        target_agent: targetAgent,
+      },
+    ],
+    history: [
+      ...run.history,
+      {
+        at: timestamp(),
+        event: `Refinement requested for ${targetAgent}: ${note}`,
+      },
+    ],
+  };
+
+  schemas.run.parse(nextRun);
+  await writeJson(stateFiles.run, nextRun);
+  console.log(JSON.stringify(nextRun, null, 2));
 }
 
 async function routeRun() {
-  const { run, stateFiles } = await getRunContext()
-  const plan = await maybeReadJson(stateFiles.plan)
-  const design = await maybeReadJson(stateFiles.design)
-  const build = await maybeReadJson(stateFiles.build)
-  const verify = await maybeReadJson(stateFiles.verify)
-  const designReview = await maybeReadJson(stateFiles.designReview)
-  const codeReview = await maybeReadJson(stateFiles.codeReview)
+  const { run, stateFiles } = await getRunContext();
+  const plan = await maybeReadJson(stateFiles.plan);
+  const design = await maybeReadJson(stateFiles.design);
+  const build = await maybeReadJson(stateFiles.build);
+  const verify = await maybeReadJson(stateFiles.verify);
+  const designReview = await maybeReadJson(stateFiles.designReview);
+  const codeReview = await maybeReadJson(stateFiles.codeReview);
 
-  let nextAgent = "planner"
-  let phase = "plan"
-  let status = "in_progress"
-  const blockers = []
+  let nextAgent = "planner";
+  let phase = "plan";
+  let status = "in_progress";
+  const blockers = [];
 
   if (!plan) {
-    nextAgent = "planner"
-    phase = "plan"
+    nextAgent = "planner";
+    phase = "plan";
   } else if (!design) {
-    nextAgent = "design-agent"
-    phase = "design"
+    nextAgent = "design-agent";
+    phase = "design";
   } else if (run.inputs.brand_critical && !run.approvals.brand) {
-    nextAgent = "human"
-    phase = "design"
-    status = "needs_human"
-    blockers.push("Brand approval required before implementation.")
+    nextAgent = "human";
+    phase = "design";
+    status = "needs_human";
+    blockers.push("Brand approval required before implementation.");
   } else if (!build) {
-    nextAgent = "builder"
-    phase = "build"
+    nextAgent = "builder";
+    phase = "build";
   } else if (!verify) {
-    nextAgent = "verifier"
-    phase = "verify"
+    nextAgent = "verifier";
+    phase = "verify";
   } else if (verify.passed === false) {
-    nextAgent = "builder"
-    phase = "build"
-    blockers.push(...verify.blocking_issues)
+    nextAgent = "builder";
+    phase = "build";
+    blockers.push(...verify.blocking_issues);
   } else if (!designReview) {
-    nextAgent = "design-critic"
-    phase = "review"
+    nextAgent = "design-critic";
+    phase = "review";
   } else if (designReview.approved === false) {
-    nextAgent = "builder"
-    phase = "build"
-    blockers.push("Design review requires refinement.")
+    nextAgent = "builder";
+    phase = "build";
+    blockers.push("Design review requires refinement.");
   } else if (!codeReview) {
-    nextAgent = "code-critic"
-    phase = "review"
+    nextAgent = "code-critic";
+    phase = "review";
   } else if (codeReview.approved === false) {
-    nextAgent = "builder"
-    phase = "build"
-    blockers.push("Code review requires refinement.")
+    nextAgent = "builder";
+    phase = "build";
+    blockers.push("Code review requires refinement.");
   } else {
-    nextAgent = "none"
-    phase = "done"
-    status = "done"
+    nextAgent = "none";
+    phase = "done";
+    status = "done";
   }
 
   const nextRun = {
@@ -180,29 +245,29 @@ async function routeRun() {
       ...run.history,
       {
         at: timestamp(),
-        event: `Supervisor routed to ${nextAgent}`
-      }
-    ]
-  }
+        event: `Supervisor routed to ${nextAgent}`,
+      },
+    ],
+  };
 
-  schemas.run.parse(nextRun)
-  await writeJson(stateFiles.run, nextRun)
-  console.log(JSON.stringify(nextRun, null, 2))
+  schemas.run.parse(nextRun);
+  await writeJson(stateFiles.run, nextRun);
+  console.log(JSON.stringify(nextRun, null, 2));
 }
 
 async function printWorkPackage(agent) {
   if (!agent) {
-    throw new Error("Missing agent name. Example: npm run ai:work -- planner")
+    throw new Error("Missing agent name. Example: npm run ai:work -- planner");
   }
 
-  const { run } = await getRunContext()
-  const promptPath = path.join(process.cwd(), "agents", `${agent}.md`)
+  const { run } = await getRunContext();
+  const promptPath = path.join(process.cwd(), "agents", `${agent}.md`);
 
   if (!(await fileExists(promptPath))) {
-    throw new Error(`Unknown agent prompt: ${promptPath}`)
+    throw new Error(`Unknown agent prompt: ${promptPath}`);
   }
 
-  const prompt = await fs.readFile(promptPath, "utf8")
+  const prompt = await fs.readFile(promptPath, "utf8");
   const payload = {
     agent,
     run_id: run.run_id,
@@ -211,103 +276,184 @@ async function printWorkPackage(agent) {
     run_dir: path.relative(process.cwd(), getRunDir(run.run_id)),
     prompt_file: path.relative(process.cwd(), promptPath),
     relevant_state: await collectRelevantState(agent, run.run_id),
-    instructions: prompt.trim()
-  }
+    instructions: prompt.trim(),
+  };
 
-  console.log(JSON.stringify(payload, null, 2))
+  console.log(JSON.stringify(payload, null, 2));
 }
 
 async function validateState() {
-  const runId = await getRequiredRunId()
-  const stateFiles = getStateFiles(runId)
-  const validations = []
+  const runId = await getRequiredRunId();
+  const stateFiles = getStateFiles(runId);
+  const validations = [];
 
   for (const [key, filePath] of Object.entries(stateFiles)) {
     if (!(await fileExists(filePath))) {
-      validations.push({ key, ok: true, skipped: true })
-      continue
+      validations.push({ key, ok: true, skipped: true });
+      continue;
     }
 
-    const json = await readJson(filePath)
-    const schemaKey = mapStateKeyToSchemaKey(key)
-    schemas[schemaKey].parse(json)
-    validations.push({ key, ok: true, skipped: false })
+    const json = await readJson(filePath);
+    const schemaKey = mapStateKeyToSchemaKey(key);
+    schemas[schemaKey].parse(json);
+    validations.push({ key, ok: true, skipped: false });
   }
 
-  console.log(JSON.stringify({ ok: true, run_id: runId, validations }, null, 2))
+  console.log(
+    JSON.stringify({ ok: true, run_id: runId, validations }, null, 2),
+  );
 }
 
 async function requireState(name, runId) {
-  const filePath = getStateFiles(runId)[name]
+  const filePath = getStateFiles(runId)[name];
 
   if (!(await fileExists(filePath))) {
-    throw new Error(`Missing required state file: ${filePath}`)
+    throw new Error(`Missing required state file: ${filePath}`);
   }
 
-  const parsed = await readJson(filePath)
-  schemas[mapStateKeyToSchemaKey(name)].parse(parsed)
-  return parsed
+  const parsed = await readJson(filePath);
+  schemas[mapStateKeyToSchemaKey(name)].parse(parsed);
+  return parsed;
 }
 
 async function collectRelevantState(agent, runId) {
-  const stateFiles = getStateFiles(runId)
+  const stateFiles = getStateFiles(runId);
   const state = {
-    run: await maybeReadJson(stateFiles.run)
+    run: await maybeReadJson(stateFiles.run),
+  };
+
+  if (
+    [
+      "design-agent",
+      "builder",
+      "verifier",
+      "design-critic",
+      "code-critic",
+    ].includes(agent)
+  ) {
+    state.plan = await maybeReadJson(stateFiles.plan);
   }
 
-  if (["design-agent", "builder", "verifier", "design-critic", "code-critic"].includes(agent)) {
-    state.plan = await maybeReadJson(stateFiles.plan)
-  }
-
-  if (["planner", "design-agent", "builder", "design-critic", "code-critic"].includes(agent)) {
-    state.memory = await maybeReadJson(stateFiles.memory)
+  if (
+    [
+      "planner",
+      "design-agent",
+      "builder",
+      "design-critic",
+      "code-critic",
+    ].includes(agent)
+  ) {
+    state.memory = await maybeReadJson(stateFiles.memory);
   }
 
   if (["builder", "design-critic"].includes(agent)) {
-    state.design = await maybeReadJson(stateFiles.design)
+    state.design = await maybeReadJson(stateFiles.design);
   }
 
   if (["verifier", "code-critic"].includes(agent)) {
-    state.build = await maybeReadJson(stateFiles.build)
+    state.build = await maybeReadJson(stateFiles.build);
   }
 
   if (["code-critic"].includes(agent)) {
-    state.verify = await maybeReadJson(stateFiles.verify)
+    state.verify = await maybeReadJson(stateFiles.verify);
   }
 
-  return state
+  return state;
 }
 
 async function getRequiredRunId() {
-  const runId = await getCurrentRunId()
+  const runId = await getCurrentRunId();
 
   if (!runId) {
-    throw new Error("No active run found. Initialize one with: npm run ai:init -- <idea-file>")
+    throw new Error(
+      "No active run found. Initialize one with: npm run ai:init -- <idea-file>",
+    );
   }
 
-  return runId
+  return runId;
 }
 
 async function getRunContext() {
-  const runId = await getRequiredRunId()
-  const run = await requireState("run", runId)
-  const stateFiles = getStateFiles(runId)
+  const runId = await getRequiredRunId();
+  const run = await requireState("run", runId);
+  const stateFiles = getStateFiles(runId);
 
-  return { runId, run, stateFiles }
+  return { runId, run, stateFiles };
 }
 
 function mapStateKeyToSchemaKey(key) {
   switch (key) {
     case "designReview":
-      return "designReview"
+      return "designReview";
     case "codeReview":
-      return "codeReview"
+      return "codeReview";
     default:
-      return key
+      return key;
+  }
+}
+
+function mapAgentToPhase(agent) {
+  switch (agent) {
+    case "planner":
+      return "plan";
+    case "design-agent":
+      return "design";
+    case "builder":
+      return "build";
+    case "verifier":
+      return "verify";
+    case "design-critic":
+    case "code-critic":
+      return "review";
+    case "human":
+      return "review";
+    default:
+      return "plan";
+  }
+}
+
+function getArtifactsToClearForAgent(agent, stateFiles) {
+  switch (agent) {
+    case "planner":
+      return [
+        stateFiles.plan,
+        stateFiles.design,
+        stateFiles.build,
+        stateFiles.verify,
+        stateFiles.designReview,
+        stateFiles.codeReview,
+      ];
+    case "design-agent":
+      return [
+        stateFiles.design,
+        stateFiles.build,
+        stateFiles.verify,
+        stateFiles.designReview,
+        stateFiles.codeReview,
+      ];
+    case "builder":
+      return [
+        stateFiles.build,
+        stateFiles.verify,
+        stateFiles.designReview,
+        stateFiles.codeReview,
+      ];
+    case "verifier":
+      return [
+        stateFiles.verify,
+        stateFiles.designReview,
+        stateFiles.codeReview,
+      ];
+    case "design-critic":
+      return [stateFiles.designReview, stateFiles.codeReview];
+    case "code-critic":
+      return [stateFiles.codeReview];
+    default:
+      return [];
   }
 }
 
 main().catch((error) => {
-  console.error(error.message)
-  process.exitCode = 1
-})
+  console.error(error.message);
+  process.exitCode = 1;
+});

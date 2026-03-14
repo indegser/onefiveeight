@@ -10,7 +10,8 @@
     "design_rule_engine",
     "screen_contexts",
     "builder_constraints",
-    "review_targets"
+    "review_targets",
+    "visual_constraints"
   ],
   "properties": {
     "screens": {
@@ -153,6 +154,10 @@
         },
         "additionalProperties": false
       }
+    },
+    "visual_constraints": {
+      "type": "array",
+      "items": { "type": "string" }
     },
     "human_checkpoints": {
       "type": "array",

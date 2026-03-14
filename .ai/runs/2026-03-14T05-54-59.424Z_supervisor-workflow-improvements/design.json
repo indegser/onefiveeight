@@ -1,0 +1,96 @@
+{
+  "screens": [
+    {
+      "id": "supervisor-workflow",
+      "name": "Supervisor workflow contract",
+      "purpose": "Help agents execute deterministic workflow steps, preserve design evidence, and reopen refinements without ambiguity.",
+      "screen_type": "settings",
+      "primary_action": "Run the next approved workflow step",
+      "states": [
+        "success:artifacts-valid",
+        "success:actions-available",
+        "refinement:pending-followup"
+      ]
+    }
+  ],
+  "ux_rules": [
+    "Prefer deterministic wrapper actions for repeated workflow tasks instead of one-off shell command strings.",
+    "Require screenshot evidence for implementation-facing design review so critiques reference the rendered surface, not just code intent.",
+    "Keep design constraints structured so aesthetic expectations can be consumed mechanically by builder and critic stages.",
+    "Make refinement loops explicit so a completed run can re-enter work with a named reason and tracked revision."
+  ],
+  "component_map": [
+    {
+      "screen_id": "supervisor-workflow",
+      "components": [
+        "repo-local action wrappers",
+        "design review evidence contract",
+        "design visual constraints contract",
+        "run refinement metadata"
+      ]
+    }
+  ],
+  "human_checkpoints": [],
+  "design_rule_engine": {
+    "profile_id": "warm-restrained-editorial-utility",
+    "hard_rule_sets": ["layout-rules"],
+    "heuristic_sets": ["ux-heuristics"],
+    "allowed_pattern_sets": ["core-allowed-patterns"],
+    "banned_pattern_sets": ["core-banned-patterns"],
+    "review_rubric_id": "design-review-rubric"
+  },
+  "screen_contexts": [
+    {
+      "screen_id": "supervisor-workflow",
+      "screen_type": "settings",
+      "layout_intent": "Represent workflow expectations as structured protocol fields and deterministic actions rather than prose-only guidance.",
+      "interaction_risks": [
+        "Design review may stay subjective if screenshot evidence remains optional.",
+        "Agents may bypass the intended workflow if common steps are still easier to run manually.",
+        "A run may falsely remain done if refinement is not modeled directly in run state."
+      ],
+      "required_states": [
+        "success:artifacts-valid",
+        "success:actions-available",
+        "refinement:pending-followup"
+      ],
+      "notes": [
+        "This run targets internal workflow infrastructure rather than a user-facing page."
+      ]
+    }
+  ],
+  "builder_constraints": [
+    {
+      "screen_id": "supervisor-workflow",
+      "constraints": [
+        "Keep all changes additive and compatible with the current MVP supervisor architecture.",
+        "Use structured schema fields for new requirements instead of relying on more prose alone.",
+        "Prefer simple shell wrappers in actions/ for deterministic repeated tasks."
+      ],
+      "open_decisions": [
+        "Whether action wrappers should later become Node scripts instead of shell scripts remains open.",
+        "Whether screenshot evidence should live in design-review only or also be mirrored in verify remains open."
+      ]
+    }
+  ],
+  "review_targets": [
+    {
+      "screen_id": "supervisor-workflow",
+      "critical_judgments": [
+        "The new wrappers should reduce manual repetition without hiding what commands they run.",
+        "Schema additions should be explicit enough to improve quality without overcomplicating the MVP.",
+        "Refinement tracking should reopen work clearly and predictably."
+      ],
+      "must_not_regress": [
+        "Current run validation flow",
+        "Deterministic JSON artifact contracts",
+        "Repository rule that code edits go through supervisor"
+      ]
+    }
+  ],
+  "visual_constraints": [
+    "Favor explicit contract fields over interpretive prose when a workflow expectation needs to be enforced repeatedly.",
+    "Prefer lightweight wrappers and metadata over heavy orchestration for this iteration.",
+    "Keep documentation terse and operational rather than aspirational."
+  ]
+}
