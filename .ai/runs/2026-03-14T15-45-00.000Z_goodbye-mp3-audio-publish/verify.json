@@ -1,0 +1,35 @@
+{
+  "checks": [
+    {
+      "name": "python-audio-analysis",
+      "status": "passed",
+      "details": "python3 packages/music-analysis/src/pipelines/audio/librosa-audio-analysis.py '/Users/indegser/Downloads/Goodbye [h_pF0my1GP4].mp3' completed with Demucs separation, 65 inferred bars, 57 merged chord spans, meter hint 4/4, and BPM 66.26."
+    },
+    {
+      "name": "json-syntax",
+      "status": "passed",
+      "details": "python3 json parsing confirmed the new run artifacts are valid JSON."
+    },
+    {
+      "name": "songs-goodbye-copy-review",
+      "status": "passed",
+      "details": "Manual review confirmed the Goodbye source and chart notes now reference the MP3-backed validation and preserve uncertainty explicitly."
+    },
+    {
+      "name": "lead-sheet-7th-comparison-review",
+      "status": "passed",
+      "details": "Manual review confirmed the new comparison table keeps the practical chart unchanged and adds a separate conservative 7th-aware candidate per section."
+    }
+  ],
+  "passed": true,
+  "visual_checks": [
+    {
+      "name": "ui-scope",
+      "status": "skipped",
+      "details": "No UI code changed; only chart content, notes, and publish storage were updated."
+    }
+  ],
+  "blocking_issues": [
+    "Node-based lint and typecheck could not be run because node/npm are unavailable in the current shell environment."
+  ]
+}

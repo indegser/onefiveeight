@@ -1,0 +1,48 @@
+{
+  "epics": [
+    {
+      "id": "goodbye-audio-publish",
+      "title": "Validate and publish the Goodbye draft from the provided MP3",
+      "tasks": [
+        {
+          "id": "task-audio-validation",
+          "title": "Run the repository-local audio analysis against the MP3 and capture explicit uncertainty",
+          "implementation_area": "analysis",
+          "acceptance_criteria": [
+            "The run records meter, tempo, bar count, and chord-span evidence from the provided MP3.",
+            "Any moderate-or-higher confidence gaps remain explicit in the run artifacts."
+          ],
+          "dependencies": [],
+          "done_definition": [
+            "A reusable audio-analysis summary is written into the run directory."
+          ]
+        },
+        {
+          "id": "task-song-publish",
+          "title": "Update the Goodbye songs entry and publish a draft lead-sheet markdown file with a 7th-aware comparison",
+          "implementation_area": "data",
+          "acceptance_criteria": [
+            "The existing songs entry reflects the MP3-backed source and uncertainty notes.",
+            "The lead-sheets directory contains a Goodbye draft consistent with the practical chart.",
+            "The lead-sheet draft includes a musically cleaned 7th-aware comparison without overstating audio certainty.",
+            "No UI structure changes are introduced."
+          ],
+          "dependencies": [
+            "task-audio-validation"
+          ],
+          "done_definition": [
+            "The songs workspace data remains backward-compatible."
+          ]
+        }
+      ]
+    }
+  ],
+  "assumptions": [
+    "The existing Goodbye chart is the preferred practical representation and should be validated, not replaced wholesale, by the audio draft.",
+    "A draft lead sheet in lead-sheets is an acceptable first publish state before full human approval."
+  ],
+  "risks": [
+    "Raw MIR bars can suggest suspended or altered harmonies that are musically plausible but not publication-safe.",
+    "Without Node tooling in PATH, repo-standard lint/typecheck cannot be executed in this shell."
+  ]
+}

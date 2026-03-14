@@ -1,0 +1,22 @@
+{
+  "completed_tasks": [
+    "task-audio-validation",
+    "task-song-publish"
+  ],
+  "changed_files": [
+    "docs/ideas/goodbye-mp3-audio-publish.md",
+    "lead-sheets/goodbye.md",
+    "src/lib/songs.ts"
+  ],
+  "notes": [
+    "Ran the repository-local Demucs/librosa audio analysis against the provided Goodbye MP3 and captured a reusable summary in the run directory.",
+    "Updated the existing Goodbye songs entry so its source, summary, meter, and chart notes reflect the full-track MP3 validation pass.",
+    "Published a draft lead-sheet markdown file using the current practical chart rather than exposing raw MIR bars.",
+    "Added a section-by-section comparison against a musically cleaned 7th-aware candidate chart."
+  ],
+  "open_issues": [
+    "The draft lead sheet is still not human-approved bar-by-bar.",
+    "Some middle-section MIR labels leaned toward suspended or altered dominant spellings and were not promoted into the practical chart.",
+    "The 7th-aware column is theory-guided and still needs human listening if publication-grade voicing detail matters."
+  ]
+}
