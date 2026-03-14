@@ -1,0 +1,26 @@
+{
+  "completed_tasks": [
+    "route-and-shell",
+    "selection-and-empty-state",
+    "score-structure",
+    "design-engine-alignment"
+  ],
+  "changed_files": [
+    "src/app/songs/page.tsx",
+    "src/app/songs/songs-workspace.tsx",
+    "src/app/songs/song-list.tsx",
+    "src/app/songs/score-viewer.tsx"
+  ],
+  "notes": [
+    "Updated the songs workspace to use a warmer muted palette and quieter material treatment aligned with the design rule engine.",
+    "Compressed the page header so the working surface remains dominant over framing copy.",
+    "Strengthened list selection hierarchy and score metadata grouping while preserving the existing local data model.",
+    "Reduced corner radii and removed pill-heavy treatments so the workspace reads as more restrained and editorial, not soft SaaS.",
+    "Replaced several nested card treatments with divider-led grouping so the surface feels flatter and more controlled.",
+    "Refined the header and empty detail state using browser capture evidence so the first view feels intentional rather than oversized or unfinished."
+  ],
+  "open_issues": [
+    "The MVP still relies on static local song data, so asynchronous loading and fetch error states are not yet implemented.",
+    "No screenshot capture was added to the supervisor flow, so design review evidence remains code-based."
+  ]
+}

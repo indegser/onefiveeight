@@ -1,0 +1,68 @@
+{
+  "approved": true,
+  "preview_evidence": [
+    ".ai/runs/2026-03-14T05-54-59.424Z_supervisor-workflow-improvements/evidence/songs-proof.png"
+  ],
+  "summary": {
+    "status": "pass_with_followups",
+    "rationale": "The workflow now captures browser evidence and records visual constraints structurally, which makes design refinement more defensible and repeatable."
+  },
+  "findings": [
+    {
+      "id": "legacy-review-backfill",
+      "severity": "low",
+      "layer": "ux_heuristic",
+      "message": "Older runs created before preview evidence became required will not validate against the new design-review contract until they are refreshed or excluded from active validation.",
+      "area": "migration",
+      "recommendation": "Backfill preview_evidence for important historical runs or document that only active runs are expected to meet the new contract.",
+      "evidence": [
+        "The new schema requires preview_evidence with at least one entry.",
+        "Historical runs were created before this field existed."
+      ]
+    }
+  ],
+  "section_scores": [
+    {
+      "section_id": "hard_rules",
+      "score": 0.94,
+      "notes": [
+        "Design review evidence is now a mechanically enforced requirement.",
+        "Visual constraints are now required by the design artifact schema."
+      ]
+    },
+    {
+      "section_id": "ux_heuristics",
+      "score": 0.92,
+      "notes": [
+        "Common repeated workflow steps now have deterministic wrappers.",
+        "The refine command makes iteration state easier to follow."
+      ]
+    },
+    {
+      "section_id": "aesthetic_judgment",
+      "score": 0.88,
+      "notes": [
+        "The workflow remains lightweight and additive rather than over-orchestrated.",
+        "The updated contracts reduce ambiguity without adding excessive ceremony."
+      ]
+    }
+  ],
+  "profile_assessment": {
+    "selected_profile_id": "warm-restrained-editorial-utility",
+    "fit_score": 0.86,
+    "anti_patterns_detected": [],
+    "notes": [
+      "The workflow improvements prefer quiet, structured constraints over bulky new systems.",
+      "The design evidence requirement is more concrete than the previous prose-only rule."
+    ]
+  },
+  "gates": {
+    "hard_rules_passed": true,
+    "needs_human_review": false,
+    "requires_refinement": false
+  },
+  "next_steps": [
+    "Consider adding optional migration helpers for historical runs if old artifacts need to be revalidated frequently.",
+    "If screenshot evidence also needs to be visible in verify outputs later, add a mirrored field there instead of duplicating ad hoc notes."
+  ]
+}

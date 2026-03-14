@@ -1,0 +1,84 @@
+{
+  "epics": [
+    {
+      "id": "songs-workspace-foundation",
+      "title": "Establish the songs list-detail workspace",
+      "tasks": [
+        {
+          "id": "route-and-shell",
+          "title": "Create the /songs route and workspace shell",
+          "acceptance_criteria": [
+            "The app exposes a /songs route inside the current Next.js structure.",
+            "The page provides a stable list-detail shell for scanning songs and reading one selected score.",
+            "The shell preserves context so the list remains visible while a score is open."
+          ],
+          "dependencies": [],
+          "done_definition": [
+            "A page-level container and workspace composition exist for the songs surface."
+          ]
+        },
+        {
+          "id": "selection-and-empty-state",
+          "title": "Support selection state and an explicit pre-selection empty state",
+          "acceptance_criteria": [
+            "The list allows choosing a song and reflects the currently selected item.",
+            "The detail pane shows an empty state before the first song is selected.",
+            "Changing the selection updates the score viewer without leaving the page."
+          ],
+          "dependencies": [
+            "route-and-shell"
+          ],
+          "done_definition": [
+            "Selection is managed by the workspace and the empty state is visible before selection."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "songs-score-reading-experience",
+      "title": "Deliver a clear score reading surface aligned with the design engine",
+      "tasks": [
+        {
+          "id": "score-structure",
+          "title": "Render song metadata and digitized section content",
+          "acceptance_criteria": [
+            "The score viewer shows title, summary, and core attributes for the selected song.",
+            "Song sections render in a readable structure suitable for chord and notation text.",
+            "The UI optimizes for reading clarity over decorative presentation."
+          ],
+          "dependencies": [
+            "selection-and-empty-state"
+          ],
+          "done_definition": [
+            "Selected songs render complete detail content and maintain hierarchy across section blocks."
+          ]
+        },
+        {
+          "id": "design-engine-alignment",
+          "title": "Apply the updated design rule engine to the songs workspace",
+          "acceptance_criteria": [
+            "The page follows the list-detail workspace pattern captured in task memory.",
+            "The visual system uses a warm restrained editorial utility direction instead of cool grayscale defaults.",
+            "List and detail regions have clear hierarchy, quiet material treatment, and restrained emphasis."
+          ],
+          "dependencies": [
+            "score-structure"
+          ],
+          "done_definition": [
+            "Page, list, and detail surfaces reflect the updated design engine constraints."
+          ]
+        }
+      ]
+    }
+  ],
+  "assumptions": [
+    "Songs are sourced from local in-repo data for the MVP, so async loading and fetch retries are not required yet.",
+    "The songs page is an operator-style personal library surface, not a marketing or discovery page.",
+    "The current Tailwind styling layer remains the token source for this iteration."
+  ],
+  "risks": [
+    "If the song dataset becomes remote or user-generated, additional loading and error states will be required in the detail pane and list shell.",
+    "A growing song catalog may require search, filtering, or virtualization beyond the current static list treatment.",
+    "Without screenshot-based review evidence, design review relies on code and class-level intent rather than rendered output."
+  ]
+}

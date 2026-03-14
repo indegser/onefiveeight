@@ -30,11 +30,7 @@
       "screen_type": "table",
       "user_goal": "complete a prosumer utility task with low ambiguity",
       "task_criticality": "high",
-      "required_states": [
-        "loading",
-        "empty",
-        "error"
-      ],
+      "required_states": ["loading", "empty", "error"],
       "open_questions": [
         "Which aesthetic references should guide hierarchy and tone?",
         "Does this screen need bulk actions or expert shortcuts?"
@@ -49,6 +45,7 @@
       "state coverage",
       "builder constraints",
       "review targets",
+      "visual constraints",
       "human approval checkpoints"
     ]
   }

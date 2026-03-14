@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+declare -a files=()
+
+if [ "$#" -gt 0 ]; then
+  files=("$@")
+else
+  while IFS= read -r file; do
+    files+=("$file")
+  done < <(
+    {
+      git diff --name-only --diff-filter=ACMRT HEAD
+      git ls-files --others --exclude-standard
+    } | rg '\.(ts|tsx|js|jsx|mjs|cjs)$' | sort -u
+  )
+fi
+
+if [ "${#files[@]}" -eq 0 ]; then
+  echo "No changed lintable files."
+  exit 0
+fi
+
+echo "Linting changed files:"
+printf ' - %s\n' "${files[@]}"
+npx eslint --ext .ts,.tsx,.js,.jsx,.mjs,.cjs "${files[@]}"

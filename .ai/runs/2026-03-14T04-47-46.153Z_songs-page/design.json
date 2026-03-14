@@ -1,0 +1,105 @@
+{
+  "screens": [
+    {
+      "id": "songs-library",
+      "name": "Songs workspace",
+      "purpose": "Help a solo user scan copied songs and inspect one digitized score without losing list context.",
+      "screen_type": "detail",
+      "primary_action": "Select a song from the library",
+      "states": [
+        "success:selected-song",
+        "empty:no-selection",
+        "empty:no-songs"
+      ]
+    }
+  ],
+  "ux_rules": [
+    "Keep the workspace in a two-column list-detail layout on large screens and stack the list above the detail pane on smaller screens.",
+    "Treat song selection as the dominant action in the list region and avoid introducing competing primary actions in the same plane.",
+    "Preserve a visible empty state in the detail pane before any song is selected.",
+    "Make the empty detail pane feel intentional and informative rather than like an unfinished blank canvas.",
+    "Use warm muted surfaces and restrained accents so hierarchy comes from grouping and contrast rather than saturated highlights.",
+    "Keep radius values restrained and avoid friendly SaaS-style pill treatments unless they carry real state meaning.",
+    "Keep metadata compact and scannable at both the list item and selected detail header levels.",
+    "Prefer divider-led grouping over stacking too many inset cards inside already bounded surfaces.",
+    "Render score sections as readable blocks with stable rhythm for chord lines and lyric lines."
+  ],
+  "component_map": [
+    {
+      "screen_id": "songs-library",
+      "components": [
+        "page header summary panel",
+        "workspace library summary strip",
+        "song selection list",
+        "score viewer empty state",
+        "score header metadata strip",
+        "score section blocks"
+      ]
+    }
+  ],
+  "human_checkpoints": [],
+  "design_rule_engine": {
+    "profile_id": "warm-restrained-editorial-utility",
+    "hard_rule_sets": ["layout-rules", "detail-screen-template"],
+    "heuristic_sets": ["ux-heuristics"],
+    "allowed_pattern_sets": ["core-allowed-patterns"],
+    "banned_pattern_sets": ["core-banned-patterns"],
+    "review_rubric_id": "design-review-rubric"
+  },
+  "screen_contexts": [
+    {
+      "screen_id": "songs-library",
+      "screen_type": "detail",
+      "layout_intent": "Use the list-detail workspace shell so the library remains scannable while one score expands in the adjacent pane.",
+      "interaction_risks": [
+        "Selected item may become visually ambiguous if the list styling is too muted.",
+        "The page can drift into marketing-shell spacing if the header grows larger than the working content.",
+        "Score blocks can lose readability if metadata and notation surfaces use too many competing treatments.",
+        "Too many nested bordered rectangles can make the page feel like a card stack instead of a calm workspace.",
+        "An oversized empty detail pane can read as accidental whitespace instead of a deliberate waiting state."
+      ],
+      "required_states": [
+        "empty:no-selection",
+        "empty:no-songs",
+        "success:selected-song"
+      ],
+      "notes": [
+        "Loading and error states are deferred because the MVP uses synchronous local song data.",
+        "The detail-screen template still applies for grouping, contextual clarity, and supporting metadata."
+      ]
+    }
+  ],
+  "builder_constraints": [
+    {
+      "screen_id": "songs-library",
+      "constraints": [
+        "Keep selection state in the workspace surface that owns the list.",
+        "Use one dominant selected treatment in the list and do not add extra primary CTAs to the list panel.",
+        "Favor warm neutral fills, understated borders, restrained radius, and low-noise material treatment across page, list, and detail regions.",
+        "Avoid rounded-full badges and oversized corner radii that make the workspace feel softer than the selected aesthetic profile.",
+        "Use separators and typography hierarchy before introducing another contained sub-card.",
+        "Keep the page header compact enough that the working panes remain the dominant landmarks on first view.",
+        "Maintain explicit empty states for both the list region and the detail region where relevant."
+      ],
+      "open_decisions": [
+        "Whether to introduce a dedicated token layer beyond current Tailwind classes remains undecided.",
+        "Search and filtering controls are intentionally deferred until the library size requires them."
+      ]
+    }
+  ],
+  "review_targets": [
+    {
+      "screen_id": "songs-library",
+      "critical_judgments": [
+        "The list-detail layout should preserve workflow throughput over ornamental whitespace.",
+        "The selected song must remain obvious without relying on bright accents.",
+        "Score section rhythm should feel calm and readable while keeping practical density."
+      ],
+      "must_not_regress": [
+        "Explicit empty state before initial selection",
+        "Persistent visibility of the song list while the detail pane is active",
+        "Quiet warm palette and restrained surface treatment"
+      ]
+    }
+  ]
+}
