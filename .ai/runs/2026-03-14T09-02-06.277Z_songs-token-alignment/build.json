@@ -1,0 +1,22 @@
+{
+  "completed_tasks": [
+    "audit-songs-literals",
+    "apply-songs-token-bindings"
+  ],
+  "changed_files": [
+    "docs/ideas/songs-token-alignment.md",
+    "src/app/songs/page.tsx",
+    "src/app/songs/songs-workspace.tsx",
+    "src/app/songs/song-list.tsx",
+    "src/app/songs/score-viewer.tsx"
+  ],
+  "notes": [
+    "Replaced repeated warm palette, metadata text, border, and typographic literals across the songs surface with bindings to the draft token CSS variables.",
+    "Preserved the stronger dark selected-card treatment in SongList as an intentional local exception so selection contrast does not regress.",
+    "Kept layout structure and user interactions unchanged while reducing one-off values."
+  ],
+  "open_issues": [
+    "Selected-state colors are still local and may later benefit from dedicated semantic inverse tokens.",
+    "A few spacing values remain local where the current surface tuning is still more specific than the draft token set."
+  ]
+}

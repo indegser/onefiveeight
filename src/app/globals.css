@@ -44,6 +44,38 @@
 }
 
 :root {
+  /* Draft design-token baseline bound to the current Tailwind/CSS variable layer. */
+  --font-body: var(--font-geist-sans);
+  --font-display: var(--font-geist-sans);
+  --font-code: var(--font-geist-mono);
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --leading-display: 1.05;
+  --leading-dense: 1.2;
+  --leading-default: 1.5;
+  --leading-relaxed: 1.7;
+  --tracking-meta: 0.08em;
+  --tracking-label: 0.12em;
+  --tracking-display-sm: -0.03em;
+  --tracking-display-lg: -0.04em;
+  --tone-canvas: #f6f1e8;
+  --tone-surface: #fbf7f0;
+  --tone-surface-alt: #f3ecde;
+  --tone-text-primary: #1f1c19;
+  --tone-text-secondary: #6b6257;
+  --tone-text-muted: #8a8175;
+  --tone-border: #cfc4b4;
+  --tone-accent: #6f7457;
+  --tone-accent-soft: #e7e3d6;
+  --tone-success: #5f7a65;
+  --tone-warning: #9a7a49;
+  --tone-danger: #9a5c52;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.13 0.028 261.692);

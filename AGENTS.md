@@ -15,6 +15,7 @@
 - The system uses a strict phase loop: `plan -> design -> build -> verify -> review -> refine/done`.
 - The `Supervisor` is the only agent allowed to route work to another agent.
 - Any task that changes product code must be executed through the `Supervisor` workflow first. Create or resume an active run, produce the required state artifacts for each phase, and only then apply or update code as `Builder` work.
+- Visual UI tasks, including layout, spacing, typography, color, component styling, and other rendered-surface changes, must be checked in the browser before edits and after edits; code-only judgment is not sufficient.
 - Free-form prose is allowed inside prompt files and docs, but agent handoffs must stay structured.
 
 ## Role Boundaries
@@ -78,6 +79,7 @@
 - `build`, `lint`, `typecheck`, and tests must pass when applicable.
 - Major design issues must be resolved before final completion.
 - Major code quality issues must be resolved before final completion.
+- Visual UI tasks are not complete until browser evidence has been captured after the change and referenced by verification or review artifacts.
 - For UI changes, visual verification must explicitly check representative layout rows for redundant labels and pane-width fit, not just generic screenshots.
 
 ## Editing Rules

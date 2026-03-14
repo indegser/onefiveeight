@@ -1,0 +1,100 @@
+{
+  "screens": [
+    {
+      "id": "browser-first-ui-workflow",
+      "name": "Browser-first visual workflow",
+      "purpose": "Ensure visual UI changes are checked in the browser before edits and after edits instead of relying on code-only judgment.",
+      "screen_type": "settings",
+      "primary_action": "Classify a task as visual UI work and require browser evidence",
+      "states": [
+        "default:visual-task-identified",
+        "verified:before-and-after-browser-evidence-recorded"
+      ]
+    }
+  ],
+  "ux_rules": [
+    "Treat styling, spacing, typography, layout, and other visual UI changes as browser-verified work by default.",
+    "For visual tasks, inspect the existing UI before editing so issues are identified from the rendered surface rather than inferred from code alone.",
+    "For visual tasks, capture after-change browser evidence before verification and review are considered complete.",
+    "Keep the policy explicit enough that agents can tell when browser checks are required and what evidence must be recorded."
+  ],
+  "component_map": [
+    {
+      "screen_id": "browser-first-ui-workflow",
+      "components": [
+        "AGENTS.md operating rules",
+        "workflow-usage guidance",
+        "design-agent prompt",
+        "verifier prompt",
+        "AI team MVP documentation"
+      ]
+    }
+  ],
+  "human_checkpoints": [],
+  "design_rule_engine": {
+    "profile_id": "warm-restrained-editorial-utility",
+    "hard_rule_sets": [
+      "layout-rules"
+    ],
+    "heuristic_sets": [
+      "ux-heuristics"
+    ],
+    "allowed_pattern_sets": [
+      "core-allowed-patterns"
+    ],
+    "banned_pattern_sets": [
+      "core-banned-patterns"
+    ],
+    "review_rubric_id": "design-review-rubric"
+  },
+  "screen_contexts": [
+    {
+      "screen_id": "browser-first-ui-workflow",
+      "screen_type": "settings",
+      "layout_intent": "Represent browser verification as a standard workflow requirement for visual tasks, not as an optional polish step.",
+      "interaction_risks": [
+        "Agents may still skip browser checks if the workflow language stays advisory rather than mandatory.",
+        "A vague definition of visual work could make the policy inconsistent across runs."
+      ],
+      "required_states": [
+        "default:visual-task-identified",
+        "verified:before-and-after-browser-evidence-recorded"
+      ],
+      "notes": [
+        "This run targets workflow behavior and documentation, not a user-facing product surface."
+      ]
+    }
+  ],
+  "builder_constraints": [
+    {
+      "screen_id": "browser-first-ui-workflow",
+      "constraints": [
+        "Update the main operating manual and the primary workflow docs in the same pass so agents do not see conflicting guidance.",
+        "Make browser checks mandatory language for visual UI work rather than a soft recommendation.",
+        "Record any remaining non-enforced gaps explicitly if the rule is not backed by supervisor runtime code."
+      ],
+      "open_decisions": [
+        "Whether the supervisor should later hard-fail visual runs that lack screenshot evidence remains open."
+      ]
+    }
+  ],
+  "review_targets": [
+    {
+      "screen_id": "browser-first-ui-workflow",
+      "critical_judgments": [
+        "The updated workflow should make browser-first verification obvious for visual tasks.",
+        "The rule should be specific enough to follow without applying to unrelated non-visual work."
+      ],
+      "must_not_regress": [
+        "Existing supervisor phase loop",
+        "Structured run artifacts",
+        "Current review artifact contracts"
+      ]
+    }
+  ],
+  "visual_constraints": [
+    "Prefer operational clarity over vague reminders.",
+    "State the before-edit and after-edit browser checkpoints explicitly.",
+    "Tie browser verification to screenshot-backed evidence wherever review artifacts already support it."
+  ]
+}

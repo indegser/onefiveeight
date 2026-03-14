@@ -1,0 +1,60 @@
+{
+  "epics": [
+    {
+      "id": "browser-first-ui-workflow",
+      "title": "Require browser-first evidence for visual UI work",
+      "tasks": [
+        {
+          "id": "define-visual-task-policy",
+          "title": "Define which tasks count as visual UI work and what evidence they require",
+          "implementation_area": "integration",
+          "acceptance_criteria": [
+            "The workflow rules explicitly classify styling, layout, spacing, typography, and other visual UI changes as browser-verified work.",
+            "The policy distinguishes visual tasks from non-visual implementation changes so browser checks are not required everywhere."
+          ],
+          "dependencies": [],
+          "done_definition": [
+            "Agents can determine from the docs whether browser evidence is mandatory for a given task."
+          ]
+        },
+        {
+          "id": "update-agent-guidance",
+          "title": "Update agent prompts and workflow docs to make before-and-after browser checks the default for visual tasks",
+          "implementation_area": "integration",
+          "acceptance_criteria": [
+            "Design and verification guidance describe browser checks before edits and after edits for visual work.",
+            "Repository operating rules and AI-team docs align with the same expectation."
+          ],
+          "dependencies": [
+            "define-visual-task-policy"
+          ],
+          "done_definition": [
+            "The browser-first rule appears consistently in the main workflow surfaces agents are expected to read."
+          ]
+        },
+        {
+          "id": "verify-browser-first-workflow",
+          "title": "Validate the updated workflow artifacts and record any remaining limits",
+          "implementation_area": "verification",
+          "acceptance_criteria": [
+            "Updated workflow artifacts validate against the current schemas when applicable.",
+            "Remaining limits, such as places where enforcement is policy-only rather than runtime-enforced, are recorded explicitly."
+          ],
+          "dependencies": [
+            "update-agent-guidance"
+          ],
+          "done_definition": [
+            "The run can complete with the workflow updates documented and validated."
+          ]
+        }
+      ]
+    }
+  ],
+  "assumptions": [
+    "The immediate need is policy and prompt alignment rather than adding a new hard runtime enforcement step inside the supervisor."
+  ],
+  "risks": [
+    "If browser-first verification remains policy-only, agents can still fail to comply without reviewer discipline.",
+    "If the visual-task definition is too loose, unnecessary browser work may be triggered for non-visual changes."
+  ]
+}

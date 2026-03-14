@@ -1,0 +1,98 @@
+{
+  "epics": [
+    {
+      "id": "design-token-baseline",
+      "title": "Define a concrete draft token baseline for the design rule engine",
+      "tasks": [
+        {
+          "id": "audit-current-aesthetic-sources",
+          "title": "Audit the current design rule engine assets and songs surface styling cues that should inform the first token baseline",
+          "implementation_area": "integration",
+          "acceptance_criteria": [
+            "The planning output identifies the existing aesthetic profile, token source, and the primary UI surface that should anchor the baseline.",
+            "The task scope distinguishes between stable token values and unresolved decisions that should remain open.",
+            "The task does not require product UI edits by itself."
+          ],
+          "dependencies": [],
+          "done_definition": [
+            "The design phase can reference a bounded set of current repo sources instead of inventing a fresh visual direction."
+          ]
+        },
+        {
+          "id": "define-token-contract-values",
+          "title": "Replace placeholder draft token fields with concrete typography, spacing, color, radius, shadow, and grid baseline values",
+          "implementation_area": "data",
+          "acceptance_criteria": [
+            "The design token artifact provides concrete draft values for spacing and typography instead of undecided placeholders.",
+            "The token baseline remains aligned with the selected warm restrained editorial utility profile.",
+            "Open choices that should remain provisional are recorded as notes rather than omitted."
+          ],
+          "dependencies": [
+            "audit-current-aesthetic-sources"
+          ],
+          "done_definition": [
+            "The token file is specific enough to guide future styling work without pretending that every aesthetic choice is finalized."
+          ]
+        },
+        {
+          "id": "bind-tokens-to-current-styling-layer",
+          "title": "Bind the token baseline to the current Tailwind-based styling layer and document how builder work should apply it",
+          "implementation_area": "integration",
+          "acceptance_criteria": [
+            "The design output states how the token baseline maps to the current repo styling layer.",
+            "Builder constraints preserve compatibility with the existing Tailwind and CSS variable setup.",
+            "The work avoids introducing a second competing token system in the same pass."
+          ],
+          "dependencies": [
+            "define-token-contract-values"
+          ],
+          "done_definition": [
+            "Implementation can proceed without ambiguity about whether tokens are conceptual only or intended for current repo use."
+          ]
+        },
+        {
+          "id": "apply-token-baseline-to-design-assets",
+          "title": "Update the design token template and any directly related design-rule-engine guidance needed for the new baseline",
+          "implementation_area": "data",
+          "acceptance_criteria": [
+            "The token template file is updated with concrete draft values consistent with the approved design output.",
+            "Any nearby design-rule-engine guidance that would contradict the new baseline is updated or explicitly left unchanged with rationale.",
+            "The edit stays additive and isolated to the design rule engine system unless later workflow steps authorize broader UI adoption."
+          ],
+          "dependencies": [
+            "bind-tokens-to-current-styling-layer"
+          ],
+          "done_definition": [
+            "The repository contains a single draft token baseline that matches both the design artifacts and the checked-in spec files."
+          ]
+        },
+        {
+          "id": "verify-token-foundation",
+          "title": "Validate the updated artifacts and capture any remaining gaps before completion",
+          "implementation_area": "verification",
+          "acceptance_criteria": [
+            "The updated run artifacts validate against the existing schemas.",
+            "Relevant project checks pass for the changed files when applicable.",
+            "Remaining draft-level risks are called out explicitly in verification or review output."
+          ],
+          "dependencies": [
+            "apply-token-baseline-to-design-assets"
+          ],
+          "done_definition": [
+            "The run can route through verification and review without hidden unresolved implementation work."
+          ]
+        }
+      ]
+    }
+  ],
+  "assumptions": [
+    "The current songs workspace is an acceptable anchor surface for deriving the first warm restrained editorial utility token baseline.",
+    "This pass should define draft token values inside the design rule engine rather than migrate the entire app to a dedicated runtime token system.",
+    "Geist can remain the immediate type family binding while the hierarchy is primarily refined through size, weight, tracking, and line-height."
+  ],
+  "risks": [
+    "If the token baseline chases aesthetic references too aggressively, internal utility surfaces may lose operational clarity and contrast discipline.",
+    "If notes and open questions are not preserved, draft values may be mistaken for a finalized design system contract.",
+    "Current product surfaces may still use one-off Tailwind values that do not yet align perfectly with the new token baseline."
+  ]
+}

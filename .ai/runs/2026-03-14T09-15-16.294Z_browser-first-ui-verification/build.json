@@ -1,0 +1,22 @@
+{
+  "completed_tasks": [
+    "define-visual-task-policy",
+    "update-agent-guidance"
+  ],
+  "changed_files": [
+    "AGENTS.md",
+    "agents/design-agent.md",
+    "agents/verifier.md",
+    "docs/ai-team-mvp.md",
+    "docs/ideas/browser-first-ui-verification.md",
+    "specs/design-rule-engine/workflow-usage.md"
+  ],
+  "notes": [
+    "Updated the main operating manual so visual UI tasks now explicitly require browser checks before edits and after edits.",
+    "Updated design and verification guidance so browser-backed evidence is treated as mandatory for rendered UI changes.",
+    "Aligned the AI team workflow docs with the same browser-first sequence for visual work."
+  ],
+  "open_issues": [
+    "The browser-first requirement is currently enforced by policy and prompt guidance rather than a hard supervisor runtime gate."
+  ]
+}
