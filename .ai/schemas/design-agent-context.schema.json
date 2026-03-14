@@ -1,0 +1,103 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DesignAgentContext",
+  "type": "object",
+  "required": [
+    "version",
+    "goal",
+    "project_context",
+    "design_rule_engine",
+    "screen_requests",
+    "expected_output_contract"
+  ],
+  "properties": {
+    "version": { "type": "string" },
+    "goal": { "type": "string" },
+    "project_context": {
+      "type": "object",
+      "required": ["product_type", "target_user", "brand_critical", "implementation_binding"],
+      "properties": {
+        "product_type": { "type": "string" },
+        "target_user": { "type": "string" },
+        "brand_critical": { "type": "boolean" },
+        "implementation_binding": {
+          "type": "object",
+          "required": ["frontend", "ui_library", "design_token_source"],
+          "properties": {
+            "frontend": { "type": "string" },
+            "ui_library": { "type": "string" },
+            "design_token_source": { "type": "string" }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "design_rule_engine": {
+      "type": "object",
+      "required": [
+        "principles_file",
+        "reference_stack_file",
+        "design_tokens_file",
+        "layout_rules_file",
+        "heuristics_file",
+        "aesthetic_profile_file",
+        "allowed_patterns_file",
+        "banned_patterns_file",
+        "review_rubric_file",
+        "dsl_template_file"
+      ],
+      "properties": {
+        "principles_file": { "type": "string" },
+        "reference_stack_file": { "type": "string" },
+        "design_tokens_file": { "type": "string" },
+        "layout_rules_file": { "type": "string" },
+        "heuristics_file": { "type": "string" },
+        "aesthetic_profile_file": { "type": "string" },
+        "allowed_patterns_file": { "type": "string" },
+        "banned_patterns_file": { "type": "string" },
+        "review_rubric_file": { "type": "string" },
+        "dsl_template_file": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "screen_requests": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["screen_id", "screen_type", "user_goal", "task_criticality", "required_states", "open_questions"],
+        "properties": {
+          "screen_id": { "type": "string" },
+          "screen_type": { "type": "string" },
+          "user_goal": { "type": "string" },
+          "task_criticality": {
+            "type": "string",
+            "enum": ["low", "medium", "high"]
+          },
+          "required_states": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "open_questions": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "expected_output_contract": {
+      "type": "object",
+      "required": ["artifact", "must_include"],
+      "properties": {
+        "artifact": { "type": "string" },
+        "must_include": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

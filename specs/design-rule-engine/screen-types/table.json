@@ -1,0 +1,28 @@
+{
+  "screen_type": "table",
+  "purpose_template": "Support repeated scanning, filtering, comparison, and batch or row-level action workflows.",
+  "required_regions": [
+    "header and scope",
+    "search/filter/sort controls",
+    "table body",
+    "row or bulk actions"
+  ],
+  "required_states": [
+    "loading",
+    "empty",
+    "no search results",
+    "error",
+    "selection state"
+  ],
+  "default_review_focus": [
+    "scanability",
+    "control density",
+    "row action clarity",
+    "bulk action safety"
+  ],
+  "common_risks": [
+    "controls scattered across the page",
+    "row actions too hidden or too noisy",
+    "selection model unclear"
+  ]
+}

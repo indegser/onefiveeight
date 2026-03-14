@@ -1,0 +1,55 @@
+{
+  "$schema": "../../../.ai/schemas/design-agent-context.schema.json",
+  "version": "0.1.0",
+  "goal": "Describe the approved user experience before implementation.",
+  "project_context": {
+    "product_type": "prosumer-utility",
+    "target_user": "prosumer",
+    "brand_critical": false,
+    "implementation_binding": {
+      "frontend": "nextjs-app-router",
+      "ui_library": "shadcn-ui + radix-ui + tailwind-css-v4",
+      "design_token_source": "current-repo-tailwind-layer"
+    }
+  },
+  "design_rule_engine": {
+    "principles_file": "specs/design-rule-engine/design-principles.md",
+    "reference_stack_file": "specs/design-rule-engine/core-reference-stack.md",
+    "design_tokens_file": "specs/design-rule-engine/design-tokens.template.json",
+    "layout_rules_file": "specs/design-rule-engine/layout-rules.json",
+    "heuristics_file": "specs/design-rule-engine/ux-heuristics.md",
+    "aesthetic_profile_file": "specs/design-rule-engine/aesthetic-profile.json",
+    "allowed_patterns_file": "specs/design-rule-engine/allowed-patterns.json",
+    "banned_patterns_file": "specs/design-rule-engine/banned-patterns.json",
+    "review_rubric_file": "specs/design-rule-engine/design-review-rubric.json",
+    "dsl_template_file": "specs/design-rule-engine/dsl/design-spec.template.json"
+  },
+  "screen_requests": [
+    {
+      "screen_id": "example-screen",
+      "screen_type": "table",
+      "user_goal": "complete a prosumer utility task with low ambiguity",
+      "task_criticality": "high",
+      "required_states": [
+        "loading",
+        "empty",
+        "error"
+      ],
+      "open_questions": [
+        "Which aesthetic references should guide hierarchy and tone?",
+        "Does this screen need bulk actions or expert shortcuts?"
+      ]
+    }
+  ],
+  "expected_output_contract": {
+    "artifact": ".ai/runs/<run_id>/design.json",
+    "must_include": [
+      "screen definitions",
+      "component map",
+      "state coverage",
+      "builder constraints",
+      "review targets",
+      "human approval checkpoints"
+    ]
+  }
+}

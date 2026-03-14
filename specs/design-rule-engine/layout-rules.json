@@ -1,0 +1,41 @@
+{
+  "$schema": "../../.ai/schemas/layout-rules.schema.json",
+  "version": "0.1.0",
+  "reference_basis": [
+    "Refactoring UI",
+    "Gestalt Principles",
+    "Grid Systems in Graphic Design"
+  ],
+  "rules": [
+    {
+      "id": "modular-grid-required",
+      "category": "grid",
+      "rule": "Major page layouts should resolve to a modular grid or consistent column logic.",
+      "enforcement": "required"
+    },
+    {
+      "id": "group-by-proximity",
+      "category": "grouping",
+      "rule": "Related controls and content should be grouped primarily through proximity before decorative separators are added.",
+      "enforcement": "required"
+    },
+    {
+      "id": "consistent-alignment-lines",
+      "category": "alignment",
+      "rule": "Components should align to stable vertical and horizontal edges; arbitrary offsets require explicit justification.",
+      "enforcement": "required"
+    },
+    {
+      "id": "baseline-rhythm-for-text",
+      "category": "typography",
+      "rule": "Text-heavy surfaces should preserve a repeatable baseline rhythm across headings, body copy, and metadata.",
+      "enforcement": "preferred"
+    },
+    {
+      "id": "spacing-scale-over-eyeballing",
+      "category": "spacing",
+      "rule": "Spacing decisions should come from a finite scale rather than one-off visual nudges.",
+      "enforcement": "required"
+    }
+  ]
+}

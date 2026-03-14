@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DesignTokens",
+  "type": "object",
+  "required": ["version", "status", "binding", "tokens"],
+  "properties": {
+    "version": { "type": "string" },
+    "status": { "type": "string" },
+    "binding": {
+      "type": "object",
+      "required": ["source", "notes"],
+      "properties": {
+        "source": { "type": "string" },
+        "notes": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": false
+    },
+    "tokens": { "type": "object" }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,51 @@
+{
+  "$schema": "../../../.ai/schemas/design-dsl.schema.json",
+  "version": "0.1.0",
+  "screen_id": "example-screen",
+  "screen_type": "table",
+  "goal": "Help a prosumer user complete a task with low ambiguity and calm visual guidance.",
+  "layout": {
+    "grid_mode": "modular-column-grid",
+    "regions": [
+      {
+        "id": "header",
+        "purpose": "orientation and primary action",
+        "priority": "high"
+      },
+      {
+        "id": "controls",
+        "purpose": "search filter sort",
+        "priority": "high"
+      },
+      {
+        "id": "content",
+        "purpose": "primary data surface",
+        "priority": "high"
+      }
+    ]
+  },
+  "hierarchy": {
+    "primary_action": "undecided",
+    "secondary_actions": [],
+    "emphasis_strategy": "weight-and-spacing-before-color"
+  },
+  "states": [
+    "loading",
+    "empty",
+    "error"
+  ],
+  "interaction_rules": [
+    "group by proximity",
+    "reduce unnecessary choices",
+    "use familiar control patterns"
+  ],
+  "aesthetic_rules": [
+    "warm muted palette",
+    "quiet material treatment",
+    "restrained accent usage"
+  ],
+  "open_questions": [
+    "Does this screen need expert shortcuts?",
+    "How dense should the table controls be?"
+  ]
+}

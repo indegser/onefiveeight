@@ -1,0 +1,65 @@
+{
+  "$schema": "../../.ai/schemas/design-tokens.schema.json",
+  "version": "0.1.0",
+  "status": "draft",
+  "binding": {
+    "source": "current-repo-tailwind-layer",
+    "notes": [
+      "This is a planning template, not a finalized token contract.",
+      "Map concrete token values after palette and typography decisions are approved."
+    ]
+  },
+  "tokens": {
+    "spacing": {
+      "scale_type": "modular",
+      "base_unit": "undecided",
+      "steps": []
+    },
+    "typography": {
+      "families": {
+        "body": "undecided",
+        "display": "undecided",
+        "mono": "undecided"
+      },
+      "size_scale": [],
+      "weight_strategy": "prefer weight contrast before large size jumps"
+    },
+    "color": {
+      "palette_mode": "warm-muted-low-saturation",
+      "roles": [
+        "background",
+        "surface",
+        "text-primary",
+        "text-secondary",
+        "accent",
+        "success",
+        "warning",
+        "danger",
+        "border"
+      ],
+      "notes": [
+        "Avoid bright accent-first palettes.",
+        "Maintain accessible contrast without shifting into cold techno chrome."
+      ]
+    },
+    "radius": {
+      "scale": [],
+      "notes": [
+        "Prefer restrained radius values."
+      ]
+    },
+    "shadow": {
+      "levels": [],
+      "notes": [
+        "Shadows should be rare, soft, and supportive rather than brand-defining."
+      ]
+    },
+    "grid": {
+      "type": "modular-column-grid",
+      "columns": "undecided",
+      "gutter": "undecided",
+      "container": "undecided",
+      "baseline_rhythm": "required"
+    }
+  }
+}
