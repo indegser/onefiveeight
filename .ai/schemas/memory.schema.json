@@ -1,0 +1,66 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "TaskMemory",
+  "type": "object",
+  "required": ["patterns", "notes"],
+  "properties": {
+    "patterns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "title",
+          "summary",
+          "tags",
+          "when_to_use",
+          "constraints",
+          "solution_outline",
+          "source_projects",
+          "source_files"
+        ],
+        "properties": {
+          "id": { "type": "string" },
+          "title": { "type": "string" },
+          "summary": { "type": "string" },
+          "tags": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "when_to_use": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "constraints": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "solution_outline": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "source_projects": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "source_files": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "maintained_by": { "type": "string" },
+          "applicability_score": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "selected_because": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "notes": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "additionalProperties": false
+}
