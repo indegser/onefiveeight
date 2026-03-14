@@ -1,0 +1,54 @@
+{
+  "approved": true,
+  "preview_evidence": [
+    "src/app/songs/song-list.tsx",
+    "src/app/songs/score-viewer.tsx",
+    "src/lib/songs.ts"
+  ],
+  "summary": {
+    "status": "pass",
+    "rationale": "The change keeps the established songs workspace intact while making the new chart visible through existing list and viewer patterns."
+  },
+  "findings": [],
+  "section_scores": [
+    {
+      "section_id": "hard_rules",
+      "score": 0.95,
+      "notes": [
+        "The existing layout and interaction structure remain unchanged.",
+        "Provisional status is conveyed through content rather than hidden."
+      ]
+    },
+    {
+      "section_id": "ux_heuristics",
+      "score": 0.9,
+      "notes": [
+        "The song is now discoverable where users already browse charts.",
+        "Combined chord strings may still reduce readability in a few bars."
+      ]
+    },
+    {
+      "section_id": "aesthetic_judgment",
+      "score": 0.9,
+      "notes": [
+        "This is a data-seeding task, so preserving the current visual language is the correct choice."
+      ]
+    }
+  ],
+  "profile_assessment": {
+    "selected_profile_id": null,
+    "fit_score": 0.92,
+    "anti_patterns_detected": [],
+    "notes": [
+      "No unnecessary new UI chrome was introduced for a small data-seeding task."
+    ]
+  },
+  "gates": {
+    "hard_rules_passed": true,
+    "needs_human_review": false,
+    "requires_refinement": false
+  },
+  "next_steps": [
+    "Replace the manual seed with a real importer once lead-sheet publish artifacts are available."
+  ]
+}

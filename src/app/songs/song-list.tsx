@@ -26,14 +26,14 @@ export function SongList({
     <div className="border border-stone-300/80 bg-[#fbf7ef] p-3">
       <div className="mb-3 flex items-center justify-between border-b border-stone-200 px-2 pt-1 pb-3">
         <div>
-          <p className="text-xs font-semibold tracking-[0.22em] text-stone-500 uppercase">
+          <p className="text-xs font-semibold tracking-[0.14em] text-stone-500">
             Library
           </p>
           <p className="mt-1 text-sm text-stone-600">
             Open one chart and keep the rest in view.
           </p>
         </div>
-        <span className="border-b border-stone-400/70 px-1 pb-1 text-[11px] font-medium tracking-[0.18em] text-stone-600 uppercase">
+        <span className="border-b border-stone-400/70 px-1 pb-1 text-[11px] font-medium tracking-[0.1em] text-stone-600">
           {songs.length} charts
         </span>
       </div>
@@ -68,7 +68,7 @@ export function SongList({
                 </div>
                 <span
                   className={cn(
-                    "border px-2 py-1 text-[10px] font-medium tracking-[0.18em] uppercase",
+                    "border px-2 py-1 text-[10px] font-medium tracking-[0.08em]",
                     isSelected
                       ? "border-white/15 bg-white/8 text-stone-100"
                       : "border-stone-300/80 bg-[#efe6d8] text-stone-700",
@@ -87,7 +87,7 @@ export function SongList({
               </p>
               <div
                 className={cn(
-                  "mt-4 grid grid-cols-3 gap-2 border-t border-current/10 pt-3 text-[11px] tracking-[0.18em] uppercase",
+                  "mt-4 grid grid-cols-3 gap-2 border-t border-current/10 pt-3 text-[11px] tracking-[0.08em]",
                   isSelected ? "text-stone-300" : "text-stone-500",
                 )}
               >

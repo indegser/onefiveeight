@@ -1,0 +1,11 @@
+{
+  "checks": [
+    {
+      "name": "eslint-src-lib-songs",
+      "status": "passed",
+      "details": "npx eslint src/lib/songs.ts completed without lint findings."
+    }
+  ],
+  "passed": true,
+  "blocking_issues": []
+}

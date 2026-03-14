@@ -33,8 +33,9 @@ npm run ai:validate -- --run-id <run_id>
 6. Use that package to run the corresponding Codex session manually.
 7. Save the agent JSON output into the expected state file.
 8. For design work that touches implementation, capture screenshot evidence before final design review.
-9. Run `npm run ai:route -- --run-id <run_id>` again and continue until done.
-10. If follow-up feedback arrives after completion, reopen the run with `npm run ai:refine -- --run-id <run_id> <agent> <note>`.
+9. When UI changes are involved, verify representative screenshots against a short checklist: no redundant local labels, pane-width fit before forced overflow, and stable representative rows or grids.
+10. Run `npm run ai:route -- --run-id <run_id>` again and continue until done.
+11. If follow-up feedback arrives after completion, reopen the run with `npm run ai:refine -- --run-id <run_id> <agent> <note>`.
 
 ## State Files
 
@@ -60,3 +61,4 @@ npm run ai:validate -- --run-id <run_id>
 - Repo-local actions can wrap screenshot capture, changed-file linting, and validate-plus-route.
 - Design review now expects screenshot evidence for implementation-facing critique.
 - Runs can be reopened for refinement without creating a brand new run.
+- Planner and Builder should separate data-shape changes from rendering changes when both are involved in the same feature.

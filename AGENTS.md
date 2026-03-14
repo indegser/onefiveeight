@@ -53,6 +53,8 @@
 - Empty, loading, success, and error states are required for operator-facing flows.
 - Destructive actions require confirmation and visible recovery guidance.
 - Table, filter, search, and bulk-action patterns should favor repeat operational tasks over marketing-style layouts.
+- Remove redundant local labels when a nearby heading already establishes the context.
+- Fit dense working layouts to the available pane width before introducing avoidable overflow or hard minimum widths.
 
 ## Design Rule Engine
 
@@ -76,6 +78,7 @@
 - `build`, `lint`, `typecheck`, and tests must pass when applicable.
 - Major design issues must be resolved before final completion.
 - Major code quality issues must be resolved before final completion.
+- For UI changes, visual verification must explicitly check representative layout rows for redundant labels and pane-width fit, not just generic screenshots.
 
 ## Editing Rules
 

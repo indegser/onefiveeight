@@ -1,0 +1,27 @@
+{
+  "assets": [
+    {
+      "id": "asset-original",
+      "kind": "original",
+      "path": "/Users/indegser/Downloads/KakaoTalk_Photo_2026-03-14-16-00-30.jpeg",
+      "derived_from": null,
+      "notes": [
+        "Original phone photo supplied by user."
+      ]
+    },
+    {
+      "id": "asset-rotated-90",
+      "kind": "normalized",
+      "path": ".lead-sheet-ai/runs/2026-03-14T07-03-15.941Z_kakaotalk-photo-2026-03-14-16-00-30/source-rotated-90.jpeg",
+      "derived_from": "asset-original",
+      "notes": [
+        "Rotated clockwise for human-readable inspection.",
+        "Used as the extraction reference image."
+      ]
+    }
+  ],
+  "issues": [
+    "Perspective distortion and page curvature remain visible near the margins.",
+    "Several handwritten symbols and ending instructions are faint or partially occluded."
+  ]
+}

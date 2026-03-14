@@ -1,0 +1,31 @@
+{
+  "epics": [
+    {
+      "id": "songs-library-seed",
+      "title": "Expose 기억의 습작 in the songs library",
+      "tasks": [
+        {
+          "id": "seed-song-data",
+          "title": "Add a provisional song entry derived from the current lead-sheet extraction",
+          "acceptance_criteria": [
+            "The songs library contains a visible entry for 기억의 습작.",
+            "The existing score viewer can open the new chart without UI changes.",
+            "Visible uncertainty from the extraction run is preserved in chart notes or cues rather than hidden."
+          ],
+          "dependencies": [],
+          "done_definition": [
+            "Song data compiles cleanly and renders inside the existing songs workspace."
+          ]
+        }
+      ]
+    }
+  ],
+  "assumptions": [
+    "A provisional seed inside the existing songs dataset is acceptable before the full lead-sheet publish/import path exists.",
+    "The current viewer can render combined chord strings as plain text without additional formatting work."
+  ],
+  "risks": [
+    "Unverified chord splits or jump directives may be mistaken for final chart data if draft status is not communicated clearly.",
+    "This seed path is manual and will need replacement once lead-sheet publishing is implemented."
+  ]
+}

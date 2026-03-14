@@ -1,50 +1,34 @@
 {
   "approved": true,
+  "preview_evidence": [
+    ".ai/runs/2026-03-14T04-47-46.153Z_songs-page/evidence/no-all-caps.png"
+  ],
   "summary": {
     "status": "pass_with_followups",
-    "rationale": "The songs page matches the updated list-detail workspace direction and now uses more restrained radius, fewer nested cards, clearer typography contrast, and a more intentional empty detail state that better fit the selected aesthetic profile."
+    "rationale": "The songs UI now reads more naturally because metadata labels no longer shout in all caps while the overall hierarchy remains intact."
   },
-  "findings": [
-    {
-      "id": "design-followup-async-states",
-      "severity": "low",
-      "layer": "ux_heuristic",
-      "message": "If song data moves to an async source, loading and error states will need to be added explicitly to preserve the operator state-coverage pattern.",
-      "screen_id": "songs-library",
-      "area": "state coverage",
-      "recommendation": "Add loading and recoverable error messaging when the songs dataset is no longer synchronous local data.",
-      "evidence": [
-        "Current implementation reads from src/lib/songs.ts synchronously.",
-        "The detail pane and list pane already declare empty and selected states."
-      ]
-    }
-  ],
+  "findings": [],
   "section_scores": [
     {
       "section_id": "hard_rules",
       "score": 0.94,
       "notes": [
-        "Single dominant action in the list region is preserved.",
-        "Empty states are present where relevant for the synchronous MVP."
+        "The list-detail shell and explicit empty state remain unchanged."
       ]
     },
     {
       "section_id": "ux_heuristics",
-      "score": 0.9,
+      "score": 0.94,
       "notes": [
-        "The list remains visible while the detail pane is active.",
-        "Metadata and section content are grouped for fast scanning."
+        "Labels remain scannable without relying on all-caps styling.",
+        "The score and library surfaces now feel calmer and easier to read."
       ]
     },
     {
       "section_id": "aesthetic_judgment",
-      "score": 0.95,
+      "score": 0.92,
       "notes": [
-        "Warm muted surfaces and restrained borders fit the selected profile.",
-        "The header no longer overpowers the operational content area.",
-        "Large rounded corners and pill styling were reduced to avoid a softer SaaS feel.",
-        "Divider-led grouping keeps the surface calmer than the earlier card-stack treatment.",
-        "The empty state now reads as part of the editorial workspace instead of an accidental blank panel."
+        "Removing all-caps labels better fits the restrained editorial direction."
       ]
     }
   ],
@@ -53,11 +37,7 @@
     "fit_score": 0.92,
     "anti_patterns_detected": [],
     "notes": [
-      "The page avoids cool techno chrome and hyper-saturated emphasis.",
-      "The composition keeps editorial calm without drifting into false airiness.",
-      "Radius and badge treatments now better align with the engine's restrained material guidance.",
-      "Typography and separators now carry more of the hierarchy, which improves fit with the quieter reference family.",
-      "Browser capture confirmed that the top framing and empty pane feel more deliberate after refinement."
+      "Hierarchy is now carried more by spacing, weight, and contrast than by aggressive uppercase treatment."
     ]
   },
   "gates": {
@@ -66,7 +46,6 @@
     "requires_refinement": false
   },
   "next_steps": [
-    "Capture rendered screenshots in a future supervisor upgrade to support visual review with evidence.",
-    "Add explicit loading and error states if songs become remote or user-generated."
+    "If more typographic tuning is needed, introduce shared metadata-label classes so spacing and tracking can be adjusted in one place."
   ]
 }

@@ -23,6 +23,22 @@
     "passed": {
       "type": "boolean"
     },
+    "visual_checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "status", "details"],
+        "properties": {
+          "name": { "type": "string" },
+          "status": {
+            "type": "string",
+            "enum": ["passed", "failed", "skipped"]
+          },
+          "details": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
     "blocking_issues": {
       "type": "array",
       "items": { "type": "string" }

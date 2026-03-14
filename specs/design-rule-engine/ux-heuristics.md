@@ -22,6 +22,7 @@ Use this checklist for Design Agent self-review and Design Critic review.
 - Are proximity and similarity doing most of the grouping work before decorative separators?
 - Are dense surfaces still chunked into digestible regions?
 - Are labels, values, helper text, and metadata visually separable?
+- Is redundant information removed when a nearby heading, label, or section title already provides the same context?
 - Do tables and forms support fast repeated use rather than one-time reading?
 
 ## Interaction Safety
@@ -45,6 +46,8 @@ Use this checklist for Design Agent self-review and Design Critic review.
 - Does the grid or alignment logic remain legible across the whole screen?
 - Is compactness justified when throughput matters?
 - Is spaciousness justified when reading or comprehension matters?
+- Does the layout fit the available pane width before resorting to hard minimum widths or horizontal overflow?
+- Do representative repeated rows or systems render fully at the target breakpoint instead of clipping due to avoidable supporting chrome?
 
 ## Error Recovery
 

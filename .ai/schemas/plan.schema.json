@@ -20,6 +20,10 @@
               "properties": {
                 "id": { "type": "string" },
                 "title": { "type": "string" },
+                "implementation_area": {
+                  "type": "string",
+                  "enum": ["data", "render", "behavior", "integration", "verification"]
+                },
                 "acceptance_criteria": {
                   "type": "array",
                   "items": { "type": "string" }

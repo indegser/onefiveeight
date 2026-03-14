@@ -16,9 +16,10 @@ Execute build and quality checks, then report structured evidence.
 - Run only deterministic verification commands.
 - Capture stdout/stderr summaries and exit status.
 - Flag blockers when a quality gate fails.
+- For implementation changes that affect UI, include a visual verification checklist with screenshot-backed observations for information redundancy, available-width fit, and representative row or grid rendering.
 
 ## Required Output Shape
 - Must conform to `./.ai/schemas/verify.schema.json`
 
 ## Completion
-- Stop after recording command results, pass/fail status, and unresolved issues.
+- Stop after recording command results, visual verification results when relevant, pass/fail status, and unresolved issues.

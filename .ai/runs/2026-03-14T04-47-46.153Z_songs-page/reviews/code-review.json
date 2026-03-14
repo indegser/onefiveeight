@@ -2,7 +2,6 @@
   "approved": true,
   "findings": [],
   "next_steps": [
-    "Consider adding component-level tests once the songs data model and future async behavior stabilize.",
-    "If the list grows significantly, revisit list virtualization or filtering without changing the current workspace shell."
+    "If these label styles spread further, consolidate them into shared songs-surface typography utilities."
   ]
 }

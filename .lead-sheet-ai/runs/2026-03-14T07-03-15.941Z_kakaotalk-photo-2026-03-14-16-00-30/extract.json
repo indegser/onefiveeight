@@ -1,0 +1,471 @@
+{
+  "pages": [
+    {
+      "page_id": "page-1",
+      "asset_path": ".lead-sheet-ai/runs/2026-03-14T07-03-15.941Z_kakaotalk-photo-2026-03-14-16-00-30/source-rotated-90.jpeg",
+      "tokens": [
+        {
+          "token_id": "tok-title",
+          "type": "other",
+          "raw_text": "기억의 습작",
+          "bbox": { "x": 900, "y": 80, "width": 600, "height": 100 },
+          "confidence": 0.99
+        },
+        {
+          "token_id": "tok-verse-label",
+          "type": "section_label",
+          "raw_text": "verse",
+          "bbox": { "x": 40, "y": 420, "width": 120, "height": 60 },
+          "confidence": 0.88
+        },
+        {
+          "token_id": "tok-coda",
+          "type": "jump",
+          "raw_text": "Coda",
+          "bbox": { "x": 280, "y": 410, "width": 180, "height": 60 },
+          "confidence": 0.95
+        },
+        {
+          "token_id": "tok-v1-m1",
+          "type": "chord",
+          "raw_text": "Cadd9",
+          "bbox": { "x": 300, "y": 380, "width": 180, "height": 80 },
+          "confidence": 0.83
+        },
+        {
+          "token_id": "tok-v1-m2",
+          "type": "chord",
+          "raw_text": "Em7/Bb",
+          "bbox": { "x": 980, "y": 380, "width": 220, "height": 80 },
+          "confidence": 0.86
+        },
+        {
+          "token_id": "tok-v1-m3",
+          "type": "chord",
+          "raw_text": "Absus4",
+          "bbox": { "x": 1760, "y": 400, "width": 210, "height": 70 },
+          "confidence": 0.92
+        },
+        {
+          "token_id": "tok-v1-m4",
+          "type": "chord",
+          "raw_text": "A7",
+          "bbox": { "x": 2470, "y": 420, "width": 90, "height": 60 },
+          "confidence": 0.98
+        },
+        {
+          "token_id": "tok-v2-m1",
+          "type": "chord",
+          "raw_text": "Em/Ab",
+          "bbox": { "x": 260, "y": 820, "width": 210, "height": 70 },
+          "confidence": 0.82
+        },
+        {
+          "token_id": "tok-v2-m2",
+          "type": "chord",
+          "raw_text": "C/G",
+          "bbox": { "x": 980, "y": 810, "width": 140, "height": 70 },
+          "confidence": 0.97
+        },
+        {
+          "token_id": "tok-v2-m3",
+          "type": "chord",
+          "raw_text": "D/F#",
+          "bbox": { "x": 1750, "y": 810, "width": 170, "height": 70 },
+          "confidence": 0.97
+        },
+        {
+          "token_id": "tok-v2-m4",
+          "type": "chord",
+          "raw_text": "Gsus4",
+          "bbox": { "x": 2470, "y": 820, "width": 190, "height": 70 },
+          "confidence": 0.9
+        },
+        {
+          "token_id": "tok-sec1-label",
+          "type": "section_label",
+          "raw_text": "1.",
+          "bbox": { "x": 70, "y": 1180, "width": 70, "height": 70 },
+          "confidence": 0.96
+        },
+        {
+          "token_id": "tok-s1-m1",
+          "type": "chord",
+          "raw_text": "CM7",
+          "bbox": { "x": 260, "y": 1230, "width": 160, "height": 70 },
+          "confidence": 0.99
+        },
+        {
+          "token_id": "tok-s1-m2",
+          "type": "chord",
+          "raw_text": "FM7",
+          "bbox": { "x": 980, "y": 1230, "width": 160, "height": 70 },
+          "confidence": 0.99
+        },
+        {
+          "token_id": "tok-s1-m3",
+          "type": "chord",
+          "raw_text": "CM7",
+          "bbox": { "x": 1740, "y": 1230, "width": 160, "height": 70 },
+          "confidence": 0.99
+        },
+        {
+          "token_id": "tok-s1-m4",
+          "type": "chord",
+          "raw_text": "FM7",
+          "bbox": { "x": 2460, "y": 1230, "width": 160, "height": 70 },
+          "confidence": 0.99
+        },
+        {
+          "token_id": "tok-sec2-label",
+          "type": "section_label",
+          "raw_text": "2.",
+          "bbox": { "x": 80, "y": 1630, "width": 70, "height": 70 },
+          "confidence": 0.96
+        },
+        {
+          "token_id": "tok-s2-m1",
+          "type": "chord",
+          "raw_text": "CM7",
+          "bbox": { "x": 260, "y": 1690, "width": 160, "height": 70 },
+          "confidence": 0.99
+        },
+        {
+          "token_id": "tok-s2-m2",
+          "type": "chord",
+          "raw_text": "Bbsus4",
+          "bbox": { "x": 980, "y": 1690, "width": 220, "height": 70 },
+          "confidence": 0.92
+        },
+        {
+          "token_id": "tok-s2-m3",
+          "type": "chord",
+          "raw_text": "EbM7",
+          "bbox": { "x": 1740, "y": 1690, "width": 170, "height": 70 },
+          "confidence": 0.86
+        },
+        {
+          "token_id": "tok-s2-m4",
+          "type": "chord",
+          "raw_text": "Db -> Ebsus4",
+          "bbox": { "x": 2310, "y": 1690, "width": 480, "height": 80 },
+          "confidence": 0.71
+        },
+        {
+          "token_id": "tok-chorus-label",
+          "type": "section_label",
+          "raw_text": "chorus",
+          "bbox": { "x": 20, "y": 2090, "width": 150, "height": 60 },
+          "confidence": 0.9
+        },
+        {
+          "token_id": "tok-ch1-m1",
+          "type": "chord",
+          "raw_text": "AbM7 Gm7",
+          "bbox": { "x": 240, "y": 2020, "width": 620, "height": 80 },
+          "confidence": 0.72
+        },
+        {
+          "token_id": "tok-ch1-m2",
+          "type": "chord",
+          "raw_text": "Fm7 Bb7",
+          "bbox": { "x": 920, "y": 2020, "width": 640, "height": 80 },
+          "confidence": 0.8
+        },
+        {
+          "token_id": "tok-segno",
+          "type": "jump",
+          "raw_text": "Segno",
+          "bbox": { "x": 1620, "y": 2250, "width": 90, "height": 90 },
+          "confidence": 0.76
+        },
+        {
+          "token_id": "tok-ch1-m3",
+          "type": "chord",
+          "raw_text": "Gm7",
+          "bbox": { "x": 1740, "y": 2020, "width": 170, "height": 70 },
+          "confidence": 0.96
+        },
+        {
+          "token_id": "tok-ch1-m4",
+          "type": "chord",
+          "raw_text": "Cm7 Em7/Bb",
+          "bbox": { "x": 2320, "y": 2020, "width": 560, "height": 80 },
+          "confidence": 0.73
+        },
+        {
+          "token_id": "tok-ch2-m1",
+          "type": "chord",
+          "raw_text": "F/A",
+          "bbox": { "x": 260, "y": 2460, "width": 130, "height": 70 },
+          "confidence": 0.99
+        },
+        {
+          "token_id": "tok-ch2-m2",
+          "type": "chord",
+          "raw_text": "Fm7",
+          "bbox": { "x": 980, "y": 2460, "width": 150, "height": 70 },
+          "confidence": 0.99
+        },
+        {
+          "token_id": "tok-ch2-m3",
+          "type": "chord",
+          "raw_text": "Bbsus4",
+          "bbox": { "x": 1740, "y": 2460, "width": 220, "height": 70 },
+          "confidence": 0.91
+        },
+        {
+          "token_id": "tok-ch2-m4",
+          "type": "chord",
+          "raw_text": "Bb9",
+          "bbox": { "x": 2820, "y": 2460, "width": 110, "height": 60 },
+          "confidence": 0.95
+        },
+        {
+          "token_id": "tok-ch3-m1",
+          "type": "chord",
+          "raw_text": "EbM7 AbM7",
+          "bbox": { "x": 240, "y": 2860, "width": 620, "height": 80 },
+          "confidence": 0.67
+        },
+        {
+          "token_id": "tok-ch3-m2",
+          "type": "chord",
+          "raw_text": "Gm7 C7(b9)",
+          "bbox": { "x": 920, "y": 2860, "width": 720, "height": 85 },
+          "confidence": 0.66
+        },
+        {
+          "token_id": "tok-ch3-m3",
+          "type": "chord",
+          "raw_text": "Fm7 Bb7",
+          "bbox": { "x": 1730, "y": 2860, "width": 660, "height": 80 },
+          "confidence": 0.75
+        },
+        {
+          "token_id": "tok-ch3-m4",
+          "type": "chord",
+          "raw_text": "Gm7 Cm7/Bb",
+          "bbox": { "x": 2330, "y": 2860, "width": 560, "height": 80 },
+          "confidence": 0.69
+        },
+        {
+          "token_id": "tok-ch4-m1",
+          "type": "chord",
+          "raw_text": "F/A",
+          "bbox": { "x": 250, "y": 3290, "width": 130, "height": 70 },
+          "confidence": 0.99
+        },
+        {
+          "token_id": "tok-ch4-m2",
+          "type": "chord",
+          "raw_text": "Abm6",
+          "bbox": { "x": 990, "y": 3290, "width": 170, "height": 70 },
+          "confidence": 0.88
+        },
+        {
+          "token_id": "tok-ch4-m3",
+          "type": "chord",
+          "raw_text": "Eb/G",
+          "bbox": { "x": 1740, "y": 3290, "width": 170, "height": 70 },
+          "confidence": 0.9
+        },
+        {
+          "token_id": "tok-ch4-m4",
+          "type": "chord",
+          "raw_text": "Fm7 Bb7",
+          "bbox": { "x": 2340, "y": 3290, "width": 560, "height": 80 },
+          "confidence": 0.73
+        },
+        {
+          "token_id": "tok-fadeout",
+          "type": "repeat",
+          "raw_text": "Fade Out.",
+          "bbox": { "x": 2860, "y": 3600, "width": 150, "height": 70 },
+          "confidence": 0.98
+        },
+        {
+          "token_id": "tok-interlude-label",
+          "type": "section_label",
+          "raw_text": "Interlude",
+          "bbox": { "x": 10, "y": 3690, "width": 170, "height": 70 },
+          "confidence": 0.86
+        },
+        {
+          "token_id": "tok-int-m1",
+          "type": "chord",
+          "raw_text": "G",
+          "bbox": { "x": 260, "y": 3660, "width": 90, "height": 70 },
+          "confidence": 0.98
+        },
+        {
+          "token_id": "tok-int-m2",
+          "type": "chord",
+          "raw_text": "D/F#",
+          "bbox": { "x": 980, "y": 3660, "width": 170, "height": 70 },
+          "confidence": 0.98
+        },
+        {
+          "token_id": "tok-int-m3",
+          "type": "chord",
+          "raw_text": "Em7",
+          "bbox": { "x": 1750, "y": 3660, "width": 150, "height": 70 },
+          "confidence": 0.98
+        },
+        {
+          "token_id": "tok-int-m4",
+          "type": "chord",
+          "raw_text": "G/D",
+          "bbox": { "x": 2430, "y": 3670, "width": 150, "height": 70 },
+          "confidence": 0.95
+        },
+        {
+          "token_id": "tok-int-note",
+          "type": "other",
+          "raw_text": "410",
+          "bbox": { "x": 2200, "y": 3810, "width": 130, "height": 70 },
+          "confidence": 0.55
+        },
+        {
+          "token_id": "tok-out1-m1",
+          "type": "chord",
+          "raw_text": "CM7",
+          "bbox": { "x": 240, "y": 4050, "width": 160, "height": 70 },
+          "confidence": 0.98
+        },
+        {
+          "token_id": "tok-out1-m2",
+          "type": "chord",
+          "raw_text": "G/B",
+          "bbox": { "x": 980, "y": 4050, "width": 150, "height": 70 },
+          "confidence": 0.98
+        },
+        {
+          "token_id": "tok-out1-m3",
+          "type": "chord",
+          "raw_text": "Am7",
+          "bbox": { "x": 1740, "y": 4050, "width": 170, "height": 70 },
+          "confidence": 0.98
+        },
+        {
+          "token_id": "tok-out1-m4",
+          "type": "chord",
+          "raw_text": "D Bbsus4",
+          "bbox": { "x": 2290, "y": 4050, "width": 650, "height": 80 },
+          "confidence": 0.64
+        },
+        {
+          "token_id": "tok-out2-m1",
+          "type": "chord",
+          "raw_text": "EbM7",
+          "bbox": { "x": 230, "y": 4450, "width": 170, "height": 70 },
+          "confidence": 0.84
+        },
+        {
+          "token_id": "tok-out2-m2",
+          "type": "chord",
+          "raw_text": "Db -> Ebsus4",
+          "bbox": { "x": 980, "y": 4450, "width": 620, "height": 80 },
+          "confidence": 0.69
+        },
+        {
+          "token_id": "tok-out2-m3",
+          "type": "chord",
+          "raw_text": "Bbsus4",
+          "bbox": { "x": 1730, "y": 4450, "width": 220, "height": 70 },
+          "confidence": 0.9
+        },
+        {
+          "token_id": "tok-out2-m4",
+          "type": "chord",
+          "raw_text": "G7",
+          "bbox": { "x": 2860, "y": 4450, "width": 90, "height": 70 },
+          "confidence": 0.98
+        },
+        {
+          "token_id": "tok-ds",
+          "type": "jump",
+          "raw_text": "D.S.",
+          "bbox": { "x": 1560, "y": 4680, "width": 160, "height": 60 },
+          "confidence": 0.82
+        },
+        {
+          "token_id": "tok-chorus2-label",
+          "type": "section_label",
+          "raw_text": "chorus",
+          "bbox": { "x": 20, "y": 4860, "width": 150, "height": 60 },
+          "confidence": 0.88
+        },
+        {
+          "token_id": "tok-fin1-m1",
+          "type": "chord",
+          "raw_text": "CM7 EM7",
+          "bbox": { "x": 230, "y": 4860, "width": 560, "height": 80 },
+          "confidence": 0.58
+        },
+        {
+          "token_id": "tok-fin1-m2",
+          "type": "chord",
+          "raw_text": "Em7 A7",
+          "bbox": { "x": 980, "y": 4860, "width": 600, "height": 80 },
+          "confidence": 0.71
+        },
+        {
+          "token_id": "tok-fin1-m3",
+          "type": "chord",
+          "raw_text": "Dm7 G",
+          "bbox": { "x": 1740, "y": 4860, "width": 520, "height": 80 },
+          "confidence": 0.72
+        },
+        {
+          "token_id": "tok-fin1-m4",
+          "type": "chord",
+          "raw_text": "Em7 Am7/G",
+          "bbox": { "x": 2310, "y": 4860, "width": 610, "height": 80 },
+          "confidence": 0.69
+        },
+        {
+          "token_id": "tok-fin2-m1",
+          "type": "chord",
+          "raw_text": "D/F#",
+          "bbox": { "x": 240, "y": 5270, "width": 170, "height": 70 },
+          "confidence": 0.98
+        },
+        {
+          "token_id": "tok-fin2-m2",
+          "type": "chord",
+          "raw_text": "Fmb",
+          "bbox": { "x": 980, "y": 5270, "width": 150, "height": 70 },
+          "confidence": 0.52
+        },
+        {
+          "token_id": "tok-fin2-m3",
+          "type": "chord",
+          "raw_text": "C/E",
+          "bbox": { "x": 1740, "y": 5270, "width": 150, "height": 70 },
+          "confidence": 0.98
+        },
+        {
+          "token_id": "tok-fin2-m4",
+          "type": "chord",
+          "raw_text": "Dm7 Bbsus4",
+          "bbox": { "x": 2300, "y": 5270, "width": 650, "height": 80 },
+          "confidence": 0.63
+        },
+        {
+          "token_id": "tok-dss",
+          "type": "jump",
+          "raw_text": "D.S.",
+          "bbox": { "x": 2860, "y": 5480, "width": 160, "height": 60 },
+          "confidence": 0.68
+        }
+      ]
+    }
+  ],
+  "unresolved": [
+    "Measure grouping is visible, but several measures contain multiple handwritten chord symbols within one bar.",
+    "Arrow-based chord change text such as 'Db -> Ebsus4' is legible but exact timing inside the measure is not explicit.",
+    "The handwritten note near the interlude appears to read '410' but may be a non-chart annotation.",
+    "The final lower-system second measure reads like 'Fmb' and requires human confirmation."
+  ]
+}
