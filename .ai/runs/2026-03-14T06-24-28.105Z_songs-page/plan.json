@@ -1,0 +1,65 @@
+{
+  "epics": [
+    {
+      "id": "lead-sheet-data-model",
+      "title": "Restructure songs data around handwritten lead-sheet charts",
+      "tasks": [
+        {
+          "id": "chart-domain-shape",
+          "title": "Replace prose-first song records with chart-first song records",
+          "acceptance_criteria": [
+            "The songs library data represents chart metadata, sections, systems, and measure-level chord cells instead of freeform notation strings.",
+            "The data model supports slash chords, repeats, meter changes, and short performance directives.",
+            "At least one sample song is transcribed from the provided handwritten chart structure."
+          ],
+          "dependencies": [],
+          "done_definition": [
+            "The shared song types and seed data match the lead-sheet reading workflow."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lead-sheet-reading-surface",
+      "title": "Turn the songs workspace into a chart library and lead-sheet viewer",
+      "tasks": [
+        {
+          "id": "library-preview-refresh",
+          "title": "Update the song list to preview chart-relevant information",
+          "acceptance_criteria": [
+            "The list emphasizes chart title, key center, feel, and compact structural metadata.",
+            "Selection state remains obvious without introducing extra primary actions.",
+            "The list still works as the persistent navigation surface for opening charts."
+          ],
+          "dependencies": ["chart-domain-shape"],
+          "done_definition": [
+            "The list items read like chart library entries rather than generic song cards."
+          ]
+        },
+        {
+          "id": "lead-sheet-viewer",
+          "title": "Render the selected song like a practical lead sheet",
+          "acceptance_criteria": [
+            "The detail pane renders section groups and system rows with measure-level chord cells.",
+            "Performance cues such as repeats, D.S., meter changes, and ending notes are visible next to the relevant system.",
+            "The viewer feels closer to a paper chart than to a prose metadata page."
+          ],
+          "dependencies": ["chart-domain-shape"],
+          "done_definition": [
+            "The selected song can be read as a functional digital chart with stable visual rhythm."
+          ]
+        }
+      ]
+    }
+  ],
+  "assumptions": [
+    "The current MVP remains local and synchronous, so loading and fetch error states are still deferred.",
+    "Titles and artist names may remain present, but the UI hierarchy should prioritize chart structure over song-card metadata.",
+    "The provided handwritten sample is authoritative enough to seed one representative chart even if some fine-grained repeat semantics remain abbreviated."
+  ],
+  "risks": [
+    "A measure grid that is too decorative could reduce legibility compared with the handwritten source.",
+    "If the chart data model is still too flat, later songs with pickups, codas, or alternate endings may require another shape change.",
+    "The handwritten sample leaves some turnaround intent implicit, so a few transcribed cues may need later adjustment."
+  ]
+}

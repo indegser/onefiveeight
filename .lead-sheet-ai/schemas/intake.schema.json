@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "LeadSheetIntake",
+  "type": "object",
+  "required": [
+    "source_type",
+    "score_label",
+    "requested_output",
+    "source_files",
+    "notes",
+    "constraints"
+  ],
+  "properties": {
+    "source_type": {
+      "type": "string",
+      "enum": ["image", "pdf", "folder", "external_ref"]
+    },
+    "score_label": { "type": "string" },
+    "requested_output": { "type": "string" },
+    "source_files": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "notes": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "constraints": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "additionalProperties": false
+}

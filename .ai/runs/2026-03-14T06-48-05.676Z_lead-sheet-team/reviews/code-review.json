@@ -1,0 +1,8 @@
+{
+  "approved": true,
+  "findings": [],
+  "next_steps": [
+    "When publishing logic is implemented, validate that publisher outputs always target a file path under ./lead-sheets.",
+    "Keep the Markdown template stable enough to support a straightforward importer later."
+  ]
+}

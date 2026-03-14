@@ -1,0 +1,26 @@
+{
+  "checks": [
+    {
+      "name": "prettier-lead-sheet-team-files",
+      "status": "passed",
+      "details": "npx prettier --write docs/lead-sheet-team-mvp.md docs/ideas/lead-sheet-team.md docs/lead-sheet-storage.md agents-lead-sheet/publisher.md lead-sheets/README.md lead-sheets/_template.md"
+    },
+    {
+      "name": "eslint-lead-sheet-runtime",
+      "status": "passed",
+      "details": "npm run lint -- scripts/lead-sheet-team/*.mjs completed with 0 errors and 8 pre-existing warnings in unrelated files."
+    },
+    {
+      "name": "lead-sheet-init",
+      "status": "passed",
+      "details": "npm run lead-sheet:init -- markdown-storage-check initialized a lead-sheet run successfully."
+    },
+    {
+      "name": "lead-sheet-markdown-storage-docs",
+      "status": "passed",
+      "details": "Added ./lead-sheets directory guidance, a per-song Markdown template, and storage documentation describing the Markdown-first handoff before future Supabase migration."
+    }
+  ],
+  "passed": true,
+  "blocking_issues": []
+}

@@ -1,0 +1,97 @@
+{
+  "screens": [
+    {
+      "id": "lead-sheet-runtime",
+      "name": "Lead-sheet-team runtime contract",
+      "purpose": "Define the workflow structure, role boundaries, and state contract for a non-UI extraction team.",
+      "screen_type": "detail",
+      "primary_action": "Run lead-sheet-team lifecycle commands",
+      "states": [
+        "success:initialized-run",
+        "success:routed-run",
+        "success:validated-run"
+      ]
+    }
+  ],
+  "ux_rules": [
+    "Keep lead-sheet-team clearly separate from the existing development AI team in naming, directories, and commands.",
+    "Model the workflow around extraction accuracy and traceability rather than design/build concerns.",
+    "Use explicit phase names that match the extraction pipeline: intake, preprocess, extract, align, verify, review, publish.",
+    "Prefer inspectable JSON artifacts and plain-text role prompts over opaque orchestration.",
+    "Make command naming symmetrical with the existing supervisor so operators can learn the new runtime quickly."
+  ],
+  "component_map": [
+    {
+      "screen_id": "lead-sheet-runtime",
+      "components": [
+        "lead-sheet-team supervisor CLI",
+        "lead-sheet shared-state module",
+        "lead-sheet schema definitions",
+        "lead-sheet agent prompt set",
+        "lead-sheet runtime documentation"
+      ]
+    }
+  ],
+  "design_rule_engine": {
+    "profile_id": null,
+    "hard_rule_sets": [],
+    "heuristic_sets": [],
+    "allowed_pattern_sets": [],
+    "banned_pattern_sets": [],
+    "review_rubric_id": "runtime-architecture-review"
+  },
+  "screen_contexts": [
+    {
+      "screen_id": "lead-sheet-runtime",
+      "screen_type": "detail",
+      "layout_intent": "Provide a compact, inspectable runtime surface expressed through files and commands rather than a visual app screen.",
+      "interaction_risks": [
+        "Operators may confuse the new runtime with the development AI team if paths or commands overlap.",
+        "State contracts may accidentally drift back toward development-centric phases."
+      ],
+      "required_states": [
+        "success:initialized-run",
+        "success:routed-run",
+        "success:validated-run"
+      ],
+      "notes": [
+        "This task is architecture scaffolding rather than end-user UI work.",
+        "Documentation and command symmetry carry most of the usability burden."
+      ]
+    }
+  ],
+  "builder_constraints": [
+    {
+      "screen_id": "lead-sheet-runtime",
+      "constraints": [
+        "Do not modify the existing scripts/ai-team runtime while introducing lead-sheet-team.",
+        "Use a separate root state directory for lead-sheet-team.",
+        "Keep the first version lightweight and file-oriented, consistent with the current AI team MVP style."
+      ],
+      "open_decisions": [
+        "Future database wiring between lead-sheet-team and the product app is deferred.",
+        "Future evidence assets and extraction tools are deferred until the team begins handling real score ingestion."
+      ]
+    }
+  ],
+  "review_targets": [
+    {
+      "screen_id": "lead-sheet-runtime",
+      "critical_judgments": [
+        "The new runtime must be clearly independent from the existing development supervisor.",
+        "The phase loop must reflect lead-sheet extraction work rather than generic software delivery.",
+        "Role prompts and schemas must discourage inference and encourage explicit uncertainty."
+      ],
+      "must_not_regress": [
+        "Existing development AI team commands",
+        "Explicit run-id based operation",
+        "Inspectable JSON-first workflow"
+      ]
+    }
+  ],
+  "visual_constraints": [
+    "No new product UI is required for this step.",
+    "Usability should come from naming, documentation, and contract clarity."
+  ],
+  "human_checkpoints": []
+}
