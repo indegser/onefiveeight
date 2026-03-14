@@ -13,10 +13,8 @@ export default function SongsPage() {
         <header className="border-b border-[color:color-mix(in_srgb,var(--tone-border)_80%,transparent)] pb-[var(--space-5)]">
           <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_17rem] lg:items-end">
             <div className="max-w-[48rem] space-y-3">
-              <p className="text-xs font-semibold tracking-[0.16em] text-[var(--tone-text-muted)]">
-                Songbook
-              </p>
-              <h1 className="max-w-[42rem] text-[2.35rem] leading-[var(--leading-display)] font-semibold tracking-[var(--tracking-display-lg)] text-[var(--tone-text-primary)] md:text-[3.2rem]">
+              <p className="type-kicker text-[var(--tone-text-muted)]">Songbook</p>
+              <h1 className="type-display max-w-[42rem] text-[2.35rem] text-[var(--tone-text-primary)] md:text-[3.2rem]">
                 Open the chart, read the form, and keep the chord flow visible.
               </h1>
               <p className="max-w-[38rem] text-sm leading-7 text-[var(--tone-text-secondary)] md:text-[15px]">
@@ -27,7 +25,7 @@ export default function SongsPage() {
             </div>
             <dl className="grid grid-cols-2 gap-x-4 gap-y-3 border-l border-[color:color-mix(in_srgb,var(--tone-border)_80%,transparent)] pl-4 text-sm text-[var(--tone-text-secondary)]">
               <div>
-                <dt className="text-[11px] tracking-[var(--tracking-label)] text-[var(--tone-text-muted)]">
+                <dt className="type-meta-label-strong text-[var(--tone-text-muted)]">
                   Surface
                 </dt>
                 <dd className="mt-2 font-medium text-[var(--tone-text-primary)]">
@@ -35,7 +33,7 @@ export default function SongsPage() {
                 </dd>
               </div>
               <div>
-                <dt className="text-[11px] tracking-[var(--tracking-label)] text-[var(--tone-text-muted)]">
+                <dt className="type-meta-label-strong text-[var(--tone-text-muted)]">
                   Intent
                 </dt>
                 <dd className="mt-2 font-medium text-[var(--tone-text-primary)]">

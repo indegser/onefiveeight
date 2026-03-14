@@ -1,31 +1,25 @@
 {
   "completed_tasks": [
-    "route-and-shell",
-    "selection-and-empty-state",
-    "score-structure",
-    "design-engine-alignment",
-    "score-density-compaction",
-    "chord-notation-normalization",
-    "chord-layout-regression-fix",
-    "system-grid-width-fix",
-    "duplicate-system-label-fix",
-    "remove-all-caps-labels"
+    "shared-typography-layer",
+    "songs-typography-refactor",
+    "app-nav-typography-refactor"
   ],
   "changed_files": [
+    "src/app/globals.css",
+    "src/app/app-nav.tsx",
     "src/app/songs/page.tsx",
     "src/app/songs/songs-workspace.tsx",
     "src/app/songs/song-list.tsx",
-    "src/app/songs/score-viewer.tsx",
-    "src/lib/songs.ts"
+    "src/app/songs/score-viewer.tsx"
   ],
   "notes": [
-    "Removed all-caps treatment across the songs UI and switched metadata labels to normal title-case rendering.",
-    "Preserved hierarchy by keeping lighter tracking on labels instead of relying on forced uppercase.",
-    "Retained the earlier score density, duplicate-label cleanup, and grid-width fixes."
+    "Added a reusable typography layer in globals.css for kicker, meta-label, chip-label, display, title, and chord roles.",
+    "Replaced ad hoc arbitrary tracking values across the songs workspace with shared semantic classes.",
+    "Aligned the global app navigation eyebrow with the same shared typography system instead of a one-off tracking value."
   ],
   "open_issues": [
-    "Chord strings that contain multiple symbols inside a single measure still rely on free-form text, so very dense charts may eventually need beat-level notation treatment.",
-    "At least one provisional source value remains ambiguous, including the existing `Fmb` chord spelling in the seeded chart data.",
-    "The songs workspace still uses local static data only, so async loading and error states remain intentionally deferred."
+    "Typography semantics are still defined as CSS classes rather than a full token contract in the design token schema.",
+    "Other non-songs surfaces still rely on local text styling and may need a follow-up pass if the typography system expands repo-wide.",
+    "Section and metadata styles still mix semantic classes with local size overrides where the layout needs different scale."
   ]
 }

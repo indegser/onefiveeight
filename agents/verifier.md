@@ -18,6 +18,7 @@ Execute build and quality checks, then report structured evidence.
 - Flag blockers when a quality gate fails.
 - For visual UI changes, verify the rendered surface in the browser after the edit and record screenshot-backed evidence; code diffs and terminal output are not enough.
 - For implementation changes that affect UI, include a visual verification checklist with screenshot-backed observations for information redundancy, available-width fit, and representative row or grid rendering.
+- If the UI change depends on new reusable CSS classes, verify both that the page markup uses the classes and that the served stylesheet actually contains the corresponding selectors or rules.
 
 ## Required Output Shape
 - Must conform to `./.ai/schemas/verify.schema.json`

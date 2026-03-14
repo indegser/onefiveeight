@@ -152,3 +152,61 @@
     @apply bg-background text-foreground;
   }
 }
+
+.type-kicker {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+}
+
+.type-kicker-wide {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+}
+
+.type-meta-label {
+  font-size: 0.6875rem;
+  line-height: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+}
+
+.type-meta-label-strong {
+  font-size: 0.6875rem;
+  line-height: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+
+.type-chip-label {
+  font-size: 0.625rem;
+  line-height: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.type-display {
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.type-display-compact {
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+}
+
+.type-title {
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+.type-chord {
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}

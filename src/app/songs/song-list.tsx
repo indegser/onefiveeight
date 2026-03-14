@@ -26,14 +26,12 @@ export function SongList({
     <div className="border border-[color:color-mix(in_srgb,var(--tone-border)_80%,transparent)] bg-[color:color-mix(in_srgb,var(--tone-surface)_85%,var(--tone-canvas))] p-3">
       <div className="mb-3 flex items-center justify-between border-b border-[color:color-mix(in_srgb,var(--tone-border)_55%,white)] px-2 pt-1 pb-3">
         <div>
-          <p className="text-xs font-semibold tracking-[0.14em] text-[var(--tone-text-muted)]">
-            Library
-          </p>
+          <p className="type-kicker text-[var(--tone-text-muted)]">Library</p>
           <p className="mt-1 text-sm text-[var(--tone-text-secondary)]">
             Open one chart and keep the rest in view.
           </p>
         </div>
-        <span className="border-b border-[color:color-mix(in_srgb,var(--tone-text-secondary)_70%,transparent)] px-1 pb-1 text-[11px] font-medium tracking-[var(--tracking-meta)] text-[var(--tone-text-secondary)]">
+        <span className="type-meta-label border-b border-[color:color-mix(in_srgb,var(--tone-text-secondary)_70%,transparent)] px-1 pb-1 text-[var(--tone-text-secondary)]">
           {songs.length} charts
         </span>
       </div>
@@ -70,7 +68,7 @@ export function SongList({
                 </div>
                 <span
                   className={cn(
-                    "border px-2 py-1 text-[10px] font-medium tracking-[0.08em]",
+                    "type-chip-label border px-2 py-1",
                     isSelected
                       ? "border-white/15 bg-white/8 text-stone-100"
                       : "border-[color:color-mix(in_srgb,var(--tone-border)_80%,transparent)] bg-[color:color-mix(in_srgb,var(--tone-accent-soft)_70%,var(--tone-canvas))] text-[var(--tone-text-secondary)]",
@@ -91,10 +89,8 @@ export function SongList({
               </p>
               <div
                 className={cn(
-                  "mt-4 grid grid-cols-3 gap-2 border-t border-current/10 pt-3 text-[11px] tracking-[0.08em]",
-                  isSelected
-                    ? "text-stone-300"
-                    : "text-[var(--tone-text-muted)]",
+                  "type-chip-label mt-4 grid grid-cols-3 gap-2 border-t border-current/10 pt-3",
+                  isSelected ? "text-stone-300" : "text-[var(--tone-text-muted)]",
                 )}
               >
                 <span>{song.meter}</span>

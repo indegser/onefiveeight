@@ -3,24 +3,19 @@
     {
       "name": "validate-workflow-run",
       "status": "passed",
-      "details": "npm run ai:validate -- --run-id 2026-03-14T05-54-59.424Z_supervisor-workflow-improvements passed after the schema and prompt updates."
-    },
-    {
-      "name": "route-workflow-run",
-      "status": "passed",
-      "details": "./actions/route-and-validate --run-id 2026-03-14T05-54-59.424Z_supervisor-workflow-improvements returned the run to done state after the refinement."
+      "details": "npm run ai:validate -- --run-id 2026-03-14T05-54-59.424Z_supervisor-workflow-improvements passed after the workflow documentation and prompt updates."
     }
   ],
   "visual_checks": [
     {
-      "name": "redundancy-and-width-guidance",
+      "name": "css-verification-guidance-added",
       "status": "passed",
-      "details": "Prompt and rule updates now explicitly call out redundant local labels and pane-width fit as first-order visual checks for dense layouts."
+      "details": "Workflow docs and prompts now explicitly require verifying served CSS rules alongside rendered markup when reusable semantic CSS classes are introduced."
     },
     {
-      "name": "verify-checklist-contract",
+      "name": "tailwind-v4-lesson-recorded",
       "status": "passed",
-      "details": "verify.schema.json now supports structured visual_checks so UI verification can record representative layout-row observations instead of relying on free-form notes only."
+      "details": "The MVP workflow now records the current repo lesson that plain CSS in globals.css is the safer default for repo-local semantic utilities unless browser evidence shows the selected Tailwind layering pattern is emitted reliably."
     }
   ],
   "passed": true,

@@ -81,6 +81,7 @@
 - Major code quality issues must be resolved before final completion.
 - Visual UI tasks are not complete until browser evidence has been captured after the change and referenced by verification or review artifacts.
 - For UI changes, visual verification must explicitly check representative layout rows for redundant labels and pane-width fit, not just generic screenshots.
+- For UI changes that introduce reusable semantic CSS classes, verification must confirm the rendered page and the served CSS both contain the intended rules; do not treat markup-only class presence as sufficient evidence.
 
 ## Editing Rules
 

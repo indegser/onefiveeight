@@ -1,30 +1,21 @@
 {
   "completed_tasks": [
-    "workflow-guidance-redundancy-rules",
-    "workflow-guidance-width-first-layouts",
-    "workflow-guidance-split-data-vs-render",
-    "verify-visual-checklist-schema"
+    "workflow-guidance-css-rule-verification",
+    "workflow-guidance-tailwind-v4-semantic-utilities"
   ],
   "changed_files": [
     "AGENTS.md",
-    "agents/builder.md",
-    "agents/design-agent.md",
-    "agents/planner.md",
-    "agents/verifier.md",
     "docs/ai-team-mvp.md",
-    "specs/design-rule-engine/design-principles.md",
-    "specs/design-rule-engine/ux-heuristics.md",
-    ".ai/schemas/plan.schema.json",
-    ".ai/schemas/verify.schema.json",
-    ".ai/runs/2026-03-14T05-54-59.424Z_supervisor-workflow-improvements/design.json"
+    "agents/builder.md",
+    "agents/verifier.md"
   ],
   "notes": [
-    "Added workflow guidance that design work should remove redundant local labels and fit dense layouts to the available pane before introducing forced width constraints.",
-    "Updated planner and builder prompts so tasks that change both data shape and rendering are expected to be split and tracked separately.",
-    "Extended verify outputs with an optional visual_checks contract so screenshot-backed layout checks can be recorded alongside command checks."
+    "Added workflow guidance that markup-only class presence is not enough evidence for UI changes that introduce reusable semantic CSS classes.",
+    "Documented that verifier work should confirm the served stylesheet contains the expected selectors or rules when new semantic utilities are introduced.",
+    "Recorded the current repo-specific Tailwind v4 lesson: prefer plain CSS in globals.css for repo-local semantic utilities unless browser evidence proves the chosen layer pattern is emitted reliably."
   ],
   "open_issues": [
-    "Existing historical plan artifacts do not use implementation_area yet because the new field is additive rather than required.",
-    "Existing verify artifacts do not all include visual_checks because the checklist requirement is conditional on UI-affecting work."
+    "The workflow guidance captures the current repo behavior but does not yet automate CSS-rule verification in a dedicated action wrapper.",
+    "The preference for plain CSS is repo-specific and may need revisiting if the Tailwind or bundler setup changes."
   ]
 }

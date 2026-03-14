@@ -30,27 +30,21 @@ function splitChordText(chord: string) {
 
 function ChordLabel({ chord }: { chord?: string }) {
   if (!chord) {
-    return (
-      <p className="text-[1.05rem] leading-tight font-semibold tracking-[var(--tracking-display-sm)] text-[var(--tone-text-primary)]">
-        N.C.
-      </p>
-    );
+    return <p className="type-chord text-[1.05rem] text-[var(--tone-text-primary)]">N.C.</p>;
   }
 
   const display = splitChordText(chord);
 
   if (display.kind === "transition") {
     return (
-      <div className="flex min-h-[1.5rem] flex-wrap items-center gap-x-1 gap-y-0.5 text-[0.92rem] leading-tight font-semibold tracking-[var(--tracking-display-sm)] text-[var(--tone-text-primary)]">
+      <div className="type-chord flex min-h-[1.5rem] flex-wrap items-center gap-x-1 gap-y-0.5 text-[0.92rem] text-[var(--tone-text-primary)]">
         {display.parts.map((part, index) => (
           <span
             key={`${part}-${index}`}
             className="inline-flex items-center gap-1"
           >
             {index > 0 ? (
-              <span className="text-[8px] font-semibold tracking-[var(--tracking-meta)] text-[var(--tone-text-muted)]">
-                to
-              </span>
+              <span className="type-chip-label text-[var(--tone-text-muted)]">to</span>
             ) : null}
             <span>{part}</span>
           </span>
@@ -61,7 +55,7 @@ function ChordLabel({ chord }: { chord?: string }) {
 
   if (display.kind === "group") {
     return (
-      <div className="flex min-h-[1.5rem] flex-wrap items-center gap-x-1.5 gap-y-0.5 text-[0.92rem] leading-tight font-semibold tracking-[var(--tracking-display-sm)] text-[var(--tone-text-primary)]">
+      <div className="type-chord flex min-h-[1.5rem] flex-wrap items-center gap-x-1.5 gap-y-0.5 text-[0.92rem] text-[var(--tone-text-primary)]">
         {display.parts.map((part, index) => (
           <span
             key={`${part}-${index}`}
@@ -80,7 +74,7 @@ function ChordLabel({ chord }: { chord?: string }) {
   }
 
   return (
-    <p className="min-h-[1.5rem] text-[1.02rem] leading-tight font-semibold tracking-[var(--tracking-display-sm)] text-[var(--tone-text-primary)]">
+    <p className="type-chord min-h-[1.5rem] text-[1.02rem] text-[var(--tone-text-primary)]">
       {display.parts[0]}
     </p>
   );
@@ -116,7 +110,7 @@ function SystemRow({
       {hasSidebar ? (
         <div className="flex items-start justify-between gap-3 md:block">
           {displayLabel ? (
-            <p className="text-[11px] font-semibold tracking-[var(--tracking-label)] text-[var(--tone-text-muted)]">
+            <p className="type-meta-label-strong text-[var(--tone-text-muted)]">
               {displayLabel}
             </p>
           ) : null}
@@ -131,22 +125,22 @@ function SystemRow({
       <div className="space-y-2">
         <div className="flex flex-wrap gap-1.5">
           {system.timeSignature ? (
-            <span className="border border-[var(--tone-border)] bg-[var(--tone-surface-alt)] px-1.5 py-0.5 text-[9px] font-semibold tracking-[var(--tracking-meta)] text-[var(--tone-text-secondary)]">
+            <span className="type-chip-label border border-[var(--tone-border)] bg-[var(--tone-surface-alt)] px-1.5 py-0.5 text-[var(--tone-text-secondary)]">
               {system.timeSignature}
             </span>
           ) : null}
           {system.repeat ? (
-            <span className="border border-[var(--tone-border)] bg-[var(--tone-surface-alt)] px-1.5 py-0.5 text-[9px] font-semibold tracking-[var(--tracking-meta)] text-[var(--tone-text-secondary)]">
+            <span className="type-chip-label border border-[var(--tone-border)] bg-[var(--tone-surface-alt)] px-1.5 py-0.5 text-[var(--tone-text-secondary)]">
               {system.repeat}
             </span>
           ) : null}
           {system.jump ? (
-            <span className="border border-[var(--tone-border)] bg-[color:color-mix(in_srgb,var(--tone-accent-soft)_55%,var(--tone-canvas))] px-1.5 py-0.5 text-[9px] font-semibold tracking-[var(--tracking-meta)] text-[var(--tone-text-primary)]">
+            <span className="type-chip-label border border-[var(--tone-border)] bg-[color:color-mix(in_srgb,var(--tone-accent-soft)_55%,var(--tone-canvas))] px-1.5 py-0.5 text-[var(--tone-text-primary)]">
               {system.jump}
             </span>
           ) : null}
           {system.ending ? (
-            <span className="border border-[var(--tone-border)] bg-[color:color-mix(in_srgb,var(--tone-canvas)_85%,white)] px-1.5 py-0.5 text-[9px] font-semibold tracking-[var(--tracking-meta)] text-[var(--tone-text-secondary)]">
+            <span className="type-chip-label border border-[var(--tone-border)] bg-[color:color-mix(in_srgb,var(--tone-canvas)_85%,white)] px-1.5 py-0.5 text-[var(--tone-text-secondary)]">
               {system.ending}
             </span>
           ) : null}
@@ -168,7 +162,7 @@ function SystemRow({
                 >
                   <ChordLabel chord={measure.chord} />
                   {measure.cue ? (
-                    <p className="text-[10px] font-medium tracking-[var(--tracking-meta)] text-[var(--tone-text-muted)]">
+                    <p className="type-chip-label text-[var(--tone-text-muted)]">
                       {measure.cue}
                     </p>
                   ) : null}
@@ -192,10 +186,8 @@ export function ScoreViewer({ song }: ScoreViewerProps) {
       <div className="flex min-h-[42rem] border border-dashed border-[var(--tone-border)] bg-[color:color-mix(in_srgb,var(--tone-surface)_85%,var(--tone-canvas))] p-8">
         <div className="flex w-full max-w-2xl flex-col justify-between">
           <div>
-            <p className="text-xs font-semibold tracking-[0.14em] text-[var(--tone-text-muted)]">
-              Lead sheet viewer
-            </p>
-            <h2 className="mt-4 max-w-xl text-[2rem] leading-[var(--leading-display)] font-semibold tracking-[var(--tracking-display-lg)] text-[var(--tone-text-primary)]">
+            <p className="type-kicker text-[var(--tone-text-muted)]">Lead sheet viewer</p>
+            <h2 className="type-display mt-4 max-w-xl text-[2rem] text-[var(--tone-text-primary)]">
               Select a chart to open the digital lead sheet.
             </h2>
             <p className="mt-3 max-w-md text-sm leading-6 text-[var(--tone-text-secondary)]">
@@ -206,25 +198,19 @@ export function ScoreViewer({ song }: ScoreViewerProps) {
           </div>
           <dl className="mt-10 grid gap-5 border-t border-[color:color-mix(in_srgb,var(--tone-border)_80%,transparent)] pt-5 sm:grid-cols-3">
             <div>
-              <dt className="text-[11px] tracking-[var(--tracking-meta)] text-[var(--tone-text-muted)]">
-                Format
-              </dt>
+              <dt className="type-meta-label text-[var(--tone-text-muted)]">Format</dt>
               <dd className="mt-2 text-sm font-medium text-[var(--tone-text-primary)]">
                 Lead-sheet systems
               </dd>
             </div>
             <div>
-              <dt className="text-[11px] tracking-[var(--tracking-meta)] text-[var(--tone-text-muted)]">
-                Includes
-              </dt>
+              <dt className="type-meta-label text-[var(--tone-text-muted)]">Includes</dt>
               <dd className="mt-2 text-sm font-medium text-[var(--tone-text-primary)]">
                 Repeats, cues, meter
               </dd>
             </div>
             <div>
-              <dt className="text-[11px] tracking-[var(--tracking-meta)] text-[var(--tone-text-muted)]">
-                State
-              </dt>
+              <dt className="type-meta-label text-[var(--tone-text-muted)]">State</dt>
               <dd className="mt-2 text-sm font-medium text-[var(--tone-text-primary)]">
                 Waiting for selection
               </dd>
@@ -239,10 +225,8 @@ export function ScoreViewer({ song }: ScoreViewerProps) {
     <article className="border border-[color:color-mix(in_srgb,var(--tone-border)_80%,transparent)] bg-[color:color-mix(in_srgb,var(--tone-surface)_60%,white)] p-6 md:p-8">
       <div className="flex flex-col gap-[var(--space-5)] border-b border-[color:color-mix(in_srgb,var(--tone-border)_55%,white)] pb-6 md:flex-row md:items-end md:justify-between">
         <div className="space-y-2">
-          <p className="text-xs font-semibold tracking-[var(--tracking-label)] text-[var(--tone-text-muted)]">
-            Digital lead sheet
-          </p>
-          <h2 className="text-[2.15rem] leading-[1.02] font-semibold tracking-[var(--tracking-display-lg)] text-[var(--tone-text-primary)]">
+          <p className="type-meta-label-strong text-[var(--tone-text-muted)]">Digital lead sheet</p>
+          <h2 className="type-display-compact text-[2.15rem] text-[var(--tone-text-primary)]">
             {song.title}
           </h2>
           <p className="max-w-2xl text-sm leading-6 text-[var(--tone-text-secondary)]">
@@ -251,27 +235,21 @@ export function ScoreViewer({ song }: ScoreViewerProps) {
         </div>
         <dl className="grid grid-cols-2 gap-x-4 gap-y-3 border-l border-[color:color-mix(in_srgb,var(--tone-border)_55%,white)] pl-4 text-sm text-[var(--tone-text-secondary)] sm:grid-cols-4 sm:border-l-0 sm:pl-0">
           <div className="sm:border-l sm:border-[color:color-mix(in_srgb,var(--tone-border)_55%,white)] sm:pl-4">
-            <dt className="text-[11px] tracking-[var(--tracking-meta)] text-[var(--tone-text-muted)]">
-              Artist
-            </dt>
+            <dt className="type-meta-label text-[var(--tone-text-muted)]">Artist</dt>
             <dd className="mt-1 font-medium text-[var(--tone-text-primary)]">{song.artist}</dd>
           </div>
           <div className="sm:border-l sm:border-[color:color-mix(in_srgb,var(--tone-border)_55%,white)] sm:pl-4">
-            <dt className="text-[11px] tracking-[var(--tracking-meta)] text-[var(--tone-text-muted)]">Key</dt>
+            <dt className="type-meta-label text-[var(--tone-text-muted)]">Key</dt>
             <dd className="mt-1 font-medium text-[var(--tone-text-primary)]">
               {song.keyCenter}
             </dd>
           </div>
           <div className="sm:border-l sm:border-[color:color-mix(in_srgb,var(--tone-border)_55%,white)] sm:pl-4">
-            <dt className="text-[11px] tracking-[var(--tracking-meta)] text-[var(--tone-text-muted)]">
-              Feel
-            </dt>
+            <dt className="type-meta-label text-[var(--tone-text-muted)]">Feel</dt>
             <dd className="mt-1 font-medium text-[var(--tone-text-primary)]">{song.feel}</dd>
           </div>
           <div className="sm:border-l sm:border-[color:color-mix(in_srgb,var(--tone-border)_55%,white)] sm:pl-4">
-            <dt className="text-[11px] tracking-[var(--tracking-meta)] text-[var(--tone-text-muted)]">
-              Meter
-            </dt>
+            <dt className="type-meta-label text-[var(--tone-text-muted)]">Meter</dt>
             <dd className="mt-1 font-medium text-[var(--tone-text-primary)]">{song.meter}</dd>
           </div>
         </dl>
@@ -280,34 +258,26 @@ export function ScoreViewer({ song }: ScoreViewerProps) {
       <div className="mt-5 grid gap-4 border-b border-[color:color-mix(in_srgb,var(--tone-border)_55%,white)] pb-5 md:grid-cols-[minmax(0,1fr)_18rem]">
         <div className="grid gap-3 sm:grid-cols-3">
           <div className="border-l border-[var(--tone-border)] pl-3">
-            <p className="text-[11px] tracking-[var(--tracking-meta)] text-[var(--tone-text-muted)]">
-              Source
-            </p>
+            <p className="type-meta-label text-[var(--tone-text-muted)]">Source</p>
             <p className="mt-2 text-sm font-medium text-[var(--tone-text-primary)]">
               {song.source}
             </p>
           </div>
           <div className="border-l border-[var(--tone-border)] pl-3">
-            <p className="text-[11px] tracking-[var(--tracking-meta)] text-[var(--tone-text-muted)]">
-              Sections
-            </p>
+            <p className="type-meta-label text-[var(--tone-text-muted)]">Sections</p>
             <p className="mt-2 text-sm font-medium text-[var(--tone-text-primary)]">
               {song.sections.length}
             </p>
           </div>
           <div className="border-l border-[var(--tone-border)] pl-3">
-            <p className="text-[11px] tracking-[var(--tracking-meta)] text-[var(--tone-text-muted)]">
-              Systems
-            </p>
+            <p className="type-meta-label text-[var(--tone-text-muted)]">Systems</p>
             <p className="mt-2 text-sm font-medium text-[var(--tone-text-primary)]">
               {getSongSystemCount(song)}
             </p>
           </div>
         </div>
         <div className="border-l border-[color:color-mix(in_srgb,var(--tone-border)_55%,white)] pl-4">
-          <p className="text-[11px] tracking-[var(--tracking-meta)] text-[var(--tone-text-muted)]">
-            Chart notes
-          </p>
+          <p className="type-meta-label text-[var(--tone-text-muted)]">Chart notes</p>
           <div className="mt-2 space-y-2 text-sm leading-6 text-[var(--tone-text-secondary)]">
             {song.chartNotes.map((note) => (
               <p key={note}>{note}</p>
@@ -320,7 +290,7 @@ export function ScoreViewer({ song }: ScoreViewerProps) {
         {song.sections.map((section) => (
           <section key={section.id} className="border-b border-[color:color-mix(in_srgb,var(--tone-border)_55%,white)] py-4">
             <div className="mb-2 flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
-              <h3 className="text-sm font-semibold tracking-[var(--tracking-meta)] text-[var(--tone-text-secondary)]">
+              <h3 className="type-meta-label text-sm text-[var(--tone-text-secondary)]">
                 {section.title}
               </h3>
               {section.annotation ? (

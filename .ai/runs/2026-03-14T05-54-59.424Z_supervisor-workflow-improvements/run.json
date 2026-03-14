@@ -1,9 +1,9 @@
 {
   "run_id": "2026-03-14T05-54-59.424Z_supervisor-workflow-improvements",
   "goal": "Build an app from docs/ideas/supervisor-workflow-improvements.md",
-  "phase": "done",
-  "status": "done",
-  "next_agent": "none",
+  "phase": "review",
+  "status": "in_progress",
+  "next_agent": "design-critic",
   "stack": {
     "frontend": "nextjs",
     "ui": "shadcn-ui",
@@ -62,9 +62,17 @@
     {
       "at": "2026-03-14T08:27:37.022Z",
       "event": "Supervisor routed to none"
+    },
+    {
+      "at": "2026-03-14T09:48:44.321Z",
+      "event": "Refinement requested for builder: document Tailwind v4 custom CSS verification lessons: do not trust markup-only checks, verify served CSS for semantic classes, and prefer plain CSS over @layer components for repo-local typography utilities unless browser evidence proves otherwise"
+    },
+    {
+      "at": "2026-03-14T09:49:21.747Z",
+      "event": "Supervisor routed to design-critic"
     }
   ],
-  "revision": 3,
+  "revision": 4,
   "refinement_notes": [
     {
       "at": "2026-03-14T05:58:00.615Z",
@@ -74,6 +82,11 @@
     {
       "at": "2026-03-14T08:26:05.218Z",
       "note": "add workflow rules for redundant-label prevention width-first layouts split data-vs-render build tasks and visual verification checklist",
+      "target_agent": "builder"
+    },
+    {
+      "at": "2026-03-14T09:48:44.321Z",
+      "note": "document Tailwind v4 custom CSS verification lessons: do not trust markup-only checks, verify served CSS for semantic classes, and prefer plain CSS over @layer components for repo-local typography utilities unless browser evidence proves otherwise",
       "target_agent": "builder"
     }
   ]

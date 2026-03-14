@@ -19,10 +19,8 @@ export function SongsWorkspace() {
     <section className="grid gap-[var(--space-5)] pt-[var(--space-4)] xl:grid-cols-[23rem_minmax(0,1fr)]">
       <aside className="space-y-[var(--space-4)]">
         <div className="border-b border-[color:color-mix(in_srgb,var(--tone-border)_80%,transparent)] pb-[var(--space-5)]">
-          <p className="text-xs font-semibold tracking-[0.14em] text-[var(--tone-text-muted)]">
-            Library
-          </p>
-          <h2 className="mt-3 text-[1.75rem] font-semibold tracking-[var(--tracking-display-sm)] text-[var(--tone-text-primary)]">
+          <p className="type-kicker text-[var(--tone-text-muted)]">Library</p>
+          <h2 className="type-title mt-3 text-[1.75rem] text-[var(--tone-text-primary)]">
             Copied charts
           </h2>
           <p className="mt-2 text-sm leading-6 text-[var(--tone-text-secondary)]">
@@ -31,33 +29,25 @@ export function SongsWorkspace() {
           </p>
           <dl className="mt-5 grid grid-cols-2 gap-x-4 gap-y-3 text-sm">
             <div className="border-l border-[color:color-mix(in_srgb,var(--tone-border)_80%,transparent)] pl-3">
-              <dt className="text-[11px] tracking-[var(--tracking-meta)] text-[var(--tone-text-muted)]">
-                Total charts
-              </dt>
+              <dt className="type-meta-label text-[var(--tone-text-muted)]">Total charts</dt>
               <dd className="mt-1 text-lg font-semibold text-[var(--tone-text-primary)]">
                 {songs.length}
               </dd>
             </div>
             <div className="border-l border-[color:color-mix(in_srgb,var(--tone-border)_80%,transparent)] pl-3">
-              <dt className="text-[11px] tracking-[var(--tracking-meta)] text-[var(--tone-text-muted)]">
-                Key centers
-              </dt>
+              <dt className="type-meta-label text-[var(--tone-text-muted)]">Key centers</dt>
               <dd className="mt-1 text-lg font-semibold text-[var(--tone-text-primary)]">
                 {keyCenters}
               </dd>
             </div>
             <div className="border-l border-[color:color-mix(in_srgb,var(--tone-border)_80%,transparent)] pl-3">
-              <dt className="text-[11px] tracking-[var(--tracking-meta)] text-[var(--tone-text-muted)]">
-                Systems
-              </dt>
+              <dt className="type-meta-label text-[var(--tone-text-muted)]">Systems</dt>
               <dd className="mt-1 text-lg font-semibold text-[var(--tone-text-primary)]">
                 {totalSystems}
               </dd>
             </div>
             <div className="border-l border-[color:color-mix(in_srgb,var(--tone-border)_80%,transparent)] pl-3">
-              <dt className="text-[11px] tracking-[var(--tracking-meta)] text-[var(--tone-text-muted)]">
-                Focus
-              </dt>
+              <dt className="type-meta-label text-[var(--tone-text-muted)]">Focus</dt>
               <dd className="mt-1 text-lg font-semibold text-[var(--tone-text-primary)]">
                 Lead sheets
               </dd>
