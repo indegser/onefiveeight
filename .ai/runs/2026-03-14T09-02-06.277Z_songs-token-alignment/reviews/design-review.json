@@ -1,0 +1,70 @@
+{
+  "approved": true,
+  "preview_evidence": [
+    "src/app/songs/page.tsx",
+    "src/app/songs/songs-workspace.tsx",
+    "src/app/songs/song-list.tsx",
+    "src/app/songs/score-viewer.tsx"
+  ],
+  "summary": {
+    "status": "pass_with_followups",
+    "rationale": "The songs workspace keeps its existing editorial list-detail structure while the repeated warm neutrals, metadata roles, and headline rhythm now map more clearly to the draft token baseline."
+  },
+  "findings": [
+    {
+      "id": "selected-state-still-local",
+      "severity": "low",
+      "layer": "aesthetic_judgment",
+      "message": "The selected song card still uses local inverse colors instead of semantic tokens, which is acceptable for contrast today but leaves one visible styling path outside the shared token vocabulary.",
+      "screen_id": "songs-library",
+      "area": "selected-state",
+      "recommendation": "Introduce semantic inverse tokens in a later pass if more surfaces need this treatment.",
+      "evidence": [
+        "src/app/songs/song-list.tsx"
+      ]
+    }
+  ],
+  "section_scores": [
+    {
+      "section_id": "hard_rules",
+      "score": 0.95,
+      "notes": [
+        "The workspace layout and selection flow are unchanged.",
+        "Repeated color and type roles now rely more on shared token bindings."
+      ]
+    },
+    {
+      "section_id": "ux_heuristics",
+      "score": 0.92,
+      "notes": [
+        "Lead-sheet readability and list scanability are preserved.",
+        "Selected-state contrast remains strong because the darker treatment was not over-normalized."
+      ]
+    },
+    {
+      "section_id": "aesthetic_judgment",
+      "score": 0.93,
+      "notes": [
+        "The warm paper-and-stone palette remains intact.",
+        "Typography rhythm now maps more directly to the draft display and metadata tracking rules."
+      ]
+    }
+  ],
+  "profile_assessment": {
+    "selected_profile_id": "warm-restrained-editorial-utility",
+    "fit_score": 0.94,
+    "anti_patterns_detected": [],
+    "notes": [
+      "The surface remains warm, restrained, and editorial rather than drifting back toward default cool utility styling."
+    ]
+  },
+  "gates": {
+    "hard_rules_passed": true,
+    "needs_human_review": false,
+    "requires_refinement": false
+  },
+  "next_steps": [
+    "Consider semantic inverse tokens for selected cards if token alignment expands to other list surfaces.",
+    "Normalize remaining local spacing literals in the songs surface only if a later pass shows real duplication pressure."
+  ]
+}

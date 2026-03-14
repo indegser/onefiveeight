@@ -1,0 +1,105 @@
+{
+  "screens": [
+    {
+      "id": "songs-library",
+      "name": "Songs workspace",
+      "purpose": "Let the user scan the library and read a token-aligned digital lead sheet without changing the established workflow.",
+      "screen_type": "workspace",
+      "primary_action": "Open a chart from the library",
+      "states": [
+        "default:list with selectable songs",
+        "selected:viewer open with chart details",
+        "empty:no song selected"
+      ]
+    }
+  ],
+  "ux_rules": [
+    "Preserve the current songs workspace structure and reading flow while reducing repeated style literals.",
+    "Bind repeated warm palette, spacing rhythm, and typographic hierarchy decisions to the draft token baseline where practical.",
+    "Maintain strong selected-state contrast in the song list even if some values remain local for legibility.",
+    "Keep the lead-sheet surface editorial and warm without flattening functional distinctions between metadata, chart content, and annotations."
+  ],
+  "component_map": [
+    {
+      "screen_id": "songs-library",
+      "components": [
+        "Songs page shell",
+        "SongsWorkspace",
+        "SongList",
+        "ScoreViewer",
+        "globals.css draft token variables"
+      ]
+    }
+  ],
+  "human_checkpoints": [],
+  "design_rule_engine": {
+    "profile_id": "warm-restrained-editorial-utility",
+    "hard_rule_sets": [
+      "layout-rules"
+    ],
+    "heuristic_sets": [
+      "ux-heuristics"
+    ],
+    "allowed_pattern_sets": [
+      "core-allowed-patterns"
+    ],
+    "banned_pattern_sets": [
+      "core-banned-patterns"
+    ],
+    "review_rubric_id": "design-review-rubric"
+  },
+  "screen_contexts": [
+    {
+      "screen_id": "songs-library",
+      "screen_type": "workspace",
+      "layout_intent": "Keep the existing list-detail workspace intact while replacing repeated visual literals with token-backed values and roles.",
+      "interaction_risks": [
+        "Selected-state contrast could weaken if token alignment over-normalizes the darker list treatment.",
+        "Lead-sheet notation may lose subtle hierarchy if all text roles are flattened into a small set of tokens without judgment."
+      ],
+      "required_states": [
+        "default:list with selectable songs",
+        "selected:viewer open with chart details",
+        "empty:no song selected"
+      ],
+      "notes": [
+        "This run is about style normalization, not product behavior or data-shape changes."
+      ]
+    }
+  ],
+  "builder_constraints": [
+    {
+      "screen_id": "songs-library",
+      "constraints": [
+        "Prefer CSS variable bindings from the draft token baseline over repeated hex values and repeated type literals.",
+        "Do not rewrite the songs layout architecture or introduce new shared abstraction layers unless they materially reduce duplication inside the scoped surface.",
+        "Preserve any local deviations that are still needed for selected-state contrast or notation readability, and record them if retained."
+      ],
+      "open_decisions": [
+        "Whether the selected song card should eventually bind to a dedicated semantic inverse token set remains open.",
+        "Whether measure chips and directive badges should later use a more explicit semantic token layer remains open."
+      ]
+    }
+  ],
+  "review_targets": [
+    {
+      "screen_id": "songs-library",
+      "critical_judgments": [
+        "The songs workspace should look materially the same in structure and tone after token alignment.",
+        "Repeated warm neutrals and typographic roles should map more clearly to shared token-backed values.",
+        "The selected state and chart readability should not regress."
+      ],
+      "must_not_regress": [
+        "Song selection behavior",
+        "Lead-sheet readability",
+        "Existing two-pane layout"
+      ]
+    }
+  ],
+  "visual_constraints": [
+    "Keep the paper-like warm background and restrained stone palette.",
+    "Preserve display tracking and metadata rhythm that already match the selected profile.",
+    "Avoid introducing colder default theme colors from the base shadcn layer into the songs surface.",
+    "Retain a stronger inverse treatment for the selected card instead of over-softening all list states."
+  ]
+}

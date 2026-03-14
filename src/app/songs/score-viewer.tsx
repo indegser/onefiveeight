@@ -30,21 +30,21 @@ function splitChordText(chord: string) {
 
 function ChordLabel({ chord }: { chord?: string }) {
   if (!chord) {
-    return <p className="type-chord text-[1.05rem] text-stone-950">N.C.</p>;
+    return <p className="type-chord text-[1.05rem] text-[var(--tone-text-primary)]">N.C.</p>;
   }
 
   const display = splitChordText(chord);
 
   if (display.kind === "transition") {
     return (
-      <div className="type-chord flex min-h-[1.5rem] flex-wrap items-center gap-x-1 gap-y-0.5 text-[0.92rem] text-stone-950">
+      <div className="type-chord flex min-h-[1.5rem] flex-wrap items-center gap-x-1 gap-y-0.5 text-[0.92rem] text-[var(--tone-text-primary)]">
         {display.parts.map((part, index) => (
           <span
             key={`${part}-${index}`}
             className="inline-flex items-center gap-1"
           >
             {index > 0 ? (
-              <span className="type-chip-label text-stone-500">to</span>
+              <span className="type-chip-label text-[var(--tone-text-muted)]">to</span>
             ) : null}
             <span>{part}</span>
           </span>
@@ -55,14 +55,14 @@ function ChordLabel({ chord }: { chord?: string }) {
 
   if (display.kind === "group") {
     return (
-      <div className="type-chord flex min-h-[1.5rem] flex-wrap items-center gap-x-1.5 gap-y-0.5 text-[0.92rem] text-stone-950">
+      <div className="type-chord flex min-h-[1.5rem] flex-wrap items-center gap-x-1.5 gap-y-0.5 text-[0.92rem] text-[var(--tone-text-primary)]">
         {display.parts.map((part, index) => (
           <span
             key={`${part}-${index}`}
             className="inline-flex items-center gap-1"
           >
             {index > 0 ? (
-              <span className="text-[8px] text-stone-400" aria-hidden="true">
+              <span className="text-[8px] text-[var(--tone-text-muted)]" aria-hidden="true">
                 /
               </span>
             ) : null}
@@ -74,7 +74,7 @@ function ChordLabel({ chord }: { chord?: string }) {
   }
 
   return (
-    <p className="type-chord min-h-[1.5rem] text-[1.02rem] text-stone-950">
+    <p className="type-chord min-h-[1.5rem] text-[1.02rem] text-[var(--tone-text-primary)]">
       {display.parts[0]}
     </p>
   );
@@ -110,12 +110,12 @@ function SystemRow({
       {hasSidebar ? (
         <div className="flex items-start justify-between gap-3 md:block">
           {displayLabel ? (
-            <p className="type-meta-label-strong text-stone-500">
+            <p className="type-meta-label-strong text-[var(--tone-text-muted)]">
               {displayLabel}
             </p>
           ) : null}
           {system.annotation ? (
-            <p className="max-w-[10rem] text-right text-xs leading-5 text-stone-500 md:mt-2 md:text-left">
+            <p className="max-w-[10rem] text-right text-xs leading-5 text-[var(--tone-text-muted)] md:mt-2 md:text-left">
               {system.annotation}
             </p>
           ) : null}
@@ -125,29 +125,29 @@ function SystemRow({
       <div className="space-y-2">
         <div className="flex flex-wrap gap-1.5">
           {system.timeSignature ? (
-            <span className="type-chip-label border border-stone-300 bg-[#f3ecde] px-1.5 py-0.5 text-stone-700">
+            <span className="type-chip-label border border-[var(--tone-border)] bg-[var(--tone-surface-alt)] px-1.5 py-0.5 text-[var(--tone-text-secondary)]">
               {system.timeSignature}
             </span>
           ) : null}
           {system.repeat ? (
-            <span className="type-chip-label border border-stone-300 bg-[#f3ecde] px-1.5 py-0.5 text-stone-700">
+            <span className="type-chip-label border border-[var(--tone-border)] bg-[var(--tone-surface-alt)] px-1.5 py-0.5 text-[var(--tone-text-secondary)]">
               {system.repeat}
             </span>
           ) : null}
           {system.jump ? (
-            <span className="type-chip-label border border-stone-300 bg-[#efe1c4] px-1.5 py-0.5 text-stone-800">
+            <span className="type-chip-label border border-[var(--tone-border)] bg-[color:color-mix(in_srgb,var(--tone-accent-soft)_55%,var(--tone-canvas))] px-1.5 py-0.5 text-[var(--tone-text-primary)]">
               {system.jump}
             </span>
           ) : null}
           {system.ending ? (
-            <span className="type-chip-label border border-stone-300 bg-[#f8f1e5] px-1.5 py-0.5 text-stone-700">
+            <span className="type-chip-label border border-[var(--tone-border)] bg-[color:color-mix(in_srgb,var(--tone-canvas)_85%,white)] px-1.5 py-0.5 text-[var(--tone-text-secondary)]">
               {system.ending}
             </span>
           ) : null}
         </div>
 
         <div className="overflow-x-auto">
-          <div className="min-w-full border-y border-stone-300/90 bg-[#fffdf8] py-0.5">
+          <div className="min-w-full border-y border-[color:color-mix(in_srgb,var(--tone-border)_90%,transparent)] bg-[color:color-mix(in_srgb,var(--tone-surface)_60%,white)] py-0.5">
             <div
               className="grid"
               style={{
@@ -157,12 +157,12 @@ function SystemRow({
               {system.measures.map((measure) => (
                 <div
                   key={measure.id}
-                  className="flex min-h-[3.15rem] flex-col justify-between gap-1.5 border-l border-stone-400/80 px-2 py-1.5 first:border-l-0"
+                  className="flex min-h-[3.15rem] flex-col justify-between gap-1.5 border-l border-[color:color-mix(in_srgb,var(--tone-text-muted)_80%,transparent)] px-2 py-1.5 first:border-l-0"
                   style={{ gridColumn: `span ${measure.span ?? 1}` }}
                 >
                   <ChordLabel chord={measure.chord} />
                   {measure.cue ? (
-                    <p className="type-chip-label text-stone-500">
+                    <p className="type-chip-label text-[var(--tone-text-muted)]">
                       {measure.cue}
                     </p>
                   ) : null}
@@ -173,7 +173,7 @@ function SystemRow({
         </div>
 
         {system.footer ? (
-          <p className="text-xs leading-5 text-stone-500">{system.footer}</p>
+          <p className="text-xs leading-5 text-[var(--tone-text-muted)]">{system.footer}</p>
         ) : null}
       </div>
     </div>
@@ -183,35 +183,35 @@ function SystemRow({
 export function ScoreViewer({ song }: ScoreViewerProps) {
   if (!song) {
     return (
-      <div className="flex min-h-[42rem] border border-dashed border-stone-300 bg-[#fbf7ef] p-8">
+      <div className="flex min-h-[42rem] border border-dashed border-[var(--tone-border)] bg-[color:color-mix(in_srgb,var(--tone-surface)_85%,var(--tone-canvas))] p-8">
         <div className="flex w-full max-w-2xl flex-col justify-between">
           <div>
-            <p className="type-kicker text-stone-500">Lead sheet viewer</p>
-            <h2 className="type-display mt-4 max-w-xl text-[2rem] text-stone-900">
+            <p className="type-kicker text-[var(--tone-text-muted)]">Lead sheet viewer</p>
+            <h2 className="type-display mt-4 max-w-xl text-[2rem] text-[var(--tone-text-primary)]">
               Select a chart to open the digital lead sheet.
             </h2>
-            <p className="mt-3 max-w-md text-sm leading-6 text-stone-600">
+            <p className="mt-3 max-w-md text-sm leading-6 text-[var(--tone-text-secondary)]">
               The selected song will open as section groups, system rows, and
               measure-level chord changes with repeats, cues, and ending
               directives.
             </p>
           </div>
-          <dl className="mt-10 grid gap-5 border-t border-stone-300/80 pt-5 sm:grid-cols-3">
+          <dl className="mt-10 grid gap-5 border-t border-[color:color-mix(in_srgb,var(--tone-border)_80%,transparent)] pt-5 sm:grid-cols-3">
             <div>
-              <dt className="type-meta-label text-stone-500">Format</dt>
-              <dd className="mt-2 text-sm font-medium text-stone-900">
+              <dt className="type-meta-label text-[var(--tone-text-muted)]">Format</dt>
+              <dd className="mt-2 text-sm font-medium text-[var(--tone-text-primary)]">
                 Lead-sheet systems
               </dd>
             </div>
             <div>
-              <dt className="type-meta-label text-stone-500">Includes</dt>
-              <dd className="mt-2 text-sm font-medium text-stone-900">
+              <dt className="type-meta-label text-[var(--tone-text-muted)]">Includes</dt>
+              <dd className="mt-2 text-sm font-medium text-[var(--tone-text-primary)]">
                 Repeats, cues, meter
               </dd>
             </div>
             <div>
-              <dt className="type-meta-label text-stone-500">State</dt>
-              <dd className="mt-2 text-sm font-medium text-stone-900">
+              <dt className="type-meta-label text-[var(--tone-text-muted)]">State</dt>
+              <dd className="mt-2 text-sm font-medium text-[var(--tone-text-primary)]">
                 Waiting for selection
               </dd>
             </div>
@@ -222,65 +222,63 @@ export function ScoreViewer({ song }: ScoreViewerProps) {
   }
 
   return (
-    <article className="border border-stone-300/80 bg-[#fffdf8] p-6 md:p-8">
-      <div className="flex flex-col gap-5 border-b border-stone-200 pb-6 md:flex-row md:items-end md:justify-between">
+    <article className="border border-[color:color-mix(in_srgb,var(--tone-border)_80%,transparent)] bg-[color:color-mix(in_srgb,var(--tone-surface)_60%,white)] p-6 md:p-8">
+      <div className="flex flex-col gap-[var(--space-5)] border-b border-[color:color-mix(in_srgb,var(--tone-border)_55%,white)] pb-6 md:flex-row md:items-end md:justify-between">
         <div className="space-y-2">
-          <p className="type-meta-label-strong text-stone-500">
-            Digital lead sheet
-          </p>
-          <h2 className="type-display-compact text-[2.15rem] text-stone-950">
+          <p className="type-meta-label-strong text-[var(--tone-text-muted)]">Digital lead sheet</p>
+          <h2 className="type-display-compact text-[2.15rem] text-[var(--tone-text-primary)]">
             {song.title}
           </h2>
-          <p className="max-w-2xl text-sm leading-6 text-stone-600">
+          <p className="max-w-2xl text-sm leading-6 text-[var(--tone-text-secondary)]">
             {song.summary}
           </p>
         </div>
-        <dl className="grid grid-cols-2 gap-x-4 gap-y-3 border-l border-stone-200 pl-4 text-sm text-stone-700 sm:grid-cols-4 sm:border-l-0 sm:pl-0">
-          <div className="sm:border-l sm:border-stone-200 sm:pl-4">
-            <dt className="type-meta-label text-stone-500">Artist</dt>
-            <dd className="mt-1 font-medium text-stone-900">{song.artist}</dd>
+        <dl className="grid grid-cols-2 gap-x-4 gap-y-3 border-l border-[color:color-mix(in_srgb,var(--tone-border)_55%,white)] pl-4 text-sm text-[var(--tone-text-secondary)] sm:grid-cols-4 sm:border-l-0 sm:pl-0">
+          <div className="sm:border-l sm:border-[color:color-mix(in_srgb,var(--tone-border)_55%,white)] sm:pl-4">
+            <dt className="type-meta-label text-[var(--tone-text-muted)]">Artist</dt>
+            <dd className="mt-1 font-medium text-[var(--tone-text-primary)]">{song.artist}</dd>
           </div>
-          <div className="sm:border-l sm:border-stone-200 sm:pl-4">
-            <dt className="type-meta-label text-stone-500">Key</dt>
-            <dd className="mt-1 font-medium text-stone-900">
+          <div className="sm:border-l sm:border-[color:color-mix(in_srgb,var(--tone-border)_55%,white)] sm:pl-4">
+            <dt className="type-meta-label text-[var(--tone-text-muted)]">Key</dt>
+            <dd className="mt-1 font-medium text-[var(--tone-text-primary)]">
               {song.keyCenter}
             </dd>
           </div>
-          <div className="sm:border-l sm:border-stone-200 sm:pl-4">
-            <dt className="type-meta-label text-stone-500">Feel</dt>
-            <dd className="mt-1 font-medium text-stone-900">{song.feel}</dd>
+          <div className="sm:border-l sm:border-[color:color-mix(in_srgb,var(--tone-border)_55%,white)] sm:pl-4">
+            <dt className="type-meta-label text-[var(--tone-text-muted)]">Feel</dt>
+            <dd className="mt-1 font-medium text-[var(--tone-text-primary)]">{song.feel}</dd>
           </div>
-          <div className="sm:border-l sm:border-stone-200 sm:pl-4">
-            <dt className="type-meta-label text-stone-500">Meter</dt>
-            <dd className="mt-1 font-medium text-stone-900">{song.meter}</dd>
+          <div className="sm:border-l sm:border-[color:color-mix(in_srgb,var(--tone-border)_55%,white)] sm:pl-4">
+            <dt className="type-meta-label text-[var(--tone-text-muted)]">Meter</dt>
+            <dd className="mt-1 font-medium text-[var(--tone-text-primary)]">{song.meter}</dd>
           </div>
         </dl>
       </div>
 
-      <div className="mt-5 grid gap-4 border-b border-stone-200 pb-5 md:grid-cols-[minmax(0,1fr)_18rem]">
+      <div className="mt-5 grid gap-4 border-b border-[color:color-mix(in_srgb,var(--tone-border)_55%,white)] pb-5 md:grid-cols-[minmax(0,1fr)_18rem]">
         <div className="grid gap-3 sm:grid-cols-3">
-          <div className="border-l border-stone-300 pl-3">
-            <p className="type-meta-label text-stone-500">Source</p>
-            <p className="mt-2 text-sm font-medium text-stone-900">
+          <div className="border-l border-[var(--tone-border)] pl-3">
+            <p className="type-meta-label text-[var(--tone-text-muted)]">Source</p>
+            <p className="mt-2 text-sm font-medium text-[var(--tone-text-primary)]">
               {song.source}
             </p>
           </div>
-          <div className="border-l border-stone-300 pl-3">
-            <p className="type-meta-label text-stone-500">Sections</p>
-            <p className="mt-2 text-sm font-medium text-stone-900">
+          <div className="border-l border-[var(--tone-border)] pl-3">
+            <p className="type-meta-label text-[var(--tone-text-muted)]">Sections</p>
+            <p className="mt-2 text-sm font-medium text-[var(--tone-text-primary)]">
               {song.sections.length}
             </p>
           </div>
-          <div className="border-l border-stone-300 pl-3">
-            <p className="type-meta-label text-stone-500">Systems</p>
-            <p className="mt-2 text-sm font-medium text-stone-900">
+          <div className="border-l border-[var(--tone-border)] pl-3">
+            <p className="type-meta-label text-[var(--tone-text-muted)]">Systems</p>
+            <p className="mt-2 text-sm font-medium text-[var(--tone-text-primary)]">
               {getSongSystemCount(song)}
             </p>
           </div>
         </div>
-        <div className="border-l border-stone-200 pl-4">
-          <p className="type-meta-label text-stone-500">Chart notes</p>
-          <div className="mt-2 space-y-2 text-sm leading-6 text-stone-600">
+        <div className="border-l border-[color:color-mix(in_srgb,var(--tone-border)_55%,white)] pl-4">
+          <p className="type-meta-label text-[var(--tone-text-muted)]">Chart notes</p>
+          <div className="mt-2 space-y-2 text-sm leading-6 text-[var(--tone-text-secondary)]">
             {song.chartNotes.map((note) => (
               <p key={note}>{note}</p>
             ))}
@@ -288,15 +286,15 @@ export function ScoreViewer({ song }: ScoreViewerProps) {
         </div>
       </div>
 
-      <div className="mt-6 border-t border-stone-200">
+      <div className="mt-6 border-t border-[color:color-mix(in_srgb,var(--tone-border)_55%,white)]">
         {song.sections.map((section) => (
-          <section key={section.id} className="border-b border-stone-200 py-4">
+          <section key={section.id} className="border-b border-[color:color-mix(in_srgb,var(--tone-border)_55%,white)] py-4">
             <div className="mb-2 flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
-              <h3 className="type-meta-label text-sm text-stone-700">
+              <h3 className="type-meta-label text-sm text-[var(--tone-text-secondary)]">
                 {section.title}
               </h3>
               {section.annotation ? (
-                <p className="text-xs leading-5 text-stone-500">
+                <p className="text-xs leading-5 text-[var(--tone-text-muted)]">
                   {section.annotation}
                 </p>
               ) : null}

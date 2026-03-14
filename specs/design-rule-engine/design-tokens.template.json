@@ -1,64 +1,116 @@
 {
   "$schema": "../../.ai/schemas/design-tokens.schema.json",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "status": "draft",
   "binding": {
     "source": "current-repo-tailwind-layer",
+    "runtime_targets": [
+      "src/app/globals.css",
+      "Tailwind CSS v4 theme variables",
+      "per-surface utility classes"
+    ],
     "notes": [
-      "This is a planning template, not a finalized token contract.",
-      "Map concrete token values after palette and typography decisions are approved."
+      "This file now defines a concrete draft baseline rather than placeholder-only planning fields.",
+      "The baseline is intentionally bound to the current repo Tailwind layer and CSS variables instead of introducing a second runtime token system.",
+      "Some values remain provisional and should be refined through future implementation and design review evidence."
     ]
   },
   "tokens": {
     "spacing": {
       "scale_type": "modular",
-      "base_unit": "undecided",
-      "steps": []
+      "base_unit": 4,
+      "steps": [4, 8, 12, 16, 24, 32, 48, 64],
+      "usage": {
+        "micro": 4,
+        "tight": 8,
+        "compact": 12,
+        "default": 16,
+        "section": 24,
+        "group": 32,
+        "page": 48,
+        "hero": 64
+      },
+      "notes": [
+        "Use 12, 24, and 32 as the primary editorial rhythm steps for dense working surfaces.",
+        "Prefer finite scale choices over one-off spacing nudges."
+      ]
     },
     "typography": {
       "families": {
-        "body": "undecided",
-        "display": "undecided",
-        "mono": "undecided"
+        "body": "var(--font-geist-sans)",
+        "display": "var(--font-geist-sans)",
+        "mono": "var(--font-geist-mono)"
       },
-      "size_scale": [],
+      "size_scale": [12, 14, 16, 18, 24, 32, 48],
+      "line_height_scale": {
+        "display": 1.05,
+        "dense": 1.2,
+        "default": 1.5,
+        "relaxed": 1.7
+      },
+      "tracking_scale": {
+        "meta": 0.08,
+        "label": 0.12,
+        "default": 0,
+        "display_sm": -0.03,
+        "display_lg": -0.04
+      },
+      "weight_scale": {
+        "regular": 400,
+        "medium": 500,
+        "semibold": 600
+      },
       "weight_strategy": "prefer weight contrast before large size jumps"
     },
     "color": {
       "palette_mode": "warm-muted-low-saturation",
-      "roles": [
-        "background",
-        "surface",
-        "text-primary",
-        "text-secondary",
-        "accent",
-        "success",
-        "warning",
-        "danger",
-        "border"
-      ],
+      "roles": {
+        "background": "#f6f1e8",
+        "surface": "#fbf7f0",
+        "surface_alt": "#f3ecde",
+        "text_primary": "#1f1c19",
+        "text_secondary": "#6b6257",
+        "text_muted": "#8a8175",
+        "accent": "#6f7457",
+        "accent_soft": "#e7e3d6",
+        "success": "#5f7a65",
+        "warning": "#9a7a49",
+        "danger": "#9a5c52",
+        "border": "#cfc4b4"
+      },
       "notes": [
         "Avoid bright accent-first palettes.",
-        "Maintain accessible contrast without shifting into cold techno chrome."
+        "Maintain accessible contrast without shifting into cold techno chrome.",
+        "Accent usage should stay sparse and utility-driven."
       ]
     },
     "radius": {
-      "scale": [],
+      "scale": [0, 4, 8, 12],
       "notes": [
         "Prefer restrained radius values."
       ]
     },
     "shadow": {
-      "levels": [],
+      "levels": [
+        "none",
+        "0 1px 2px rgba(31, 28, 25, 0.04)",
+        "0 4px 12px rgba(31, 28, 25, 0.06)"
+      ],
       "notes": [
         "Shadows should be rare, soft, and supportive rather than brand-defining."
       ]
     },
     "grid": {
       "type": "modular-column-grid",
-      "columns": "undecided",
-      "gutter": "undecided",
-      "container": "undecided",
+      "columns": 12,
+      "gutter": 24,
+      "container": {
+        "sm": 640,
+        "md": 768,
+        "lg": 1024,
+        "xl": 1280,
+        "2xl": 1536
+      },
       "baseline_rhythm": "required"
     }
   }

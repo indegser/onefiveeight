@@ -1,0 +1,45 @@
+{
+  "run_id": "2026-03-14T09-15-16.294Z_browser-first-ui-verification",
+  "goal": "Build an app from docs/ideas/browser-first-ui-verification.md",
+  "revision": 1,
+  "phase": "done",
+  "status": "done",
+  "next_agent": "none",
+  "stack": {
+    "frontend": "nextjs",
+    "ui": "shadcn-ui",
+    "backend": "supabase",
+    "language": "typescript"
+  },
+  "inputs": {
+    "idea_file": "docs/ideas/browser-first-ui-verification.md",
+    "constraints": [],
+    "brand_critical": false
+  },
+  "artifacts": {
+    "plan": ".ai/runs/2026-03-14T09-15-16.294Z_browser-first-ui-verification/plan.json",
+    "memory": ".ai/runs/2026-03-14T09-15-16.294Z_browser-first-ui-verification/memory.json",
+    "design": ".ai/runs/2026-03-14T09-15-16.294Z_browser-first-ui-verification/design.json",
+    "build": ".ai/runs/2026-03-14T09-15-16.294Z_browser-first-ui-verification/build.json",
+    "verify": ".ai/runs/2026-03-14T09-15-16.294Z_browser-first-ui-verification/verify.json"
+  },
+  "approvals": {
+    "brand": false,
+    "data_model": false,
+    "destructive_flows": false
+  },
+  "blockers": [],
+  "decisions": [],
+  "risks": [],
+  "refinement_notes": [],
+  "history": [
+    {
+      "at": "2026-03-14T09:15:16.298Z",
+      "event": "Initialized run from docs/ideas/browser-first-ui-verification.md"
+    },
+    {
+      "at": "2026-03-14T09:16:52.033Z",
+      "event": "Supervisor routed to none"
+    }
+  ]
+}

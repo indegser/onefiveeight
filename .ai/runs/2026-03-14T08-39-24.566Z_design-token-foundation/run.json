@@ -1,0 +1,57 @@
+{
+  "run_id": "2026-03-14T08-39-24.566Z_design-token-foundation",
+  "goal": "Build an app from docs/ideas/design-token-foundation.md",
+  "revision": 1,
+  "phase": "done",
+  "status": "done",
+  "next_agent": "none",
+  "stack": {
+    "frontend": "nextjs",
+    "ui": "shadcn-ui",
+    "backend": "supabase",
+    "language": "typescript"
+  },
+  "inputs": {
+    "idea_file": "docs/ideas/design-token-foundation.md",
+    "constraints": [],
+    "brand_critical": false
+  },
+  "artifacts": {
+    "plan": ".ai/runs/2026-03-14T08-39-24.566Z_design-token-foundation/plan.json",
+    "memory": ".ai/runs/2026-03-14T08-39-24.566Z_design-token-foundation/memory.json",
+    "design": ".ai/runs/2026-03-14T08-39-24.566Z_design-token-foundation/design.json",
+    "build": ".ai/runs/2026-03-14T08-39-24.566Z_design-token-foundation/build.json",
+    "verify": ".ai/runs/2026-03-14T08-39-24.566Z_design-token-foundation/verify.json"
+  },
+  "approvals": {
+    "brand": false,
+    "data_model": false,
+    "destructive_flows": false
+  },
+  "blockers": [],
+  "decisions": [],
+  "risks": [],
+  "refinement_notes": [],
+  "history": [
+    {
+      "at": "2026-03-14T08:39:24.570Z",
+      "event": "Initialized run from docs/ideas/design-token-foundation.md"
+    },
+    {
+      "at": "2026-03-14T08:39:29.733Z",
+      "event": "Supervisor routed to planner"
+    },
+    {
+      "at": "2026-03-14T08:42:02.461Z",
+      "event": "Supervisor routed to design-agent"
+    },
+    {
+      "at": "2026-03-14T08:43:00.824Z",
+      "event": "Supervisor routed to builder"
+    },
+    {
+      "at": "2026-03-14T08:44:35.312Z",
+      "event": "Supervisor routed to none"
+    }
+  ]
+}

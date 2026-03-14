@@ -1,0 +1,63 @@
+{
+  "epics": [
+    {
+      "id": "songs-token-alignment",
+      "title": "Align the songs workspace with the draft token baseline",
+      "tasks": [
+        {
+          "id": "audit-songs-literals",
+          "title": "Identify repeated songs-surface literals that should map to shared draft tokens",
+          "implementation_area": "integration",
+          "acceptance_criteria": [
+            "The scoped work targets repeated color, spacing, and typography literals in the songs route and related components.",
+            "The task keeps existing layout behavior and selection flow intact.",
+            "The audit distinguishes between values that can bind directly to tokens now and values that should remain local."
+          ],
+          "dependencies": [],
+          "done_definition": [
+            "The design phase can reference a bounded set of token-alignment targets across the songs surface."
+          ]
+        },
+        {
+          "id": "apply-songs-token-bindings",
+          "title": "Replace practical songs-surface literals with draft token bindings while preserving the established aesthetic",
+          "implementation_area": "render",
+          "acceptance_criteria": [
+            "The songs page, workspace, list, and score viewer use shared token variables for the repeated warm palette and typography roles where practical.",
+            "The existing warm restrained editorial feel remains intact.",
+            "No user-facing interaction or information architecture changes are introduced."
+          ],
+          "dependencies": [
+            "audit-songs-literals"
+          ],
+          "done_definition": [
+            "The songs surface relies less on one-off literals and more on shared token-backed values."
+          ]
+        },
+        {
+          "id": "verify-songs-token-alignment",
+          "title": "Validate the updated songs surface and record any residual mismatches",
+          "implementation_area": "verification",
+          "acceptance_criteria": [
+            "Relevant checks pass for the changed files when applicable.",
+            "The run artifacts validate and remaining token-alignment gaps are recorded explicitly."
+          ],
+          "dependencies": [
+            "apply-songs-token-bindings"
+          ],
+          "done_definition": [
+            "The run can complete without hidden follow-up work inside the same scope."
+          ]
+        }
+      ]
+    }
+  ],
+  "assumptions": [
+    "The songs workspace is the correct first product surface to normalize against the draft token baseline.",
+    "Arbitrary Tailwind values that reference CSS variables are an acceptable bridge before broader semantic utility extraction."
+  ],
+  "risks": [
+    "Some tuned local values may still need to remain local if direct token replacement would reduce legibility.",
+    "Color normalization may expose slight inconsistencies between the draft token palette and the current tuned songs surface."
+  ]
+}

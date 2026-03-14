@@ -16,39 +16,39 @@ export function SongsWorkspace() {
   const keyCenters = new Set(songs.map((song) => song.keyCenter)).size;
 
   return (
-    <section className="grid gap-5 xl:grid-cols-[23rem_minmax(0,1fr)]">
-      <aside className="space-y-4">
-        <div className="border-b border-stone-300/80 pb-5">
-          <p className="type-kicker text-stone-500">Library</p>
-          <h2 className="type-title mt-3 text-[1.75rem] text-stone-950">
+    <section className="grid gap-[var(--space-5)] pt-[var(--space-4)] xl:grid-cols-[23rem_minmax(0,1fr)]">
+      <aside className="space-y-[var(--space-4)]">
+        <div className="border-b border-[color:color-mix(in_srgb,var(--tone-border)_80%,transparent)] pb-[var(--space-5)]">
+          <p className="type-kicker text-[var(--tone-text-muted)]">Library</p>
+          <h2 className="type-title mt-3 text-[1.75rem] text-[var(--tone-text-primary)]">
             Copied charts
           </h2>
-          <p className="mt-2 text-sm leading-6 text-stone-600">
+          <p className="mt-2 text-sm leading-6 text-[var(--tone-text-secondary)]">
             Scan the stack on the left and read a structured lead sheet on the
             right without leaving the page.
           </p>
           <dl className="mt-5 grid grid-cols-2 gap-x-4 gap-y-3 text-sm">
-            <div className="border-l border-stone-300/80 pl-3">
-              <dt className="type-meta-label text-stone-500">Total charts</dt>
-              <dd className="mt-1 text-lg font-semibold text-stone-900">
+            <div className="border-l border-[color:color-mix(in_srgb,var(--tone-border)_80%,transparent)] pl-3">
+              <dt className="type-meta-label text-[var(--tone-text-muted)]">Total charts</dt>
+              <dd className="mt-1 text-lg font-semibold text-[var(--tone-text-primary)]">
                 {songs.length}
               </dd>
             </div>
-            <div className="border-l border-stone-300/80 pl-3">
-              <dt className="type-meta-label text-stone-500">Key centers</dt>
-              <dd className="mt-1 text-lg font-semibold text-stone-900">
+            <div className="border-l border-[color:color-mix(in_srgb,var(--tone-border)_80%,transparent)] pl-3">
+              <dt className="type-meta-label text-[var(--tone-text-muted)]">Key centers</dt>
+              <dd className="mt-1 text-lg font-semibold text-[var(--tone-text-primary)]">
                 {keyCenters}
               </dd>
             </div>
-            <div className="border-l border-stone-300/80 pl-3">
-              <dt className="type-meta-label text-stone-500">Systems</dt>
-              <dd className="mt-1 text-lg font-semibold text-stone-900">
+            <div className="border-l border-[color:color-mix(in_srgb,var(--tone-border)_80%,transparent)] pl-3">
+              <dt className="type-meta-label text-[var(--tone-text-muted)]">Systems</dt>
+              <dd className="mt-1 text-lg font-semibold text-[var(--tone-text-primary)]">
                 {totalSystems}
               </dd>
             </div>
-            <div className="border-l border-stone-300/80 pl-3">
-              <dt className="type-meta-label text-stone-500">Focus</dt>
-              <dd className="mt-1 text-lg font-semibold text-stone-900">
+            <div className="border-l border-[color:color-mix(in_srgb,var(--tone-border)_80%,transparent)] pl-3">
+              <dt className="type-meta-label text-[var(--tone-text-muted)]">Focus</dt>
+              <dd className="mt-1 text-lg font-semibold text-[var(--tone-text-primary)]">
                 Lead sheets
               </dd>
             </div>

@@ -1,0 +1,70 @@
+{
+  "approved": true,
+  "preview_evidence": [
+    "AGENTS.md",
+    "agents/design-agent.md",
+    "agents/verifier.md",
+    "specs/design-rule-engine/workflow-usage.md",
+    "docs/ai-team-mvp.md"
+  ],
+  "summary": {
+    "status": "pass_with_followups",
+    "rationale": "The workflow surfaces that agents actually read now describe browser-first verification for visual UI work with explicit before-edit and after-edit expectations."
+  },
+  "findings": [
+    {
+      "id": "policy-not-runtime-gate",
+      "severity": "low",
+      "layer": "ux_heuristic",
+      "message": "The browser-first rule is now explicit in policy and agent guidance, but the supervisor runtime does not yet hard-fail UI runs that lack browser evidence.",
+      "screen_id": "browser-first-ui-workflow",
+      "area": "workflow-enforcement",
+      "recommendation": "Consider adding a future supervisor or review-time gate if policy compliance proves inconsistent.",
+      "evidence": [
+        "AGENTS.md",
+        "agents/verifier.md"
+      ]
+    }
+  ],
+  "section_scores": [
+    {
+      "section_id": "hard_rules",
+      "score": 0.93,
+      "notes": [
+        "The browser-first rule is explicit in the main operating manual.",
+        "The workflow remains additive and compatible with the existing phase model."
+      ]
+    },
+    {
+      "section_id": "ux_heuristics",
+      "score": 0.94,
+      "notes": [
+        "The sequence for visual work is clearer and easier to follow.",
+        "The verifier guidance now makes screenshot-backed browser evidence explicit."
+      ]
+    },
+    {
+      "section_id": "aesthetic_judgment",
+      "score": 0.9,
+      "notes": [
+        "The workflow now better matches how visual quality should actually be judged in practice."
+      ]
+    }
+  ],
+  "profile_assessment": {
+    "selected_profile_id": "warm-restrained-editorial-utility",
+    "fit_score": 0.9,
+    "anti_patterns_detected": [],
+    "notes": [
+      "The workflow language favors direct operational clarity over vague design-process advice."
+    ]
+  },
+  "gates": {
+    "hard_rules_passed": true,
+    "needs_human_review": false,
+    "requires_refinement": false
+  },
+  "next_steps": [
+    "Consider runtime enforcement if browser-first verification is still skipped in practice."
+  ]
+}
