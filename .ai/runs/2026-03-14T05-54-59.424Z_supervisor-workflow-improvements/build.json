@@ -1,36 +1,30 @@
 {
   "completed_tasks": [
-    "capture-screenshot-action",
-    "lint-and-route-actions",
-    "design-review-evidence",
-    "visual-constraints-contract",
-    "refinement-state",
-    "workflow-docs-update"
+    "workflow-guidance-redundancy-rules",
+    "workflow-guidance-width-first-layouts",
+    "workflow-guidance-split-data-vs-render",
+    "verify-visual-checklist-schema"
   ],
   "changed_files": [
     "AGENTS.md",
-    "actions/README.md",
-    "actions/capture-screenshot",
-    "actions/route-and-validate",
-    "actions/run-lint-changed",
+    "agents/builder.md",
     "agents/design-agent.md",
-    "agents/design-critic.md",
+    "agents/planner.md",
+    "agents/verifier.md",
     "docs/ai-team-mvp.md",
-    "docs/ideas/supervisor-workflow-improvements.md",
-    "package.json",
-    "scripts/ai-team/schemas.mjs",
-    "scripts/ai-team/supervisor.mjs",
-    "specs/design-rule-engine/contexts/design-agent-context.template.json",
-    ".ai/schemas/design-review.schema.json",
-    ".ai/schemas/design.schema.json"
+    "specs/design-rule-engine/design-principles.md",
+    "specs/design-rule-engine/ux-heuristics.md",
+    ".ai/schemas/plan.schema.json",
+    ".ai/schemas/verify.schema.json",
+    ".ai/runs/2026-03-14T05-54-59.424Z_supervisor-workflow-improvements/design.json"
   ],
   "notes": [
-    "Added deterministic repo-local actions for screenshot capture, changed-file linting, and validate-plus-route.",
-    "Extended the supervisor protocol with revision tracking and a refine command that reopens downstream phases by clearing affected artifacts.",
-    "Made design review evidence and design visual constraints explicit schema requirements and updated agent/docs guidance to match."
+    "Added workflow guidance that design work should remove redundant local labels and fit dense layouts to the available pane before introducing forced width constraints.",
+    "Updated planner and builder prompts so tasks that change both data shape and rendering are expected to be split and tracked separately.",
+    "Extended verify outputs with an optional visual_checks contract so screenshot-backed layout checks can be recorded alongside command checks."
   ],
   "open_issues": [
-    "Historical design-review artifacts created before preview_evidence was required are not automatically backfilled.",
-    "The new shell wrappers assume git and agent-browser are available in the local environment."
+    "Existing historical plan artifacts do not use implementation_area yet because the new field is additive rather than required.",
+    "Existing verify artifacts do not all include visual_checks because the checklist requirement is conditional on UI-affecting work."
   ]
 }

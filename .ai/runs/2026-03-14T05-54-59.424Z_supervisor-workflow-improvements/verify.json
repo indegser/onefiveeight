@@ -1,24 +1,26 @@
 {
   "checks": [
     {
-      "name": "capture-screenshot-action",
+      "name": "validate-workflow-run",
       "status": "passed",
-      "details": "./actions/capture-screenshot http://localhost:3000/songs .ai/runs/2026-03-14T05-54-59.424Z_supervisor-workflow-improvements/evidence/songs-proof.png"
+      "details": "npm run ai:validate -- --run-id 2026-03-14T05-54-59.424Z_supervisor-workflow-improvements passed after the schema and prompt updates."
     },
     {
-      "name": "run-lint-changed-action",
+      "name": "route-workflow-run",
       "status": "passed",
-      "details": "./actions/run-lint-changed completed successfully against changed TypeScript and JavaScript files."
+      "details": "./actions/route-and-validate --run-id 2026-03-14T05-54-59.424Z_supervisor-workflow-improvements returned the run to done state after the refinement."
+    }
+  ],
+  "visual_checks": [
+    {
+      "name": "redundancy-and-width-guidance",
+      "status": "passed",
+      "details": "Prompt and rule updates now explicitly call out redundant local labels and pane-width fit as first-order visual checks for dense layouts."
     },
     {
-      "name": "refinement-reopen",
+      "name": "verify-checklist-contract",
       "status": "passed",
-      "details": "npm run ai:refine -- builder \"Smoke test refinement workflow for supervisor improvements\" incremented run revision to 2 and reopened the run in build phase."
-    },
-    {
-      "name": "route-and-validate-action",
-      "status": "passed",
-      "details": "./actions/route-and-validate completed successfully and returned the workflow improvement run to done status."
+      "details": "verify.schema.json now supports structured visual_checks so UI verification can record representative layout-row observations instead of relying on free-form notes only."
     }
   ],
   "passed": true,

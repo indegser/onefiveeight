@@ -58,6 +58,87 @@
     {
       "at": "2026-03-14T05:54:59.426Z",
       "event": "Supervisor routed to none"
+    },
+    {
+      "at": "2026-03-14T07:55:13.537Z",
+      "event": "Refinement requested for builder: songs score viewer chord cells use too much vertical and horizontal space"
+    },
+    {
+      "at": "2026-03-14T07:57:09.410Z",
+      "event": "Supervisor routed to none"
+    },
+    {
+      "at": "2026-03-14T08:01:29.787Z",
+      "event": "Refinement requested for builder: normalize songs chord notation and improve multi-chord readability without changing the overall songs workflow"
+    },
+    {
+      "at": "2026-03-14T08:03:08.565Z",
+      "event": "Supervisor routed to none"
+    },
+    {
+      "at": "2026-03-14T08:16:38.234Z",
+      "event": "Refinement requested for builder: fix songs chord layout regression introduced by chord notation formatting"
+    },
+    {
+      "at": "2026-03-14T08:17:49.759Z",
+      "event": "Supervisor routed to none"
+    },
+    {
+      "at": "2026-03-14T08:18:18.213Z",
+      "event": "Refinement requested for builder: fix songs system grid width so four-bar rows fit without awkward clipping"
+    },
+    {
+      "at": "2026-03-14T08:19:10.790Z",
+      "event": "Supervisor routed to none"
+    },
+    {
+      "at": "2026-03-14T08:20:42.034Z",
+      "event": "Refinement requested for builder: remove duplicate section and system labels that compress the songs measure grid"
+    },
+    {
+      "at": "2026-03-14T08:21:27.390Z",
+      "event": "Supervisor routed to none"
+    },
+    {
+      "at": "2026-03-14T08:21:58.161Z",
+      "event": "Refinement requested for builder: remove all-caps labels from songs UI and switch to normal title case metadata labels"
+    },
+    {
+      "at": "2026-03-14T08:23:17.826Z",
+      "event": "Supervisor routed to none"
+    }
+  ],
+  "revision": 7,
+  "refinement_notes": [
+    {
+      "at": "2026-03-14T07:55:13.537Z",
+      "note": "songs score viewer chord cells use too much vertical and horizontal space",
+      "target_agent": "builder"
+    },
+    {
+      "at": "2026-03-14T08:01:29.787Z",
+      "note": "normalize songs chord notation and improve multi-chord readability without changing the overall songs workflow",
+      "target_agent": "builder"
+    },
+    {
+      "at": "2026-03-14T08:16:38.233Z",
+      "note": "fix songs chord layout regression introduced by chord notation formatting",
+      "target_agent": "builder"
+    },
+    {
+      "at": "2026-03-14T08:18:18.212Z",
+      "note": "fix songs system grid width so four-bar rows fit without awkward clipping",
+      "target_agent": "builder"
+    },
+    {
+      "at": "2026-03-14T08:20:42.033Z",
+      "note": "remove duplicate section and system labels that compress the songs measure grid",
+      "target_agent": "builder"
+    },
+    {
+      "at": "2026-03-14T08:21:58.160Z",
+      "note": "remove all-caps labels from songs UI and switch to normal title case metadata labels",
+      "target_agent": "builder"
     }
   ]
 }

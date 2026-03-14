@@ -5,55 +5,39 @@
   ],
   "summary": {
     "status": "pass_with_followups",
-    "rationale": "The workflow now captures browser evidence and records visual constraints structurally, which makes design refinement more defensible and repeatable."
+    "rationale": "The workflow now captures the specific layout failure modes discovered during the songs work, especially redundant labels, width-first fit, and screenshot-backed row checks."
   },
-  "findings": [
-    {
-      "id": "legacy-review-backfill",
-      "severity": "low",
-      "layer": "ux_heuristic",
-      "message": "Older runs created before preview evidence became required will not validate against the new design-review contract until they are refreshed or excluded from active validation.",
-      "area": "migration",
-      "recommendation": "Backfill preview_evidence for important historical runs or document that only active runs are expected to meet the new contract.",
-      "evidence": [
-        "The new schema requires preview_evidence with at least one entry.",
-        "Historical runs were created before this field existed."
-      ]
-    }
-  ],
+  "findings": [],
   "section_scores": [
     {
       "section_id": "hard_rules",
       "score": 0.94,
       "notes": [
-        "Design review evidence is now a mechanically enforced requirement.",
-        "Visual constraints are now required by the design artifact schema."
+        "The workflow contract now carries visual verification structure instead of only prose guidance."
       ]
     },
     {
       "section_id": "ux_heuristics",
-      "score": 0.92,
+      "score": 0.95,
       "notes": [
-        "Common repeated workflow steps now have deterministic wrappers.",
-        "The refine command makes iteration state easier to follow."
+        "The updated prompts direct design and verification attention to real layout regressions seen in dense operator surfaces.",
+        "Planner and Builder guidance reduce the chance that data-shape and render changes get entangled in one opaque task."
       ]
     },
     {
       "section_id": "aesthetic_judgment",
-      "score": 0.88,
+      "score": 0.9,
       "notes": [
-        "The workflow remains lightweight and additive rather than over-orchestrated.",
-        "The updated contracts reduce ambiguity without adding excessive ceremony."
+        "The workflow remains lightweight while becoming more specific about practical visual quality."
       ]
     }
   ],
   "profile_assessment": {
     "selected_profile_id": "warm-restrained-editorial-utility",
-    "fit_score": 0.86,
+    "fit_score": 0.89,
     "anti_patterns_detected": [],
     "notes": [
-      "The workflow improvements prefer quiet, structured constraints over bulky new systems.",
-      "The design evidence requirement is more concrete than the previous prose-only rule."
+      "The rules prefer calm, width-aware, information-dense layouts over decorative spacing fixes."
     ]
   },
   "gates": {
@@ -62,7 +46,6 @@
     "requires_refinement": false
   },
   "next_steps": [
-    "Consider adding optional migration helpers for historical runs if old artifacts need to be revalidated frequently.",
-    "If screenshot evidence also needs to be visible in verify outputs later, add a mirrored field there instead of duplicating ad hoc notes."
+    "If the verify checklist becomes common across projects, consider promoting the representative-row checks into a reusable template or action."
   ]
 }

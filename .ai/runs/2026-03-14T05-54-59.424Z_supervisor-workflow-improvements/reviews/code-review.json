@@ -2,7 +2,6 @@
   "approved": true,
   "findings": [],
   "next_steps": [
-    "If action wrappers become more complex, move them from shell scripts to small Node entrypoints for easier cross-platform handling.",
-    "Consider narrowing historical-run compatibility expectations explicitly in docs to reduce migration ambiguity."
+    "If implementation_area becomes heavily used, consider validating common dependency patterns between data and render tasks in a later schema revision."
   ]
 }

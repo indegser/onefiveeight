@@ -46,6 +46,194 @@ export function getSongSystemCount(song: Song) {
 
 export const songs: Song[] = [
   {
+    id: "gieog-ui-seupjak",
+    title: "기억의 습작",
+    artist: "전람회",
+    source: "Lead-sheet draft from photographed chart",
+    keyCenter: "Ambiguous / review pending",
+    feel: "Ballad",
+    meter: "Not explicitly marked",
+    summary:
+      "Provisional chart seeded from the photographed lead sheet and kept intentionally conservative where the handwriting or jump cues remain unresolved.",
+    chartNotes: [
+      "This entry is a draft seeded from the current lead-sheet extraction run.",
+      "Some bars contain multiple visible chord symbols but the exact beat split is not yet verified.",
+      "Ending jump text and one lower-system chord remain ambiguous in the source image.",
+    ],
+    sections: [
+      {
+        id: "verse",
+        title: "Verse",
+        systems: [
+          {
+            id: "verse-a",
+            label: "Verse",
+            jump: "Coda",
+            measures: [
+              { id: "v1", chord: "Cadd9" },
+              { id: "v2", chord: "Em7/Bb" },
+              { id: "v3", chord: "Absus4" },
+              { id: "v4", chord: "A7" },
+            ],
+          },
+          {
+            id: "verse-b",
+            measures: [
+              { id: "v5", chord: "Em/Ab" },
+              { id: "v6", chord: "C/G" },
+              { id: "v7", chord: "D/F#" },
+              { id: "v8", chord: "Gsus4" },
+            ],
+          },
+        ],
+      },
+      {
+        id: "section-1",
+        title: "Section 1",
+        systems: [
+          {
+            id: "section-1-a",
+            measures: [
+              { id: "s1", chord: "Cmaj7" },
+              { id: "s2", chord: "Fmaj7" },
+              { id: "s3", chord: "Cmaj7" },
+              { id: "s4", chord: "Fmaj7" },
+            ],
+          },
+        ],
+      },
+      {
+        id: "section-2",
+        title: "Section 2",
+        annotation: "Last two bars need review",
+        systems: [
+          {
+            id: "section-2-a",
+            measures: [
+              { id: "s5", chord: "Cmaj7" },
+              { id: "s6", chord: "Bbsus4" },
+              { id: "s7", chord: "Ebmaj7" },
+              { id: "s8", chord: "Db -> Ebsus4" },
+            ],
+          },
+        ],
+      },
+      {
+        id: "chorus-a",
+        title: "Chorus",
+        annotation:
+          "Combined chord strings reflect unresolved intra-bar splits",
+        systems: [
+          {
+            id: "chorus-a1",
+            jump: "Segno",
+            measures: [
+              { id: "c1", chord: "Abmaj7 Gm7" },
+              { id: "c2", chord: "Fm7 Bb7" },
+              { id: "c3", chord: "Gm7" },
+              { id: "c4", chord: "Cm7 Em7/Bb" },
+            ],
+          },
+          {
+            id: "chorus-a2",
+            measures: [
+              { id: "c5", chord: "F/A" },
+              { id: "c6", chord: "Fm7" },
+              { id: "c7", chord: "Bbsus4" },
+              { id: "c8", chord: "Bb9" },
+            ],
+          },
+          {
+            id: "chorus-a3",
+            measures: [
+              { id: "c9", chord: "Ebmaj7 Abmaj7" },
+              { id: "c10", chord: "Gm7 C7(b9)" },
+              { id: "c11", chord: "Fm7 Bb7" },
+              { id: "c12", chord: "Gm7 Cm7/Bb" },
+            ],
+          },
+          {
+            id: "chorus-a4",
+            ending: "Fade out",
+            measures: [
+              { id: "c13", chord: "F/A" },
+              { id: "c14", chord: "Abm6" },
+              { id: "c15", chord: "Eb/G" },
+              { id: "c16", chord: "Fm7 Bb7" },
+            ],
+          },
+        ],
+      },
+      {
+        id: "interlude",
+        title: "Interlude",
+        systems: [
+          {
+            id: "interlude-a",
+            measures: [
+              { id: "i1", chord: "G" },
+              { id: "i2", chord: "D/F#" },
+              { id: "i3", chord: "Em7" },
+              { id: "i4", chord: "G/D" },
+            ],
+          },
+        ],
+      },
+      {
+        id: "ending-turn",
+        title: "Ending Turn",
+        annotation: "Ending cadence remains partially provisional",
+        systems: [
+          {
+            id: "ending-turn-a",
+            measures: [
+              { id: "e1", chord: "Cmaj7" },
+              { id: "e2", chord: "G/B" },
+              { id: "e3", chord: "Am7" },
+              { id: "e4", chord: "D Bbsus4" },
+            ],
+          },
+          {
+            id: "ending-turn-b",
+            jump: "D.S.",
+            measures: [
+              { id: "e5", chord: "Ebmaj7" },
+              { id: "e6", chord: "Db -> Ebsus4" },
+              { id: "e7", chord: "Bbsus4" },
+              { id: "e8", chord: "G7" },
+            ],
+          },
+        ],
+      },
+      {
+        id: "chorus-b",
+        title: "Chorus Reprise",
+        annotation: "Lower ending system remains provisional",
+        systems: [
+          {
+            id: "chorus-b1",
+            measures: [
+              { id: "r1", chord: "Cmaj7 Emaj7" },
+              { id: "r2", chord: "Em7 A7" },
+              { id: "r3", chord: "Dm7 G" },
+              { id: "r4", chord: "Em7 Am7/G" },
+            ],
+          },
+          {
+            id: "chorus-b2",
+            jump: "D.S.",
+            measures: [
+              { id: "r5", chord: "D/F#" },
+              { id: "r6", chord: "Fmb" },
+              { id: "r7", chord: "C/E" },
+              { id: "r8", chord: "Dm7 Bbsus4" },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
     id: "dont-want-to-miss-a-thing",
     title: "I Don't Want to Miss a Thing",
     artist: "Aerosmith",

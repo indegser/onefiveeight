@@ -91,6 +91,8 @@
   "visual_constraints": [
     "Favor explicit contract fields over interpretive prose when a workflow expectation needs to be enforced repeatedly.",
     "Prefer lightweight wrappers and metadata over heavy orchestration for this iteration.",
-    "Keep documentation terse and operational rather than aspirational."
+    "Keep documentation terse and operational rather than aspirational.",
+    "Make dense-surface review rules check for redundant local labels and pane-width fit before spacing tweaks.",
+    "Keep verification guidance concrete enough that representative layout rows can be checked mechanically."
   ]
 }

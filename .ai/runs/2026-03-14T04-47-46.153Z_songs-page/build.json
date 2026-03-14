@@ -3,24 +3,29 @@
     "route-and-shell",
     "selection-and-empty-state",
     "score-structure",
-    "design-engine-alignment"
+    "design-engine-alignment",
+    "score-density-compaction",
+    "chord-notation-normalization",
+    "chord-layout-regression-fix",
+    "system-grid-width-fix",
+    "duplicate-system-label-fix",
+    "remove-all-caps-labels"
   ],
   "changed_files": [
     "src/app/songs/page.tsx",
     "src/app/songs/songs-workspace.tsx",
     "src/app/songs/song-list.tsx",
-    "src/app/songs/score-viewer.tsx"
+    "src/app/songs/score-viewer.tsx",
+    "src/lib/songs.ts"
   ],
   "notes": [
-    "Updated the songs workspace to use a warmer muted palette and quieter material treatment aligned with the design rule engine.",
-    "Compressed the page header so the working surface remains dominant over framing copy.",
-    "Strengthened list selection hierarchy and score metadata grouping while preserving the existing local data model.",
-    "Reduced corner radii and removed pill-heavy treatments so the workspace reads as more restrained and editorial, not soft SaaS.",
-    "Replaced several nested card treatments with divider-led grouping so the surface feels flatter and more controlled.",
-    "Refined the header and empty detail state using browser capture evidence so the first view feels intentional rather than oversized or unfinished."
+    "Removed all-caps treatment across the songs UI and switched metadata labels to normal title-case rendering.",
+    "Preserved hierarchy by keeping lighter tracking on labels instead of relying on forced uppercase.",
+    "Retained the earlier score density, duplicate-label cleanup, and grid-width fixes."
   ],
   "open_issues": [
-    "The MVP still relies on static local song data, so asynchronous loading and fetch error states are not yet implemented.",
-    "No screenshot capture was added to the supervisor flow, so design review evidence remains code-based."
+    "Chord strings that contain multiple symbols inside a single measure still rely on free-form text, so very dense charts may eventually need beat-level notation treatment.",
+    "At least one provisional source value remains ambiguous, including the existing `Fmb` chord spelling in the seeded chart data.",
+    "The songs workspace still uses local static data only, so async loading and error states remain intentionally deferred."
   ]
 }

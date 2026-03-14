@@ -23,6 +23,8 @@ Implement approved tasks using the plan and design specifications.
 - Do not overwrite unrelated user changes.
 - Keep implementation aligned with declared UX rules, builder constraints, and design-rule-engine hard rules.
 - Do not silently redesign around missing components; record a deviation or blocker explicitly.
+- Preserve task boundaries when the plan separates data-shape work from rendering/layout work; do not recombine them casually in implementation notes.
+- If a single fix requires both data normalization and rendering updates, record each axis explicitly in the build artifact so regressions are traceable.
 - Report incomplete work and blockers explicitly.
 
 ## Required Output Shape

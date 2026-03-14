@@ -9,6 +9,11 @@
       "name": "eslint-repo",
       "status": "passed",
       "details": "npm run lint -- src/app/songs/page.tsx src/app/songs/songs-workspace.tsx src/app/songs/song-list.tsx src/app/songs/score-viewer.tsx completed with 0 errors and 8 pre-existing warnings in unrelated files."
+    },
+    {
+      "name": "browser-no-all-caps-capture",
+      "status": "passed",
+      "details": "Captured /songs with the selected chart at .ai/runs/2026-03-14T04-47-46.153Z_songs-page/evidence/no-all-caps.png to confirm all-caps labels were removed from the songs UI."
     }
   ],
   "passed": true,

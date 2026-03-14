@@ -101,5 +101,11 @@
         "Quiet warm palette and restrained surface treatment"
       ]
     }
+  ],
+  "visual_constraints": [
+    "Keep chord systems denser than the surrounding metadata so the score area prioritizes reading efficiency over decorative whitespace.",
+    "Use compact measure boxes and small directive tags before adding another visual container or card treatment.",
+    "Preserve enough contrast and type weight for quick chord scanning even when vertical padding is reduced.",
+    "When a single bar contains multiple chord events or a chord transition, present the notation as readable musical guidance rather than one collapsed raw string."
   ]
 }

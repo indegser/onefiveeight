@@ -29,6 +29,8 @@ Define screen structure, interaction model, component choices, and UX guardrails
 - Do not freeze unresolved library, token, or aesthetic choices unless already approved.
 - Identify human approval checkpoints for brand-critical surfaces.
 - Output builder constraints, review targets, and explicit visual constraints, not just screen descriptions.
+- Prevent redundant information from rendering twice in the same local context when one label or heading already establishes the meaning.
+- For dense working surfaces, prioritize fitting the layout to the available pane width before introducing forced minimum widths or horizontal overflow.
 
 ## Required Output Shape
 

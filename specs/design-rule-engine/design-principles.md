@@ -16,6 +16,8 @@ This system is not a design generator. It is a shared layer for guidance, constr
 - Destructive actions must be spatially and visually differentiated, confirmable, and recoverable when possible.
 - Favor scanability, hierarchy, and workflow throughput over ornamental novelty for operator-facing surfaces.
 - Treat aesthetic review as comparative judgment against profile references and anti-patterns, not as absolute truth.
+- Remove duplicated local labels or headings when they do not add new information and only consume working space.
+- Prefer width-aware layouts that fit the intended working pane before introducing forced minimum widths or overflow.
 
 ## Decision Boundaries
 

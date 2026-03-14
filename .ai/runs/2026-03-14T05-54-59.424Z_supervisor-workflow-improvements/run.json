@@ -54,13 +54,26 @@
     {
       "at": "2026-03-14T06:01:33.855Z",
       "event": "Supervisor routed to none"
+    },
+    {
+      "at": "2026-03-14T08:26:05.218Z",
+      "event": "Refinement requested for builder: add workflow rules for redundant-label prevention width-first layouts split data-vs-render build tasks and visual verification checklist"
+    },
+    {
+      "at": "2026-03-14T08:27:37.022Z",
+      "event": "Supervisor routed to none"
     }
   ],
-  "revision": 2,
+  "revision": 3,
   "refinement_notes": [
     {
       "at": "2026-03-14T05:58:00.615Z",
       "note": "Smoke test refinement workflow for supervisor improvements",
+      "target_agent": "builder"
+    },
+    {
+      "at": "2026-03-14T08:26:05.218Z",
+      "note": "add workflow rules for redundant-label prevention width-first layouts split data-vs-render build tasks and visual verification checklist",
       "target_agent": "builder"
     }
   ]
