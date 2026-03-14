@@ -9,6 +9,8 @@
 ## Global Protocol
 
 - Shared state is the source of truth. Agents must read from and write to the active run directory under `./.ai/runs/<run_id>`.
+- Supervisor commands that operate on an existing run must require an explicit `run_id`; do not rely on any repo-global active-run pointer.
+- Repo-local helper scripts and action wrappers must also require an explicit `run_id`; do not infer a target run from global or recent state.
 - Agent outputs must be valid JSON that conforms to a schema in `./.ai/schemas`.
 - The system uses a strict phase loop: `plan -> design -> build -> verify -> review -> refine/done`.
 - The `Supervisor` is the only agent allowed to route work to another agent.
@@ -27,7 +29,6 @@
 
 ## Repository Locations
 
-- Active run pointer: `./.ai/state/current-run.json`
 - Per-run state: `./.ai/runs/<run_id>`
 - Schemas: `./.ai/schemas`
 - Agent prompts: `./agents`

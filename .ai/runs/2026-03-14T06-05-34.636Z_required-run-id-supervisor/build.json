@@ -1,0 +1,29 @@
+{
+  "completed_tasks": [
+    "remove-global-pointer",
+    "require-run-id-cli",
+    "update-docs"
+  ],
+  "changed_files": [
+    ".ai/state/current-run.json",
+    "AGENTS.md",
+    "actions/README.md",
+    "actions/capture-screenshot",
+    "actions/route-and-validate",
+    "actions/run-lint-changed",
+    "agents/supervisor.md",
+    "docs/ai-team-mvp.md",
+    "docs/ideas/required-run-id-supervisor.md",
+    "scripts/ai-team/shared-state.mjs",
+    "scripts/ai-team/supervisor.mjs"
+  ],
+  "notes": [
+    "Removed shared-state helpers for current-run.json and deleted the tracked file.",
+    "Updated supervisor CLI parsing so route, work, and validate require --run-id.",
+    "Updated docs and instructions to describe explicit run targeting instead of a repo-global active run.",
+    "Added repo-local action wrappers that also require --run-id and refuse to act on a missing run directory."
+  ],
+  "open_issues": [
+    "Any local aliases or wrapper scripts outside the repo that assumed implicit run targeting will need manual updates."
+  ]
+}

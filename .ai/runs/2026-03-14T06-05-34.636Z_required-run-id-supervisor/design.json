@@ -1,0 +1,85 @@
+{
+  "screens": [
+    {
+      "id": "supervisor-cli-contract",
+      "name": "Explicit run targeting contract",
+      "purpose": "Ensure supervisor commands act only on a named run and never on hidden global state.",
+      "screen_type": "settings",
+      "primary_action": "Invoke a supervisor command with a required run id",
+      "states": ["success:run-id-provided", "error:run-id-missing"]
+    }
+  ],
+  "ux_rules": [
+    "Prefer explicit run selection over convenience shortcuts when ambiguity could corrupt workflow state.",
+    "Make missing-run errors actionable by showing the exact expected --run-id usage.",
+    "Keep init independent from later command execution so run creation and run selection stay separate concerns."
+  ],
+  "component_map": [
+    {
+      "screen_id": "supervisor-cli-contract",
+      "components": [
+        "CLI argument parser",
+        "shared-state per-run helpers",
+        "usage documentation",
+        "supervisor agent instructions",
+        "run-id-based action wrappers"
+      ]
+    }
+  ],
+  "human_checkpoints": [],
+  "design_rule_engine": {
+    "profile_id": "warm-restrained-editorial-utility",
+    "hard_rule_sets": ["layout-rules"],
+    "heuristic_sets": ["ux-heuristics"],
+    "allowed_pattern_sets": ["core-allowed-patterns"],
+    "banned_pattern_sets": ["core-banned-patterns"],
+    "review_rubric_id": "design-review-rubric"
+  },
+  "screen_contexts": [
+    {
+      "screen_id": "supervisor-cli-contract",
+      "screen_type": "settings",
+      "layout_intent": "Represent supervisor targeting as explicit command input rather than global repo state.",
+      "interaction_risks": [
+        "A missing run id may still lead to ambiguous usage if error messaging is weak.",
+        "Documentation may lag behind the CLI contract and cause user confusion."
+      ],
+      "required_states": ["success:run-id-provided", "error:run-id-missing"],
+      "notes": [
+        "This run targets supervisor protocol behavior, not a user-facing product UI."
+      ]
+    }
+  ],
+  "builder_constraints": [
+    {
+      "screen_id": "supervisor-cli-contract",
+      "constraints": [
+        "Do not keep any fallback path that resolves an existing run without an explicit run id.",
+        "Update documentation and agent instructions in the same change as the CLI contract.",
+        "Any repo-local action wrapper that targets workflow state must require --run-id and verify that the target run directory exists."
+      ],
+      "open_decisions": [
+        "Whether future helper actions should also require run ids positionally or via named flags remains open."
+      ]
+    }
+  ],
+  "review_targets": [
+    {
+      "screen_id": "supervisor-cli-contract",
+      "critical_judgments": [
+        "The new contract should eliminate repo-global run ambiguity.",
+        "The CLI errors should remain clear and copy-pasteable."
+      ],
+      "must_not_regress": [
+        "Run initialization",
+        "Per-run artifact layout",
+        "Schema validation behavior"
+      ]
+    }
+  ],
+  "visual_constraints": [
+    "Favor explicit command targeting over convenience shortcuts that hide state.",
+    "Keep helper actions deterministic and scoped to a single named run.",
+    "Use terse operational language in errors and docs so the correct next command is obvious."
+  ]
+}

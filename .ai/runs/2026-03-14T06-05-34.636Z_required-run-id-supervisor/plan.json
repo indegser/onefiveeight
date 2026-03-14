@@ -1,0 +1,63 @@
+{
+  "epics": [
+    {
+      "id": "explicit-run-targeting",
+      "title": "Require explicit run targeting for supervisor commands",
+      "tasks": [
+        {
+          "id": "remove-global-pointer",
+          "title": "Remove current-run pointer dependency from shared state",
+          "acceptance_criteria": [
+            "Supervisor runtime no longer reads or writes .ai/state/current-run.json.",
+            "Existing run state remains addressed through .ai/runs/<run_id> directories.",
+            "The repository no longer documents a global active-run pointer."
+          ],
+          "dependencies": [],
+          "done_definition": [
+            "shared-state exports only per-run filesystem helpers."
+          ]
+        },
+        {
+          "id": "require-run-id-cli",
+          "title": "Require --run-id for route, work, and validate",
+          "acceptance_criteria": [
+            "Supervisor commands that operate on an existing run fail without an explicit --run-id argument.",
+            "work packages and routing still function correctly when --run-id is provided.",
+            "Init remains responsible only for creating a new run and printing its run id."
+          ],
+          "dependencies": ["remove-global-pointer"],
+          "done_definition": [
+            "The CLI cannot accidentally operate on an implicit repo-global run."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "docs-and-protocol-update",
+      "title": "Align docs and agent instructions with explicit run targeting",
+      "tasks": [
+        {
+          "id": "update-docs",
+          "title": "Update workflow documentation and supervisor instructions",
+          "acceptance_criteria": [
+            "Docs show --run-id examples for all existing-run supervisor commands.",
+            "Agent instructions stop referring to an active-run pointer.",
+            "Repository operating rules state that existing-run commands must be explicit."
+          ],
+          "dependencies": ["require-run-id-cli"],
+          "done_definition": [
+            "Users can follow the docs without relying on hidden state."
+          ]
+        }
+      ]
+    }
+  ],
+  "assumptions": [
+    "It is acceptable for users or tools to capture the run id from ai:init output and pass it explicitly afterwards.",
+    "The existing per-run artifact layout under .ai/runs is sufficient and does not need to change for this improvement."
+  ],
+  "risks": [
+    "Removing implicit run selection makes commands slightly more verbose, so documentation clarity matters more.",
+    "Any local helper scripts or habits that depended on current-run.json will break until updated."
+  ]
+}

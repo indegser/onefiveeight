@@ -13,10 +13,14 @@ Suggested actions:
 - `run-lint-changed`
 - `route-and-validate`
 
+Current rule:
+
+- If an action operates on a run or writes run-scoped output, it must require `--run-id <run_id>`.
+
 Current wrappers:
 
-- `actions/capture-screenshot <url> <output-path> [load-state]`
-- `actions/run-lint-changed [file ...]`
-- `actions/route-and-validate`
+- `actions/capture-screenshot --run-id <run_id> <url> [output-path]`
+- `actions/run-lint-changed --run-id <run_id> [file ...]`
+- `actions/route-and-validate --run-id <run_id>`
 
-In the MVP, the supervisor provides protocol and routing. Action wrappers should stay deterministic, repo-local, and easy to inspect.
+In the MVP, the supervisor provides protocol and routing. Action wrappers should stay deterministic, repo-local, easy to inspect, and explicit about which run they target.

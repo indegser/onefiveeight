@@ -7,13 +7,11 @@ import { schemas } from "./schemas.mjs";
 import {
   ensureStateDirs,
   fileExists,
-  getCurrentRunId,
   getRunDir,
   getStateFiles,
   makeRunId,
   maybeReadJson,
   readJson,
-  setCurrentRun,
   timestamp,
   writeJson,
 } from "./shared-state.mjs";
@@ -21,21 +19,23 @@ import {
 const [, , command, ...restArgs] = process.argv;
 
 async function main() {
+  const args = parseCliArgs(restArgs);
+
   switch (command) {
     case "init":
-      await initRun(restArgs[0]);
+      await initRun(args.positionals[0]);
       return;
     case "refine":
-      await refineRun(restArgs);
+      await refineRun(args.positionals, args.options.runId);
       return;
     case "route":
-      await routeRun();
+      await routeRun(args.options.runId);
       return;
     case "work":
-      await printWorkPackage(restArgs[0]);
+      await printWorkPackage(args.positionals[0], args.options.runId);
       return;
     case "validate":
-      await validateState();
+      await validateState(args.options.runId);
       return;
     default:
       printUsage();
@@ -45,10 +45,10 @@ async function main() {
 function printUsage() {
   console.log(`Usage:
   npm run ai:init -- <idea-file>
-  npm run ai:refine -- [agent] <note>
-  npm run ai:route
-  npm run ai:work -- <agent>
-  npm run ai:validate`);
+  npm run ai:refine -- --run-id <run_id> [agent] <note>
+  npm run ai:route -- --run-id <run_id>
+  npm run ai:work -- <agent> --run-id <run_id>
+  npm run ai:validate -- --run-id <run_id>`);
 }
 
 async function initRun(ideaFileArg) {
@@ -114,14 +114,13 @@ async function initRun(ideaFileArg) {
   await writeJson(stateFiles.run, run);
   schemas.memory.parse(memory);
   await writeJson(stateFiles.memory, memory);
-  await setCurrentRun(runId);
 
   console.log(`Initialized run ${run.run_id}`);
   console.log(`Next agent: ${run.next_agent}`);
   console.log(`Run state: ${stateFiles.run}`);
 }
 
-async function refineRun(args) {
+async function refineRun(positionals, runId) {
   const allowedAgents = new Set([
     "planner",
     "design-agent",
@@ -130,19 +129,19 @@ async function refineRun(args) {
     "design-critic",
     "code-critic",
   ]);
-  const firstArg = args[0];
+  const firstArg = positionals[0];
   const targetAgent = allowedAgents.has(firstArg) ? firstArg : "builder";
   const note = allowedAgents.has(firstArg)
-    ? args.slice(1).join(" ").trim()
-    : args.join(" ").trim();
+    ? positionals.slice(1).join(" ").trim()
+    : positionals.join(" ").trim();
 
   if (!note) {
     throw new Error(
-      "Missing refinement note. Example: npm run ai:refine -- builder tighten screenshot evidence flow",
+      "Missing refinement note. Example: npm run ai:refine -- --run-id <run_id> builder tighten screenshot evidence flow",
     );
   }
 
-  const { run, stateFiles } = await getRunContext();
+  const { run, stateFiles } = await getRunContext(runId);
   const filesToClear = getArtifactsToClearForAgent(targetAgent, stateFiles);
 
   for (const filePath of filesToClear) {
@@ -180,8 +179,8 @@ async function refineRun(args) {
   console.log(JSON.stringify(nextRun, null, 2));
 }
 
-async function routeRun() {
-  const { run, stateFiles } = await getRunContext();
+async function routeRun(runId) {
+  const { run, stateFiles } = await getRunContext(runId);
   const plan = await maybeReadJson(stateFiles.plan);
   const design = await maybeReadJson(stateFiles.design);
   const build = await maybeReadJson(stateFiles.build);
@@ -255,12 +254,14 @@ async function routeRun() {
   console.log(JSON.stringify(nextRun, null, 2));
 }
 
-async function printWorkPackage(agent) {
+async function printWorkPackage(agent, runId) {
   if (!agent) {
-    throw new Error("Missing agent name. Example: npm run ai:work -- planner");
+    throw new Error(
+      "Missing agent name. Example: npm run ai:work -- planner --run-id <run_id>",
+    );
   }
 
-  const { run } = await getRunContext();
+  const { run } = await getRunContext(runId);
   const promptPath = path.join(process.cwd(), "agents", `${agent}.md`);
 
   if (!(await fileExists(promptPath))) {
@@ -282,9 +283,9 @@ async function printWorkPackage(agent) {
   console.log(JSON.stringify(payload, null, 2));
 }
 
-async function validateState() {
-  const runId = await getRequiredRunId();
-  const stateFiles = getStateFiles(runId);
+async function validateState(runId) {
+  const requiredRunId = getRequiredRunId(runId);
+  const stateFiles = getStateFiles(requiredRunId);
   const validations = [];
 
   for (const [key, filePath] of Object.entries(stateFiles)) {
@@ -300,7 +301,7 @@ async function validateState() {
   }
 
   console.log(
-    JSON.stringify({ ok: true, run_id: runId, validations }, null, 2),
+    JSON.stringify({ ok: true, run_id: requiredRunId, validations }, null, 2),
   );
 }
 
@@ -361,20 +362,18 @@ async function collectRelevantState(agent, runId) {
   return state;
 }
 
-async function getRequiredRunId() {
-  const runId = await getCurrentRunId();
-
+function getRequiredRunId(runId) {
   if (!runId) {
     throw new Error(
-      "No active run found. Initialize one with: npm run ai:init -- <idea-file>",
+      "Missing required --run-id. Example: npm run ai:route -- --run-id <run_id>",
     );
   }
 
   return runId;
 }
 
-async function getRunContext() {
-  const runId = await getRequiredRunId();
+async function getRunContext(runIdArg) {
+  const runId = getRequiredRunId(runIdArg);
   const run = await requireState("run", runId);
   const stateFiles = getStateFiles(runId);
 
@@ -451,6 +450,31 @@ function getArtifactsToClearForAgent(agent, stateFiles) {
     default:
       return [];
   }
+}
+
+function parseCliArgs(args) {
+  const options = {};
+  const positionals = [];
+
+  for (let index = 0; index < args.length; index += 1) {
+    const arg = args[index];
+
+    if (arg === "--run-id") {
+      const value = args[index + 1];
+
+      if (!value) {
+        throw new Error("Missing value for --run-id");
+      }
+
+      options.runId = value;
+      index += 1;
+      continue;
+    }
+
+    positionals.push(arg);
+  }
+
+  return { options, positionals };
 }
 
 main().catch((error) => {
