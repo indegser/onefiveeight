@@ -1,0 +1,107 @@
+{
+  "screens": [
+    {
+      "id": "design-token-foundation",
+      "name": "Draft design token foundation",
+      "purpose": "Define a concrete draft token baseline for the design rule engine that matches the current warm restrained editorial utility aesthetic.",
+      "screen_type": "settings",
+      "primary_action": "Establish reusable draft token values for current and future UI work",
+      "states": [
+        "default:draft-token-baseline-defined",
+        "review:open-choices-documented"
+      ]
+    }
+  ],
+  "ux_rules": [
+    "Derive the first token baseline from the current repository aesthetic profile and working songs surface instead of inventing a new visual direction.",
+    "Use spacing, contrast, weight, and rhythm as the primary hierarchy tools before introducing stronger accent color or ornamental treatments.",
+    "Keep the token baseline concrete enough to guide implementation while preserving unresolved choices as explicit notes instead of false precision.",
+    "Favor a restrained warm editorial tone that still supports prosumer scanning and operational clarity."
+  ],
+  "component_map": [
+    {
+      "screen_id": "design-token-foundation",
+      "components": [
+        "design-tokens.template.json",
+        "layout-rules.json",
+        "aesthetic-profile.json",
+        "core-reference-stack.md",
+        "songs workspace styling cues"
+      ]
+    }
+  ],
+  "human_checkpoints": [],
+  "design_rule_engine": {
+    "profile_id": "warm-restrained-editorial-utility",
+    "hard_rule_sets": [
+      "layout-rules"
+    ],
+    "heuristic_sets": [
+      "ux-heuristics"
+    ],
+    "allowed_pattern_sets": [
+      "core-allowed-patterns"
+    ],
+    "banned_pattern_sets": [
+      "core-banned-patterns"
+    ],
+    "review_rubric_id": "design-review-rubric"
+  },
+  "screen_contexts": [
+    {
+      "screen_id": "design-token-foundation",
+      "screen_type": "settings",
+      "layout_intent": "Represent the design rule engine token baseline as a concrete draft contract bound to the current Tailwind styling layer, not as an abstract wishlist.",
+      "interaction_risks": [
+        "A token baseline that is too decorative may weaken utility surfaces.",
+        "A token baseline that stays too vague will not reduce one-off styling decisions in future work.",
+        "Current product surfaces may still contain local values that do not align cleanly with the new draft baseline."
+      ],
+      "required_states": [
+        "default:draft-token-baseline-defined",
+        "review:open-choices-documented"
+      ],
+      "notes": [
+        "This run defines system design assets rather than a new end-user screen.",
+        "The songs workspace is the primary reference surface for current repo aesthetic binding."
+      ]
+    }
+  ],
+  "builder_constraints": [
+    {
+      "screen_id": "design-token-foundation",
+      "constraints": [
+        "Update the existing token template rather than introducing a second token contract file.",
+        "Keep the binding source as the current repo Tailwind layer and existing CSS variables for this pass.",
+        "Define concrete draft values for spacing, typography, color, radius, shadow, and grid with notes where the choice is still provisional.",
+        "Do not broaden the scope into a full UI migration unless later workflow steps explicitly require it."
+      ],
+      "open_decisions": [
+        "Whether display typography should remain fully Geist-based or later bind to a dedicated editorial display face remains open.",
+        "Whether accent hue should trend more olive-neutral or brown-neutral should remain draft-level rather than fully locked.",
+        "Whether current product surfaces should later be normalized against the token baseline in a separate implementation pass remains open."
+      ]
+    }
+  ],
+  "review_targets": [
+    {
+      "screen_id": "design-token-foundation",
+      "critical_judgments": [
+        "The draft token values should clearly express the warm restrained editorial utility profile.",
+        "Typography and spacing choices should create hierarchy through rhythm and weight rather than decorative flourish.",
+        "The resulting token contract should be usable by builders working in the current Tailwind-based repo."
+      ],
+      "must_not_regress": [
+        "Design rule engine schema compatibility",
+        "Current token-source binding to the repo styling layer",
+        "Operational clarity in internal utility surfaces"
+      ]
+    }
+  ],
+  "visual_constraints": [
+    "Avoid cold sterile minimalism, saturated accent breakouts, and luxury-signaling that obscures utility.",
+    "Keep neutrals warm, low-saturation, and paper-like rather than bluish or chrome-like.",
+    "Prefer restrained radius, rare shadows, and typography-led hierarchy.",
+    "Use a finite spacing scale and repeatable baseline rhythm instead of one-off nudges."
+  ]
+}

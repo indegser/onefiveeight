@@ -1,0 +1,8 @@
+{
+  "approved": true,
+  "findings": [],
+  "next_steps": [
+    "If future surfaces adopt these tokens, consider replacing repeated one-off Tailwind literals with shared utilities or semantic CSS variable usage.",
+    "Keep the draft token JSON and CSS variable bindings synchronized when the baseline evolves."
+  ]
+}

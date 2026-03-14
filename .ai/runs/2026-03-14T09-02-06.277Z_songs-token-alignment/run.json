@@ -1,0 +1,57 @@
+{
+  "run_id": "2026-03-14T09-02-06.277Z_songs-token-alignment",
+  "goal": "Build an app from docs/ideas/songs-token-alignment.md",
+  "revision": 1,
+  "phase": "done",
+  "status": "done",
+  "next_agent": "none",
+  "stack": {
+    "frontend": "nextjs",
+    "ui": "shadcn-ui",
+    "backend": "supabase",
+    "language": "typescript"
+  },
+  "inputs": {
+    "idea_file": "docs/ideas/songs-token-alignment.md",
+    "constraints": [],
+    "brand_critical": false
+  },
+  "artifacts": {
+    "plan": ".ai/runs/2026-03-14T09-02-06.277Z_songs-token-alignment/plan.json",
+    "memory": ".ai/runs/2026-03-14T09-02-06.277Z_songs-token-alignment/memory.json",
+    "design": ".ai/runs/2026-03-14T09-02-06.277Z_songs-token-alignment/design.json",
+    "build": ".ai/runs/2026-03-14T09-02-06.277Z_songs-token-alignment/build.json",
+    "verify": ".ai/runs/2026-03-14T09-02-06.277Z_songs-token-alignment/verify.json"
+  },
+  "approvals": {
+    "brand": false,
+    "data_model": false,
+    "destructive_flows": false
+  },
+  "blockers": [],
+  "decisions": [],
+  "risks": [],
+  "refinement_notes": [],
+  "history": [
+    {
+      "at": "2026-03-14T09:02:06.280Z",
+      "event": "Initialized run from docs/ideas/songs-token-alignment.md"
+    },
+    {
+      "at": "2026-03-14T09:02:11.981Z",
+      "event": "Supervisor routed to planner"
+    },
+    {
+      "at": "2026-03-14T09:02:33.398Z",
+      "event": "Supervisor routed to design-agent"
+    },
+    {
+      "at": "2026-03-14T09:02:53.548Z",
+      "event": "Supervisor routed to builder"
+    },
+    {
+      "at": "2026-03-14T09:05:20.623Z",
+      "event": "Supervisor routed to none"
+    }
+  ]
+}

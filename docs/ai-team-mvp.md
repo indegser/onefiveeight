@@ -32,10 +32,11 @@ npm run ai:validate -- --run-id <run_id>
 5. Generate the next agent package with `npm run ai:work -- <agent> --run-id <run_id>`.
 6. Use that package to run the corresponding Codex session manually.
 7. Save the agent JSON output into the expected state file.
-8. For design work that touches implementation, capture screenshot evidence before final design review.
-9. When UI changes are involved, verify representative screenshots against a short checklist: no redundant local labels, pane-width fit before forced overflow, and stable representative rows or grids.
-10. Run `npm run ai:route -- --run-id <run_id>` again and continue until done.
-11. If follow-up feedback arrives after completion, reopen the run with `npm run ai:refine -- --run-id <run_id> <agent> <note>`.
+8. If the task changes a rendered UI surface visually, inspect the current browser state before editing so spacing, hierarchy, and redundancy issues are judged from the rendered page instead of inferred from code.
+9. For design work that touches implementation, capture screenshot evidence after the edit before final design review.
+10. When UI changes are involved, verify representative screenshots against a short checklist: no redundant local labels, pane-width fit before forced overflow, and stable representative rows or grids.
+11. Run `npm run ai:route -- --run-id <run_id>` again and continue until done.
+12. If follow-up feedback arrives after completion, reopen the run with `npm run ai:refine -- --run-id <run_id> <agent> <note>`.
 
 ## State Files
 

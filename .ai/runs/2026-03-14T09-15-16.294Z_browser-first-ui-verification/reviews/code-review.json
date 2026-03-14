@@ -1,0 +1,7 @@
+{
+  "approved": true,
+  "findings": [],
+  "next_steps": [
+    "If policy-only guidance is not enough, add a small supervisor or validation rule that checks for browser evidence on visual UI runs."
+  ]
+}

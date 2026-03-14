@@ -1,0 +1,23 @@
+{
+  "checks": [
+    {
+      "name": "eslint",
+      "status": "passed",
+      "details": "npm run lint completed without errors. The repo still has unrelated pre-existing unused-symbol warnings in canvas, chords, tracker, caged, and chord-playback files."
+    },
+    {
+      "name": "run-schema-validation",
+      "status": "passed",
+      "details": "npm run ai:validate -- --run-id 2026-03-14T09-02-06.277Z_songs-token-alignment"
+    }
+  ],
+  "passed": true,
+  "visual_checks": [
+    {
+      "name": "songs-token-binding-coverage",
+      "status": "passed",
+      "details": "The songs page shell, workspace summary, list surface, empty state, score viewer shell, and lead-sheet metadata now bind repeated warm palette and typography values to the draft token variables instead of repeated literals."
+    }
+  ],
+  "blocking_issues": []
+}
