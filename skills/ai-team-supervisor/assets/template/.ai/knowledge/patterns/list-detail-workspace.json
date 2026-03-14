@@ -1,0 +1,26 @@
+{
+  "id": "list-detail-workspace",
+  "title": "List-detail workspace shell",
+  "summary": "Reusable split-pane pattern for operator flows that need fast scanning and a focused detail view.",
+  "tags": ["list", "detail", "workspace", "selection", "navigation"],
+  "when_to_use": [
+    "The user needs to scan a list and inspect one selected item without leaving context.",
+    "A task benefits from keyboard-friendly repeat interactions and persistent selection state."
+  ],
+  "constraints": [
+    "The selected item must remain visually obvious.",
+    "An empty state is required before the first selection.",
+    "The detail pane should not block scanning the list."
+  ],
+  "solution_outline": [
+    "Use a two-column layout with the collection on the left and detail content on the right.",
+    "Keep selected item state close to the surface that owns the list.",
+    "Define explicit empty, loading, and selected states for the detail pane."
+  ],
+  "source_projects": ["internal-tool-shell", "songs-page-mvp"],
+  "source_files": [
+    "src/app/songs/page.tsx",
+    "src/components/workspace/list-panel.tsx"
+  ],
+  "maintained_by": "ai-team"
+}

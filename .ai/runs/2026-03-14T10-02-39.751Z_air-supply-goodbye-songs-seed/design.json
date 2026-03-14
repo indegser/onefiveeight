@@ -1,0 +1,87 @@
+{
+  "screens": [
+    {
+      "id": "songs-library",
+      "name": "Songs library",
+      "purpose": "Show Goodbye as a selectable chart in the existing song list and viewer.",
+      "screen_type": "workspace",
+      "primary_action": "Open a chart from the library",
+      "states": [
+        "default:list with selectable songs",
+        "selected:viewer open with chart details"
+      ]
+    }
+  ],
+  "ux_rules": [
+    "Keep the existing songs workspace layout unchanged for this seed task.",
+    "Communicate source uncertainty through summary and chart notes instead of inventing new status UI.",
+    "Preserve scanability by keeping the new chart compatible with the current section-system-measure viewer."
+  ],
+  "component_map": [
+    {
+      "screen_id": "songs-library",
+      "components": [
+        "SongList",
+        "ScoreViewer",
+        "songs dataset"
+      ]
+    }
+  ],
+  "design_rule_engine": {
+    "profile_id": null,
+    "hard_rule_sets": [],
+    "heuristic_sets": [],
+    "allowed_pattern_sets": [],
+    "banned_pattern_sets": [],
+    "review_rubric_id": "songs-seed-review"
+  },
+  "screen_contexts": [
+    {
+      "screen_id": "songs-library",
+      "screen_type": "workspace",
+      "layout_intent": "Reuse the current two-pane song library and score viewer without adding controls or changing navigation.",
+      "interaction_risks": [
+        "The new chart could appear more authoritative than the source access actually allows.",
+        "Late-song key changes may become hard to scan if section labeling is too vague."
+      ],
+      "required_states": [
+        "default:list with selectable songs",
+        "selected:viewer open with chart details"
+      ],
+      "notes": [
+        "This task is content-focused and should preserve the current editorial songs surface."
+      ]
+    }
+  ],
+  "builder_constraints": [
+    {
+      "screen_id": "songs-library",
+      "constraints": [
+        "Keep the change additive and localized if possible.",
+        "Do not rework the songs UI architecture just to expose one additional chart.",
+        "Leave explicit chart notes where the source page was inaccessible."
+      ],
+      "open_decisions": [
+        "A future ingestion flow should replace this manual seed with a formal published lead-sheet source."
+      ]
+    }
+  ],
+  "review_targets": [
+    {
+      "screen_id": "songs-library",
+      "critical_judgments": [
+        "The new song should be visible and selectable in the existing library.",
+        "The score viewer should keep the modulation structure legible."
+      ],
+      "must_not_regress": [
+        "Existing song selection flow",
+        "Existing score viewer layout"
+      ]
+    }
+  ],
+  "visual_constraints": [
+    "No new visual treatment is required for this seed.",
+    "Preserve the established songs workspace styling."
+  ],
+  "human_checkpoints": []
+}

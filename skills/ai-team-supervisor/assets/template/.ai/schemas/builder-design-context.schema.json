@@ -1,0 +1,80 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "BuilderDesignContext",
+  "type": "object",
+  "required": [
+    "version",
+    "goal",
+    "project_context",
+    "design_inputs",
+    "implementation_constraints",
+    "expected_output_contract"
+  ],
+  "properties": {
+    "version": { "type": "string" },
+    "goal": { "type": "string" },
+    "project_context": {
+      "type": "object",
+      "required": ["frontend", "ui_library", "design_token_source"],
+      "properties": {
+        "frontend": { "type": "string" },
+        "ui_library": { "type": "string" },
+        "design_token_source": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "design_inputs": {
+      "type": "object",
+      "required": ["design_artifact", "selected_profile_id", "allowed_pattern_sets", "banned_pattern_sets"],
+      "properties": {
+        "design_artifact": { "type": "string" },
+        "selected_profile_id": { "type": ["string", "null"] },
+        "allowed_pattern_sets": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "banned_pattern_sets": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": false
+    },
+    "implementation_constraints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["screen_id", "must_preserve", "must_not_introduce", "needs_follow_up_if_blocked"],
+        "properties": {
+          "screen_id": { "type": "string" },
+          "must_preserve": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "must_not_introduce": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "needs_follow_up_if_blocked": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "expected_output_contract": {
+      "type": "object",
+      "required": ["artifact", "must_include"],
+      "properties": {
+        "artifact": { "type": "string" },
+        "must_include": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

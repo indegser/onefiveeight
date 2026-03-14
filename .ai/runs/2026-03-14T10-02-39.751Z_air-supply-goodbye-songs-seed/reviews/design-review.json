@@ -1,0 +1,38 @@
+{
+  "approved": true,
+  "preview_evidence": [
+    ".ai/runs/2026-03-14T10-02-39.751Z_air-supply-goodbye-songs-seed/evidence/songs-goodbye-list.png",
+    ".ai/runs/2026-03-14T10-02-39.751Z_air-supply-goodbye-songs-seed/evidence/songs-goodbye-selected.png"
+  ],
+  "summary": {
+    "status": "pass",
+    "rationale": "The new song enters the existing editorial songs workspace without changing the established list-detail layout, and the modulation structure remains legible through section naming and chart notes."
+  },
+  "findings": [],
+  "section_scores": [
+    {
+      "section_id": "songs-library",
+      "score": 0.94,
+      "notes": [
+        "The list remains scanable with the new chart added.",
+        "The selected viewer preserves the existing rhythm of metadata, notes, and section blocks."
+      ]
+    }
+  ],
+  "profile_assessment": {
+    "selected_profile_id": null,
+    "fit_score": 0.93,
+    "anti_patterns_detected": [],
+    "notes": [
+      "No new UI chrome or layout regressions were introduced for this content-only seed."
+    ]
+  },
+  "gates": {
+    "hard_rules_passed": true,
+    "needs_human_review": false,
+    "requires_refinement": false
+  },
+  "next_steps": [
+    "Replace the manual song seed with a formal lead-sheet publish flow when web-sourced chart ingestion is available."
+  ]
+}

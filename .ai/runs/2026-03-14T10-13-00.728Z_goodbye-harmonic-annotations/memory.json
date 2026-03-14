@@ -1,0 +1,117 @@
+{
+  "patterns": [
+    {
+      "id": "list-detail-workspace",
+      "title": "List-detail workspace shell",
+      "summary": "Reusable split-pane pattern for operator flows that need fast scanning and a focused detail view.",
+      "tags": [
+        "list",
+        "detail",
+        "workspace",
+        "selection",
+        "navigation"
+      ],
+      "when_to_use": [
+        "The user needs to scan a list and inspect one selected item without leaving context.",
+        "A task benefits from keyboard-friendly repeat interactions and persistent selection state."
+      ],
+      "constraints": [
+        "The selected item must remain visually obvious.",
+        "An empty state is required before the first selection.",
+        "The detail pane should not block scanning the list."
+      ],
+      "solution_outline": [
+        "Use a two-column layout with the collection on the left and detail content on the right.",
+        "Keep selected item state close to the surface that owns the list.",
+        "Define explicit empty, loading, and selected states for the detail pane."
+      ],
+      "source_projects": [
+        "internal-tool-shell",
+        "songs-page-mvp"
+      ],
+      "source_files": [
+        "src/app/songs/page.tsx",
+        "src/components/workspace/list-panel.tsx"
+      ],
+      "maintained_by": "ai-team",
+      "applicability_score": 6,
+      "selected_because": "Matched task terms: songs, keep, workspace, layout, should, not"
+    },
+    {
+      "id": "shadcn-composition-baseline",
+      "title": "shadcn composition baseline",
+      "summary": "Prefer composable shadcn primitives over custom one-off widgets when building new internal product surfaces.",
+      "tags": [
+        "shadcn",
+        "components",
+        "composition",
+        "typescript",
+        "nextjs"
+      ],
+      "when_to_use": [
+        "A new screen can be assembled from existing primitives with minor styling work.",
+        "The implementation should stay aligned with the repository stack defaults."
+      ],
+      "constraints": [
+        "Do not create bespoke UI components when a primitive composition solves the same problem cleanly.",
+        "Keep styling localized so future screens can reuse the pattern."
+      ],
+      "solution_outline": [
+        "Start with Card, Tabs, Table, Dialog, Sheet, and form primitives before inventing new abstractions.",
+        "Extract a reusable wrapper only after two concrete usages exist.",
+        "Keep behavior code separate from cosmetic wrappers."
+      ],
+      "source_projects": [
+        "admin-starter",
+        "internal-tool-shell"
+      ],
+      "source_files": [
+        "components/ui/card.tsx",
+        "components/ui/table.tsx"
+      ],
+      "maintained_by": "ai-team",
+      "applicability_score": 5,
+      "selected_because": "Matched task terms: work, keep, existing, should, not"
+    },
+    {
+      "id": "operator-state-coverage",
+      "title": "Operator state coverage",
+      "summary": "State checklist for internal tools where speed matters but recovery paths still need to be explicit.",
+      "tags": [
+        "empty-state",
+        "loading",
+        "success",
+        "error",
+        "recovery"
+      ],
+      "when_to_use": [
+        "The surface is used repeatedly by operators rather than one-time visitors.",
+        "A screen includes search, filters, selection, or destructive actions."
+      ],
+      "constraints": [
+        "Every primary flow must define empty, loading, success, and error states.",
+        "Destructive actions require confirmation and visible recovery guidance."
+      ],
+      "solution_outline": [
+        "List every user-visible state before implementation begins.",
+        "Keep state messaging short and action-oriented.",
+        "Treat error recovery as part of the primary flow instead of a footer note."
+      ],
+      "source_projects": [
+        "ops-console",
+        "approval-dashboard"
+      ],
+      "source_files": [
+        "docs/design-principles.md",
+        "src/components/feedback/state-panel.tsx"
+      ],
+      "maintained_by": "ai-team",
+      "applicability_score": 2,
+      "selected_because": "Matched task terms: keep, flow"
+    }
+  ],
+  "notes": [
+    "Task memory is derived from ./.ai/knowledge/patterns at run initialization.",
+    "Patterns were selected using simple keyword overlap with the goal, constraints, and idea file."
+  ]
+}

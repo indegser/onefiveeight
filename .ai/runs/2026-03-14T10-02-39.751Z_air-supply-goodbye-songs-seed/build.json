@@ -1,0 +1,18 @@
+{
+  "completed_tasks": [
+    "seed-song-data"
+  ],
+  "changed_files": [
+    "docs/ideas/air-supply-goodbye-songs-seed.md",
+    "src/lib/songs.ts"
+  ],
+  "notes": [
+    "Added Goodbye by Air Supply to the existing songs dataset using the current section-system-measure chart shape.",
+    "Captured source uncertainty in summary and chart notes because the user-provided E-Chords page was blocked by a Cloudflare challenge during ingestion.",
+    "Structured the chart around the visible verse, pre-chorus, chorus, modulation, and final coda lifts so the existing viewer can render it without UI changes."
+  ],
+  "open_issues": [
+    "This is still a manual seed rather than a formal published lead-sheet import.",
+    "Exact lyric-level beat placement may differ from the blocked source page because the chart was digitized from an accessible mirrored transcription."
+  ]
+}

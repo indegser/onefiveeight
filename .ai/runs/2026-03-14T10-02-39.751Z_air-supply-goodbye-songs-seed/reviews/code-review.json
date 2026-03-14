@@ -1,0 +1,7 @@
+{
+  "approved": true,
+  "findings": [],
+  "next_steps": [
+    "If a canonical import pipeline is added later, move this manually seeded chart into that source of truth."
+  ]
+}

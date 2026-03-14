@@ -1,0 +1,27 @@
+{
+  "screen_type": "settings",
+  "purpose_template": "Expose configurable options with stable defaults, low ambiguity, and safe change management.",
+  "required_regions": [
+    "section navigation",
+    "setting groups",
+    "current state visibility",
+    "save/apply or auto-save feedback"
+  ],
+  "required_states": [
+    "loading",
+    "saved",
+    "unsaved changes",
+    "save error"
+  ],
+  "default_review_focus": [
+    "grouping clarity",
+    "change visibility",
+    "destructive/reversible settings",
+    "default value comprehension"
+  ],
+  "common_risks": [
+    "mixed unrelated controls in one block",
+    "unclear save model",
+    "critical toggles lacking explanation"
+  ]
+}

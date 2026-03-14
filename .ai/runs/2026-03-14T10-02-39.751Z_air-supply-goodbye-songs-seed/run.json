@@ -1,0 +1,45 @@
+{
+  "run_id": "2026-03-14T10-02-39.751Z_air-supply-goodbye-songs-seed",
+  "goal": "Build an app from docs/ideas/air-supply-goodbye-songs-seed.md",
+  "revision": 1,
+  "phase": "done",
+  "status": "done",
+  "next_agent": "none",
+  "stack": {
+    "frontend": "nextjs",
+    "ui": "shadcn-ui",
+    "backend": "supabase",
+    "language": "typescript"
+  },
+  "inputs": {
+    "idea_file": "docs/ideas/air-supply-goodbye-songs-seed.md",
+    "constraints": [],
+    "brand_critical": false
+  },
+  "artifacts": {
+    "plan": ".ai/runs/2026-03-14T10-02-39.751Z_air-supply-goodbye-songs-seed/plan.json",
+    "memory": ".ai/runs/2026-03-14T10-02-39.751Z_air-supply-goodbye-songs-seed/memory.json",
+    "design": ".ai/runs/2026-03-14T10-02-39.751Z_air-supply-goodbye-songs-seed/design.json",
+    "build": ".ai/runs/2026-03-14T10-02-39.751Z_air-supply-goodbye-songs-seed/build.json",
+    "verify": ".ai/runs/2026-03-14T10-02-39.751Z_air-supply-goodbye-songs-seed/verify.json"
+  },
+  "approvals": {
+    "brand": false,
+    "data_model": false,
+    "destructive_flows": false
+  },
+  "blockers": [],
+  "decisions": [],
+  "risks": [],
+  "refinement_notes": [],
+  "history": [
+    {
+      "at": "2026-03-14T10:02:39.754Z",
+      "event": "Initialized run from docs/ideas/air-supply-goodbye-songs-seed.md"
+    },
+    {
+      "at": "2026-03-14T10:05:02.762Z",
+      "event": "Supervisor routed to none"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "checks": [
+    {
+      "name": "eslint-songs-analysis",
+      "status": "passed",
+      "details": "npx eslint src/app/songs/score-viewer.tsx src/lib/songs.ts completed without lint findings; src/app/globals.css remains outside the ESLint config and reports the existing ignored-file warning only."
+    },
+    {
+      "name": "songs-goodbye-min-text-desktop",
+      "status": "passed",
+      "details": "Desktop browser verification confirmed the smallest visible songs-surface labels and inline analysis notes were raised from 10px/11px to 12px minimum while keeping the chart pane readable. Evidence saved at .ai/runs/2026-03-14T10-13-00.728Z_goodbye-harmonic-annotations/evidence/goodbye-annotations-min-text-fix.png."
+    },
+    {
+      "name": "songs-goodbye-min-text-mobile",
+      "status": "passed",
+      "details": "Mobile viewport verification at 390x844 confirmed the selected Goodbye chart still fits the reading flow after the text-size increase. Evidence saved at .ai/runs/2026-03-14T10-13-00.728Z_goodbye-harmonic-annotations/evidence/goodbye-annotations-min-text-fix-mobile.png."
+    }
+  ],
+  "passed": true,
+  "blocking_issues": []
+}

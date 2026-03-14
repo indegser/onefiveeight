@@ -1,0 +1,31 @@
+{
+  "epics": [
+    {
+      "id": "songs-library-seed",
+      "title": "Expose Goodbye in the songs library",
+      "tasks": [
+        {
+          "id": "seed-song-data",
+          "title": "Add a practical chart entry for Air Supply's Goodbye to the existing songs dataset",
+          "acceptance_criteria": [
+            "The songs library contains a visible entry for Goodbye.",
+            "The existing score viewer can open the new chart without UI changes.",
+            "Source-access uncertainty is preserved in chart notes instead of being hidden."
+          ],
+          "dependencies": [],
+          "done_definition": [
+            "Song data compiles cleanly and renders inside the existing songs workspace."
+          ]
+        }
+      ]
+    }
+  ],
+  "assumptions": [
+    "A manual seed inside the existing songs dataset is acceptable before a formal lead-sheet publish pipeline exists for web-sourced charts.",
+    "The current viewer can present grouped in-measure chord strings without requiring lyric alignment."
+  ],
+  "risks": [
+    "The referenced E-Chords page could not be directly parsed because of an anti-bot challenge, so the digitized chart depends on an accessible mirrored transcription.",
+    "Collapsing lyric-aligned chord placements into grouped measures may differ slightly from the exact beat splits of the source chart."
+  ]
+}

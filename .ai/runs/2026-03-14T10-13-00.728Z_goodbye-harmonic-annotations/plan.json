@@ -1,0 +1,31 @@
+{
+  "epics": [
+    {
+      "id": "inline-harmonic-analysis",
+      "title": "Show bar-level harmonic annotations in the Goodbye chart",
+      "tasks": [
+        {
+          "id": "measure-analysis-support",
+          "title": "Extend the songs data model and score viewer to support concise inline analysis notes per measure",
+          "acceptance_criteria": [
+            "The songs dataset supports an optional measure-level analysis note without breaking existing songs.",
+            "The score viewer renders the note in the same cell as the target chord so it reads like an annotation rather than a separate panel.",
+            "Goodbye includes Korean-language harmonic notes on representative bars across verse, pre-chorus, chorus, and modulation sections."
+          ],
+          "dependencies": [],
+          "done_definition": [
+            "The updated chart renders in the browser without collapsing the existing pane layout."
+          ]
+        }
+      ]
+    }
+  ],
+  "assumptions": [
+    "A compact note block inside each measure cell is the least disruptive way to present theory commentary.",
+    "Representative bar annotations are sufficient; not every chart in the library needs analysis content immediately."
+  ],
+  "risks": [
+    "Extra note text can make the grid too tall or cramped if measure cells are not resized carefully.",
+    "Repeated theoretical commentary can become noisy if the note styling competes with the chord itself."
+  ]
+}

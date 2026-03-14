@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DesignReviewRubric",
+  "type": "object",
+  "required": ["version", "rubric_id", "gating_policy", "sections"],
+  "properties": {
+    "version": { "type": "string" },
+    "rubric_id": { "type": "string" },
+    "gating_policy": {
+      "type": "object",
+      "required": ["auto_fail_conditions", "requires_refinement_when"],
+      "properties": {
+        "auto_fail_conditions": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "requires_refinement_when": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": false
+    },
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "weight", "items"],
+        "properties": {
+          "id": { "type": "string" },
+          "title": { "type": "string" },
+          "weight": { "type": "number" },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["id", "prompt", "scoring_mode"],
+              "properties": {
+                "id": { "type": "string" },
+                "prompt": { "type": "string" },
+                "scoring_mode": {
+                  "type": "string",
+                  "enum": ["pass_fail", "1_to_5"]
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

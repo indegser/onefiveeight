@@ -1,0 +1,98 @@
+{
+  "$schema": "../../.ai/schemas/design-patterns.schema.json",
+  "version": "0.1.0",
+  "pattern_set_id": "core-allowed-patterns",
+  "patterns": [
+    {
+      "id": "single-primary-action-region",
+      "layer": "hard_rule",
+      "title": "Single Primary Action Per Region",
+      "description": "Each major surface region should have at most one visually dominant primary action.",
+      "applies_to": [
+        "dashboard",
+        "detail",
+        "form",
+        "settings",
+        "table"
+      ],
+      "enforcement": "required"
+    },
+    {
+      "id": "explicit-state-coverage",
+      "layer": "hard_rule",
+      "title": "Explicit State Coverage",
+      "description": "Loading, empty, error, and success states are declared where relevant.",
+      "applies_to": [
+        "all"
+      ],
+      "enforcement": "required"
+    },
+    {
+      "id": "progressive-disclosure",
+      "layer": "ux_heuristic",
+      "title": "Progressive Disclosure",
+      "description": "Advanced options remain accessible without overwhelming the default path.",
+      "applies_to": [
+        "form",
+        "settings",
+        "detail"
+      ],
+      "enforcement": "preferred"
+    },
+    {
+      "id": "operator-dense-table-controls",
+      "layer": "ux_heuristic",
+      "title": "Operator Dense Table Controls",
+      "description": "Search, filter, sort, and bulk actions are grouped for repeated operational use.",
+      "applies_to": [
+        "table",
+        "dashboard"
+      ],
+      "enforcement": "preferred"
+    },
+    {
+      "id": "restrained-accent-usage",
+      "layer": "aesthetic_support",
+      "title": "Restrained Accent Usage",
+      "description": "Accent color or emphasis is reserved for navigation landmarks, status, or primary actions.",
+      "applies_to": [
+        "all"
+      ],
+      "enforcement": "preferred"
+    },
+    {
+      "id": "warm-muted-surface-palette",
+      "layer": "aesthetic_support",
+      "title": "Warm Muted Surface Palette",
+      "description": "Base surfaces, dividers, and fills lean warm and low-saturation rather than cool grayscale or bright brand color blocks.",
+      "applies_to": [
+        "all"
+      ],
+      "enforcement": "preferred"
+    },
+    {
+      "id": "editorial-group-spacing",
+      "layer": "aesthetic_support",
+      "title": "Editorial Group Spacing",
+      "description": "Whitespace is used to separate meaningful groups and set rhythm, while preserving practical density inside groups.",
+      "applies_to": [
+        "dashboard",
+        "detail",
+        "form",
+        "settings",
+        "table"
+      ],
+      "enforcement": "preferred"
+    },
+    {
+      "id": "quiet-material-treatment",
+      "layer": "aesthetic_support",
+      "title": "Quiet Material Treatment",
+      "description": "Borders, fills, shadows, and radius are understated and consistent, with tactile feel achieved through restraint rather than decorative layering.",
+      "applies_to": [
+        "all"
+      ],
+      "enforcement": "preferred"
+    }
+  ]
+}

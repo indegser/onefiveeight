@@ -1,0 +1,74 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DesignDSL",
+  "type": "object",
+  "required": [
+    "version",
+    "screen_id",
+    "screen_type",
+    "goal",
+    "layout",
+    "hierarchy",
+    "states",
+    "interaction_rules",
+    "aesthetic_rules",
+    "open_questions"
+  ],
+  "properties": {
+    "version": { "type": "string" },
+    "screen_id": { "type": "string" },
+    "screen_type": { "type": "string" },
+    "goal": { "type": "string" },
+    "layout": {
+      "type": "object",
+      "required": ["grid_mode", "regions"],
+      "properties": {
+        "grid_mode": { "type": "string" },
+        "regions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "purpose", "priority"],
+            "properties": {
+              "id": { "type": "string" },
+              "purpose": { "type": "string" },
+              "priority": { "type": "string" }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "hierarchy": {
+      "type": "object",
+      "required": ["primary_action", "secondary_actions", "emphasis_strategy"],
+      "properties": {
+        "primary_action": { "type": "string" },
+        "secondary_actions": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "emphasis_strategy": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "states": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "interaction_rules": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "aesthetic_rules": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "open_questions": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "additionalProperties": false
+}
