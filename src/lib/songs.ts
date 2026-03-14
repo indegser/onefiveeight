@@ -2,6 +2,7 @@ export type SongMeasure = {
   id: string;
   chord?: string;
   cue?: string;
+  analysis?: string;
   span?: number;
 };
 
@@ -507,6 +508,301 @@ export const songs: Song[] = [
               { id: "hs-o1-2", chord: "A/C#" },
               { id: "hs-o1-3", chord: "Bm7" },
               { id: "hs-o1-4", chord: "G A D", cue: "walk out" },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "goodbye",
+    title: "굿바이",
+    artist: "에어 서플라이",
+    source:
+      "사용자가 전달한 외부 코드 악보 링크를 바탕으로 정리한 디지털 차트.",
+    keyCenter: "내림마장조를 중심으로 후반부에 올림바장조와 바장조로 전조",
+    feel: "파워 발라드",
+    meter: "4/4",
+    summary:
+      "서정적인 발라드 진행을 바탕으로 벌스, 프리코러스, 코러스가 또렷하게 구분되고, 후반 전조로 감정을 끌어올리는 곡.",
+    chartNotes: [
+      "곡 제목: 굿바이",
+      "조성: 내림마장조를 중심으로 진행하다가 후반부에 전조된다.",
+      "코드 진행 특성: 기본적으로 안정적인 발라드 어법을 따르며, 프리코러스와 코러스에서 긴장을 키우고 마지막 전조로 클라이맥스를 만든다.",
+    ],
+    sections: [
+      {
+        id: "verse-1",
+        title: "Verse 1",
+        systems: [
+          {
+            id: "gb-v1",
+            label: "Verse 1",
+            measures: [
+              {
+                id: "gb-v1-1",
+                chord: "Eb",
+                analysis: "토닉으로 차분하게 출발한다.",
+              },
+              {
+                id: "gb-v1-2",
+                chord: "Gm",
+                analysis: "3도 화음으로 옮겨 서정성을 만든다.",
+              },
+              {
+                id: "gb-v1-3",
+                chord: "Cm",
+                analysis: "6도 단조로 내려가 감정을 가라앉힌다.",
+              },
+              {
+                id: "gb-v1-4",
+                chord: "Fm Bb",
+                cue: "split bar",
+                analysis: "ii-V 진행으로 다음 구절을 자연스럽게 준비한다.",
+              },
+            ],
+          },
+          {
+            id: "gb-v2",
+            measures: [
+              {
+                id: "gb-v2-1",
+                chord: "Eb",
+                analysis: "첫 마디를 반복해 안정감을 유지한다.",
+              },
+              {
+                id: "gb-v2-2",
+                chord: "Gm",
+                analysis: "같은 상행 연결로 보컬 선율을 받쳐준다.",
+              },
+              {
+                id: "gb-v2-3",
+                chord: "Cm",
+                analysis: "벌스의 회상적인 정서를 계속 끌고 간다.",
+              },
+              {
+                id: "gb-v2-4",
+                chord: "Fm Bb",
+                cue: "split bar",
+                analysis: "다시 ii-V로 종지를 미루며 긴장을 쌓는다.",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: "pre-chorus-1",
+        title: "Pre-Chorus",
+        systems: [
+          {
+            id: "gb-p1",
+            label: "Pre-Chorus",
+            measures: [
+              {
+                id: "gb-p1-1",
+                chord: "Eb",
+                analysis: "토닉을 다시 확인하며 후렴 진입을 예고한다.",
+              },
+              {
+                id: "gb-p1-2",
+                chord: "Cm",
+                analysis: "6도 단조가 감정 밀도를 한 단계 높인다.",
+              },
+              {
+                id: "gb-p1-3",
+                chord: "Ab",
+                analysis: "IV로 넓어지며 후렴 직전의 개방감을 만든다.",
+              },
+              {
+                id: "gb-p1-4",
+                chord: "Bb",
+                analysis: "도미넌트가 후렴으로 강하게 끌어당긴다.",
+              },
+            ],
+          },
+          {
+            id: "gb-p2",
+            measures: [
+              { id: "gb-p2-1", chord: "Eb", analysis: "같은 기능 반복으로 기대감을 유지한다." },
+              { id: "gb-p2-2", chord: "Cm", analysis: "여전히 vi에 머물며 감정을 눌러 둔다." },
+              { id: "gb-p2-3", chord: "Ab", analysis: "후렴 직전의 공간감을 다시 넓힌다." },
+              { id: "gb-p2-4", chord: "Bb", analysis: "V에서 멈추며 후렴 직전 긴장을 최대로 만든다." },
+            ],
+          },
+        ],
+      },
+      {
+        id: "chorus-1",
+        title: "Chorus",
+        systems: [
+          {
+            id: "gb-c1",
+            label: "Chorus",
+            measures: [
+              {
+                id: "gb-c1-1",
+                chord: "Eb",
+                analysis: "후렴도 토닉에서 시작해 메시지를 분명히 세운다.",
+              },
+              {
+                id: "gb-c1-2",
+                chord: "Ab",
+                analysis: "IV가 시야를 넓히며 감정을 펼친다.",
+              },
+              {
+                id: "gb-c1-3",
+                chord: "Fm",
+                analysis: "ii로 이동해 다음 전개를 준비한다.",
+              },
+              {
+                id: "gb-c1-4",
+                chord: "C Fm Bb",
+                cue: "turnaround",
+                analysis:
+                  "비다이아토닉 C가 Fm을 강하게 밀어주며 후렴의 감정을 끌어올린다.",
+              },
+            ],
+          },
+          {
+            id: "gb-c2",
+            measures: [
+              { id: "gb-c2-1", chord: "Eb", analysis: "토닉 복귀로 후렴 첫 문장을 정리한다." },
+              { id: "gb-c2-2", chord: "Ab", analysis: "여운을 넓게 유지한다." },
+              { id: "gb-c2-3", chord: "Fm", analysis: "종지 전의 완충 지점으로 작동한다." },
+              {
+                id: "gb-c2-4",
+                chord: "C Fm Bb Eb",
+                cue: "resolve",
+                analysis: "순간적인 긴장 뒤 정식 종지로 떨어지며 후렴을 완결한다.",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: "verse-2",
+        title: "Verse 2 Lift",
+        annotation: "Whole-step and a half lift from the opening key",
+        systems: [
+          {
+            id: "gb-v3",
+            label: "Verse 2",
+            measures: [
+              {
+                id: "gb-v3-1",
+                chord: "F#",
+                analysis: "전조 직후 새 토닉이 등장하며 분위기를 환기한다.",
+              },
+              {
+                id: "gb-v3-2",
+                chord: "Bbm",
+                analysis: "새 키 안에서도 3도 단조 연결을 유지한다.",
+              },
+              {
+                id: "gb-v3-3",
+                chord: "Ebm",
+                analysis: "이전 벌스의 vi 기능을 평행 이동한 자리다.",
+              },
+              {
+                id: "gb-v3-4",
+                chord: "Abm C#",
+                cue: "split bar",
+                analysis: "전조된 키에서도 ii-V로 같은 문법을 반복한다.",
+              },
+            ],
+          },
+          {
+            id: "gb-v4",
+            measures: [
+              { id: "gb-v4-1", chord: "F#", analysis: "새 토닉을 한 번 더 각인한다." },
+              { id: "gb-v4-2", chord: "Ebm", analysis: "감정을 눌러 주며 후렴 재진입을 준비한다." },
+              { id: "gb-v4-3", chord: "B", analysis: "IV로 열리며 시야를 다시 넓힌다." },
+              { id: "gb-v4-4", chord: "C#", analysis: "도미넌트 기능으로 재진입 힘을 만든다." },
+            ],
+          },
+        ],
+      },
+      {
+        id: "chorus-2",
+        title: "Chorus Return",
+        annotation: "Returns to the earlier chorus shape before the final lift",
+        systems: [
+          {
+            id: "gb-c3",
+            label: "Chorus",
+            measures: [
+              { id: "gb-c3-1", chord: "Eb", analysis: "익숙한 후렴 복귀로 청자를 다시 붙잡는다." },
+              { id: "gb-c3-2", chord: "Ab", analysis: "후렴의 넓은 호흡을 유지한다." },
+              { id: "gb-c3-3", chord: "Fm", analysis: "다음 긴장을 받치기 위한 준비 지점이다." },
+              {
+                id: "gb-c3-4",
+                chord: "C Fm Bb",
+                cue: "turnaround",
+                analysis: "후반 클라이맥스를 위해 긴장을 다시 끌어올린다.",
+              },
+            ],
+          },
+          {
+            id: "gb-c4",
+            measures: [
+              { id: "gb-c4-1", chord: "Eb", analysis: "종지 대신 다음 전조를 위한 발판으로 쓴다." },
+              { id: "gb-c4-2", chord: "Ab", analysis: "감정을 넓게 유지한 채 멈춘다." },
+              { id: "gb-c4-3", chord: "Fm", analysis: "전조 직전 숨을 고르는 위치다." },
+              {
+                id: "gb-c4-4",
+                chord: "C Fm Bb",
+                cue: "hold for lift",
+                analysis: "완전 종지 대신 긴장을 남겨 마지막 상승을 준비한다.",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: "final-chorus",
+        title: "Final Chorus",
+        annotation: "Last coda in F",
+        systems: [
+          {
+            id: "gb-f1",
+            label: "Final Chorus",
+            measures: [
+              {
+                id: "gb-f1-1",
+                chord: "F",
+                analysis: "마지막 전조 뒤의 새 토닉이 클라이맥스를 만든다.",
+              },
+              {
+                id: "gb-f1-2",
+                chord: "Bb",
+                analysis: "IV가 후렴을 더 크게 열어 준다.",
+              },
+              {
+                id: "gb-f1-3",
+                chord: "Gm",
+                analysis: "같은 후렴 문법을 새 키에서 반복한다.",
+              },
+              {
+                id: "gb-f1-4",
+                chord: "D Gm C",
+                cue: "turnaround",
+                analysis: "새 키에서도 긴장-해소 문법을 유지해 절정을 고정한다.",
+              },
+            ],
+          },
+          {
+            id: "gb-f2",
+            ending: "Goodbye",
+            measures: [
+              { id: "gb-f2-1", chord: "F", analysis: "마지막 진술을 토닉에서 안정시킨다." },
+              { id: "gb-f2-2", chord: "Bb", analysis: "여운을 넓게 남긴다." },
+              { id: "gb-f2-3", chord: "Gm", analysis: "완전 종지 직전 감정을 한 번 더 모은다." },
+              {
+                id: "gb-f2-4",
+                chord: "D Gm C F",
+                cue: "final resolve",
+                analysis: "모든 긴장을 토닉으로 해소하며 곡을 마무리한다.",
+              },
             ],
           },
         ],
