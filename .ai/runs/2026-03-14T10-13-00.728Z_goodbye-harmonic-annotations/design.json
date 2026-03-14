@@ -1,0 +1,88 @@
+{
+  "screens": [
+    {
+      "id": "songs-library",
+      "name": "Songs library with inline harmonic notes",
+      "purpose": "Let the selected chart keep its normal lead-sheet scanability while exposing short theory notes directly on relevant bars.",
+      "screen_type": "workspace",
+      "primary_action": "Open a chart and read the harmonic annotations inline",
+      "states": [
+        "default:list with selectable songs",
+        "selected:viewer open with inline measure analysis"
+      ]
+    }
+  ],
+  "ux_rules": [
+    "Keep harmonic annotations visually subordinate to chord symbols.",
+    "Attach notes to the same measure cell as the target chord so interpretation remains local and fast to scan.",
+    "Do not add a separate sidebar or inspector for this first pass."
+  ],
+  "component_map": [
+    {
+      "screen_id": "songs-library",
+      "components": [
+        "SongList",
+        "ScoreViewer",
+        "measure analysis note"
+      ]
+    }
+  ],
+  "design_rule_engine": {
+    "profile_id": null,
+    "hard_rule_sets": [],
+    "heuristic_sets": [],
+    "allowed_pattern_sets": [],
+    "banned_pattern_sets": [],
+    "review_rubric_id": "songs-inline-analysis-review"
+  },
+  "screen_contexts": [
+    {
+      "screen_id": "songs-library",
+      "screen_type": "workspace",
+      "layout_intent": "Retain the existing two-pane reading surface and place short theory notes inside the measure cells without introducing avoidable overflow.",
+      "interaction_risks": [
+        "Notes can visually overpower the chord labels.",
+        "Long note text can make representative rows too tall on narrow screens."
+      ],
+      "required_states": [
+        "default:list with selectable songs",
+        "selected:viewer open with inline measure analysis"
+      ],
+      "notes": [
+        "Representative layout rows must still fit the reading pane width after the added notes appear."
+      ]
+    }
+  ],
+  "builder_constraints": [
+    {
+      "screen_id": "songs-library",
+      "constraints": [
+        "Keep the change additive and backward-compatible with songs that do not have analysis notes.",
+        "Use concise Korean-language theory text for Goodbye.",
+        "Preserve the current editorial tone and avoid dashboard-like explanatory chrome."
+      ],
+      "open_decisions": [
+        "Other songs can gain analysis notes later if the pattern proves useful."
+      ]
+    }
+  ],
+  "review_targets": [
+    {
+      "screen_id": "songs-library",
+      "critical_judgments": [
+        "Chord symbols remain the visual priority.",
+        "The inline notes read like annotations attached to specific bars.",
+        "Representative rows keep pane-width fit on desktop and mobile."
+      ],
+      "must_not_regress": [
+        "Existing song selection flow",
+        "Existing chart grid readability"
+      ]
+    }
+  ],
+  "visual_constraints": [
+    "The note treatment should feel like an editorial annotation, not a callout card.",
+    "Avoid redundant local labels inside each measure."
+  ],
+  "human_checkpoints": []
+}

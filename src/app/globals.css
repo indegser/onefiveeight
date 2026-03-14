@@ -168,22 +168,22 @@
 }
 
 .type-meta-label {
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   line-height: 1rem;
   font-weight: 500;
   letter-spacing: 0.1em;
 }
 
 .type-meta-label-strong {
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   line-height: 1rem;
   font-weight: 600;
   letter-spacing: 0.12em;
 }
 
 .type-chip-label {
-  font-size: 0.625rem;
-  line-height: 0.875rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
   font-weight: 600;
   letter-spacing: 0.08em;
 }

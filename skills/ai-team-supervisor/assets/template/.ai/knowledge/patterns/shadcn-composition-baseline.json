@@ -1,0 +1,25 @@
+{
+  "id": "shadcn-composition-baseline",
+  "title": "shadcn composition baseline",
+  "summary": "Prefer composable shadcn primitives over custom one-off widgets when building new internal product surfaces.",
+  "tags": ["shadcn", "components", "composition", "typescript", "nextjs"],
+  "when_to_use": [
+    "A new screen can be assembled from existing primitives with minor styling work.",
+    "The implementation should stay aligned with the repository stack defaults."
+  ],
+  "constraints": [
+    "Do not create bespoke UI components when a primitive composition solves the same problem cleanly.",
+    "Keep styling localized so future screens can reuse the pattern."
+  ],
+  "solution_outline": [
+    "Start with Card, Tabs, Table, Dialog, Sheet, and form primitives before inventing new abstractions.",
+    "Extract a reusable wrapper only after two concrete usages exist.",
+    "Keep behavior code separate from cosmetic wrappers."
+  ],
+  "source_projects": ["admin-starter", "internal-tool-shell"],
+  "source_files": [
+    "components/ui/card.tsx",
+    "components/ui/table.tsx"
+  ],
+  "maintained_by": "ai-team"
+}

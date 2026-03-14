@@ -1,0 +1,28 @@
+{
+  "screen_type": "form",
+  "purpose_template": "Collect input with low ambiguity, clear validation, and safe completion or cancellation paths.",
+  "required_regions": [
+    "form intro or object context",
+    "field groups",
+    "validation/help text",
+    "submission and cancellation controls"
+  ],
+  "required_states": [
+    "default",
+    "validation error",
+    "submitting",
+    "success",
+    "recoverable failure"
+  ],
+  "default_review_focus": [
+    "field grouping",
+    "error placement",
+    "submission clarity",
+    "progressive disclosure"
+  ],
+  "common_risks": [
+    "too many fields without grouping",
+    "helper text detached from cause",
+    "cancel and save actions competing equally"
+  ]
+}

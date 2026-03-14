@@ -1,0 +1,123 @@
+{
+  "$schema": "../../.ai/schemas/aesthetic-profile.schema.json",
+  "version": "0.1.0",
+  "selection_status": "selected",
+  "selected_profile_id": "warm-restrained-editorial-utility",
+  "project_binding": {
+    "product_type": "prosumer-utility",
+    "brand_mode": "quiet-warm-minimal",
+    "library_binding": "nextjs-app-router + shadcn-ui + radix-ui + tailwind-css-v4",
+    "token_source": "current-repo-tailwind-layer"
+  },
+  "candidate_profiles": [
+    {
+      "id": "warm-restrained-editorial-utility",
+      "name": "Warm Restrained Editorial Utility",
+      "summary": "Quiet luxury minimalism adapted for prosumer utility surfaces: warm neutrals, low saturation, calm hierarchy, and disciplined density.",
+      "fit_signals": [
+        "COS / Kinfolk sensibility",
+        "Aesop, Muji, Jil Sander, Buly reference family",
+        "warm low-saturation palette",
+        "minimal but not cold",
+        "editorial calm with practical usability"
+      ],
+      "judgment_axes": {
+        "hierarchy": "soft but legible hierarchy with clear landmarks and restrained emphasis",
+        "density": "moderate density with deliberate breathing room around major groups, not around every element",
+        "tone": "warm, composed, understated, tactile",
+        "motion": "subtle and sparse, used for continuity rather than spectacle"
+      }
+    },
+    {
+      "id": "calm-operational",
+      "name": "Calm Operational",
+      "summary": "Dense and practical with restrained visual emphasis.",
+      "fit_signals": [
+        "operator workflows",
+        "table and form heavy surfaces",
+        "low tolerance for decorative noise"
+      ],
+      "judgment_axes": {
+        "hierarchy": "clear sectional hierarchy with localized emphasis",
+        "density": "high information density without crowding",
+        "tone": "quiet, professional, controlled",
+        "motion": "minimal and utility-driven"
+      }
+    },
+    {
+      "id": "editorial-guided",
+      "name": "Editorial Guided",
+      "summary": "More narrative hierarchy and breathing room while preserving task clarity.",
+      "fit_signals": [
+        "content-led flows",
+        "decision support screens",
+        "higher importance on explanation and framing"
+      ],
+      "judgment_axes": {
+        "hierarchy": "strong headline-to-detail flow",
+        "density": "moderate density with deliberate pauses",
+        "tone": "confident and informative",
+        "motion": "selective and communicative"
+      }
+    },
+    {
+      "id": "sharp-utility",
+      "name": "Sharp Utility",
+      "summary": "High-contrast, fast-scanning, command-surface style.",
+      "fit_signals": [
+        "expert users",
+        "monitoring or control surfaces",
+        "frequent repeated actions"
+      ],
+      "judgment_axes": {
+        "hierarchy": "strong contrast and quick landmarking",
+        "density": "compact and intentional",
+        "tone": "direct and technical",
+        "motion": "rare and immediate"
+      }
+    }
+  ],
+  "reference_strategy": {
+    "method": "profile-plus-references",
+    "notes": [
+      "Reference set currently centers on COS, Kinfolk, Aesop, Muji, Jil Sander, and Officine Universelle Buly.",
+      "Translate references into observable traits: warm neutrals, low saturation, quiet hierarchy, material restraint, and editorial whitespace discipline.",
+      "Avoid encoding taste only as adjectives; tie it to observable composition qualities."
+    ]
+  },
+  "anti_pattern_candidates": [
+    {
+      "id": "ornamental-fragmentation",
+      "description": "Too many competing card treatments, accents, or visual containers."
+    },
+    {
+      "id": "hero-marketing-drift",
+      "description": "Internal workflows presented like promotional landing pages."
+    },
+    {
+      "id": "over-muted-hierarchy",
+      "description": "Everything is subtle, causing weak navigation and poor landmarking."
+    },
+    {
+      "id": "false-airiness",
+      "description": "Large empty gaps that reduce throughput without improving comprehension."
+    },
+    {
+      "id": "cold-sterile-minimalism",
+      "description": "Minimalism that feels clinical, bluish, or emotionally flat instead of warm and composed."
+    },
+    {
+      "id": "luxury-signaling-over-utility",
+      "description": "Brand-like refinement that hides actions, lowers contrast too far, or impairs prosumer task completion."
+    },
+    {
+      "id": "saturated-accent-breakout",
+      "description": "Bright, high-chroma accents that overpower the otherwise muted surface."
+    }
+  ],
+  "open_questions": [
+    "How warm should the palette run in product surfaces: paper-beige neutral, olive-tinted neutral, or skin-tone neutral?",
+    "How much editorial whitespace can be preserved before prosumer throughput starts to suffer on dense screens?",
+    "Should the current repo styling layer remain the token source, or should a dedicated token system be introduced later?"
+  ]
+}

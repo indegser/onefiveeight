@@ -1,0 +1,20 @@
+{
+  "completed_tasks": [
+    "measure-analysis-support"
+  ],
+  "changed_files": [
+    "docs/ideas/goodbye-harmonic-annotations.md",
+    "src/app/globals.css",
+    "src/app/songs/score-viewer.tsx",
+    "src/lib/songs.ts"
+  ],
+  "notes": [
+    "Extended SongMeasure with an optional analysis field and rendered inline Korean harmonic notes inside Goodbye measure cells.",
+    "Raised the smallest songs-surface text styles used by meta labels, chip labels, inline analysis notes, and the grouped-chord divider to a 12px minimum.",
+    "Kept existing songs backward-compatible and left the two-pane songs workspace unchanged."
+  ],
+  "open_issues": [
+    "The songs viewer still contains some English UI labels unrelated to the minimum-size fix.",
+    "Only Goodbye currently uses the inline analysis-note field."
+  ]
+}

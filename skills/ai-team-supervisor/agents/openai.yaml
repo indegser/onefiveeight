@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI Team Supervisor"
+  short_description: "Install the reusable Codex supervisor loop"
+  default_prompt: "Use $ai-team-supervisor to install the reusable multi-agent supervisor workflow into this repository."

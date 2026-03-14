@@ -1,0 +1,21 @@
+{
+  "checks": [
+    {
+      "name": "eslint-src-lib-songs",
+      "status": "passed",
+      "details": "npx eslint src/lib/songs.ts completed without lint findings."
+    },
+    {
+      "name": "songs-library-list-render",
+      "status": "passed",
+      "details": "agent-browser snapshot on http://127.0.0.1:3000/songs showed Goodbye in the library list with key, feel, summary, 6 sections, and 12 systems."
+    },
+    {
+      "name": "songs-library-selected-render",
+      "status": "passed",
+      "details": "agent-browser snapshot scoped to the article confirmed the Goodbye detail view renders metadata, chart notes, and all six section headings after selection. Evidence saved at .ai/runs/2026-03-14T10-02-39.751Z_air-supply-goodbye-songs-seed/evidence/songs-goodbye-list.png and .ai/runs/2026-03-14T10-02-39.751Z_air-supply-goodbye-songs-seed/evidence/songs-goodbye-selected.png."
+    }
+  ],
+  "passed": true,
+  "blocking_issues": []
+}

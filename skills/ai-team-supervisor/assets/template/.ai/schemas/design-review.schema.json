@@ -1,0 +1,120 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DesignReviewResult",
+  "type": "object",
+  "required": [
+    "approved",
+    "preview_evidence",
+    "summary",
+    "findings",
+    "section_scores",
+    "profile_assessment",
+    "gates",
+    "next_steps"
+  ],
+  "properties": {
+    "approved": { "type": "boolean" },
+    "preview_evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" }
+    },
+    "summary": {
+      "type": "object",
+      "required": ["status", "rationale"],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["pass", "pass_with_followups", "refine", "blocked"]
+        },
+        "rationale": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "severity", "layer", "message"],
+        "properties": {
+          "id": { "type": "string" },
+          "severity": {
+            "type": "string",
+            "enum": ["low", "medium", "high", "critical"]
+          },
+          "layer": {
+            "type": "string",
+            "enum": ["hard_rule", "ux_heuristic", "aesthetic_judgment"]
+          },
+          "message": { "type": "string" },
+          "screen_id": { "type": "string" },
+          "area": { "type": "string" },
+          "recommendation": { "type": "string" },
+          "evidence": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "section_scores": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["section_id", "score", "notes"],
+        "properties": {
+          "section_id": { "type": "string" },
+          "score": { "type": "number" },
+          "notes": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "profile_assessment": {
+      "type": "object",
+      "required": [
+        "selected_profile_id",
+        "fit_score",
+        "anti_patterns_detected"
+      ],
+      "properties": {
+        "selected_profile_id": {
+          "type": ["string", "null"]
+        },
+        "fit_score": { "type": "number" },
+        "anti_patterns_detected": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "notes": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": false
+    },
+    "gates": {
+      "type": "object",
+      "required": [
+        "hard_rules_passed",
+        "needs_human_review",
+        "requires_refinement"
+      ],
+      "properties": {
+        "hard_rules_passed": { "type": "boolean" },
+        "needs_human_review": { "type": "boolean" },
+        "requires_refinement": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    "next_steps": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "additionalProperties": false
+}

@@ -62,7 +62,7 @@ function ChordLabel({ chord }: { chord?: string }) {
             className="inline-flex items-center gap-1"
           >
             {index > 0 ? (
-              <span className="text-[8px] text-[var(--tone-text-muted)]" aria-hidden="true">
+              <span className="text-xs text-[var(--tone-text-muted)]" aria-hidden="true">
                 /
               </span>
             ) : null}
@@ -157,15 +157,22 @@ function SystemRow({
               {system.measures.map((measure) => (
                 <div
                   key={measure.id}
-                  className="flex min-h-[3.15rem] flex-col justify-between gap-1.5 border-l border-[color:color-mix(in_srgb,var(--tone-text-muted)_80%,transparent)] px-2 py-1.5 first:border-l-0"
+                  className="flex min-h-[5.25rem] flex-col gap-1.5 border-l border-[color:color-mix(in_srgb,var(--tone-text-muted)_80%,transparent)] px-2 py-1.5 first:border-l-0"
                   style={{ gridColumn: `span ${measure.span ?? 1}` }}
                 >
                   <ChordLabel chord={measure.chord} />
-                  {measure.cue ? (
-                    <p className="type-chip-label text-[var(--tone-text-muted)]">
-                      {measure.cue}
-                    </p>
-                  ) : null}
+                  <div className="mt-auto space-y-1">
+                    {measure.cue ? (
+                      <p className="type-chip-label text-[var(--tone-text-muted)]">
+                        {measure.cue}
+                      </p>
+                    ) : null}
+                    {measure.analysis ? (
+                      <p className="rounded-sm border border-[color:color-mix(in_srgb,var(--tone-border)_80%,transparent)] bg-[color:color-mix(in_srgb,var(--tone-canvas)_78%,white)] px-1.5 py-1 text-xs leading-4 text-[var(--tone-text-secondary)]">
+                        {measure.analysis}
+                      </p>
+                    ) : null}
+                  </div>
                 </div>
               ))}
             </div>
