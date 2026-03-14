@@ -1,0 +1,87 @@
+{
+  "screens": [
+    {
+      "id": "songs-library",
+      "name": "Songs library",
+      "purpose": "Show the newly extracted chart as a selectable entry in the existing song list.",
+      "screen_type": "workspace",
+      "primary_action": "Open a chart from the library",
+      "states": [
+        "default:list with selectable songs",
+        "selected:viewer open with chart details"
+      ]
+    }
+  ],
+  "ux_rules": [
+    "Keep the existing songs workspace layout unchanged for this seed task.",
+    "Surface provisional extraction status through summary and chart notes instead of new UI chrome.",
+    "Preserve scanability by keeping section and system structure compatible with the current viewer."
+  ],
+  "component_map": [
+    {
+      "screen_id": "songs-library",
+      "components": [
+        "SongList",
+        "ScoreViewer",
+        "songs dataset"
+      ]
+    }
+  ],
+  "design_rule_engine": {
+    "profile_id": null,
+    "hard_rule_sets": [],
+    "heuristic_sets": [],
+    "allowed_pattern_sets": [],
+    "banned_pattern_sets": [],
+    "review_rubric_id": "songs-seed-review"
+  },
+  "screen_contexts": [
+    {
+      "screen_id": "songs-library",
+      "screen_type": "workspace",
+      "layout_intent": "Reuse the current two-pane song library and score viewer without adding new controls.",
+      "interaction_risks": [
+        "Draft extraction content may appear more final than it is.",
+        "Long combined chord strings may reduce measure readability in some systems."
+      ],
+      "required_states": [
+        "default:list with selectable songs",
+        "selected:viewer open with chart details"
+      ],
+      "notes": [
+        "This step prioritizes availability in the library over a new draft-state treatment."
+      ]
+    }
+  ],
+  "builder_constraints": [
+    {
+      "screen_id": "songs-library",
+      "constraints": [
+        "Keep the change additive and localized if possible.",
+        "Do not rework the songs UI architecture just to expose one provisional chart.",
+        "Keep explicit review markers in the content where extraction remains uncertain."
+      ],
+      "open_decisions": [
+        "A future importer should replace this manual seed once lead-sheet publishing is available."
+      ]
+    }
+  ],
+  "review_targets": [
+    {
+      "screen_id": "songs-library",
+      "critical_judgments": [
+        "The new song should be visible and selectable in the existing library.",
+        "The score viewer should retain legibility despite combined chord strings and review cues."
+      ],
+      "must_not_regress": [
+        "Existing song selection flow",
+        "Existing score viewer layout"
+      ]
+    }
+  ],
+  "visual_constraints": [
+    "No new visual treatment is required for this provisional seed.",
+    "Preserve the established songs workspace styling."
+  ],
+  "human_checkpoints": []
+}

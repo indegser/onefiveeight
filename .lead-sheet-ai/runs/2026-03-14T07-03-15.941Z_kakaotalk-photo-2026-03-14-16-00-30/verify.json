@@ -1,0 +1,25 @@
+{
+  "checks": [
+    {
+      "name": "schema-shape",
+      "status": "passed",
+      "details": "Run artifacts conform to the lead-sheet JSON schemas."
+    },
+    {
+      "name": "measure-traceability",
+      "status": "passed",
+      "details": "Every aligned non-null measure references at least one extracted token."
+    },
+    {
+      "name": "unresolved-content-review",
+      "status": "failed",
+      "details": "Multiple measures remain review-required because raw text is ambiguous or merged inside bars."
+    }
+  ],
+  "passed": false,
+  "blocking_issues": [
+    "The final lower-system second measure reads as 'Fmb' and is not publish-safe without human review.",
+    "Several measures appear to contain multiple chord changes inside one bar, but the exact split is not visible enough for approved downstream storage."
+  ],
+  "review_required_count": 16
+}

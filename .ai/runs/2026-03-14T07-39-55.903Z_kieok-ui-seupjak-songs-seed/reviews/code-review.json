@@ -1,0 +1,7 @@
+{
+  "approved": true,
+  "findings": [],
+  "next_steps": [
+    "Migrate seeded song data to a generated source when the lead-sheet pipeline can publish viewer-ready song records."
+  ]
+}

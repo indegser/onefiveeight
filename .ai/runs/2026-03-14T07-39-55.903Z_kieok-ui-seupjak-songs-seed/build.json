@@ -1,0 +1,18 @@
+{
+  "completed_tasks": [
+    "seed-song-data"
+  ],
+  "changed_files": [
+    "docs/ideas/kieok-ui-seupjak-songs-seed.md",
+    "src/lib/songs.ts"
+  ],
+  "notes": [
+    "Added a provisional song entry for 기억의 습작 to the existing songs dataset.",
+    "Mapped the current lead-sheet extraction into the existing section/system/measure viewer shape.",
+    "Preserved unresolved extraction areas as review-oriented chart notes and measure cues."
+  ],
+  "open_issues": [
+    "The song is still manually seeded rather than imported from the lead-sheet publish pipeline.",
+    "Several chords and ending directives remain provisional because the source image is ambiguous."
+  ]
+}

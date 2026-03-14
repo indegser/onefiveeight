@@ -1,0 +1,45 @@
+{
+  "run_id": "2026-03-14T07-03-15.941Z_kakaotalk-photo-2026-03-14-16-00-30",
+  "goal": "Convert lead sheet source /Users/indegser/Downloads/KakaoTalk_Photo_2026-03-14-16-00-30.jpeg into verified chart data",
+  "revision": 1,
+  "phase": "align",
+  "status": "in_progress",
+  "next_agent": "aligner",
+  "inputs": {
+    "source_ref": "/Users/indegser/Downloads/KakaoTalk_Photo_2026-03-14-16-00-30.jpeg",
+    "score_id": null,
+    "constraints": [
+      "Do not invent unreadable or implied chart content.",
+      "Preserve uncertainty explicitly until review resolves it."
+    ],
+    "accuracy_priority": "max"
+  },
+  "artifacts": {
+    "intake": ".lead-sheet-ai/runs/2026-03-14T07-03-15.941Z_kakaotalk-photo-2026-03-14-16-00-30/intake.json",
+    "preprocess": ".lead-sheet-ai/runs/2026-03-14T07-03-15.941Z_kakaotalk-photo-2026-03-14-16-00-30/preprocess.json",
+    "extract": ".lead-sheet-ai/runs/2026-03-14T07-03-15.941Z_kakaotalk-photo-2026-03-14-16-00-30/extract.json",
+    "align": ".lead-sheet-ai/runs/2026-03-14T07-03-15.941Z_kakaotalk-photo-2026-03-14-16-00-30/align.json",
+    "verify": ".lead-sheet-ai/runs/2026-03-14T07-03-15.941Z_kakaotalk-photo-2026-03-14-16-00-30/verify.json",
+    "publish": ".lead-sheet-ai/runs/2026-03-14T07-03-15.941Z_kakaotalk-photo-2026-03-14-16-00-30/publish.json"
+  },
+  "approvals": {
+    "human_review": false,
+    "publish": false
+  },
+  "blockers": [
+    "The final lower-system second measure reads as 'Fmb' and is not publish-safe without human review.",
+    "Several measures appear to contain multiple chord changes inside one bar, but the exact split is not visible enough for approved downstream storage."
+  ],
+  "uncertainties": [],
+  "refinement_notes": [],
+  "history": [
+    {
+      "at": "2026-03-14T07:03:15.942Z",
+      "event": "Initialized lead-sheet run from /Users/indegser/Downloads/KakaoTalk_Photo_2026-03-14-16-00-30.jpeg"
+    },
+    {
+      "at": "2026-03-14T07:09:08.981Z",
+      "event": "Lead-sheet supervisor routed to aligner"
+    }
+  ]
+}
