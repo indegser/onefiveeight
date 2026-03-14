@@ -1,0 +1,22 @@
+{
+  "completed_tasks": [
+    "task-audio-extraction",
+    "task-audio-normalization",
+    "task-audio-verification"
+  ],
+  "changed_files": [
+    "packages/music-analysis/src/pipelines/audio/types.ts",
+    "packages/music-analysis/src/pipelines/audio/librosa-adapter.ts",
+    "packages/music-analysis/src/pipelines/audio/librosa-audio-analysis.py",
+    "packages/music-analysis/src/pipelines/audio/pipeline.ts"
+  ],
+  "notes": [
+    "Refactored the audio adapter to return staged MIR artifacts including beats, downbeats, bars, root candidates, frame chord candidates, and separation metadata.",
+    "Upgraded the Python MIR path to use Demucs stems by default, with HPSS fallback when separation fails.",
+    "Added bar-aware root-plus-harmony chord scoring and Viterbi-style smoothing before lead-sheet normalization."
+  ],
+  "open_issues": [
+    "The full-length source track was not re-run to completion after the final optimization pass because Demucs on CPU is slow; verification used a 20-second clip from the same source.",
+    "Chord vocabulary is materially richer than before but still does not model slash-bass voicings or dense jazz extensions."
+  ]
+}

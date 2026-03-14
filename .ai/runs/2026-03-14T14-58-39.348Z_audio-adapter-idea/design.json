@@ -1,0 +1,98 @@
+{
+  "screens": [
+    {
+      "id": "audio-pipeline",
+      "name": "Audio Harmony Pipeline",
+      "purpose": "Convert mp3 input into a normalized lead-sheet draft with explicit uncertainty.",
+      "screen_type": "internal-pipeline",
+      "primary_action": "Analyze audio file",
+      "states": [
+        "audio decoded",
+        "beat and chord draft available",
+        "adapter failure with structured uncertainty"
+      ]
+    }
+  ],
+  "ux_rules": [
+    "Keep extraction separate from harmonic interpretation.",
+    "Prefer conservative review-required markers over invented harmonic detail.",
+    "Preserve source uncertainty whenever meter or chord confidence is weak."
+  ],
+  "component_map": [
+    {
+      "screen_id": "audio-pipeline",
+      "components": [
+        "Python librosa extraction script",
+        "TypeScript audio adapter",
+        "Audio pipeline measure normalizer",
+        "Existing theory analyzers"
+      ]
+    }
+  ],
+  "human_checkpoints": [],
+  "design_rule_engine": {
+    "profile_id": null,
+    "hard_rule_sets": [
+      "music-harmony-analysis"
+    ],
+    "heuristic_sets": [
+      "uncertainty-first-audio-analysis"
+    ],
+    "allowed_pattern_sets": [
+      "list-detail-workspace"
+    ],
+    "banned_pattern_sets": [
+      "hallucinated-symbolic-detail"
+    ],
+    "review_rubric_id": "design-review-rubric"
+  },
+  "screen_contexts": [
+    {
+      "screen_id": "audio-pipeline",
+      "screen_type": "internal-pipeline",
+      "layout_intent": "Produce a structured draft that can feed the existing theory layer without mixing extraction and interpretation.",
+      "interaction_risks": [
+        "Beat tracking can over-segment the harmony.",
+        "Meter hints can be wrong on syncopated or rubato sections."
+      ],
+      "required_states": [
+        "successful draft",
+        "empty draft with retry guidance",
+        "adapter stderr surfaced as uncertainty"
+      ],
+      "notes": [
+        "No user-facing UI changes are in scope."
+      ]
+    }
+  ],
+  "builder_constraints": [
+    {
+      "screen_id": "audio-pipeline",
+      "constraints": [
+        "Keep reusable logic under packages/music-analysis.",
+        "Do not rely on LLM inference for beat tracking or chord extraction.",
+        "Do not fail hard when the Python adapter cannot analyze a file."
+      ],
+      "open_decisions": [
+        "Future work may replace template matching with a stronger MIR backend.",
+        "Future work may refine bar grouping for double-time or half-time detection."
+      ]
+    }
+  ],
+  "review_targets": [
+    {
+      "screen_id": "audio-pipeline",
+      "critical_judgments": [
+        "Adapter output maps cleanly into normalized measures and events.",
+        "Uncertainty remains explicit throughout the audio path."
+      ],
+      "must_not_regress": [
+        "Symbolic pipeline behavior must stay unchanged.",
+        "Audio failures must not crash the orchestration layer."
+      ]
+    }
+  ],
+  "visual_constraints": [
+    "No visual UI changes were part of this task."
+  ]
+}

@@ -42,7 +42,7 @@ function getRootStream(measures: MeasureSnapshot[]) {
   return measures.flatMap((measure) => measure.roots);
 }
 
-function uniquePitchClasses(notes: string[]) {
+function uniquePitchClasses(notes: readonly string[]) {
   return Array.from(
     new Set(notes.map((note) => TonalNote.pitchClass(note) ?? note)),
   );
@@ -65,12 +65,10 @@ function scoreKeyCandidate(
 ) {
   const roots = getRootStream(measures);
   const primaryRoots = getPrimaryRootsPerMeasure(measures);
-  const key =
-    mode === "major" ? TonalKey.majorKey(tonic) : TonalKey.minorKey(tonic);
   const scale =
     mode === "major"
-      ? uniquePitchClasses(key.scale)
-      : uniquePitchClasses(key.natural.scale);
+      ? uniquePitchClasses(TonalKey.majorKey(tonic).scale)
+      : uniquePitchClasses(TonalKey.minorKey(tonic).natural.scale);
   const tonicPitchClass = getPitchClass(tonic);
   let score = 0;
 

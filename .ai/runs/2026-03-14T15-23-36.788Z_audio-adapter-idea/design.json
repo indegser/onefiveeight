@@ -1,0 +1,97 @@
+{
+  "screens": [
+    {
+      "id": "songs-library",
+      "name": "Songs Library",
+      "purpose": "Show the new Die With a Smile draft inside the existing list-detail lead-sheet workspace.",
+      "screen_type": "library-detail",
+      "primary_action": "Open song chart",
+      "states": [
+        "song listed",
+        "song selected",
+        "chart notes visible"
+      ]
+    }
+  ],
+  "ux_rules": [
+    "Reuse the existing songs workspace patterns without adding new UI mechanics.",
+    "Keep provisional audio-derived uncertainty visible in the chart notes instead of hiding it.",
+    "Prefer section and system groupings that keep the long chart scannable."
+  ],
+  "component_map": [
+    {
+      "screen_id": "songs-library",
+      "components": [
+        "Song list card",
+        "Score viewer header",
+        "Section systems",
+        "Measure-level chord and analysis labels"
+      ]
+    }
+  ],
+  "human_checkpoints": [],
+  "design_rule_engine": {
+    "profile_id": null,
+    "hard_rule_sets": [
+      "list-detail-workspace"
+    ],
+    "heuristic_sets": [
+      "information-density"
+    ],
+    "allowed_pattern_sets": [
+      "list-detail-workspace"
+    ],
+    "banned_pattern_sets": [
+      "redundant-labels"
+    ],
+    "review_rubric_id": "design-review-rubric"
+  },
+  "screen_contexts": [
+    {
+      "screen_id": "songs-library",
+      "screen_type": "library-detail",
+      "layout_intent": "Fit a long audio-derived draft chart into the existing score viewer without inventing new chrome.",
+      "interaction_risks": [
+        "Too many sections can make the draft feel fragmented.",
+        "Provisional bars must remain clearly marked."
+      ],
+      "required_states": [
+        "list visible",
+        "selected chart visible",
+        "notes reveal draft confidence"
+      ],
+      "notes": [
+        "No new visual patterns were introduced."
+      ]
+    }
+  ],
+  "builder_constraints": [
+    {
+      "screen_id": "songs-library",
+      "constraints": [
+        "Confine the change to the songs data source.",
+        "Preserve existing viewer behavior.",
+        "Do not overstate certainty for chromatic review bars."
+      ],
+      "open_decisions": [
+        "A later symbolic chart can replace the provisional audio-derived measures."
+      ]
+    }
+  ],
+  "review_targets": [
+    {
+      "screen_id": "songs-library",
+      "critical_judgments": [
+        "The new song is scannable in the existing list-detail layout.",
+        "Chart notes communicate the provisional nature of the registration."
+      ],
+      "must_not_regress": [
+        "Existing songs remain intact.",
+        "The score viewer still renders 4-measure systems cleanly."
+      ]
+    }
+  ],
+  "visual_constraints": [
+    "No visual UI changes were introduced; only existing content density changed."
+  ]
+}

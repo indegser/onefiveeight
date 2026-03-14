@@ -1,0 +1,23 @@
+{
+  "checks": [
+    {
+      "name": "typescript",
+      "status": "passed",
+      "details": "source \"$HOME/.nvm/nvm.sh\" && npx tsc --noEmit"
+    },
+    {
+      "name": "lint",
+      "status": "passed",
+      "details": "source \"$HOME/.nvm/nvm.sh\" && npm run lint completed with only pre-existing warnings outside the songs chart rewrite."
+    }
+  ],
+  "passed": true,
+  "visual_checks": [
+    {
+      "name": "ui-scope",
+      "status": "skipped",
+      "details": "No UI code changed; only chart content data was rewritten."
+    }
+  ],
+  "blocking_issues": []
+}

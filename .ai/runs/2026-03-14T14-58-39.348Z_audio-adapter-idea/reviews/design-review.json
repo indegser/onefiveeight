@@ -1,0 +1,38 @@
+{
+  "approved": true,
+  "preview_evidence": [
+    "No visual UI changed; review focused on whether the pipeline structure now matches the accuracy-first MIR design."
+  ],
+  "summary": {
+    "status": "pass_with_followups",
+    "rationale": "The refined audio path now separates rhythm, stem separation, harmony scoring, and smoothing stages, which fits the intended architecture."
+  },
+  "findings": [],
+  "section_scores": [
+    {
+      "section_id": "audio-pipeline",
+      "score": 0.93,
+      "notes": [
+        "Stage boundaries are explicit and uncertainty remains structured.",
+        "Demucs-first architecture is now represented directly in the extraction layer."
+      ]
+    }
+  ],
+  "profile_assessment": {
+    "selected_profile_id": null,
+    "fit_score": 0.92,
+    "anti_patterns_detected": [],
+    "notes": [
+      "Avoided collapsing extraction and theory interpretation together.",
+      "Kept review guidance explicit for fallback conditions."
+    ]
+  },
+  "gates": {
+    "hard_rules_passed": true,
+    "needs_human_review": false,
+    "requires_refinement": false
+  },
+  "next_steps": [
+    "Add browser evidence only if a user-facing analysis UI is introduced later."
+  ]
+}
