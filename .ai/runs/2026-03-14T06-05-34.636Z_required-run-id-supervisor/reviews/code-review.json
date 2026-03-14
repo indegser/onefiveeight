@@ -1,0 +1,7 @@
+{
+  "approved": true,
+  "findings": [],
+  "next_steps": [
+    "If more supervisor commands are added later, keep explicit run targeting mandatory from day one."
+  ]
+}

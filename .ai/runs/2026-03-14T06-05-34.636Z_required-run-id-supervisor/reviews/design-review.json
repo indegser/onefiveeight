@@ -1,0 +1,48 @@
+{
+  "approved": true,
+  "summary": {
+    "status": "pass_with_followups",
+    "rationale": "The workflow is now safer for parallel work because existing-run commands cannot silently resolve to shared repo state."
+  },
+  "findings": [],
+  "section_scores": [
+    {
+      "section_id": "hard_rules",
+      "score": 0.95,
+      "notes": [
+        "Existing-run commands now require explicit targeting.",
+        "Repo-local action wrappers now follow the same explicit targeting rule."
+      ]
+    },
+    {
+      "section_id": "ux_heuristics",
+      "score": 0.91,
+      "notes": [
+        "Usage errors now tell the operator exactly how to provide the missing run id."
+      ]
+    },
+    {
+      "section_id": "aesthetic_judgment",
+      "score": 0.84,
+      "notes": [
+        "The protocol is more explicit and less surprising, even though this change is infrastructure-focused."
+      ]
+    }
+  ],
+  "profile_assessment": {
+    "selected_profile_id": "warm-restrained-editorial-utility",
+    "fit_score": 0.82,
+    "anti_patterns_detected": [],
+    "notes": [
+      "The change prefers clear, unobtrusive structure over convenience magic."
+    ]
+  },
+  "gates": {
+    "hard_rules_passed": true,
+    "needs_human_review": false,
+    "requires_refinement": false
+  },
+  "next_steps": [
+    "Update any external helper scripts to pass run ids explicitly."
+  ]
+}
