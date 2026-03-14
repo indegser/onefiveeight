@@ -11,12 +11,7 @@
     "ai:route": "node scripts/ai-team/supervisor.mjs route",
     "ai:work": "node scripts/ai-team/supervisor.mjs work",
     "ai:validate": "node scripts/ai-team/supervisor.mjs validate",
-    "ai:refine": "node scripts/ai-team/supervisor.mjs refine",
-    "lead-sheet:init": "node scripts/lead-sheet-team/supervisor.mjs init",
-    "lead-sheet:route": "node scripts/lead-sheet-team/supervisor.mjs route",
-    "lead-sheet:work": "node scripts/lead-sheet-team/supervisor.mjs work",
-    "lead-sheet:validate": "node scripts/lead-sheet-team/supervisor.mjs validate",
-    "lead-sheet:refine": "node scripts/lead-sheet-team/supervisor.mjs refine"
+    "ai:refine": "node scripts/ai-team/supervisor.mjs refine"
   },
   "dependencies": {
     "@ai-sdk/openai": "^1.3.22",

@@ -23,6 +23,12 @@
       }
     ],
     "paths": {
+      "@music-analysis": [
+        "./packages/music-analysis/src/index.ts"
+      ],
+      "@music-analysis/*": [
+        "./packages/music-analysis/src/*"
+      ],
       "@/*": [
         "./src/*"
       ]
