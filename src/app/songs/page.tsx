@@ -3,7 +3,7 @@ import { SongsWorkspace } from "./songs-workspace";
 
 export const metadata: Metadata = {
   title: "Songs | One Five Eight",
-  description: "Browse copied songs and open a digitized score viewer.",
+  description: "Browse copied songs and open a lead-sheet style score viewer.",
 };
 
 export default function SongsPage() {
@@ -17,11 +17,12 @@ export default function SongsPage() {
                 Songbook
               </p>
               <h1 className="max-w-[42rem] text-[2.35rem] leading-[1.05] font-semibold tracking-[-0.04em] text-stone-950 md:text-[3.2rem]">
-                Scan the library, keep your place, and open one chart at a time.
+                Open the chart, read the form, and keep the chord flow visible.
               </h1>
               <p className="max-w-[38rem] text-sm leading-7 text-stone-600 md:text-[15px]">
-                Keep copied songs visible while the selected score opens into a
-                focused reading pane built for quick comparison.
+                This workspace treats songs like copied lead sheets, with
+                section systems, chord changes, repeats, and ending cues at the
+                center of the page.
               </p>
             </div>
             <dl className="grid grid-cols-2 gap-x-4 gap-y-3 border-l border-stone-300/80 pl-4 text-sm text-stone-700">
@@ -29,14 +30,16 @@ export default function SongsPage() {
                 <dt className="text-[11px] tracking-[0.2em] text-stone-500 uppercase">
                   Surface
                 </dt>
-                <dd className="mt-2 font-medium text-stone-900">List detail</dd>
+                <dd className="mt-2 font-medium text-stone-900">
+                  Chart library
+                </dd>
               </div>
               <div>
                 <dt className="text-[11px] tracking-[0.2em] text-stone-500 uppercase">
                   Intent
                 </dt>
                 <dd className="mt-2 font-medium text-stone-900">
-                  Fast score lookup
+                  Fast lead-sheet lookup
                 </dd>
               </div>
             </dl>

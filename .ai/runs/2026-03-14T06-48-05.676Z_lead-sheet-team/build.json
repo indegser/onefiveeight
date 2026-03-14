@@ -1,0 +1,44 @@
+{
+  "completed_tasks": [
+    "separate-runtime",
+    "lead-sheet-contracts"
+  ],
+  "changed_files": [
+    "package.json",
+    "docs/ideas/lead-sheet-team.md",
+    "docs/lead-sheet-team-mvp.md",
+    "docs/lead-sheet-storage.md",
+    "lead-sheets/README.md",
+    "lead-sheets/_template.md",
+    "scripts/lead-sheet-team/shared-state.mjs",
+    "scripts/lead-sheet-team/schemas.mjs",
+    "scripts/lead-sheet-team/supervisor.mjs",
+    "agents-lead-sheet/intake-supervisor.md",
+    "agents-lead-sheet/preprocessor.md",
+    "agents-lead-sheet/extractor.md",
+    "agents-lead-sheet/aligner.md",
+    "agents-lead-sheet/verifier.md",
+    "agents-lead-sheet/chart-reviewer.md",
+    "agents-lead-sheet/publisher.md",
+    ".lead-sheet-ai/schemas/run.schema.json",
+    ".lead-sheet-ai/schemas/intake.schema.json",
+    ".lead-sheet-ai/schemas/preprocess.schema.json",
+    ".lead-sheet-ai/schemas/extract.schema.json",
+    ".lead-sheet-ai/schemas/align.schema.json",
+    ".lead-sheet-ai/schemas/verify.schema.json",
+    ".lead-sheet-ai/schemas/chart-review.schema.json",
+    ".lead-sheet-ai/schemas/publish.schema.json"
+  ],
+  "notes": [
+    "Added a separate lead-sheet-team runtime with its own run directory root at ./.lead-sheet-ai/runs.",
+    "Defined dedicated phase contracts for intake, preprocess, extract, align, verify, review, and publish.",
+    "Added role prompts that explicitly bias toward evidence-based extraction and against inference.",
+    "Exposed lead-sheet-team lifecycle commands through package.json without changing the existing development AI team command names.",
+    "Defined a Markdown-first storage contract where approved output publishes into one file per song under ./lead-sheets before any future Supabase migration."
+  ],
+  "open_issues": [
+    "The new runtime currently scaffolds orchestration only; it does not yet include real extraction, alignment, or publishing integrations.",
+    "Database-backed communication between lead-sheet-team and the product app is intentionally deferred.",
+    "The Markdown contract will still need a later importer/exporter layer when Supabase becomes the system of record."
+  ]
+}

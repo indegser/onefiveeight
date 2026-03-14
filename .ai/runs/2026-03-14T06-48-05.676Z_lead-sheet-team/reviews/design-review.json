@@ -1,0 +1,56 @@
+{
+  "approved": true,
+  "preview_evidence": [
+    "docs/lead-sheet-team-mvp.md",
+    "docs/lead-sheet-storage.md",
+    "lead-sheets/_template.md"
+  ],
+  "summary": {
+    "status": "pass",
+    "rationale": "The lead-sheet-team now has a clear first storage contract based on one Markdown file per approved song, which preserves inspectability and gives the future Supabase migration an explicit intermediate data shape."
+  },
+  "findings": [],
+  "section_scores": [
+    {
+      "section_id": "hard_rules",
+      "score": 0.97,
+      "notes": [
+        "The storage contract remains separate from the development team runtime.",
+        "The first publish target is explicit and inspectable."
+      ]
+    },
+    {
+      "section_id": "ux_heuristics",
+      "score": 0.93,
+      "notes": [
+        "A per-song Markdown file is easy to diff and review during early ingestion work.",
+        "The template makes the publish shape concrete for operators."
+      ]
+    },
+    {
+      "section_id": "aesthetic_judgment",
+      "score": 0.9,
+      "notes": [
+        "This is a contract-definition task, so the strongest signal is structural clarity rather than interface styling."
+      ]
+    }
+  ],
+  "profile_assessment": {
+    "selected_profile_id": null,
+    "fit_score": 0.92,
+    "anti_patterns_detected": [],
+    "notes": [
+      "The Markdown-first step avoids premature database coupling.",
+      "The contract is specific enough to guide future tooling."
+    ]
+  },
+  "gates": {
+    "hard_rules_passed": true,
+    "needs_human_review": false,
+    "requires_refinement": false
+  },
+  "next_steps": [
+    "Define the exact Markdown-to-database mapping before adding Supabase integration.",
+    "Create the first real approved song Markdown file once extraction artifacts exist."
+  ]
+}

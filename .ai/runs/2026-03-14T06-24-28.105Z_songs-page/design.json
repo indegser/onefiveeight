@@ -1,0 +1,106 @@
+{
+  "screens": [
+    {
+      "id": "songs-library",
+      "name": "Lead-sheet songs workspace",
+      "purpose": "Help a solo player scan a chart library and open one copied lead sheet with enough structure to play from it.",
+      "screen_type": "detail",
+      "primary_action": "Select a chart from the library",
+      "states": [
+        "success:selected-chart",
+        "empty:no-selection",
+        "empty:no-songs"
+      ]
+    }
+  ],
+  "ux_rules": [
+    "Keep the list-detail workspace pattern so the song library remains visible while the chart is open.",
+    "Treat the digital chart as the dominant surface and keep framing copy secondary.",
+    "Use chart-centric metadata in both list and detail views, prioritizing key, feel, meter, and structure over descriptive prose.",
+    "Render each lead-sheet system with stable horizontal measure rhythm and enough whitespace to scan chord changes quickly.",
+    "Attach repeats, meter changes, and ending directions to the specific system where they matter rather than hiding them in summary text.",
+    "Preserve a paper-like editorial tone with restrained surfaces and subtle score-line cues instead of generic cards."
+  ],
+  "component_map": [
+    {
+      "screen_id": "songs-library",
+      "components": [
+        "songs page framing header",
+        "chart library stats strip",
+        "chart selection list",
+        "lead-sheet empty state",
+        "lead-sheet header metadata",
+        "section group headers",
+        "system row renderer",
+        "measure cell grid",
+        "system directive chips"
+      ]
+    }
+  ],
+  "design_rule_engine": {
+    "profile_id": "warm-restrained-editorial-utility",
+    "hard_rule_sets": ["layout-rules", "detail-screen-template"],
+    "heuristic_sets": ["ux-heuristics"],
+    "allowed_pattern_sets": ["core-allowed-patterns"],
+    "banned_pattern_sets": ["core-banned-patterns"],
+    "review_rubric_id": "design-review-rubric"
+  },
+  "screen_contexts": [
+    {
+      "screen_id": "songs-library",
+      "screen_type": "detail",
+      "layout_intent": "Use a persistent chart list on the left and a paper-like lead-sheet reading pane on the right.",
+      "interaction_risks": [
+        "The chart can drift back into plain text blocks if systems and measures are not visually grouped.",
+        "Excessive card chrome can make the score feel like a dashboard instead of a practical chart.",
+        "System directives may become detached from their rows if they are only shown in the page header.",
+        "Too much prose in the list can hide the structural differences between charts."
+      ],
+      "required_states": [
+        "empty:no-selection",
+        "empty:no-songs",
+        "success:selected-chart"
+      ],
+      "notes": [
+        "The viewer should approximate the logic of handwritten staff systems without attempting literal notation engraving.",
+        "The provided handwritten sample should drive at least one seed chart so the design proves real repeat and directive cases."
+      ]
+    }
+  ],
+  "builder_constraints": [
+    {
+      "screen_id": "songs-library",
+      "constraints": [
+        "Model systems and measures explicitly instead of storing every chart row as an opaque string.",
+        "Keep the viewer accessible and readable on mobile by allowing horizontal scroll inside systems rather than shrinking chord labels too far.",
+        "Use subtle score-line background treatment and borders to imply staff systems without creating noisy decoration.",
+        "Do not add competing action buttons inside the chart library or chart pane."
+      ],
+      "open_decisions": [
+        "Future support for codas, first and second endings, and alternate takes remains deferred beyond the current system shape.",
+        "Search and filters are still deferred until the library grows."
+      ]
+    }
+  ],
+  "review_targets": [
+    {
+      "screen_id": "songs-library",
+      "critical_judgments": [
+        "The viewer should read like a playable chart rather than a generic content detail page.",
+        "The selected chart should remain obvious in the list with minimal visual noise.",
+        "System-level directives should be easy to find without sacrificing overall calm."
+      ],
+      "must_not_regress": [
+        "Persistent list-detail workflow",
+        "Intentional no-selection empty state",
+        "Warm restrained editorial utility tone"
+      ]
+    }
+  ],
+  "visual_constraints": [
+    "Favor warm paper tones, graphite-like text, and measured border contrast.",
+    "Keep corners restrained and avoid inflated pills or glossy callouts.",
+    "Use typography hierarchy and staff-line rhythm as the primary source of structure."
+  ],
+  "human_checkpoints": []
+}

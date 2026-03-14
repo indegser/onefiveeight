@@ -1,0 +1,47 @@
+{
+  "epics": [
+    {
+      "id": "lead-sheet-runtime-foundation",
+      "title": "Create an independent lead-sheet-team runtime",
+      "tasks": [
+        {
+          "id": "separate-runtime",
+          "title": "Add a dedicated lead-sheet-team supervisor and state directory",
+          "acceptance_criteria": [
+            "The repository includes a separate supervisor runtime under scripts/lead-sheet-team.",
+            "Lead-sheet-team stores run state under a dedicated directory instead of ./.ai/runs.",
+            "The new runtime can initialize, route, validate, and print work packages without depending on the existing development team supervisor."
+          ],
+          "dependencies": [],
+          "done_definition": [
+            "Lead-sheet-team commands exist in package.json and basic lifecycle commands execute successfully."
+          ]
+        },
+        {
+          "id": "lead-sheet-contracts",
+          "title": "Define role prompts and state schemas for the extraction team",
+          "acceptance_criteria": [
+            "The repository includes dedicated agent prompts for intake, preprocessing, extraction, alignment, verification, review, and publishing.",
+            "Lead-sheet-team has dedicated schema contracts for its run and artifact files.",
+            "The new contracts emphasize extraction accuracy and explicit uncertainty handling."
+          ],
+          "dependencies": [
+            "separate-runtime"
+          ],
+          "done_definition": [
+            "A fresh operator can inspect the prompts and schemas and understand the new team's workflow."
+          ]
+        }
+      ]
+    }
+  ],
+  "assumptions": [
+    "This first pass creates orchestration scaffolding only, not extraction logic.",
+    "Lead-sheet-team should remain operationally independent even if it later writes to shared database models.",
+    "The existing development AI team remains the mechanism for implementing code inside this repository."
+  ],
+  "risks": [
+    "If the lead-sheet-team schemas are too narrow, later extraction work may require contract changes.",
+    "If team boundaries are not documented clearly, users may confuse lead-sheet-team with the existing development supervisor."
+  ]
+}

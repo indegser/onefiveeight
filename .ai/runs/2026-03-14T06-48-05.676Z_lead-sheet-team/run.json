@@ -1,0 +1,63 @@
+{
+  "run_id": "2026-03-14T06-48-05.676Z_lead-sheet-team",
+  "goal": "Build an app from docs/ideas/lead-sheet-team.md",
+  "revision": 2,
+  "phase": "done",
+  "status": "done",
+  "next_agent": "none",
+  "stack": {
+    "frontend": "nextjs",
+    "ui": "shadcn-ui",
+    "backend": "supabase",
+    "language": "typescript"
+  },
+  "inputs": {
+    "idea_file": "docs/ideas/lead-sheet-team.md",
+    "constraints": [],
+    "brand_critical": false
+  },
+  "artifacts": {
+    "plan": ".ai/runs/2026-03-14T06-48-05.676Z_lead-sheet-team/plan.json",
+    "memory": ".ai/runs/2026-03-14T06-48-05.676Z_lead-sheet-team/memory.json",
+    "design": ".ai/runs/2026-03-14T06-48-05.676Z_lead-sheet-team/design.json",
+    "build": ".ai/runs/2026-03-14T06-48-05.676Z_lead-sheet-team/build.json",
+    "verify": ".ai/runs/2026-03-14T06-48-05.676Z_lead-sheet-team/verify.json"
+  },
+  "approvals": {
+    "brand": false,
+    "data_model": false,
+    "destructive_flows": false
+  },
+  "blockers": [],
+  "decisions": [],
+  "risks": [],
+  "refinement_notes": [
+    {
+      "at": "2026-03-14T06:55:55.868Z",
+      "note": "switch lead-sheet-team storage contract to per-song markdown files before future supabase migration",
+      "target_agent": "builder"
+    }
+  ],
+  "history": [
+    {
+      "at": "2026-03-14T06:48:05.679Z",
+      "event": "Initialized run from docs/ideas/lead-sheet-team.md"
+    },
+    {
+      "at": "2026-03-14T06:48:12.460Z",
+      "event": "Supervisor routed to planner"
+    },
+    {
+      "at": "2026-03-14T06:52:09.823Z",
+      "event": "Supervisor routed to none"
+    },
+    {
+      "at": "2026-03-14T06:55:55.869Z",
+      "event": "Refinement requested for builder: switch lead-sheet-team storage contract to per-song markdown files before future supabase migration"
+    },
+    {
+      "at": "2026-03-14T06:57:14.860Z",
+      "event": "Supervisor routed to none"
+    }
+  ]
+}

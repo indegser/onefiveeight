@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import type { Song } from "@/lib/songs";
+import { getSongSystemCount, type Song } from "@/lib/songs";
 
 type SongListProps = {
   songs: Song[];
@@ -27,14 +27,14 @@ export function SongList({
       <div className="mb-3 flex items-center justify-between border-b border-stone-200 px-2 pt-1 pb-3">
         <div>
           <p className="text-xs font-semibold tracking-[0.22em] text-stone-500 uppercase">
-            Queue
+            Library
           </p>
           <p className="mt-1 text-sm text-stone-600">
-            Select one chart to inspect.
+            Open one chart and keep the rest in view.
           </p>
         </div>
         <span className="border-b border-stone-400/70 px-1 pb-1 text-[11px] font-medium tracking-[0.18em] text-stone-600 uppercase">
-          {songs.length} items
+          {songs.length} charts
         </span>
       </div>
       <div className="flex flex-col gap-2">
@@ -63,7 +63,7 @@ export function SongList({
                       isSelected ? "text-stone-300" : "text-stone-500",
                     )}
                   >
-                    {song.composer}
+                    {song.keyCenter}
                   </p>
                 </div>
                 <span
@@ -74,7 +74,7 @@ export function SongList({
                       : "border-stone-300/80 bg-[#efe6d8] text-stone-700",
                   )}
                 >
-                  {song.style}
+                  {song.feel}
                 </span>
               </div>
               <p
@@ -87,12 +87,13 @@ export function SongList({
               </p>
               <div
                 className={cn(
-                  "mt-4 flex items-center justify-between border-t border-current/10 pt-3 text-xs tracking-[0.18em] uppercase",
+                  "mt-4 grid grid-cols-3 gap-2 border-t border-current/10 pt-3 text-[11px] tracking-[0.18em] uppercase",
                   isSelected ? "text-stone-300" : "text-stone-500",
                 )}
               >
-                <span>{song.keySignature}</span>
-                <span>{song.tempo}</span>
+                <span>{song.meter}</span>
+                <span>{song.sections.length} sections</span>
+                <span>{getSongSystemCount(song)} systems</span>
               </div>
             </button>
           );

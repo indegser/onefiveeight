@@ -1,0 +1,80 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "LeadSheetAlignment",
+  "type": "object",
+  "required": ["sections", "unresolved"],
+  "properties": {
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["section_id", "label", "systems"],
+        "properties": {
+          "section_id": { "type": "string" },
+          "label": { "type": "string" },
+          "systems": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "system_id",
+                "source_page_id",
+                "measures",
+                "directives"
+              ],
+              "properties": {
+                "system_id": { "type": "string" },
+                "source_page_id": { "type": "string" },
+                "measures": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "measure_id",
+                      "chord_text",
+                      "evidence_token_ids",
+                      "review_required"
+                    ],
+                    "properties": {
+                      "measure_id": { "type": "string" },
+                      "chord_text": { "type": ["string", "null"] },
+                      "evidence_token_ids": {
+                        "type": "array",
+                        "items": { "type": "string" }
+                      },
+                      "review_required": { "type": "boolean" }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "directives": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": ["type", "text", "evidence_token_ids"],
+                    "properties": {
+                      "type": { "type": "string" },
+                      "text": { "type": "string" },
+                      "evidence_token_ids": {
+                        "type": "array",
+                        "items": { "type": "string" }
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "unresolved": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "additionalProperties": false
+}
