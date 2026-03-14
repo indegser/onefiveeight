@@ -4,6 +4,7 @@
   "type": "object",
   "required": [
     "approved",
+    "preview_evidence",
     "summary",
     "findings",
     "section_scores",
@@ -13,6 +14,11 @@
   ],
   "properties": {
     "approved": { "type": "boolean" },
+    "preview_evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" }
+    },
     "summary": {
       "type": "object",
       "required": ["status", "rationale"],
@@ -70,7 +76,11 @@
     },
     "profile_assessment": {
       "type": "object",
-      "required": ["selected_profile_id", "fit_score", "anti_patterns_detected"],
+      "required": [
+        "selected_profile_id",
+        "fit_score",
+        "anti_patterns_detected"
+      ],
       "properties": {
         "selected_profile_id": {
           "type": ["string", "null"]
@@ -89,7 +99,11 @@
     },
     "gates": {
       "type": "object",
-      "required": ["hard_rules_passed", "needs_human_review", "requires_refinement"],
+      "required": [
+        "hard_rules_passed",
+        "needs_human_review",
+        "requires_refinement"
+      ],
       "properties": {
         "hard_rules_passed": { "type": "boolean" },
         "needs_human_review": { "type": "boolean" },

@@ -1,0 +1,110 @@
+{
+  "epics": [
+    {
+      "id": "workflow-actions",
+      "title": "Add deterministic action wrappers for common supervisor steps",
+      "tasks": [
+        {
+          "id": "capture-screenshot-action",
+          "title": "Add a browser screenshot action wrapper",
+          "acceptance_criteria": [
+            "The repo exposes an action wrapper that opens a URL, waits for load completion, and saves a screenshot to a requested path.",
+            "The action uses the existing browser automation tooling rather than introducing a second browser stack.",
+            "Usage is documented in the repo-local action documentation."
+          ],
+          "dependencies": [],
+          "done_definition": [
+            "A deterministic screenshot command exists under actions/ and can be invoked from the repository root."
+          ]
+        },
+        {
+          "id": "lint-and-route-actions",
+          "title": "Add wrappers for changed-file linting and route-plus-validate",
+          "acceptance_criteria": [
+            "The repo exposes an action wrapper that targets lint to changed files or explicit file arguments.",
+            "The repo exposes an action wrapper that runs supervisor validate and route in one step.",
+            "Both actions are documented so agents can prefer them over ad hoc shell sequences."
+          ],
+          "dependencies": [],
+          "done_definition": [
+            "The common verifier and supervisor commands are accessible through repo-local actions."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "protocol-strengthening",
+      "title": "Strengthen design and review protocol contracts",
+      "tasks": [
+        {
+          "id": "design-review-evidence",
+          "title": "Require screenshot evidence in design review outputs",
+          "acceptance_criteria": [
+            "The design review schema requires explicit preview or screenshot evidence references.",
+            "Design critic instructions and documentation explain that screenshot evidence is expected for implementation review.",
+            "Validation fails when review outputs omit the required evidence field."
+          ],
+          "dependencies": ["capture-screenshot-action"],
+          "done_definition": [
+            "Design review outputs cannot be considered complete without screenshot evidence."
+          ]
+        },
+        {
+          "id": "visual-constraints-contract",
+          "title": "Add visual constraints to design artifacts",
+          "acceptance_criteria": [
+            "The design schema supports explicit visual constraints alongside UX rules and builder constraints.",
+            "Design-related docs and templates instruct agents to capture aesthetic constraints in structured form.",
+            "Existing design artifacts can validate after the new field is added."
+          ],
+          "dependencies": [],
+          "done_definition": [
+            "Visual constraints are part of the required design contract."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "refinement-tracking",
+      "title": "Make refinement loops traceable in run state",
+      "tasks": [
+        {
+          "id": "refinement-state",
+          "title": "Add lightweight revision and refinement tracking to run state",
+          "acceptance_criteria": [
+            "Run state can record revision count and refinement notes without breaking existing runs.",
+            "The supervisor exposes a simple way to mark a run as entering refinement again.",
+            "Routing logic respects pending refinement instead of incorrectly staying done."
+          ],
+          "dependencies": [],
+          "done_definition": [
+            "A run can move from done back into refinement with traceable notes."
+          ]
+        },
+        {
+          "id": "workflow-docs-update",
+          "title": "Update workflow rules and docs for screenshot-backed design refinement",
+          "acceptance_criteria": [
+            "AGENTS.md states that design changes are not complete until browser evidence is captured.",
+            "The MVP documentation lists the new actions and refinement capability.",
+            "The instructions remain additive and aligned with the current MVP architecture."
+          ],
+          "dependencies": ["design-review-evidence", "refinement-state"],
+          "done_definition": [
+            "Repo documentation reflects the updated workflow requirements."
+          ]
+        }
+      ]
+    }
+  ],
+  "assumptions": [
+    "Small additive scripts and schema updates are sufficient for this iteration; no full orchestrator rewrite is needed.",
+    "The repository can depend on existing local tools such as agent-browser and git for the new action wrappers.",
+    "Existing historical run artifacts do not all need to be backfilled immediately as long as schema compatibility is preserved where practical."
+  ],
+  "risks": [
+    "Adding required schema fields can invalidate older artifacts if the migration path is not handled carefully.",
+    "A changed-files lint wrapper may miss intended files if git status parsing is too narrow or shell portability is poor.",
+    "Refinement tracking can become confusing if the route logic and documentation disagree about when to reopen a run."
+  ]
+}

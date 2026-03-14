@@ -17,6 +17,7 @@
 
 ```bash
 npm run ai:init -- docs/idea.md
+npm run ai:refine -- --run-id <run_id> builder "follow-up note"
 npm run ai:route -- --run-id <run_id>
 npm run ai:work -- planner --run-id <run_id>
 npm run ai:validate -- --run-id <run_id>
@@ -31,7 +32,9 @@ npm run ai:validate -- --run-id <run_id>
 5. Generate the next agent package with `npm run ai:work -- <agent> --run-id <run_id>`.
 6. Use that package to run the corresponding Codex session manually.
 7. Save the agent JSON output into the expected state file.
-8. Run `npm run ai:route -- --run-id <run_id>` again and continue until done.
+8. For design work that touches implementation, capture screenshot evidence before final design review.
+9. Run `npm run ai:route -- --run-id <run_id>` again and continue until done.
+10. If follow-up feedback arrives after completion, reopen the run with `npm run ai:refine -- --run-id <run_id> <agent> <note>`.
 
 ## State Files
 
@@ -43,6 +46,7 @@ npm run ai:validate -- --run-id <run_id>
 - `./.ai/runs/<run_id>/verify.json`
 - `./.ai/runs/<run_id>/reviews/design-review.json`
 - `./.ai/runs/<run_id>/reviews/code-review.json`
+- `run.json.revision` and `run.json.refinement_notes` for lightweight iteration tracking
 
 ## Task Memory
 
@@ -51,8 +55,8 @@ npm run ai:validate -- --run-id <run_id>
 - Agents should treat `memory.json` as the shared, run-specific source of truth instead of reading the knowledge base directly
 - There is no repo-global active run pointer. Parallel work should use explicit `run_id` values.
 
-## Next Upgrade
+## Current Quick Wins
 
-- Wrap each agent package in a Codex CLI invocation script
-- Add preview screenshot capture for design review
-- Add automatic command execution for verifier actions
+- Repo-local actions can wrap screenshot capture, changed-file linting, and validate-plus-route.
+- Design review now expects screenshot evidence for implementation-facing critique.
+- Runs can be reopened for refinement without creating a brand new run.

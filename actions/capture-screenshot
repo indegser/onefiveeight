@@ -20,7 +20,7 @@ while [ "$#" -gt 0 ]; do
 done
 
 if [ -z "$run_id" ] || [ "$#" -lt 1 ]; then
-  echo "Usage: actions/capture-screenshot --run-id <run_id> <url> [output-path]" >&2
+  echo "Usage: actions/capture-screenshot --run-id <run_id> <url> [output-path] [load-state]" >&2
   exit 1
 fi
 
@@ -33,9 +33,16 @@ fi
 
 url="$1"
 output_path="${2:-$run_dir/evidence/screenshot.png}"
+load_state="${3:-networkidle}"
 
-mkdir -p "$(dirname "$output_path")"
+if [[ "$output_path" = /* ]]; then
+  normalized_output_path="$output_path"
+else
+  normalized_output_path="$PWD/$output_path"
+fi
+
+mkdir -p "$(dirname "$normalized_output_path")"
 
 agent-browser open "$url"
-agent-browser wait --load networkidle
-agent-browser screenshot "$output_path"
+agent-browser wait --load "$load_state"
+agent-browser screenshot "$normalized_output_path"

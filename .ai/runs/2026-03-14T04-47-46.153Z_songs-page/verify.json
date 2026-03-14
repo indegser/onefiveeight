@@ -1,0 +1,16 @@
+{
+  "checks": [
+    {
+      "name": "prettier-songs-files",
+      "status": "passed",
+      "details": "npx prettier --write src/app/songs/page.tsx src/app/songs/songs-workspace.tsx src/app/songs/song-list.tsx src/app/songs/score-viewer.tsx"
+    },
+    {
+      "name": "eslint-repo",
+      "status": "passed",
+      "details": "npm run lint -- src/app/songs/page.tsx src/app/songs/songs-workspace.tsx src/app/songs/song-list.tsx src/app/songs/score-viewer.tsx completed with 0 errors and 8 pre-existing warnings in unrelated files."
+    }
+  ],
+  "passed": true,
+  "blocking_issues": []
+}

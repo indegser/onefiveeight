@@ -14,6 +14,7 @@
 - Agent outputs must be valid JSON that conforms to a schema in `./.ai/schemas`.
 - The system uses a strict phase loop: `plan -> design -> build -> verify -> review -> refine/done`.
 - The `Supervisor` is the only agent allowed to route work to another agent.
+- Any task that changes product code must be executed through the `Supervisor` workflow first. Create or resume an active run, produce the required state artifacts for each phase, and only then apply or update code as `Builder` work.
 - Free-form prose is allowed inside prompt files and docs, but agent handoffs must stay structured.
 
 ## Role Boundaries
@@ -60,6 +61,7 @@
 - Project-specific choices that are not yet settled must remain as profile options, placeholders, or open questions.
 - Agent handoffs should reference structured design assets and schemas before relying on prose summaries.
 - Aesthetic evaluation must use profile fit, anti-pattern checks, and rubric scoring rather than vague style adjectives alone.
+- Design changes are not complete until browser evidence has been captured and referenced in design review output.
 
 ## Human Approval Policy
 
@@ -80,3 +82,4 @@
 - Keep the AI team system additive and isolated from unrelated app code.
 - When extending the MVP, update schemas before changing inter-agent message formats.
 - Prefer small composable scripts over one large orchestrator.
+- For every code edit, route the work through `Supervisor`, keep the run artifacts in sync with the actual implementation, and re-run `route` and `validate` before considering the task complete.

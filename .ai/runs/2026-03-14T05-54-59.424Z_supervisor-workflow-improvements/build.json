@@ -1,0 +1,36 @@
+{
+  "completed_tasks": [
+    "capture-screenshot-action",
+    "lint-and-route-actions",
+    "design-review-evidence",
+    "visual-constraints-contract",
+    "refinement-state",
+    "workflow-docs-update"
+  ],
+  "changed_files": [
+    "AGENTS.md",
+    "actions/README.md",
+    "actions/capture-screenshot",
+    "actions/route-and-validate",
+    "actions/run-lint-changed",
+    "agents/design-agent.md",
+    "agents/design-critic.md",
+    "docs/ai-team-mvp.md",
+    "docs/ideas/supervisor-workflow-improvements.md",
+    "package.json",
+    "scripts/ai-team/schemas.mjs",
+    "scripts/ai-team/supervisor.mjs",
+    "specs/design-rule-engine/contexts/design-agent-context.template.json",
+    ".ai/schemas/design-review.schema.json",
+    ".ai/schemas/design.schema.json"
+  ],
+  "notes": [
+    "Added deterministic repo-local actions for screenshot capture, changed-file linting, and validate-plus-route.",
+    "Extended the supervisor protocol with revision tracking and a refine command that reopens downstream phases by clearing affected artifacts.",
+    "Made design review evidence and design visual constraints explicit schema requirements and updated agent/docs guidance to match."
+  ],
+  "open_issues": [
+    "Historical design-review artifacts created before preview_evidence was required are not automatically backfilled.",
+    "The new shell wrappers assume git and agent-browser are available in the local environment."
+  ]
+}

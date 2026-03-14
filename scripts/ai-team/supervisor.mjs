@@ -25,6 +25,9 @@ async function main() {
     case "init":
       await initRun(args.positionals[0]);
       return;
+    case "refine":
+      await refineRun(args.positionals, args.options.runId);
+      return;
     case "route":
       await routeRun(args.options.runId);
       return;
@@ -42,6 +45,7 @@ async function main() {
 function printUsage() {
   console.log(`Usage:
   npm run ai:init -- <idea-file>
+  npm run ai:refine -- --run-id <run_id> [agent] <note>
   npm run ai:route -- --run-id <run_id>
   npm run ai:work -- <agent> --run-id <run_id>
   npm run ai:validate -- --run-id <run_id>`);
@@ -67,6 +71,7 @@ async function initRun(ideaFileArg) {
   const run = {
     run_id: runId,
     goal: `Build an app from ${ideaFile}`,
+    revision: 1,
     phase: "plan",
     status: "in_progress",
     next_agent: "planner",
@@ -96,6 +101,7 @@ async function initRun(ideaFileArg) {
     blockers: [],
     decisions: [],
     risks: [],
+    refinement_notes: [],
     history: [
       {
         at: timestamp(),
@@ -112,6 +118,65 @@ async function initRun(ideaFileArg) {
   console.log(`Initialized run ${run.run_id}`);
   console.log(`Next agent: ${run.next_agent}`);
   console.log(`Run state: ${stateFiles.run}`);
+}
+
+async function refineRun(positionals, runId) {
+  const allowedAgents = new Set([
+    "planner",
+    "design-agent",
+    "builder",
+    "verifier",
+    "design-critic",
+    "code-critic",
+  ]);
+  const firstArg = positionals[0];
+  const targetAgent = allowedAgents.has(firstArg) ? firstArg : "builder";
+  const note = allowedAgents.has(firstArg)
+    ? positionals.slice(1).join(" ").trim()
+    : positionals.join(" ").trim();
+
+  if (!note) {
+    throw new Error(
+      "Missing refinement note. Example: npm run ai:refine -- --run-id <run_id> builder tighten screenshot evidence flow",
+    );
+  }
+
+  const { run, stateFiles } = await getRunContext(runId);
+  const filesToClear = getArtifactsToClearForAgent(targetAgent, stateFiles);
+
+  for (const filePath of filesToClear) {
+    if (await fileExists(filePath)) {
+      await fs.rm(filePath);
+    }
+  }
+
+  const nextRun = {
+    ...run,
+    revision: (run.revision ?? 1) + 1,
+    phase: mapAgentToPhase(targetAgent),
+    status: "in_progress",
+    next_agent: targetAgent,
+    blockers: [],
+    refinement_notes: [
+      ...(run.refinement_notes ?? []),
+      {
+        at: timestamp(),
+        note,
+        target_agent: targetAgent,
+      },
+    ],
+    history: [
+      ...run.history,
+      {
+        at: timestamp(),
+        event: `Refinement requested for ${targetAgent}: ${note}`,
+      },
+    ],
+  };
+
+  schemas.run.parse(nextRun);
+  await writeJson(stateFiles.run, nextRun);
+  console.log(JSON.stringify(nextRun, null, 2));
 }
 
 async function routeRun(runId) {
@@ -315,6 +380,78 @@ async function getRunContext(runIdArg) {
   return { runId, run, stateFiles };
 }
 
+function mapStateKeyToSchemaKey(key) {
+  switch (key) {
+    case "designReview":
+      return "designReview";
+    case "codeReview":
+      return "codeReview";
+    default:
+      return key;
+  }
+}
+
+function mapAgentToPhase(agent) {
+  switch (agent) {
+    case "planner":
+      return "plan";
+    case "design-agent":
+      return "design";
+    case "builder":
+      return "build";
+    case "verifier":
+      return "verify";
+    case "design-critic":
+    case "code-critic":
+      return "review";
+    case "human":
+      return "review";
+    default:
+      return "plan";
+  }
+}
+
+function getArtifactsToClearForAgent(agent, stateFiles) {
+  switch (agent) {
+    case "planner":
+      return [
+        stateFiles.plan,
+        stateFiles.design,
+        stateFiles.build,
+        stateFiles.verify,
+        stateFiles.designReview,
+        stateFiles.codeReview,
+      ];
+    case "design-agent":
+      return [
+        stateFiles.design,
+        stateFiles.build,
+        stateFiles.verify,
+        stateFiles.designReview,
+        stateFiles.codeReview,
+      ];
+    case "builder":
+      return [
+        stateFiles.build,
+        stateFiles.verify,
+        stateFiles.designReview,
+        stateFiles.codeReview,
+      ];
+    case "verifier":
+      return [
+        stateFiles.verify,
+        stateFiles.designReview,
+        stateFiles.codeReview,
+      ];
+    case "design-critic":
+      return [stateFiles.designReview, stateFiles.codeReview];
+    case "code-critic":
+      return [stateFiles.codeReview];
+    default:
+      return [];
+  }
+}
+
 function parseCliArgs(args) {
   const options = {};
   const positionals = [];
@@ -338,17 +475,6 @@ function parseCliArgs(args) {
   }
 
   return { options, positionals };
-}
-
-function mapStateKeyToSchemaKey(key) {
-  switch (key) {
-    case "designReview":
-      return "designReview";
-    case "codeReview":
-      return "codeReview";
-    default:
-      return key;
-  }
 }
 
 main().catch((error) => {

@@ -1,0 +1,72 @@
+{
+  "approved": true,
+  "summary": {
+    "status": "pass_with_followups",
+    "rationale": "The songs page matches the updated list-detail workspace direction and now uses more restrained radius, fewer nested cards, clearer typography contrast, and a more intentional empty detail state that better fit the selected aesthetic profile."
+  },
+  "findings": [
+    {
+      "id": "design-followup-async-states",
+      "severity": "low",
+      "layer": "ux_heuristic",
+      "message": "If song data moves to an async source, loading and error states will need to be added explicitly to preserve the operator state-coverage pattern.",
+      "screen_id": "songs-library",
+      "area": "state coverage",
+      "recommendation": "Add loading and recoverable error messaging when the songs dataset is no longer synchronous local data.",
+      "evidence": [
+        "Current implementation reads from src/lib/songs.ts synchronously.",
+        "The detail pane and list pane already declare empty and selected states."
+      ]
+    }
+  ],
+  "section_scores": [
+    {
+      "section_id": "hard_rules",
+      "score": 0.94,
+      "notes": [
+        "Single dominant action in the list region is preserved.",
+        "Empty states are present where relevant for the synchronous MVP."
+      ]
+    },
+    {
+      "section_id": "ux_heuristics",
+      "score": 0.9,
+      "notes": [
+        "The list remains visible while the detail pane is active.",
+        "Metadata and section content are grouped for fast scanning."
+      ]
+    },
+    {
+      "section_id": "aesthetic_judgment",
+      "score": 0.95,
+      "notes": [
+        "Warm muted surfaces and restrained borders fit the selected profile.",
+        "The header no longer overpowers the operational content area.",
+        "Large rounded corners and pill styling were reduced to avoid a softer SaaS feel.",
+        "Divider-led grouping keeps the surface calmer than the earlier card-stack treatment.",
+        "The empty state now reads as part of the editorial workspace instead of an accidental blank panel."
+      ]
+    }
+  ],
+  "profile_assessment": {
+    "selected_profile_id": "warm-restrained-editorial-utility",
+    "fit_score": 0.92,
+    "anti_patterns_detected": [],
+    "notes": [
+      "The page avoids cool techno chrome and hyper-saturated emphasis.",
+      "The composition keeps editorial calm without drifting into false airiness.",
+      "Radius and badge treatments now better align with the engine's restrained material guidance.",
+      "Typography and separators now carry more of the hierarchy, which improves fit with the quieter reference family.",
+      "Browser capture confirmed that the top framing and empty pane feel more deliberate after refinement."
+    ]
+  },
+  "gates": {
+    "hard_rules_passed": true,
+    "needs_human_review": false,
+    "requires_refinement": false
+  },
+  "next_steps": [
+    "Capture rendered screenshots in a future supervisor upgrade to support visual review with evidence.",
+    "Add explicit loading and error states if songs become remote or user-generated."
+  ]
+}

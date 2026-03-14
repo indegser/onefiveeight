@@ -1,5 +1,8 @@
 {
   "approved": true,
+  "preview_evidence": [
+    ".ai/runs/2026-03-14T06-05-34.636Z_required-run-id-supervisor/run.json"
+  ],
   "summary": {
     "status": "pass_with_followups",
     "rationale": "The workflow is now safer for parallel work because existing-run commands cannot silently resolve to shared repo state."

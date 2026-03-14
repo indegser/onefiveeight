@@ -40,7 +40,7 @@ else
     files+=("$file")
   done < <(
     {
-      git diff --name-only --diff-filter=ACMRT
+      git diff --name-only --diff-filter=ACMRT HEAD
       git ls-files --others --exclude-standard
     } | rg '\.(ts|tsx|js|jsx|mjs|cjs)$' | sort -u
   )

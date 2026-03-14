@@ -76,5 +76,10 @@
         "Schema validation behavior"
       ]
     }
+  ],
+  "visual_constraints": [
+    "Favor explicit command targeting over convenience shortcuts that hide state.",
+    "Keep helper actions deterministic and scoped to a single named run.",
+    "Use terse operational language in errors and docs so the correct next command is obvious."
   ]
 }
