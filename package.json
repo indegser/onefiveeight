@@ -6,7 +6,11 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint src scripts --ext .ts,.tsx,.mjs",
+    "ai:init": "node scripts/ai-team/supervisor.mjs init",
+    "ai:route": "node scripts/ai-team/supervisor.mjs route",
+    "ai:work": "node scripts/ai-team/supervisor.mjs work",
+    "ai:validate": "node scripts/ai-team/supervisor.mjs validate"
   },
   "dependencies": {
     "@ai-sdk/openai": "^1.3.22",
