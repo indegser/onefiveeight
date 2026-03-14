@@ -39,6 +39,14 @@
 - Optional repo-local skills: `./skills`
 - Optional repo-local action wrappers: `./actions`
 
+## Music Harmony Analysis Tasks
+
+- Route music-harmony-analysis work through `./skills/music-harmony-analysis` when the task involves score images, chord-chart images, PDF lead sheets, or audio files.
+- Keep extraction separate from interpretation. Use the existing lead-sheet extraction workflow and artifacts first when symbolic evidence is available.
+- Implement reusable harmony-analysis code under `./packages/music-analysis` rather than scattering logic through UI files or supervisor scripts.
+- Prefer symbolic inputs over audio when both are available, and treat audio-derived chord evidence as probabilistic.
+- Require structured schemas and explicit uncertainty at every handoff; do not silently invent unreadable chords, keys, meters, or harmonic claims.
+
 ## Stack Defaults
 
 - Frontend: Next.js App Router

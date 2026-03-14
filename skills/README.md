@@ -3,6 +3,8 @@
 This directory is reserved for reusable decision frameworks that support the multi-agent system.
 
 Suggested skills:
+- `ai-team-supervisor`
+- `music-harmony-analysis`
 - `decompose-requirements`
 - `design-rule-engine`
 - `internal-tool-ux`
