@@ -1,0 +1,29 @@
+{
+  "source_file": "/Users/indegser/Downloads/Goodbye [h_pF0my1GP4].mp3",
+  "analysis_adapter": "python-mir-demucs",
+  "duration_seconds": 242.86,
+  "bpm": 66.26,
+  "meter_hint": "4/4",
+  "bar_count": 65,
+  "chord_span_count": 57,
+  "landmarks": [
+    "Opening area centers on Eb and related diatonic motion.",
+    "A later lift appears around F#/Gb territory.",
+    "The final coda stabilizes in F."
+  ],
+  "separation_engine": "demucs",
+  "uncertainty": [
+    {
+      "scope": "meter",
+      "severity": "medium",
+      "message": "Bar tracking confidence is modest for inferred meter 4/4.",
+      "recommendation": "Review bar boundaries manually before publishing a final lead sheet."
+    },
+    {
+      "scope": "analysis",
+      "severity": "medium",
+      "message": "Several middle-song chord spans favored suspended or altered dominant spellings that were left out of the practical chart.",
+      "recommendation": "Use the audio draft as validation evidence, not as publication-grade chord truth."
+    }
+  ]
+}

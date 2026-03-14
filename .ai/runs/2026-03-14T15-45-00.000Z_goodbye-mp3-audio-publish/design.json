@@ -1,0 +1,97 @@
+{
+  "screens": [
+    {
+      "id": "songs-library",
+      "name": "Songs library",
+      "purpose": "Keep Goodbye readable in the existing songs workspace while reflecting that the chart was cross-checked against the provided MP3.",
+      "screen_type": "library-detail",
+      "primary_action": "Open the Goodbye chart",
+      "states": [
+        "song listed",
+        "song selected",
+        "chart notes visible"
+      ]
+    }
+  ],
+  "ux_rules": [
+    "Reuse the current songs workspace and score viewer without layout changes.",
+    "Express audio uncertainty in notes and published lead-sheet metadata rather than inventing new UI chrome.",
+    "Prefer the musically cleaned chart over a noisy raw MIR dump."
+  ],
+  "component_map": [
+    {
+      "screen_id": "songs-library",
+      "components": [
+        "Song list card",
+        "Score viewer header",
+        "Section systems",
+        "Chart notes"
+      ]
+    }
+  ],
+  "human_checkpoints": [],
+  "design_rule_engine": {
+    "profile_id": null,
+    "hard_rule_sets": [
+      "list-detail-workspace"
+    ],
+    "heuristic_sets": [
+      "information-density"
+    ],
+    "allowed_pattern_sets": [
+      "list-detail-workspace"
+    ],
+    "banned_pattern_sets": [
+      "redundant-labels"
+    ],
+    "review_rubric_id": "design-review-rubric"
+  },
+  "screen_contexts": [
+    {
+      "screen_id": "songs-library",
+      "screen_type": "library-detail",
+      "layout_intent": "Keep the existing list-detail songs surface intact while making the new source evidence readable inside the current metadata and notes areas.",
+      "interaction_risks": [
+        "Audio-derived confidence could be overstated if the notes sound too definitive.",
+        "Lead-sheet publication could imply approval that the run does not actually claim."
+      ],
+      "required_states": [
+        "song listed",
+        "selected chart visible",
+        "notes reveal draft confidence"
+      ],
+      "notes": [
+        "This task changes content, not UI structure."
+      ]
+    }
+  ],
+  "builder_constraints": [
+    {
+      "screen_id": "songs-library",
+      "constraints": [
+        "Confine product-code edits to song content and publish storage.",
+        "Do not replace the chart with raw audio bars.",
+        "Keep uncertainty explicit."
+      ],
+      "open_decisions": [
+        "A future symbolic source could upgrade the draft lead sheet to approved status."
+      ]
+    }
+  ],
+  "review_targets": [
+    {
+      "screen_id": "songs-library",
+      "critical_judgments": [
+        "Goodbye remains readable and selectable in the existing songs workspace.",
+        "The source and chart notes clearly communicate that the MP3 was validation evidence, not definitive engraving."
+      ],
+      "must_not_regress": [
+        "Existing songs data shape",
+        "Existing score viewer rendering"
+      ]
+    }
+  ],
+  "visual_constraints": [
+    "No new visual treatment is required."
+  ]
+}
