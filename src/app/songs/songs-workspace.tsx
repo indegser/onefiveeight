@@ -19,10 +19,8 @@ export function SongsWorkspace() {
     <section className="grid gap-5 xl:grid-cols-[23rem_minmax(0,1fr)]">
       <aside className="space-y-4">
         <div className="border-b border-stone-300/80 pb-5">
-          <p className="text-xs font-semibold tracking-[0.14em] text-stone-500">
-            Library
-          </p>
-          <h2 className="mt-3 text-[1.75rem] font-semibold tracking-[-0.03em] text-stone-950">
+          <p className="type-kicker text-stone-500">Library</p>
+          <h2 className="type-title mt-3 text-[1.75rem] text-stone-950">
             Copied charts
           </h2>
           <p className="mt-2 text-sm leading-6 text-stone-600">
@@ -31,33 +29,25 @@ export function SongsWorkspace() {
           </p>
           <dl className="mt-5 grid grid-cols-2 gap-x-4 gap-y-3 text-sm">
             <div className="border-l border-stone-300/80 pl-3">
-              <dt className="text-[11px] tracking-[0.1em] text-stone-500">
-                Total charts
-              </dt>
+              <dt className="type-meta-label text-stone-500">Total charts</dt>
               <dd className="mt-1 text-lg font-semibold text-stone-900">
                 {songs.length}
               </dd>
             </div>
             <div className="border-l border-stone-300/80 pl-3">
-              <dt className="text-[11px] tracking-[0.1em] text-stone-500">
-                Key centers
-              </dt>
+              <dt className="type-meta-label text-stone-500">Key centers</dt>
               <dd className="mt-1 text-lg font-semibold text-stone-900">
                 {keyCenters}
               </dd>
             </div>
             <div className="border-l border-stone-300/80 pl-3">
-              <dt className="text-[11px] tracking-[0.1em] text-stone-500">
-                Systems
-              </dt>
+              <dt className="type-meta-label text-stone-500">Systems</dt>
               <dd className="mt-1 text-lg font-semibold text-stone-900">
                 {totalSystems}
               </dd>
             </div>
             <div className="border-l border-stone-300/80 pl-3">
-              <dt className="text-[11px] tracking-[0.1em] text-stone-500">
-                Focus
-              </dt>
+              <dt className="type-meta-label text-stone-500">Focus</dt>
               <dd className="mt-1 text-lg font-semibold text-stone-900">
                 Lead sheets
               </dd>

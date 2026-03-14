@@ -18,7 +18,7 @@ export function AppNav() {
     <header className="border-b border-gray-200 bg-white/90 backdrop-blur">
       <div className="flex items-center justify-between gap-6 px-6 py-4 md:px-10 lg:px-16">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-gray-400">
+          <p className="type-kicker-wide text-gray-400 uppercase">
             One Five Eight
           </p>
           <p className="mt-1 text-sm text-gray-500">

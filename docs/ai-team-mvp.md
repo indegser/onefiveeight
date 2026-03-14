@@ -34,8 +34,10 @@ npm run ai:validate -- --run-id <run_id>
 7. Save the agent JSON output into the expected state file.
 8. For design work that touches implementation, capture screenshot evidence before final design review.
 9. When UI changes are involved, verify representative screenshots against a short checklist: no redundant local labels, pane-width fit before forced overflow, and stable representative rows or grids.
-10. Run `npm run ai:route -- --run-id <run_id>` again and continue until done.
-11. If follow-up feedback arrives after completion, reopen the run with `npm run ai:refine -- --run-id <run_id> <agent> <note>`.
+10. If the UI change adds semantic CSS utilities such as typography classes, verify the browser receives the corresponding CSS rules in addition to seeing the class names in markup.
+11. In the current `Next.js + Tailwind CSS v4` repo setup, prefer plain CSS in `globals.css` for repo-local semantic utilities unless browser evidence confirms that the chosen Tailwind layer pattern is emitted reliably.
+12. Run `npm run ai:route -- --run-id <run_id>` again and continue until done.
+13. If follow-up feedback arrives after completion, reopen the run with `npm run ai:refine -- --run-id <run_id> <agent> <note>`.
 
 ## State Files
 

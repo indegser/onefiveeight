@@ -79,6 +79,7 @@
 - Major design issues must be resolved before final completion.
 - Major code quality issues must be resolved before final completion.
 - For UI changes, visual verification must explicitly check representative layout rows for redundant labels and pane-width fit, not just generic screenshots.
+- For UI changes that introduce reusable semantic CSS classes, verification must confirm the rendered page and the served CSS both contain the intended rules; do not treat markup-only class presence as sufficient evidence.
 
 ## Editing Rules
 

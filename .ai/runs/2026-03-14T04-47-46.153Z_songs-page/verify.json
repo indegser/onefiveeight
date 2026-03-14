@@ -1,19 +1,26 @@
 {
   "checks": [
     {
-      "name": "prettier-songs-files",
+      "name": "prettier-typography-files",
       "status": "passed",
-      "details": "npx prettier --write src/app/songs/page.tsx src/app/songs/songs-workspace.tsx src/app/songs/song-list.tsx src/app/songs/score-viewer.tsx"
+      "details": "npx prettier --write src/app/globals.css src/app/app-nav.tsx src/app/songs/page.tsx src/app/songs/songs-workspace.tsx src/app/songs/song-list.tsx src/app/songs/score-viewer.tsx"
     },
     {
-      "name": "eslint-repo",
+      "name": "eslint-typography-pass",
       "status": "passed",
-      "details": "npm run lint -- src/app/songs/page.tsx src/app/songs/songs-workspace.tsx src/app/songs/song-list.tsx src/app/songs/score-viewer.tsx completed with 0 errors and 8 pre-existing warnings in unrelated files."
+      "details": "npm run lint -- src/app/app-nav.tsx src/app/globals.css src/app/songs/page.tsx src/app/songs/songs-workspace.tsx src/app/songs/song-list.tsx src/app/songs/score-viewer.tsx completed with 0 errors and only pre-existing warnings in unrelated files; src/app/globals.css was ignored by ESLint because no CSS configuration is supplied."
+    }
+  ],
+  "visual_checks": [
+    {
+      "name": "songs-empty-state-typography-capture",
+      "status": "passed",
+      "details": "Captured /songs empty-detail state at .ai/runs/2026-03-14T04-47-46.153Z_songs-page/evidence/typography-shared-layer.png to confirm shared typography classes render in the page header and empty viewer."
     },
     {
-      "name": "browser-no-all-caps-capture",
+      "name": "songs-selected-state-typography-capture",
       "status": "passed",
-      "details": "Captured /songs with the selected chart at .ai/runs/2026-03-14T04-47-46.153Z_songs-page/evidence/no-all-caps.png to confirm all-caps labels were removed from the songs UI."
+      "details": "Captured /songs selected-detail state at .ai/runs/2026-03-14T04-47-46.153Z_songs-page/evidence/typography-shared-layer-selected.png to confirm shared typography classes render across list metadata, score header, section labels, and chord directives."
     }
   ],
   "passed": true,

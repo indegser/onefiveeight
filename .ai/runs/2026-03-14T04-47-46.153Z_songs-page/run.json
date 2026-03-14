@@ -1,9 +1,9 @@
 {
   "run_id": "2026-03-14T04-47-46.153Z_songs-page",
   "goal": "Build an app from docs/ideas/songs-page.md",
-  "phase": "done",
-  "status": "done",
-  "next_agent": "none",
+  "phase": "review",
+  "status": "in_progress",
+  "next_agent": "design-critic",
   "stack": {
     "frontend": "nextjs",
     "ui": "shadcn-ui",
@@ -106,9 +106,17 @@
     {
       "at": "2026-03-14T08:23:17.826Z",
       "event": "Supervisor routed to none"
+    },
+    {
+      "at": "2026-03-14T09:42:40.968Z",
+      "event": "Refinement requested for builder: replace ad hoc tracking values with shared typography classes and add a reusable typography layer in globals"
+    },
+    {
+      "at": "2026-03-14T09:45:10.695Z",
+      "event": "Supervisor routed to design-critic"
     }
   ],
-  "revision": 7,
+  "revision": 8,
   "refinement_notes": [
     {
       "at": "2026-03-14T07:55:13.537Z",
@@ -138,6 +146,11 @@
     {
       "at": "2026-03-14T08:21:58.160Z",
       "note": "remove all-caps labels from songs UI and switch to normal title case metadata labels",
+      "target_agent": "builder"
+    },
+    {
+      "at": "2026-03-14T09:42:40.968Z",
+      "note": "replace ad hoc tracking values with shared typography classes and add a reusable typography layer in globals",
       "target_agent": "builder"
     }
   ]

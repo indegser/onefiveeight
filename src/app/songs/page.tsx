@@ -13,10 +13,8 @@ export default function SongsPage() {
         <header className="border-b border-stone-300/80 pb-5">
           <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_17rem] lg:items-end">
             <div className="max-w-[48rem] space-y-3">
-              <p className="text-xs font-semibold tracking-[0.16em] text-stone-500">
-                Songbook
-              </p>
-              <h1 className="max-w-[42rem] text-[2.35rem] leading-[1.05] font-semibold tracking-[-0.04em] text-stone-950 md:text-[3.2rem]">
+              <p className="type-kicker text-stone-500">Songbook</p>
+              <h1 className="type-display max-w-[42rem] text-[2.35rem] text-stone-950 md:text-[3.2rem]">
                 Open the chart, read the form, and keep the chord flow visible.
               </h1>
               <p className="max-w-[38rem] text-sm leading-7 text-stone-600 md:text-[15px]">
@@ -27,7 +25,7 @@ export default function SongsPage() {
             </div>
             <dl className="grid grid-cols-2 gap-x-4 gap-y-3 border-l border-stone-300/80 pl-4 text-sm text-stone-700">
               <div>
-                <dt className="text-[11px] tracking-[0.12em] text-stone-500">
+                <dt className="type-meta-label-strong text-stone-500">
                   Surface
                 </dt>
                 <dd className="mt-2 font-medium text-stone-900">
@@ -35,7 +33,7 @@ export default function SongsPage() {
                 </dd>
               </div>
               <div>
-                <dt className="text-[11px] tracking-[0.12em] text-stone-500">
+                <dt className="type-meta-label-strong text-stone-500">
                   Intent
                 </dt>
                 <dd className="mt-2 font-medium text-stone-900">
