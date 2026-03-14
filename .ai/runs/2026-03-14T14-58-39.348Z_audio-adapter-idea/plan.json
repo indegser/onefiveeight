@@ -1,0 +1,66 @@
+{
+  "epics": [
+    {
+      "id": "epic-audio-adapter",
+      "title": "Wire a repository-local audio harmony adapter",
+      "tasks": [
+        {
+          "id": "task-audio-extraction",
+          "title": "Add a non-LLM audio extraction adapter for mp3 input",
+          "implementation_area": "integration",
+          "acceptance_criteria": [
+            "The music-analysis package can call a repository-local audio adapter for audio-file input.",
+            "The adapter returns beat-aligned chord candidates plus explicit uncertainty.",
+            "Adapter failures degrade into structured uncertainty instead of crashing the pipeline."
+          ],
+          "dependencies": [],
+          "done_definition": [
+            "Python analysis script is checked into the repository.",
+            "TypeScript adapter parses the Python output with schema validation."
+          ]
+        },
+        {
+          "id": "task-audio-normalization",
+          "title": "Convert audio chord candidates into the normalized lead-sheet schema",
+          "implementation_area": "data",
+          "acceptance_criteria": [
+            "Audio chord candidates become measures and chord events in the normalized lead sheet.",
+            "Measure boundaries use a conservative beats-per-measure rule derived from the adapter meter hint.",
+            "Low-confidence or empty measures are marked for review."
+          ],
+          "dependencies": [
+            "task-audio-extraction"
+          ],
+          "done_definition": [
+            "Audio pipeline emits structured sections, systems, measures, and evidence.",
+            "Uncertainty from parsing and segmentation is preserved."
+          ]
+        },
+        {
+          "id": "task-audio-verification",
+          "title": "Verify the adapter against the provided mp3 and project checks",
+          "implementation_area": "verification",
+          "acceptance_criteria": [
+            "TypeScript typecheck passes.",
+            "Lint completes without new blocking errors.",
+            "The provided Lady Gaga and Bruno Mars mp3 produces structured adapter output."
+          ],
+          "dependencies": [
+            "task-audio-normalization"
+          ],
+          "done_definition": [
+            "Verification artifacts record the local checks and any remaining non-blocking risks."
+          ]
+        }
+      ]
+    }
+  ],
+  "assumptions": [
+    "python3 plus librosa are available in the local environment even though ffmpeg is not.",
+    "A conservative beat-level audio draft is acceptable as long as uncertainty remains explicit."
+  ],
+  "risks": [
+    "Beat and meter inference from audio alone can mis-detect slow pop ballads.",
+    "Template-matching chord recognition will miss richer chord qualities and some slash-bass motion."
+  ]
+}

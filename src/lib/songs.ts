@@ -895,4 +895,295 @@ export const songs: Song[] = [
       },
     ],
   },
+  {
+    id: "die-with-a-smile",
+    title: "Die With a Smile",
+    artist: "Lady Gaga, Bruno Mars",
+    source: "Musically cleaned chart derived from the full-track Demucs draft",
+    keyCenter: "A major with strong F# minor pull",
+    feel: "Ballad duet",
+    meter: "4/4 ballad feel",
+    summary:
+      "Cleaned into a human-readable pop ballad chart from the full-track audio draft, preserving the overall A-major center and the recurring iii-vi-ii-V motion.",
+    chartNotes: [
+      "This version is musically cleaned from the audio-derived draft rather than copied from a published lead sheet.",
+      "The chart treats A as the home key while keeping the strong C#m and F#m pull that colors the song.",
+      "Questionable chromatic MIR labels were normalized into a more playable functional chart.",
+      "Use this as a practical working chart, not as an engraved reference edition.",
+    ],
+    sections: [
+      {
+        id: "dws-intro",
+        title: "Intro",
+        annotation: "Sets up the A-major center through a longer turnaround",
+        systems: [
+          {
+            id: "dws-intro-a",
+            label: "Intro",
+            measures: [
+              { id: "dws-i-1", chord: "D", analysis: "IV opens the chart with a suspended, spacious color." },
+              { id: "dws-i-2", chord: "A", analysis: "I answers quickly to establish the home center." },
+              { id: "dws-i-3", chord: "C#m", analysis: "iii begins the relative-minor pull." },
+              { id: "dws-i-4", chord: "F#7", analysis: "VI7 pushes forward like a secondary dominant." },
+            ],
+          },
+          {
+            id: "dws-intro-b",
+            measures: [
+              { id: "dws-i-5", chord: "Bm", analysis: "ii softens the dominant setup into the body of the song." },
+              { id: "dws-i-6", chord: "E7", analysis: "V7 points back to A without rushing the resolution." },
+              { id: "dws-i-7", chord: "C#m", analysis: "iii keeps the bittersweet color in front." },
+              { id: "dws-i-8", chord: "F#m", analysis: "vi lands the intro in the relative-minor shade." },
+            ],
+          },
+        ],
+      },
+      {
+        id: "dws-verse-1",
+        title: "Verse 1",
+        annotation: "Main ballad cycle: ii-V and iii-vi trade off repeatedly",
+        systems: [
+          {
+            id: "dws-v1-a",
+            label: "Verse",
+            measures: [
+              { id: "dws-v1-1", chord: "Bm", analysis: "ii" },
+              { id: "dws-v1-2", chord: "E7", analysis: "V7" },
+              { id: "dws-v1-3", chord: "C#m", analysis: "iii" },
+              { id: "dws-v1-4", chord: "F#m", analysis: "vi" },
+            ],
+          },
+          {
+            id: "dws-v1-b",
+            measures: [
+              { id: "dws-v1-5", chord: "Bm", analysis: "ii" },
+              { id: "dws-v1-6", chord: "E7", analysis: "V7" },
+              { id: "dws-v1-7", chord: "A", analysis: "I" },
+              { id: "dws-v1-8", chord: "A", analysis: "I" },
+            ],
+          },
+          {
+            id: "dws-v1-c",
+            measures: [
+              { id: "dws-v1-9", chord: "A", analysis: "I" },
+              { id: "dws-v1-10", chord: "A", analysis: "I" },
+              { id: "dws-v1-11", chord: "D", analysis: "IV" },
+              { id: "dws-v1-12", chord: "A", analysis: "I" },
+            ],
+          },
+          {
+            id: "dws-v1-d",
+            measures: [
+              { id: "dws-v1-13", chord: "A", analysis: "I" },
+              { id: "dws-v1-14", chord: "D", analysis: "IV" },
+              { id: "dws-v1-15", chord: "A", analysis: "I" },
+              { id: "dws-v1-16", chord: "A", analysis: "I" },
+            ],
+          },
+        ],
+      },
+      {
+        id: "dws-pre-1",
+        title: "Pre-Chorus",
+        annotation: "The song leans back into iii-vi-ii-V before opening out",
+        systems: [
+          {
+            id: "dws-p1-a",
+            label: "Pre",
+            measures: [
+              { id: "dws-p1-1", chord: "A", analysis: "I stabilizes the center before the lift." },
+              { id: "dws-p1-2", chord: "C#m", analysis: "iii" },
+              { id: "dws-p1-3", chord: "F#m", analysis: "vi" },
+              { id: "dws-p1-4", chord: "Bm", analysis: "ii" },
+            ],
+          },
+          {
+            id: "dws-p1-b",
+            measures: [
+              { id: "dws-p1-5", chord: "E7", analysis: "V7" },
+              { id: "dws-p1-6", chord: "C#m", analysis: "iii" },
+              { id: "dws-p1-7", chord: "F#m", analysis: "vi" },
+              { id: "dws-p1-8", chord: "Bm E7", cue: "turnaround", analysis: "ii-V pushes into the chorus." },
+            ],
+          },
+        ],
+      },
+      {
+        id: "dws-chorus-1",
+        title: "Chorus",
+        annotation: "Keeps the relative-minor color inside a pop-functional frame",
+        systems: [
+          {
+            id: "dws-c1-a",
+            label: "Chorus",
+            measures: [
+              { id: "dws-c1-1", chord: "C#m", analysis: "iii" },
+              { id: "dws-c1-2", chord: "F#m", analysis: "vi" },
+              { id: "dws-c1-3", chord: "Bm", analysis: "ii" },
+              { id: "dws-c1-4", chord: "E7", analysis: "V7" },
+            ],
+          },
+          {
+            id: "dws-c1-b",
+            measures: [
+              { id: "dws-c1-5", chord: "A", analysis: "I" },
+              { id: "dws-c1-6", chord: "F#m", analysis: "vi" },
+              { id: "dws-c1-7", chord: "Bm", analysis: "ii" },
+              { id: "dws-c1-8", chord: "E7", analysis: "V7" },
+            ],
+          },
+          {
+            id: "dws-c1-c",
+            measures: [
+              { id: "dws-c1-9", chord: "C#m", analysis: "iii" },
+              { id: "dws-c1-10", chord: "F#m", analysis: "vi" },
+              { id: "dws-c1-11", chord: "Bm", analysis: "ii" },
+              { id: "dws-c1-12", chord: "E7", analysis: "V7" },
+            ],
+          },
+        ],
+      },
+      {
+        id: "dws-turn",
+        title: "Turnaround",
+        annotation: "Short return that resets the next verse",
+        systems: [
+          {
+            id: "dws-t-a",
+            label: "Turn",
+            measures: [
+              { id: "dws-t-1", chord: "A", analysis: "I" },
+              { id: "dws-t-2", chord: "A", analysis: "I" },
+              { id: "dws-t-3", chord: "D", analysis: "IV" },
+              { id: "dws-t-4", chord: "A", analysis: "I" },
+            ],
+          },
+        ],
+      },
+      {
+        id: "dws-verse-2",
+        title: "Verse 2",
+        annotation: "Returns to the same functional loop with a little more lift",
+        systems: [
+          {
+            id: "dws-v2-a",
+            label: "Verse",
+            measures: [
+              { id: "dws-v2-1", chord: "C#m", analysis: "iii" },
+              { id: "dws-v2-2", chord: "F#m", analysis: "vi" },
+              { id: "dws-v2-3", chord: "Bm", analysis: "ii" },
+              { id: "dws-v2-4", chord: "E7", analysis: "V7" },
+            ],
+          },
+          {
+            id: "dws-v2-b",
+            measures: [
+              { id: "dws-v2-5", chord: "A", analysis: "I" },
+              { id: "dws-v2-6", chord: "F#m", analysis: "vi" },
+              { id: "dws-v2-7", chord: "Bm", analysis: "ii" },
+              { id: "dws-v2-8", chord: "E7", analysis: "V7" },
+            ],
+          },
+          {
+            id: "dws-v2-c",
+            measures: [
+              { id: "dws-v2-9", chord: "C#m", analysis: "iii" },
+              { id: "dws-v2-10", chord: "F#m", analysis: "vi" },
+              { id: "dws-v2-11", chord: "Bm", analysis: "ii" },
+              { id: "dws-v2-12", chord: "E7", analysis: "V7" },
+            ],
+          },
+        ],
+      },
+      {
+        id: "dws-pre-2",
+        title: "Pre-Chorus Lift",
+        annotation: "A held dominant and a brighter rise into the bridge",
+        systems: [
+          {
+            id: "dws-p2-a",
+            label: "Pre",
+            measures: [
+              { id: "dws-p2-1", chord: "Bm", analysis: "ii" },
+              { id: "dws-p2-2", chord: "E7", analysis: "V7" },
+              { id: "dws-p2-3", chord: "E7", analysis: "V7 held for emphasis." },
+              { id: "dws-p2-4", chord: "F#m", analysis: "vi" },
+            ],
+          },
+          {
+            id: "dws-p2-b",
+            measures: [
+              { id: "dws-p2-5", chord: "Bm", analysis: "ii" },
+              { id: "dws-p2-6", chord: "C#7", analysis: "III7 acts like a lift into vi." },
+              { id: "dws-p2-7", chord: "F#m", analysis: "vi" },
+              { id: "dws-p2-8", chord: "E7", analysis: "V7" },
+            ],
+          },
+        ],
+      },
+      {
+        id: "dws-bridge",
+        title: "Bridge",
+        annotation: "Dominant chain intensifies the last section",
+        systems: [
+          {
+            id: "dws-b-a",
+            label: "Bridge",
+            measures: [
+              { id: "dws-b-1", chord: "F#m", analysis: "vi" },
+              { id: "dws-b-2", chord: "B7", analysis: "II7" },
+              { id: "dws-b-3", chord: "E7", analysis: "V7" },
+              { id: "dws-b-4", chord: "A", analysis: "I" },
+            ],
+          },
+          {
+            id: "dws-b-b",
+            measures: [
+              { id: "dws-b-5", chord: "C#m", analysis: "iii" },
+              { id: "dws-b-6", chord: "F#m", analysis: "vi" },
+              { id: "dws-b-7", chord: "Bm", analysis: "ii" },
+              { id: "dws-b-8", chord: "E7", analysis: "V7" },
+            ],
+          },
+        ],
+      },
+      {
+        id: "dws-final",
+        title: "Final Chorus / Outro",
+        annotation: "Last statements resolve back to A without the rough chromatic tags",
+        systems: [
+          {
+            id: "dws-f-a",
+            label: "Final",
+            measures: [
+              { id: "dws-f-1", chord: "A", analysis: "I" },
+              { id: "dws-f-2", chord: "C#m", analysis: "iii" },
+              { id: "dws-f-3", chord: "F#m", analysis: "vi" },
+              { id: "dws-f-4", chord: "B7", analysis: "II7" },
+            ],
+          },
+          {
+            id: "dws-f-b",
+            measures: [
+              { id: "dws-f-5", chord: "C#7", analysis: "III7" },
+              { id: "dws-f-6", chord: "F#m", analysis: "vi" },
+              { id: "dws-f-7", chord: "B7", analysis: "II7" },
+              { id: "dws-f-8", chord: "E7", analysis: "V7" },
+            ],
+          },
+          {
+            id: "dws-f-c",
+            ending: "Outro",
+            measures: [
+              { id: "dws-f-9", chord: "A", analysis: "I" },
+              { id: "dws-f-10", chord: "C#m", analysis: "iii" },
+              { id: "dws-f-11", chord: "A", analysis: "I" },
+              { id: "dws-f-12", chord: "A", analysis: "I" },
+            ],
+            footer: "Ending chart is intentionally normalized to a playable A-major cadence rather than the rough chromatic MIR tail.",
+          },
+        ],
+      },
+    ],
+  },
 ];

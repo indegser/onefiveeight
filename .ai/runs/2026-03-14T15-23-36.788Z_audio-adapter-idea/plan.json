@@ -1,0 +1,32 @@
+{
+  "epics": [
+    {
+      "id": "epic-song-registration",
+      "title": "Register a full-track audio draft in the songs library",
+      "tasks": [
+        {
+          "id": "task-song-data",
+          "title": "Add Die With a Smile to the static songs library",
+          "implementation_area": "data",
+          "acceptance_criteria": [
+            "The songs library includes a new Die With a Smile entry.",
+            "The entry exposes title, artist, key, meter, chart notes, and sectioned systems.",
+            "The registration clearly flags provisional bars that came from audio-only inference."
+          ],
+          "dependencies": [],
+          "done_definition": [
+            "The new song entry is readable by the existing songs workspace without schema changes."
+          ]
+        }
+      ]
+    }
+  ],
+  "assumptions": [
+    "A static registration in src/lib/songs.ts is the intended songs-library source of truth.",
+    "The current full-track MIR cache is accurate enough for a provisional chart registration."
+  ],
+  "risks": [
+    "Audio-only bars with chromatic labels may still need symbolic correction later.",
+    "The full-track meter remains less certain than the overall key center."
+  ]
+}

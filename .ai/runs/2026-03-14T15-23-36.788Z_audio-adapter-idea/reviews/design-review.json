@@ -1,0 +1,38 @@
+{
+  "approved": true,
+  "preview_evidence": [
+    "No UI code changed; review focused on whether the rewritten chart reads naturally in the existing songs workspace."
+  ],
+  "summary": {
+    "status": "pass_with_followups",
+    "rationale": "The cleaned chart fits the existing list-detail songs workflow better than the raw MIR dump and remains explicit about its audio-derived origin."
+  },
+  "findings": [],
+  "section_scores": [
+    {
+      "section_id": "songs-library",
+      "score": 0.92,
+      "notes": [
+        "Named sections read more naturally than raw bar ranges.",
+        "The chart stays dense but more playable and scannable."
+      ]
+    }
+  ],
+  "profile_assessment": {
+    "selected_profile_id": null,
+    "fit_score": 0.91,
+    "anti_patterns_detected": [],
+    "notes": [
+      "Reused the established songs workspace.",
+      "Turned noisy MIR content into a musician-readable chart without introducing a new UI pattern."
+    ]
+  },
+  "gates": {
+    "hard_rules_passed": true,
+    "needs_human_review": false,
+    "requires_refinement": false
+  },
+  "next_steps": [
+    "Swap in a symbolic chart later if publication-grade fidelity becomes necessary."
+  ]
+}

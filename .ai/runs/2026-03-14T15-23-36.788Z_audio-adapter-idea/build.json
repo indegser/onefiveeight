@@ -1,0 +1,16 @@
+{
+  "completed_tasks": [
+    "task-song-data"
+  ],
+  "changed_files": [
+    "src/lib/songs.ts"
+  ],
+  "notes": [
+    "Added Die With a Smile to the songs library.",
+    "Replaced the raw full-track MIR bar dump with a musically cleaned chart using intro, verse, pre-chorus, chorus, bridge, and final-outro sections.",
+    "Kept the A-major center and the recurring iii-vi-ii-V character while normalizing rough chromatic outliers into a more playable chart."
+  ],
+  "open_issues": [
+    "A symbolic chart would still be the right next step if this song needs publication-grade accuracy."
+  ]
+}

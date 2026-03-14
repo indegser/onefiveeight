@@ -1,0 +1,7 @@
+{
+  "approved": true,
+  "findings": [],
+  "next_steps": [
+    "If full-track CPU runtime becomes a problem, add cached stage artifacts so separation and chroma extraction do not repeat unnecessarily."
+  ]
+}
