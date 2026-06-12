@@ -24,6 +24,13 @@
 - Visual UI tasks, including layout, spacing, typography, color, component styling, and other rendered-surface changes, must be checked in the browser before edits and after edits; code-only judgment is not sufficient.
 - Free-form prose is allowed inside prompt files and docs, but agent handoffs must stay structured.
 
+## Deployment Protocol
+
+- When the user asks to deploy, do not run `vercel --prod` or otherwise deploy directly from the local machine.
+- Deployment must go through GitHub: commit the requested changes, push a branch, open a PR, wait for required checks including Vercel preview, merge the PR into `main`, and let the GitHub-to-Vercel integration trigger production deployment.
+- After merging to `main`, confirm the production Vercel deployment reaches `Ready` and verify the public production URL responds successfully.
+- Report the PR URL, merge commit, production deployment URL, and public access URL.
+
 ## Role Boundaries
 
 - `Planner`: decomposes requirements, defines tasks and acceptance criteria, never writes code.
