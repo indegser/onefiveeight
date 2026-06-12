@@ -1,0 +1,91 @@
+{
+  "screens": [
+    {
+      "id": "quiz",
+      "name": "Interval Quiz",
+      "purpose": "Let a learner quickly drill the note for a random scale degree from a random root without typing.",
+      "screen_type": "detail",
+      "primary_action": "Reveal answer, then advance to the next question",
+      "states": ["question_hidden_answer", "answer_revealed"]
+    }
+  ],
+  "ux_rules": [
+    "Use a single visually obvious primary action on the quiz surface.",
+    "Keep the question and answer close together so the reveal feels immediate.",
+    "Do not introduce answer input, scoring, or settings in this MVP.",
+    "Keep Korean prompt copy direct and readable."
+  ],
+  "component_map": [
+    {
+      "screen_id": "quiz",
+      "components": [
+        "QuizPage server route wrapper",
+        "IntervalQuiz client component",
+        "Question prompt",
+        "Answer reveal region",
+        "Single primary action button",
+        "Compact context metadata"
+      ]
+    }
+  ],
+  "human_checkpoints": [],
+  "design_rule_engine": {
+    "profile_id": "warm-restrained-editorial-utility",
+    "hard_rule_sets": ["specs/design-rule-engine/layout-rules.json"],
+    "heuristic_sets": ["specs/design-rule-engine/ux-heuristics.md"],
+    "allowed_pattern_sets": ["specs/design-rule-engine/allowed-patterns.json"],
+    "banned_pattern_sets": ["specs/design-rule-engine/banned-patterns.json"],
+    "review_rubric_id": "specs/design-rule-engine/design-review-rubric.json"
+  },
+  "screen_contexts": [
+    {
+      "screen_id": "quiz",
+      "screen_type": "detail",
+      "layout_intent": "A centered, compact practice surface with stable spacing and no nested cards.",
+      "interaction_risks": [
+        "The button label could be unclear if reveal and next states are not visually distinct.",
+        "Answer spelling ambiguity could confuse users if major-scale context is hidden."
+      ],
+      "required_states": [
+        "answer hidden with prompt visible",
+        "answer revealed with next-question action visible"
+      ],
+      "notes": [
+        "Use a major-scale label as supporting metadata.",
+        "Avoid decorative gradients or oversized marketing-style hero composition."
+      ]
+    }
+  ],
+  "builder_constraints": [
+    {
+      "screen_id": "quiz",
+      "constraints": [
+        "Use a client component only for the interactive quiz state.",
+        "Use explicit major-scale note maps so flat roots return expected flat answers such as Ab -> Db for degree 4.",
+        "Keep responsive layout within viewport width without horizontal overflow.",
+        "Add browser verification evidence after implementation."
+      ],
+      "open_decisions": []
+    }
+  ],
+  "review_targets": [
+    {
+      "screen_id": "quiz",
+      "critical_judgments": [
+        "The page has one clear primary action.",
+        "Question and answer hierarchy is immediately scannable.",
+        "The layout is dense enough for a tool and does not look like a landing page."
+      ],
+      "must_not_regress": [
+        "Existing Canvas, Chords, Voicings, and Songs navigation links remain available.",
+        "Existing global navigation active-state behavior still works."
+      ]
+    }
+  ],
+  "visual_constraints": [
+    "Do not use nested cards.",
+    "Do not use gradient orb or bokeh decoration.",
+    "Text must fit on mobile and desktop.",
+    "Use existing neutral palette and restrained contrast."
+  ]
+}

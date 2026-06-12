@@ -1,0 +1,36 @@
+{
+  "completed_tasks": [
+    "delete-package-and-skill",
+    "remove-references",
+    "remove-artifacts",
+    "verify-removal"
+  ],
+  "changed_files": [
+    "AGENTS.md",
+    "tsconfig.json",
+    "skills/README.md",
+    "lead-sheets/README.md",
+    "src/lib/songs.ts",
+    "docs/remove-music-analysis-idea.md",
+    ".ai/runs/2026-06-12T08-47-15.605Z_remove-music-analysis-idea/plan.json",
+    ".ai/runs/2026-06-12T08-47-15.605Z_remove-music-analysis-idea/design.json",
+    ".ai/runs/2026-06-12T08-47-15.605Z_remove-music-analysis-idea/build.json",
+    "packages/music-analysis/",
+    "skills/music-harmony-analysis/",
+    "docs/audio-adapter-idea.md",
+    "docs/music-analysis-audio-extraction-tuning.md",
+    "docs/music-analysis-bass-extraction-plan.md",
+    "docs/music-analysis-human-summary.md",
+    "docs/songs-bruno-risk-it-all.md",
+    "src/lib/risk-it-all-song.ts",
+    ".ai/runs/2026-03-14T06-48-05.676Z_lead-sheet-team/"
+  ],
+  "notes": [
+    "Deleted the repository-local music-analysis package and harmony-analysis skill.",
+    "Removed @music-analysis TypeScript aliases.",
+    "Removed AGENTS and skills README references to the deleted workflow.",
+    "Removed audio-analysis-derived song seed data from the Songs library, including Risk It All and Die With a Smile.",
+    "Deleted clearly related music-analysis docs and run artifacts."
+  ],
+  "open_issues": []
+}

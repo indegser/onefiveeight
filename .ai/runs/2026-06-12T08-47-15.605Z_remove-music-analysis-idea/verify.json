@@ -1,0 +1,38 @@
+{
+  "checks": [
+    {
+      "name": "reference search",
+      "status": "passed",
+      "details": "rg found no active references to music-analysis, music-harmony-analysis, AudioMelodyAnalysis, Risk It All, audio-derived, Demucs, or harmony analysis outside the removal run documentation and unrelated lockfile integrity hashes."
+    },
+    {
+      "name": "eslint",
+      "status": "passed",
+      "details": "npm run lint completed with 0 errors and 8 pre-existing unused-symbol warnings."
+    },
+    {
+      "name": "typecheck",
+      "status": "passed",
+      "details": "npx tsc --noEmit passed after next build refreshed .next/types."
+    },
+    {
+      "name": "production build",
+      "status": "passed",
+      "details": "npm run build passed and prerendered /, /chords, /quiz, /songs, and /voicings."
+    }
+  ],
+  "passed": true,
+  "visual_checks": [
+    {
+      "name": "songs page render",
+      "status": "passed",
+      "details": "Browser verification at http://localhost:3000/songs showed the page rendering normally. Risk It All and Die With a Smile were absent from the rendered text."
+    },
+    {
+      "name": "quiz page render",
+      "status": "passed",
+      "details": "Browser verification at http://localhost:3000/quiz showed the quiz page rendering normally after cleanup."
+    }
+  ],
+  "blocking_issues": []
+}
