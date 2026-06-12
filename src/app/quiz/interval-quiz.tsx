@@ -23,7 +23,6 @@ type Question = {
 };
 
 const DEGREES: readonly Degree[] = [
-  { label: "1", naturalDegree: 1, accidental: 0 },
   { label: "b2", naturalDegree: 2, accidental: -1 },
   { label: "2", naturalDegree: 2, accidental: 0 },
   { label: "b3", naturalDegree: 3, accidental: -1 },
