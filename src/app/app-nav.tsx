@@ -8,6 +8,7 @@ const NAV_ITEMS = [
   { href: "/", label: "Canvas" },
   { href: "/chords", label: "Chords" },
   { href: "/voicings", label: "Voicings" },
+  { href: "/quiz", label: "Quiz" },
   { href: "/songs", label: "Songs" },
 ];
 

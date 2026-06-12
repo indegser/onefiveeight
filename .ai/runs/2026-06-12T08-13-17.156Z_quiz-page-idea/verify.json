@@ -1,0 +1,35 @@
+{
+  "checks": [
+    {
+      "name": "eslint",
+      "status": "passed",
+      "details": "npm run lint completed with 0 errors and 8 existing unused-symbol warnings outside the quiz files."
+    },
+    {
+      "name": "typescript",
+      "status": "failed",
+      "details": "npx tsc --noEmit failed in packages/music-analysis/src/index.ts because AudioMelodyAnalysis is exported by both ./schemas/music-analysis and ./pipelines/audio/melody-types."
+    },
+    {
+      "name": "production build",
+      "status": "failed",
+      "details": "npm run build compiled the Next.js app successfully, then failed at the TypeScript step on the same pre-existing music-analysis export conflict."
+    }
+  ],
+  "passed": false,
+  "visual_checks": [
+    {
+      "name": "normalized altered-degree browser samples",
+      "status": "passed",
+      "details": "Browser verification at http://localhost:3000/quiz collected 46 rendered quiz samples. Target samples included Eb #4 -> A, Gb b2 -> G, F# b2 -> G, and G #4 -> C#. No collected answer contained bb or ##."
+    },
+    {
+      "name": "quiz page render",
+      "status": "passed",
+      "details": "The /quiz page rendered with the Quiz nav active, question text visible, answer reveal working, and the next-question action available after reveal."
+    }
+  ],
+  "blocking_issues": [
+    "Repository-wide typecheck/build blocked by existing packages/music-analysis/src/index.ts duplicate AudioMelodyAnalysis export."
+  ]
+}

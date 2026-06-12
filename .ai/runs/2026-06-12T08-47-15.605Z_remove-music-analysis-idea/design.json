@@ -1,0 +1,81 @@
+{
+  "screens": [
+    {
+      "id": "repository-cleanup",
+      "name": "Repository Cleanup",
+      "purpose": "Remove non-UI music-analysis code and artifacts without changing active user-facing app layouts.",
+      "screen_type": "settings",
+      "primary_action": "Remove music-analysis references",
+      "states": ["before_removal", "after_removal"]
+    }
+  ],
+  "ux_rules": [
+    "Do not change visual layout unless a removed data dependency requires it.",
+    "Keep the Songs page functional with remaining song data.",
+    "Keep the Quiz page and navigation intact."
+  ],
+  "component_map": [
+    {
+      "screen_id": "repository-cleanup",
+      "components": [
+        "tsconfig path aliases",
+        "AGENTS operating manual",
+        "skills README",
+        "Songs data module",
+        "music-analysis package tree",
+        "music-analysis docs and run artifacts"
+      ]
+    }
+  ],
+  "human_checkpoints": [],
+  "design_rule_engine": {
+    "profile_id": "warm-restrained-editorial-utility",
+    "hard_rule_sets": ["specs/design-rule-engine/layout-rules.json"],
+    "heuristic_sets": ["specs/design-rule-engine/ux-heuristics.md"],
+    "allowed_pattern_sets": ["specs/design-rule-engine/allowed-patterns.json"],
+    "banned_pattern_sets": ["specs/design-rule-engine/banned-patterns.json"],
+    "review_rubric_id": "specs/design-rule-engine/design-review-rubric.json"
+  },
+  "screen_contexts": [
+    {
+      "screen_id": "repository-cleanup",
+      "screen_type": "settings",
+      "layout_intent": "No rendered UI layout change is intended beyond removing an audio-derived song entry from existing data.",
+      "interaction_risks": [
+        "Deleting the package without removing aliases could leave typecheck failures.",
+        "Removing song seed data could break imports if the list still references it."
+      ],
+      "required_states": [
+        "app builds without music-analysis package references"
+      ],
+      "notes": [
+        "Browser verification is not required unless rendered UI changes are introduced."
+      ]
+    }
+  ],
+  "builder_constraints": [
+    {
+      "screen_id": "repository-cleanup",
+      "constraints": [
+        "Do not revert unrelated user changes outside the music-analysis removal.",
+        "Delete clearly related music-analysis directories and docs.",
+        "Keep quiz implementation files untouched except as needed by shared verification."
+      ],
+      "open_decisions": []
+    }
+  ],
+  "review_targets": [
+    {
+      "screen_id": "repository-cleanup",
+      "critical_judgments": [
+        "No active package/config references point at deleted music-analysis files.",
+        "Remaining app data imports resolve."
+      ],
+      "must_not_regress": [
+        "Quiz route and nav remain present.",
+        "Songs page still has valid data."
+      ]
+    }
+  ],
+  "visual_constraints": ["No visual redesign is in scope."]
+}

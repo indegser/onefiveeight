@@ -1,0 +1,26 @@
+{
+  "completed_tasks": [
+    "quiz-route",
+    "quiz-interaction",
+    "quiz-navigation",
+    "altered-degree-prompts",
+    "double-accidental-normalization"
+  ],
+  "changed_files": [
+    "docs/quiz-page-idea.md",
+    "src/app/app-nav.tsx",
+    "src/app/quiz/page.tsx",
+    "src/app/quiz/interval-quiz.tsx",
+    ".ai/runs/2026-06-12T08-13-17.156Z_quiz-page-idea/plan.json",
+    ".ai/runs/2026-06-12T08-13-17.156Z_quiz-page-idea/design.json",
+    ".ai/runs/2026-06-12T08-13-17.156Z_quiz-page-idea/build.json"
+  ],
+  "notes": [
+    "Expanded quiz prompts to include altered degree labels: b2, b3, #4, b6, and b7.",
+    "Added double-accidental normalization so generated answers like Abb and F## are converted to simpler enharmonic names.",
+    "Single accidentals are still preserved, so Ab degree 4 remains Db."
+  ],
+  "open_issues": [
+    "Repository-wide typecheck and build are currently blocked by an existing music-analysis export conflict outside this task scope."
+  ]
+}

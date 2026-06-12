@@ -5,7 +5,7 @@ This directory is the first storage layer for approved lead-sheet output.
 ## Rule
 
 - One song equals one Markdown file.
-- The active music-analysis workflow should publish only approved chart data into this directory.
+- Only approved chart data should be published into this directory.
 - The Markdown contract should stay stable enough to map cleanly into a future Supabase schema.
 
 ## Naming

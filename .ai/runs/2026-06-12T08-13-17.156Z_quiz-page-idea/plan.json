@@ -1,0 +1,76 @@
+{
+  "epics": [
+    {
+      "id": "quiz-page",
+      "title": "Interval quiz page",
+      "tasks": [
+        {
+          "id": "quiz-route",
+          "title": "Add a /quiz route for random root and scale-degree prompts",
+          "implementation_area": "render",
+          "acceptance_criteria": [
+            "The page is reachable at /quiz.",
+            "The page shows a prompt formatted like 'Ab의 4도는 뭐야?'.",
+            "The prompt uses random roots and degrees."
+          ],
+          "dependencies": [],
+          "done_definition": [
+            "A route-level page renders the quiz UI.",
+            "The page follows the existing App Router file structure."
+          ]
+        },
+        {
+          "id": "quiz-interaction",
+          "title": "Implement reveal-answer and next-question behavior",
+          "implementation_area": "behavior",
+          "acceptance_criteria": [
+            "The user does not need to type an answer.",
+            "The primary button reveals the answer when the answer is hidden.",
+            "After reveal, the same primary button changes to '다음 질문' and generates another random question."
+          ],
+          "dependencies": ["quiz-route"],
+          "done_definition": [
+            "The interaction is handled in a focused client component.",
+            "The next question resets the answer visibility."
+          ]
+        },
+        {
+          "id": "quiz-navigation",
+          "title": "Expose the quiz page in app navigation",
+          "implementation_area": "integration",
+          "acceptance_criteria": [
+            "The global navigation includes a Quiz link.",
+            "The active state works on /quiz."
+          ],
+          "dependencies": ["quiz-route"],
+          "done_definition": [
+            "Navigation is updated without changing unrelated routes."
+          ]
+        },
+        {
+          "id": "quiz-verification",
+          "title": "Verify build, lint, and browser behavior",
+          "implementation_area": "verification",
+          "acceptance_criteria": [
+            "Lint passes for changed code.",
+            "The /quiz page renders in the browser.",
+            "Visual verification confirms the one-button state transition and layout fit."
+          ],
+          "dependencies": ["quiz-route", "quiz-interaction", "quiz-navigation"],
+          "done_definition": [
+            "Verification artifacts reference command and browser evidence."
+          ]
+        }
+      ]
+    }
+  ],
+  "assumptions": [
+    "Scale-degree quiz answers should use the major scale by default.",
+    "Degrees cover 1 through 7.",
+    "Roots should include common sharp and flat spellings, including Ab."
+  ],
+  "risks": [
+    "Enharmonic answer spelling can be ambiguous unless each root's major scale is explicitly defined.",
+    "Existing unrelated worktree changes prevent safely fast-forwarding main before the task."
+  ]
+}

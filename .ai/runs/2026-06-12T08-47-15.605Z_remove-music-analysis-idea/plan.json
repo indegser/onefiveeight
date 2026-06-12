@@ -1,0 +1,72 @@
+{
+  "epics": [
+    {
+      "id": "remove-music-analysis",
+      "title": "Remove music-analysis system",
+      "tasks": [
+        {
+          "id": "delete-package-and-skill",
+          "title": "Delete music-analysis package and harmony-analysis skill",
+          "implementation_area": "data",
+          "acceptance_criteria": [
+            "packages/music-analysis is removed.",
+            "skills/music-harmony-analysis is removed.",
+            "skills README no longer lists music-harmony-analysis."
+          ],
+          "dependencies": [],
+          "done_definition": [
+            "No deleted package files remain in the working tree."
+          ]
+        },
+        {
+          "id": "remove-references",
+          "title": "Remove code and config references to music-analysis",
+          "implementation_area": "integration",
+          "acceptance_criteria": [
+            "tsconfig no longer defines @music-analysis aliases.",
+            "Songs data no longer imports or includes the audio-derived Risk It All entry.",
+            "AGENTS no longer routes tasks to the removed music-analysis package or skill."
+          ],
+          "dependencies": ["delete-package-and-skill"],
+          "done_definition": [
+            "Repository search shows no active code/config references to packages/music-analysis or skills/music-harmony-analysis."
+          ]
+        },
+        {
+          "id": "remove-artifacts",
+          "title": "Delete music-analysis docs and run artifacts",
+          "implementation_area": "data",
+          "acceptance_criteria": [
+            "Music-analysis planning docs are removed.",
+            "Music-analysis run directories are removed."
+          ],
+          "dependencies": ["delete-package-and-skill"],
+          "done_definition": ["Known music-analysis docs and runs are absent."]
+        },
+        {
+          "id": "verify-removal",
+          "title": "Verify the app after removal",
+          "implementation_area": "verification",
+          "acceptance_criteria": [
+            "Lint passes or only unrelated pre-existing warnings remain.",
+            "Typecheck no longer fails because of the deleted music-analysis package.",
+            "Build passes when applicable."
+          ],
+          "dependencies": ["remove-references", "remove-artifacts"],
+          "done_definition": [
+            "Verification output is recorded in the run artifacts."
+          ]
+        }
+      ]
+    }
+  ],
+  "assumptions": [
+    "The request intentionally covers uncommitted music-analysis work and related artifacts.",
+    "General Songs UI should remain, but audio-derived Risk It All seed data should be removed because it depends on music-analysis output.",
+    "Lead-sheet terminology that is part of the general Songs UI may remain unless it is specifically tied to music-analysis."
+  ],
+  "risks": [
+    "Some older run artifacts may mention lead-sheet workflows not strictly named music-analysis; removal is limited to clearly related music-analysis and harmony-analysis artifacts.",
+    "The repository has unrelated uncommitted changes and main is behind origin/main, so automatic pull remains unsafe."
+  ]
+}
