@@ -46,7 +46,7 @@ function printUsage() {
   console.log(`Usage:
   npm run ai:init -- <idea-file>
   npm run ai:refine -- --run-id <run_id> [agent] <note>
-  npm run ai:route -- --run-id <run_id>
+  npm run ai:route -- --run-id <run_id>  # legacy advisory helper; $ai-team-supervisor owns routing judgment
   npm run ai:work -- <agent> --run-id <run_id>
   npm run ai:validate -- --run-id <run_id>`);
 }
@@ -234,24 +234,18 @@ async function routeRun(runId) {
     status = "done";
   }
 
-  const nextRun = {
-    ...run,
+  const routeSuggestion = {
+    advisory: true,
+    message:
+      "$ai-team-supervisor owns routing judgment. This command is a deterministic suggestion and does not write run.json.",
+    run_id: run.run_id,
     phase,
     status,
     next_agent: nextAgent,
     blockers,
-    history: [
-      ...run.history,
-      {
-        at: timestamp(),
-        event: `Supervisor routed to ${nextAgent}`,
-      },
-    ],
   };
 
-  schemas.run.parse(nextRun);
-  await writeJson(stateFiles.run, nextRun);
-  console.log(JSON.stringify(nextRun, null, 2));
+  console.log(JSON.stringify(routeSuggestion, null, 2));
 }
 
 async function printWorkPackage(agent, runId) {
@@ -365,7 +359,7 @@ async function collectRelevantState(agent, runId) {
 function getRequiredRunId(runId) {
   if (!runId) {
     throw new Error(
-      "Missing required --run-id. Example: npm run ai:route -- --run-id <run_id>",
+      "Missing required --run-id. Example: npm run ai:validate -- --run-id <run_id>",
     );
   }
 

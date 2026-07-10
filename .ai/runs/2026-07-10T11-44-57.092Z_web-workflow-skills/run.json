@@ -1,0 +1,104 @@
+{
+  "run_id": "2026-07-10T11-44-57.092Z_web-workflow-skills",
+  "goal": "Build an app from docs/ideas/web-workflow-skills.md",
+  "revision": 3,
+  "phase": "done",
+  "status": "done",
+  "next_agent": "none",
+  "stack": {
+    "frontend": "nextjs",
+    "ui": "shadcn-ui",
+    "backend": "supabase",
+    "language": "typescript"
+  },
+  "inputs": {
+    "idea_file": "docs/ideas/web-workflow-skills.md",
+    "constraints": [],
+    "brand_critical": false
+  },
+  "artifacts": {
+    "plan": ".ai/runs/2026-07-10T11-44-57.092Z_web-workflow-skills/plan.json",
+    "memory": ".ai/runs/2026-07-10T11-44-57.092Z_web-workflow-skills/memory.json",
+    "design": ".ai/runs/2026-07-10T11-44-57.092Z_web-workflow-skills/design.json",
+    "build": ".ai/runs/2026-07-10T11-44-57.092Z_web-workflow-skills/build.json",
+    "verify": ".ai/runs/2026-07-10T11-44-57.092Z_web-workflow-skills/verify.json"
+  },
+  "approvals": {
+    "brand": false,
+    "data_model": false,
+    "destructive_flows": false
+  },
+  "blockers": [],
+  "decisions": [],
+  "risks": [],
+  "refinement_notes": [
+    {
+      "at": "2026-07-10T16:30:34.680Z",
+      "note": "remove unnecessary ai-team-supervisor packaging skill and references",
+      "target_agent": "builder"
+    },
+    {
+      "at": "2026-07-10T16:41:05.245Z",
+      "note": "restore ai-team-supervisor as operational routing skill and demote script route to advisory helper",
+      "target_agent": "builder"
+    }
+  ],
+  "history": [
+    {
+      "at": "2026-07-10T11:44:57.095Z",
+      "event": "Initialized run from docs/ideas/web-workflow-skills.md"
+    },
+    {
+      "at": "2026-07-10T11:46:10.823Z",
+      "event": "Supervisor routed to design-agent"
+    },
+    {
+      "at": "2026-07-10T11:46:50.158Z",
+      "event": "Supervisor routed to builder"
+    },
+    {
+      "at": "2026-07-10T11:50:45.466Z",
+      "event": "Supervisor routed to verifier"
+    },
+    {
+      "at": "2026-07-10T11:51:20.461Z",
+      "event": "Supervisor routed to design-critic"
+    },
+    {
+      "at": "2026-07-10T11:51:39.594Z",
+      "event": "Supervisor routed to code-critic"
+    },
+    {
+      "at": "2026-07-10T11:51:50.464Z",
+      "event": "Supervisor routed to none"
+    },
+    {
+      "at": "2026-07-10T11:52:39.358Z",
+      "event": "Supervisor routed to none"
+    },
+    {
+      "at": "2026-07-10T16:30:34.681Z",
+      "event": "Refinement requested for builder: remove unnecessary ai-team-supervisor packaging skill and references"
+    },
+    {
+      "at": "2026-07-10T16:32:34.876Z",
+      "event": "Supervisor routed to verifier"
+    },
+    {
+      "at": "2026-07-10T16:33:04.541Z",
+      "event": "Supervisor routed to design-critic"
+    },
+    {
+      "at": "2026-07-10T16:33:23.595Z",
+      "event": "Supervisor routed to none"
+    },
+    {
+      "at": "2026-07-10T16:41:05.246Z",
+      "event": "Refinement requested for builder: restore ai-team-supervisor as operational routing skill and demote script route to advisory helper"
+    },
+    {
+      "at": "2026-07-10T16:44:00.000Z",
+      "event": "Supervisor skill routed to verifier, design-critic, code-critic, then done"
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Website Workflow"
+  short_description: "Route web UI work through Vercel and design skills"
+  default_prompt: "Use $website-workflow to plan and verify a Next.js UI redesign."

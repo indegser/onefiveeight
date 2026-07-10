@@ -1,0 +1,30 @@
+{
+  "completed_tasks": [
+    "Reintroduced skills/ai-team-supervisor as an operational routing skill instead of an installer/template package.",
+    "Defined Supervisor-owned routing rules, agent dispatch, sub-skill dispatch, state writes, and script boundaries in skills/ai-team-supervisor/SKILL.md.",
+    "Updated AGENTS.md, agents/supervisor.md, skills/README.md, docs/ai-team-mvp.md, and website-workflow so website edits route through ai-team-supervisor first.",
+    "Demoted npm run ai:route to an advisory helper that prints a deterministic suggestion and does not write run.json.",
+    "Updated actions/route-and-validate and action docs to describe ai:route as advisory.",
+    "Kept cross-repo installer/template assets removed."
+  ],
+  "changed_files": [
+    "AGENTS.md",
+    "agents/supervisor.md",
+    "actions/route-and-validate",
+    "actions/README.md",
+    "docs/ai-team-mvp.md",
+    "scripts/ai-team/supervisor.mjs",
+    "skills/README.md",
+    "skills/ai-team-supervisor/SKILL.md",
+    "skills/ai-team-supervisor/agents/openai.yaml",
+    "skills/website-workflow/SKILL.md",
+    ".ai/runs/2026-07-10T11-44-57.092Z_web-workflow-skills/plan.json",
+    ".ai/runs/2026-07-10T11-44-57.092Z_web-workflow-skills/design.json"
+  ],
+  "notes": [
+    "Product runtime UI code was not changed.",
+    "The actual cross-repo installer files and copied template assets remain deleted.",
+    "ai:route no longer mutates run.json; $ai-team-supervisor owns routing judgment."
+  ],
+  "open_issues": []
+}

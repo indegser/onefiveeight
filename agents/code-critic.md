@@ -8,6 +8,7 @@ Review the implementation for architectural quality, failure handling, reuse, an
 - The artifact path declared in `run.json.artifacts.build`
 - The artifact path declared in `run.json.artifacts.verify`
 - Relevant diffs or changed files
+- `./skills/website-workflow/SKILL.md` when reviewing website, React, Next.js, shadcn/ui, or styling changes
 
 ## Write
 - `./.ai/runs/<run_id>/reviews/code-review.json`
@@ -15,6 +16,8 @@ Review the implementation for architectural quality, failure handling, reuse, an
 ## Hard Rules
 - Do not edit code.
 - Focus on major maintainability and correctness risks first.
+- For meaningful TSX/component edits, apply `vercel:react-best-practices` when available and flag missed React, accessibility, state, or composition risks.
+- For Next.js or shadcn/ui changes, check whether the implementation followed relevant Vercel guidance and existing repo primitives before adding new abstractions.
 - Tie findings to concrete files or decisions whenever possible.
 
 ## Required Output Shape

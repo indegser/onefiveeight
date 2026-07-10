@@ -5,20 +5,20 @@
 - A repo-level `AGENTS.md` for system-wide operating rules
 - Prompt files for each agent under `./agents`
 - Shared state schemas under `./.ai/schemas`
-- A lightweight supervisor CLI under `./scripts/ai-team`
+- An operational Supervisor skill under `./skills/ai-team-supervisor`
+- Helper scripts under `./scripts/ai-team`
 
 ## MVP Boundaries
 
-- The supervisor does not yet spawn Codex sub-agents automatically.
-- It prepares and validates the protocol: run state, next step, and agent work packages.
-- This keeps the first version simple while preserving a clean upgrade path to automated handoffs.
+- The Supervisor is skill-owned: `$ai-team-supervisor` inspects run state and decides which agent and skill should run next.
+- The helper scripts prepare and validate protocol artifacts: run state, memory snapshots, and agent work packages.
+- `npm run ai:route` is legacy/advisory. Do not let it replace Supervisor skill judgment.
 
 ## Commands
 
 ```bash
 npm run ai:init -- docs/idea.md
 npm run ai:refine -- --run-id <run_id> builder "follow-up note"
-npm run ai:route -- --run-id <run_id>
 npm run ai:work -- planner --run-id <run_id>
 npm run ai:validate -- --run-id <run_id>
 ```
@@ -28,16 +28,16 @@ npm run ai:validate -- --run-id <run_id>
 1. Write requirements in `docs/idea.md` or another markdown file.
 2. Run `npm run ai:init -- path/to/idea.md`.
 3. Capture the printed `run_id` from init and use it explicitly in every later command.
-4. Read the generated routing decision in `./.ai/runs/<run_id>/run.json`.
-5. Generate the next agent package with `npm run ai:work -- <agent> --run-id <run_id>`.
-6. Use that package to run the corresponding Codex session manually.
+4. Use `$ai-team-supervisor` to inspect the run directory and decide the next agent.
+5. Generate the next agent package with `npm run ai:work -- <agent> --run-id <run_id>` when a structured package is useful.
+6. Use that package and the role prompt to run the corresponding agent work.
 7. Save the agent JSON output into the expected state file.
 8. If the task changes a rendered UI surface visually, inspect the current browser state before editing so spacing, hierarchy, and redundancy issues are judged from the rendered page instead of inferred from code.
 9. For design work that touches implementation, capture screenshot evidence after the edit before final design review.
 10. When UI changes are involved, verify representative screenshots against a short checklist: no redundant local labels, pane-width fit before forced overflow, and stable representative rows or grids.
 11. If the UI change adds semantic CSS utilities such as typography classes, verify the browser receives the corresponding CSS rules in addition to seeing the class names in markup.
 12. In the current `Next.js + Tailwind CSS v4` repo setup, prefer plain CSS in `globals.css` for repo-local semantic utilities unless browser evidence confirms that the chosen Tailwind layer pattern is emitted reliably.
-13. Run `npm run ai:route -- --run-id <run_id>` again and continue until done.
+13. Use `$ai-team-supervisor` again and continue until done.
 14. If follow-up feedback arrives after completion, reopen the run with `npm run ai:refine -- --run-id <run_id> <agent> <note>`.
 
 ## State Files

@@ -1,0 +1,52 @@
+{
+  "approved": true,
+  "preview_evidence": [
+    "verify.json records browser evidence as skipped because no rendered product UI changed.",
+    "skills/ai-team-supervisor/SKILL.md now owns routing judgment and defines agent/sub-skill dispatch.",
+    "npm run ai:route output was verified as advisory-only."
+  ],
+  "summary": {
+    "status": "pass",
+    "rationale": "The workflow now matches the intended Tastyroad-style pattern: Supervisor is an operational skill, external/domain skills support roles, and scripts are deterministic helpers rather than routing owners."
+  },
+  "findings": [],
+  "section_scores": [
+    {
+      "section_id": "hard_rules",
+      "score": 1,
+      "notes": [
+        "Supervisor-only routing remains explicit.",
+        "The script route helper no longer mutates run.json.",
+        "No product UI changed."
+      ]
+    },
+    {
+      "section_id": "ux_heuristics",
+      "score": 1,
+      "notes": [
+        "The role of Supervisor, sub-agents, sub-skills, and helper scripts is now easier to distinguish."
+      ]
+    },
+    {
+      "section_id": "aesthetic_judgment",
+      "score": 1,
+      "notes": [
+        "No rendered aesthetic surface changed."
+      ]
+    }
+  ],
+  "profile_assessment": {
+    "selected_profile_id": "prosumer-utility",
+    "fit_score": 1,
+    "anti_patterns_detected": [],
+    "notes": [
+      "The workflow stays dense and operational."
+    ]
+  },
+  "gates": {
+    "hard_rules_passed": true,
+    "needs_human_review": false,
+    "requires_refinement": false
+  },
+  "next_steps": []
+}

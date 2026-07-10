@@ -1,0 +1,38 @@
+{
+  "checks": [
+    {
+      "name": "skill validation",
+      "status": "passed",
+      "details": "quick_validate.py passed for skills/ai-team-supervisor, skills/website-workflow, skills/design-rule-engine, and skills/audio-chord-recognition."
+    },
+    {
+      "name": "AI-team schema validation",
+      "status": "passed",
+      "details": "npm run ai:validate -- --run-id 2026-07-10T11-44-57.092Z_web-workflow-skills passed before verify/review artifacts were recreated."
+    },
+    {
+      "name": "advisory route helper",
+      "status": "passed",
+      "details": "npm run ai:route -- --run-id 2026-07-10T11-44-57.092Z_web-workflow-skills printed advisory=true with a message that $ai-team-supervisor owns routing judgment and did not write run.json."
+    },
+    {
+      "name": "lint",
+      "status": "passed",
+      "details": "npm run lint exited 0. It reported 8 existing unused-variable warnings in src/app/canvas/scale-fretboard.tsx, src/app/chords/page.tsx, src/app/tracker.tsx, src/lib/caged.ts, and src/lib/chord-playback.ts."
+    },
+    {
+      "name": "diff whitespace",
+      "status": "passed",
+      "details": "git diff --check passed."
+    }
+  ],
+  "passed": true,
+  "visual_checks": [
+    {
+      "name": "browser evidence",
+      "status": "skipped",
+      "details": "No rendered product UI changed."
+    }
+  ],
+  "blocking_issues": []
+}

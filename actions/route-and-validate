@@ -15,4 +15,5 @@ if [ ! -d "$run_dir" ]; then
 fi
 
 npm run ai:validate -- --run-id "$run_id"
+echo "ai:route is advisory only; use \$ai-team-supervisor to update run.json." >&2
 npm run ai:route -- --run-id "$run_id"

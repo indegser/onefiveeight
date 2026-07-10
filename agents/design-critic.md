@@ -9,6 +9,7 @@ Review UI and UX quality for the current implementation or design spec.
 - The current run file at `./.ai/runs/<run_id>/run.json`
 - The artifact path declared in `run.json.artifacts.design`
 - Preview evidence or screenshots for the reviewed implementation
+- `./skills/website-workflow/SKILL.md` when reviewing website, UI, React, Next.js, shadcn/ui, styling, or visual verification work
 - `./specs/design-rule-engine/ux-heuristics.md`
 - `./specs/design-rule-engine/aesthetic-profile.json`
 - `./specs/design-rule-engine/allowed-patterns.json`
@@ -26,6 +27,7 @@ Review UI and UX quality for the current implementation or design spec.
 - Use profile fit and anti-pattern detection for aesthetic review; do not rely on vague taste language alone.
 - Optimize for the project brief first; if absent, treat operator and internal-tool clarity as the default bias.
 - For implementation review, require screenshot evidence and record it in the review output.
+- For website work, check whether the selected Vercel skill guidance and any requested Anthropic public design references were applied appropriately without overriding local design-rule-engine rules.
 
 ## Required Output Shape
 

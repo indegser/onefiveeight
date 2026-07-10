@@ -1,0 +1,93 @@
+{
+  "epics": [
+    {
+      "id": "E1",
+      "title": "Worktree-first operating protocol",
+      "tasks": [
+        {
+          "id": "T1",
+          "title": "Adopt task-specific worktree defaults for non-trivial work",
+          "implementation_area": "integration",
+          "acceptance_criteria": [
+            "AGENTS.md requires checking branch, remote state, and worktree list before substantive edits.",
+            "AGENTS.md routes non-trivial coding, documentation, AI-team, and website work into a task-specific worktree by default.",
+            "The policy preserves dirty or ambiguous existing worktrees instead of stashing, switching, or cleaning them."
+          ],
+          "dependencies": [],
+          "done_definition": [
+            "Worktree policy is present in the root operating manual."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "E2",
+      "title": "Skill-owned supervision and website routing",
+      "tasks": [
+        {
+          "id": "T2",
+          "title": "Define ai-team-supervisor as the active routing skill",
+          "implementation_area": "integration",
+          "acceptance_criteria": [
+            "skills/ai-team-supervisor is an operational supervisor skill, not an installer or template package.",
+            "AGENTS.md and agents/supervisor.md say the Supervisor skill owns routing judgment.",
+            "scripts/ai-team/supervisor.mjs route is documented and implemented as advisory only."
+          ],
+          "dependencies": [
+            "T1"
+          ],
+          "done_definition": [
+            "The supervisor skill describes routing rules, agent dispatch, state writes, and script boundaries."
+          ]
+        },
+        {
+          "id": "T3",
+          "title": "Define the web design/build skill stack",
+          "implementation_area": "verification",
+          "acceptance_criteria": [
+            "Website/UI tasks route through ai-team-supervisor and the repo design-rule-engine before implementation.",
+            "Design and build agents explicitly reference Vercel skills for shadcn, Geist, v0, Next.js, React quality, and browser verification.",
+            "Design guidance references Anthropic's public frontend-design, theme-factory, brand-guidelines, canvas-design, web-artifacts-builder, and webapp-testing skills as inspiration or source material, without treating unavailable skills as installed local tools."
+          ],
+          "dependencies": [
+            "T2"
+          ],
+          "done_definition": [
+            "Agent prompts and repo-local skill docs contain the routing contract."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "E3",
+      "title": "Remove unused distribution assets",
+      "tasks": [
+        {
+          "id": "T4",
+          "title": "Remove cross-repo installer/template package assets",
+          "implementation_area": "integration",
+          "acceptance_criteria": [
+            "skills/ai-team-supervisor contains only operational skill files, not installer scripts or copied template assets.",
+            "Standalone documentation for publishing or installing ai-team-supervisor is removed.",
+            "The actual supervisor helper scripts under scripts/ai-team remain available for init, work-package printing, refinement, validation, and advisory route suggestions."
+          ],
+          "dependencies": [
+            "T2"
+          ],
+          "done_definition": [
+            "Repository search finds no template installer assets or installer docs."
+          ]
+        }
+      ]
+    }
+  ],
+  "assumptions": [
+    "This task changes AI-team operating files only and does not modify product UI or runtime behavior.",
+    "Anthropic public design skills are not installed in this Codex session; references must be phrased as external design-skill inspiration unless installed later.",
+    "The cross-repo installer package is not needed, but an operational Supervisor skill is needed."
+  ],
+  "risks": [
+    "Changing ai:route to advisory may require future callers to update run.json through the Supervisor skill instead of relying on the script.",
+    "Over-prescribing skill usage could slow trivial read-only tasks, so worktree and skill routing should explicitly exempt trivial direct answers."
+  ]
+}
