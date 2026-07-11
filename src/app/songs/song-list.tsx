@@ -20,28 +20,23 @@ export function SongList({ songs }: SongListProps) {
         <Link
           key={song.id}
           href={`/songs/${song.id}`}
-          className="group block px-1 py-6 transition-colors hover:bg-[color:color-mix(in_srgb,var(--tone-surface)_50%,transparent)] focus-visible:ring-4 focus-visible:ring-[color:color-mix(in_srgb,var(--tone-accent)_25%,transparent)] focus-visible:outline-none md:px-3"
+          className="group block px-1 py-4 transition-colors hover:bg-[color:color-mix(in_srgb,var(--tone-surface)_50%,transparent)] focus-visible:ring-4 focus-visible:ring-[color:color-mix(in_srgb,var(--tone-accent)_25%,transparent)] focus-visible:outline-none md:px-3"
         >
-          <div className="grid gap-4 md:grid-cols-[minmax(0,1fr)_15rem] md:items-start">
-            <div className="min-w-0">
-              <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                <h2 className="text-xl font-semibold tracking-[0] text-[var(--tone-text-primary)] group-hover:underline group-hover:decoration-[var(--tone-text-muted)] group-hover:underline-offset-4">
-                  {song.title}
-                </h2>
-                <p className="text-sm text-[var(--tone-text-muted)]">
-                  {song.artist}
-                </p>
-              </div>
-              <p className="mt-3 max-w-[44rem] text-sm leading-6 text-[var(--tone-text-secondary)]">
-                {song.summary}
+          <div className="grid gap-2 md:grid-cols-[minmax(0,1fr)_auto] md:items-baseline">
+            <div className="flex min-w-0 flex-wrap items-baseline gap-x-3 gap-y-1">
+              <h2 className="text-lg font-semibold tracking-[0] text-[var(--tone-text-primary)] group-hover:underline group-hover:decoration-[var(--tone-text-muted)] group-hover:underline-offset-4">
+                {song.title}
+              </h2>
+              <p className="text-sm text-[var(--tone-text-muted)]">
+                {song.artist}
               </p>
             </div>
-            <p className="text-sm leading-6 text-[var(--tone-text-muted)] md:text-right">
-              {song.keyCenter} · {song.feel}
-              <br />
-              {song.meter}
-              <br />
-              {song.sections.length} sections · {getSongSystemCount(song)} systems
+            <p className="flex flex-wrap gap-x-2 gap-y-1 text-sm leading-6 text-[var(--tone-text-muted)] md:justify-end md:text-right">
+              <span>{song.feel}</span>
+              <span aria-hidden="true">·</span>
+              <span>{song.sections.length} sections</span>
+              <span aria-hidden="true">·</span>
+              <span>{getSongSystemCount(song)} systems</span>
             </p>
           </div>
         </Link>

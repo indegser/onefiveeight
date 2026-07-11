@@ -1,0 +1,65 @@
+{
+  "epics": [
+    {
+      "id": "epic-songs-cleanup",
+      "title": "Clean user-facing songs library",
+      "tasks": [
+        {
+          "id": "task-identify-temporary-entry",
+          "title": "Identify the temporary sample exposed on /songs",
+          "implementation_area": "verification",
+          "acceptance_criteria": [
+            "Confirm the current /songs page lists the photographed renderer sample before product code changes.",
+            "Record the sample identity and the impacted route behavior."
+          ],
+          "dependencies": [],
+          "done_definition": [
+            "Before-browser evidence or equivalent rendered evidence shows the temporary entry is visible."
+          ]
+        },
+        {
+          "id": "task-remove-sample-data",
+          "title": "Remove the temporary sample from public song data",
+          "implementation_area": "data",
+          "acceptance_criteria": [
+            "The songs array no longer contains the janhyang-photo-sample entry.",
+            "Aggregate counts on /songs update from the remaining songs data.",
+            "No reusable renderer or song detail component is removed."
+          ],
+          "dependencies": [
+            "task-identify-temporary-entry"
+          ],
+          "done_definition": [
+            "src/lib/songs.ts no longer exports the temporary sample as a song."
+          ]
+        },
+        {
+          "id": "task-verify-rendered-songs",
+          "title": "Verify songs list and detail routes after cleanup",
+          "implementation_area": "verification",
+          "acceptance_criteria": [
+            "The /songs page renders without the temporary sample.",
+            "A remaining song detail route opens successfully.",
+            "Browser verification checks representative list rows, redundant labels, and available-width fit.",
+            "TypeScript, lint, and build checks pass when applicable."
+          ],
+          "dependencies": [
+            "task-remove-sample-data"
+          ],
+          "done_definition": [
+            "verify.json records terminal and browser evidence with no blocking issues."
+          ]
+        }
+      ]
+    }
+  ],
+  "assumptions": [
+    "The Korean request to remove '잡초' refers to the temporary user-facing renderer sample, specifically the 잔향 photographed chart sample.",
+    "This is not a brand-critical screen and does not require human approval before implementation.",
+    "The cleanup should preserve all real copied chart entries and the lead-sheet renderer implementation."
+  ],
+  "risks": [
+    "If '잡초' referred to a different visual issue, removing the sample may only partially satisfy the user's intent.",
+    "The repository lockfiles are not in sync with package.json, so npm ci is unavailable; verification must note the install workaround."
+  ]
+}

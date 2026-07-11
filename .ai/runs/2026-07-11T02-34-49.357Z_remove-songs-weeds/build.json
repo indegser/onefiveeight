@@ -1,0 +1,21 @@
+{
+  "completed_tasks": [
+    "Removed the temporary janhyang-photo-sample entry from the exported songs array.",
+    "Preserved songs index, song list, song detail, ScoreViewer, and LeadSheetRenderer code paths unchanged.",
+    "Confirmed the removed sample strings are no longer present in product songs code."
+  ],
+  "changed_files": [
+    "src/lib/songs.ts",
+    "docs/ideas/remove-songs-weeds.md",
+    ".ai/runs/2026-07-11T02-34-49.357Z_remove-songs-weeds/plan.json",
+    ".ai/runs/2026-07-11T02-34-49.357Z_remove-songs-weeds/design.json",
+    ".ai/runs/2026-07-11T02-34-49.357Z_remove-songs-weeds/build.json",
+    ".ai/runs/2026-07-11T02-34-49.357Z_remove-songs-weeds/run.json"
+  ],
+  "notes": [
+    "No visual restyling or layout code was changed.",
+    "The removed song ID is no longer returned by generateStaticParams because it derives from songs.",
+    "Existing getSongById behavior will return null for the removed ID."
+  ],
+  "open_issues": []
+}
