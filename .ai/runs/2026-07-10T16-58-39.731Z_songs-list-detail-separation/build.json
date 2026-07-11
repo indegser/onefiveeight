@@ -1,0 +1,19 @@
+{
+  "completed_tasks": [
+    "task-detail-label-cleanup",
+    "task-visual-fit"
+  ],
+  "changed_files": [
+    ".ai/runs/2026-07-10T16-58-39.731Z_songs-list-detail-separation/design.json",
+    "src/app/songs/score-viewer.tsx",
+    "src/app/songs/lead-sheet-renderer.tsx"
+  ],
+  "notes": [
+    "Updated design criteria so design review must explicitly check weed removal across redundant labels, renderer-demo prose, and unnecessary framing/chrome.",
+    "Removed song detail summary and chartNotes from the detail header because the representative data contained renderer/sample explanations rather than user-facing song content.",
+    "Removed the lead-sheet preview card frame, shadow, and separate paper surface so the chart reads as part of the detail page.",
+    "Restored article padding and removed the duplicate chart divider line.",
+    "Adjusted lead-sheet row spacing and mark positions so 2/4, D.S., and Fine remain visible after tightening."
+  ],
+  "open_issues": []
+}

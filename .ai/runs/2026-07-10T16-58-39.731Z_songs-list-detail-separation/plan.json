@@ -1,0 +1,92 @@
+{
+  "epics": [
+    {
+      "id": "epic-route-separation",
+      "title": "Separate songs index and song detail routes",
+      "tasks": [
+        {
+          "id": "task-index-route",
+          "title": "Make /songs a blog-like song index",
+          "implementation_area": "render",
+          "acceptance_criteria": [
+            "/songs presents the collection as a navigable index without embedding a selected song detail pane.",
+            "Each song item links to a stable per-song URL.",
+            "The index keeps enough metadata for scanning without duplicating detail-page content."
+          ],
+          "dependencies": [],
+          "done_definition": [
+            "Rendered /songs browser evidence shows a list/index surface only.",
+            "The list has meaningful empty-state behavior if song data is absent."
+          ]
+        },
+        {
+          "id": "task-detail-route",
+          "title": "Add a per-song detail route",
+          "implementation_area": "integration",
+          "acceptance_criteria": [
+            "A dynamic song detail route renders the selected song by id.",
+            "Unknown song ids resolve through the App Router not-found path.",
+            "Detail pages include navigation back to the song index."
+          ],
+          "dependencies": [
+            "task-index-route"
+          ],
+          "done_definition": [
+            "A representative route such as /songs/janhyang-photo-sample loads directly in the browser.",
+            "Next.js build succeeds with the dynamic route."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "epic-detail-simplification",
+      "title": "Remove redundant labels from song detail",
+      "tasks": [
+        {
+          "id": "task-detail-label-cleanup",
+          "title": "Simplify detail metadata and notes",
+          "implementation_area": "render",
+          "acceptance_criteria": [
+            "Detail metadata is presented as concise values instead of label-heavy pairs where the meaning is obvious.",
+            "The detail header focuses on title, artist, summary, and essential song metadata.",
+            "Chart notes remain available only when they add useful song-specific context."
+          ],
+          "dependencies": [
+            "task-detail-route"
+          ],
+          "done_definition": [
+            "Browser evidence for a representative detail page shows no redundant local labels such as Source, Sections, Systems, or Chart notes headings when the content is self-evident.",
+            "The lead-sheet renderer still exposes section structure and musical navigation marks."
+          ]
+        },
+        {
+          "id": "task-visual-fit",
+          "title": "Verify lead sheet visual fit",
+          "implementation_area": "verification",
+          "acceptance_criteria": [
+            "Representative lead-sheet rows fit the available pane width at desktop viewport.",
+            "The page avoids unnecessary hard minimum widths or avoidable horizontal overflow around labels.",
+            "No new reusable semantic CSS classes are introduced without served CSS verification."
+          ],
+          "dependencies": [
+            "task-detail-label-cleanup"
+          ],
+          "done_definition": [
+            "Post-change browser screenshots are captured for /songs and a representative detail route.",
+            "Lint, build, and AI-team validation pass or failures are recorded as blockers."
+          ]
+        }
+      ]
+    }
+  ],
+  "assumptions": [
+    "The existing song data remains the source of truth; this task changes routing and presentation rather than transcription content.",
+    "The user's '잡초' refers to redundant explanatory labels and local headings on the detail surface, not musical markings such as section names, repeats, endings, D.S., or Fine.",
+    "The uncommitted lead-sheet renderer already present in the shared checkout is relevant context for the requested song detail cleanup."
+  ],
+  "risks": [
+    "The current shared checkout contains related uncommitted songs changes; these are preserved in the shared checkout and copied into the task worktree for continuity.",
+    "If the detail route changes client navigation assumptions, existing client-only workspace code may need to become a simpler server-rendered index.",
+    "Visual changes can pass build checks while still feeling cluttered, so browser evidence and design review are required."
+  ]
+}

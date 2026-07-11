@@ -1,0 +1,48 @@
+{
+  "checks": [
+    {
+      "name": "npm run lint",
+      "status": "passed",
+      "details": "Exited 0. Existing unrelated no-unused-vars warnings remain outside the modified songs files."
+    },
+    {
+      "name": "npm run build",
+      "status": "passed",
+      "details": "Exited 0. Next.js compiled, typechecked, and generated /songs plus static /songs/[songId] paths."
+    },
+    {
+      "name": "npm run ai:validate -- --run-id 2026-07-10T16-58-39.731Z_songs-list-detail-separation",
+      "status": "passed",
+      "details": "Intermediate validation passed after revised design artifact and before final verify/review artifacts."
+    }
+  ],
+  "visual_checks": [
+    {
+      "name": "pre-refinement design review screenshot",
+      "status": "passed",
+      "details": "Captured /tmp/songs-detail-review.png; review identified remaining weeds in renderer-demo prose and heavy framed chart treatment."
+    },
+    {
+      "name": "weed cleanup screenshot",
+      "status": "passed",
+      "details": "Captured /tmp/songs-detail-after-weed-cleanup-final.png; detail page now goes from song identity and compact metadata directly into the chart."
+    },
+    {
+      "name": "weed text scan",
+      "status": "passed",
+      "details": "Browser text scan found no renderer sample, visual renderer, uploaded chart, layout intentionally favors, Chart notes, Digital lead sheet, Source, Artist label, or Key label text."
+    },
+    {
+      "name": "music mark preservation",
+      "status": "passed",
+      "details": "Browser text scan confirmed 2/4, D.S., and Fine remain present after row tightening."
+    },
+    {
+      "name": "representative lead-sheet row fit",
+      "status": "passed",
+      "details": "At 1280px viewport, body overflowX was false; sampled lead-sheet rows measured width 1144 and scrollWidth 1144."
+    }
+  ],
+  "passed": true,
+  "blocking_issues": []
+}

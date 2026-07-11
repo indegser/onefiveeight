@@ -1,0 +1,63 @@
+{
+  "approved": true,
+  "preview_evidence": [
+    "/tmp/songs-detail-review.png",
+    "/tmp/songs-detail-after-weed-cleanup-final.png"
+  ],
+  "summary": {
+    "status": "pass",
+    "rationale": "The revised detail page passes the explicit weed-removal review gate: redundant labels, renderer-demo prose, sample disclaimers, and heavy preview framing were removed while musical structure remains visible."
+  },
+  "findings": [],
+  "section_scores": [
+    {
+      "section_id": "hard_rules",
+      "score": 5,
+      "notes": [
+        "Direct detail route remains valid and preserves not-found behavior from the prior implementation.",
+        "No competing primary actions were introduced."
+      ]
+    },
+    {
+      "section_id": "ux_heuristics",
+      "score": 4.5,
+      "notes": [
+        "The page now moves from song identity to chart without renderer explanatory copy.",
+        "The chart is integrated into the page instead of being presented as a separate preview card.",
+        "Representative rows fit the available pane width without page-level horizontal overflow."
+      ]
+    },
+    {
+      "section_id": "aesthetic_judgment",
+      "score": 4.25,
+      "notes": [
+        "Removing the shadowed paper frame improves restraint and reduces ornamental fragmentation.",
+        "The result better fits the warm restrained editorial utility profile, though the renderer itself remains utilitarian rather than fully polished music engraving."
+      ]
+    },
+    {
+      "section_id": "weed_removal",
+      "score": 5,
+      "notes": [
+        "Review explicitly checked labels, explanatory prose, sample disclaimers, and unnecessary framing/chrome.",
+        "Browser text scan confirmed renderer/sample explanatory strings are no longer visible.",
+        "Musical marks such as 2/4, D.S., and Fine were preserved."
+      ]
+    }
+  ],
+  "profile_assessment": {
+    "selected_profile_id": "warm-restrained-editorial-utility",
+    "fit_score": 4.25,
+    "anti_patterns_detected": [],
+    "notes": [
+      "The detail page is quieter and less demo-like after removing the framed lead-sheet preview treatment.",
+      "The remaining surface uses restrained dividers and compact metadata instead of explanatory chrome."
+    ]
+  },
+  "gates": {
+    "hard_rules_passed": true,
+    "needs_human_review": false,
+    "requires_refinement": false
+  },
+  "next_steps": []
+}

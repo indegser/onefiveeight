@@ -1,9 +1,23 @@
+export type SongChordEvent = {
+  id: string;
+  chord: string;
+  offset?: number;
+};
+
 export type SongMeasure = {
   id: string;
   chord?: string;
+  chords?: SongChordEvent[];
   cue?: string;
   analysis?: string;
   span?: number;
+  barline?: "single" | "double" | "final";
+  repeatStart?: boolean;
+  repeatEnd?: boolean;
+  ending?: string;
+  jump?: string;
+  footer?: string;
+  timeSignature?: string;
 };
 
 export type SongSystem = {
@@ -46,7 +60,358 @@ export function getSongSystemCount(song: Song) {
   );
 }
 
+export function getSongById(songId: string) {
+  return songs.find((song) => song.id === songId) ?? null;
+}
+
 export const songs: Song[] = [
+  {
+    id: "janhyang-photo-sample",
+    title: "잔향",
+    artist: "김동률",
+    source: "Photographed handwritten chord chart sample",
+    keyCenter: "Db",
+    feel: "Ballad",
+    meter: "4/4 with a 2/4 D.S. tag",
+    summary:
+      "A renderer sample based on the uploaded chart, preserving the Db-centered chord vocabulary, repeated endings, slash chords, and D.S./Fine-style navigation marks.",
+    chartNotes: [
+      "This is a visual renderer sample, not a final transcription.",
+      "Chord symbols follow the uploaded image where legible, with uncertain dense bars kept as grouped chord events.",
+      "The layout intentionally favors staff-like rows, barlines, endings, and jump marks over boxed measure cards.",
+    ],
+    sections: [
+      {
+        id: "intro",
+        title: "Intro",
+        systems: [
+          {
+            id: "intro-a",
+            label: "Intro",
+            measures: [
+              { id: "intro-1", chord: "Db" },
+              { id: "intro-2" },
+              { id: "intro-3" },
+              { id: "intro-4", barline: "double" },
+            ],
+          },
+        ],
+      },
+      {
+        id: "verse",
+        title: "Verse",
+        systems: [
+          {
+            id: "verse-a",
+            label: "Verse",
+            measures: [
+              {
+                id: "verse-a1",
+                repeatStart: true,
+                chords: [
+                  { id: "verse-a1-1", chord: "Gbm7", offset: 0.08 },
+                  { id: "verse-a1-2", chord: "Ab9", offset: 0.56 },
+                ],
+              },
+              {
+                id: "verse-a2",
+                chords: [
+                  { id: "verse-a2-1", chord: "DbM7", offset: 0.05 },
+                  { id: "verse-a2-2", chord: "Bbm7", offset: 0.56 },
+                ],
+              },
+              {
+                id: "verse-a3",
+                chords: [
+                  { id: "verse-a3-1", chord: "Ebm7", offset: 0.05 },
+                  { id: "verse-a3-2", chord: "Ab9sus4", offset: 0.52 },
+                ],
+              },
+              {
+                id: "verse-a4",
+                chords: [
+                  { id: "verse-a4-1", chord: "DbM7", offset: 0.05 },
+                  { id: "verse-a4-2", chord: "Db9sus4", offset: 0.5 },
+                  { id: "verse-a4-3", chord: "Db", offset: 0.84 },
+                ],
+                barline: "double",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: "chorus",
+        title: "Chorus",
+        systems: [
+          {
+            id: "chorus-a",
+            label: "Chorus",
+            measures: [
+              {
+                id: "chorus-a1",
+                chords: [
+                  { id: "chorus-a1-1", chord: "Gbm7", offset: 0.08 },
+                  { id: "chorus-a1-2", chord: "Ab9", offset: 0.56 },
+                ],
+              },
+              {
+                id: "chorus-a2",
+                chords: [
+                  { id: "chorus-a2-1", chord: "Bbm7", offset: 0.08 },
+                  { id: "chorus-a2-2", chord: "Eb/G", offset: 0.56 },
+                ],
+              },
+              {
+                id: "chorus-a3",
+                chords: [
+                  { id: "chorus-a3-1", chord: "Gbm6", offset: 0.08 },
+                  { id: "chorus-a3-2", chord: "B7", offset: 0.58 },
+                ],
+              },
+              {
+                id: "chorus-a4",
+                chords: [
+                  { id: "chorus-a4-1", chord: "Ebm", offset: 0.06 },
+                  { id: "chorus-a4-2", chord: "B7(#9)", offset: 0.44 },
+                  { id: "chorus-a4-3", chord: "Ebm7", offset: 0.76 },
+                ],
+                barline: "double",
+              },
+            ],
+          },
+          {
+            id: "chorus-first-ending",
+            label: "1.",
+            measures: [
+              {
+                id: "chorus-b1",
+                ending: "1.",
+                chords: [
+                  { id: "chorus-b1-1", chord: "Gbm7", offset: 0.08 },
+                  { id: "chorus-b1-2", chord: "Ab9", offset: 0.56 },
+                ],
+              },
+              {
+                id: "chorus-b2",
+                chords: [
+                  { id: "chorus-b2-1", chord: "DbM7", offset: 0.05 },
+                  { id: "chorus-b2-2", chord: "Db9sus4", offset: 0.42 },
+                  { id: "chorus-b2-3", chord: "Db7(b9)", offset: 0.72 },
+                ],
+              },
+              {
+                id: "chorus-b3",
+                chords: [
+                  { id: "chorus-b3-1", chord: "Gb6/Db", offset: 0.08 },
+                  { id: "chorus-b3-2", chord: "Gbm6/Db", offset: 0.56 },
+                ],
+              },
+              {
+                id: "chorus-b4",
+                chord: "Db",
+                repeatEnd: true,
+                barline: "double",
+              },
+            ],
+          },
+          {
+            id: "chorus-second-ending",
+            label: "2.",
+            measures: [
+              {
+                id: "chorus-c1",
+                ending: "2.",
+                chords: [
+                  { id: "chorus-c1-1", chord: "Gbm7", offset: 0.08 },
+                  { id: "chorus-c1-2", chord: "Ab9", offset: 0.56 },
+                ],
+              },
+              {
+                id: "chorus-c2",
+                chords: [
+                  { id: "chorus-c2-1", chord: "Db/F", offset: 0.05 },
+                  { id: "chorus-c2-2", chord: "B7sus4", offset: 0.52 },
+                  { id: "chorus-c2-3", chord: "B7", offset: 0.83 },
+                ],
+                barline: "double",
+              },
+              { id: "chorus-c3" },
+              { id: "chorus-c4" },
+            ],
+          },
+        ],
+      },
+      {
+        id: "interlude",
+        title: "Interlude",
+        systems: [
+          {
+            id: "interlude-a",
+            label: "Interlude",
+            measures: [
+              {
+                id: "interlude-a1",
+                chords: [
+                  { id: "interlude-a1-1", chord: "Gbm7", offset: 0.08 },
+                  { id: "interlude-a1-2", chord: "Ab9", offset: 0.56 },
+                ],
+              },
+              {
+                id: "interlude-a2",
+                chords: [
+                  { id: "interlude-a2-1", chord: "DbM7", offset: 0.08 },
+                  { id: "interlude-a2-2", chord: "Bbm7", offset: 0.56 },
+                ],
+              },
+              {
+                id: "interlude-a3",
+                chords: [
+                  { id: "interlude-a3-1", chord: "Ebm7", offset: 0.08 },
+                  { id: "interlude-a3-2", chord: "Ab9sus4", offset: 0.56 },
+                ],
+              },
+              { id: "interlude-a4", chord: "DbM7", barline: "double" },
+            ],
+          },
+          {
+            id: "interlude-b",
+            label: "Chorus",
+            measures: [
+              {
+                id: "interlude-b1",
+                chords: [
+                  { id: "interlude-b1-1", chord: "Gbm7", offset: 0.08 },
+                  { id: "interlude-b1-2", chord: "Ab9", offset: 0.56 },
+                ],
+              },
+              {
+                id: "interlude-b2",
+                chords: [
+                  { id: "interlude-b2-1", chord: "Bbm7", offset: 0.08 },
+                  { id: "interlude-b2-2", chord: "Eb/G", offset: 0.56 },
+                ],
+              },
+              {
+                id: "interlude-b3",
+                chords: [
+                  { id: "interlude-b3-1", chord: "Gbm6", offset: 0.08 },
+                  { id: "interlude-b3-2", chord: "B7", offset: 0.58 },
+                ],
+              },
+              {
+                id: "interlude-b4",
+                chords: [
+                  { id: "interlude-b4-1", chord: "Ebm", offset: 0.06 },
+                  { id: "interlude-b4-2", chord: "B7(#9)", offset: 0.44 },
+                  { id: "interlude-b4-3", chord: "Ebm7", offset: 0.76 },
+                ],
+                barline: "double",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: "turnaround",
+        title: "Turnaround",
+        systems: [
+          {
+            id: "turnaround-a",
+            measures: [
+              {
+                id: "turnaround-a1",
+                chords: [
+                  { id: "turnaround-a1-1", chord: "Gdim7", offset: 0.06 },
+                  { id: "turnaround-a1-2", chord: "Db/Ab", offset: 0.48 },
+                ],
+              },
+              {
+                id: "turnaround-a2",
+                chords: [
+                  { id: "turnaround-a2-1", chord: "F/A", offset: 0.05 },
+                  { id: "turnaround-a2-2", chord: "Bbm7", offset: 0.36 },
+                  { id: "turnaround-a2-3", chord: "Eb/G", offset: 0.66 },
+                ],
+              },
+              {
+                id: "turnaround-a3",
+                chords: [
+                  { id: "turnaround-a3-1", chord: "Db/Ab", offset: 0.05 },
+                  { id: "turnaround-a3-2", chord: "Gbm/A", offset: 0.54 },
+                ],
+              },
+              {
+                id: "turnaround-a4",
+                chords: [
+                  { id: "turnaround-a4-1", chord: "Db/Ab", offset: 0.08 },
+                  { id: "turnaround-a4-2", chord: "Ab7(b9)", offset: 0.58 },
+                ],
+                barline: "double",
+              },
+            ],
+          },
+          {
+            id: "turnaround-b",
+            measures: [
+              {
+                id: "turnaround-b1",
+                chords: [
+                  { id: "turnaround-b1-1", chord: "F/A", offset: 0.04 },
+                  { id: "turnaround-b1-2", chord: "Bbm7", offset: 0.24 },
+                  { id: "turnaround-b1-3", chord: "Ebm9", offset: 0.48 },
+                  { id: "turnaround-b1-4", chord: "Ab9", offset: 0.72 },
+                ],
+              },
+              { id: "turnaround-b2", chord: "Db", timeSignature: "2/4" },
+              { id: "turnaround-b3", chord: "Db7", jump: "D.S.", barline: "double" },
+              { id: "turnaround-b4" },
+            ],
+          },
+        ],
+      },
+      {
+        id: "ending",
+        title: "Ending",
+        systems: [
+          {
+            id: "ending-a",
+            label: "Ending",
+            measures: [
+              { id: "ending-a1", chord: "Db/Ab" },
+              {
+                id: "ending-a2",
+                chords: [
+                  { id: "ending-a2-1", chord: "Ab7(b9)", offset: 0.1 },
+                  { id: "ending-a2-2", chord: "Ab7", offset: 0.58 },
+                ],
+              },
+              { id: "ending-a3", chord: "Db" },
+              {
+                id: "ending-a4",
+                chords: [
+                  { id: "ending-a4-1", chord: "Db9sus4", offset: 0.06 },
+                  { id: "ending-a4-2", chord: "Db7(b9)", offset: 0.34 },
+                  { id: "ending-a4-3", chord: "Gb6/Db", offset: 0.62 },
+                  { id: "ending-a4-4", chord: "Gbm6/Db", offset: 0.82 },
+                ],
+                barline: "double",
+              },
+            ],
+          },
+          {
+            id: "ending-b",
+            measures: [
+              { id: "ending-b1", chord: "Db", footer: "Fine." },
+              { id: "ending-b2", barline: "double" },
+              { id: "ending-b3" },
+              { id: "ending-b4", barline: "final" },
+            ],
+          },
+        ],
+      },
+    ],
+  },
   {
     id: "gieog-ui-seupjak",
     title: "기억의 습작",

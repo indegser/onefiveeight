@@ -1,0 +1,173 @@
+{
+  "screens": [
+    {
+      "id": "songs-index",
+      "name": "Songs Index",
+      "purpose": "Let users scan the song library and open a song detail page.",
+      "screen_type": "collection-index",
+      "primary_action": "Open a song",
+      "states": [
+        "default",
+        "empty"
+      ]
+    },
+    {
+      "id": "song-detail",
+      "name": "Song Detail",
+      "purpose": "Let users read one song like a focused post where the chart, not implementation commentary, is the primary content.",
+      "screen_type": "detail",
+      "primary_action": "Return to songs index",
+      "states": [
+        "default",
+        "not-found"
+      ]
+    }
+  ],
+  "ux_rules": [
+    "Separate collection browsing from focused reading; do not keep a split-pane selected detail on /songs.",
+    "Use proximity and typographic hierarchy before adding labels, chips, borders, helper copy, or framing.",
+    "Remove local labels when the nearby heading or value already establishes the meaning.",
+    "Treat implementation notes, renderer sample explanations, and self-describing chart notes as weeds on the public detail page.",
+    "Treat unnecessary visual chrome, large preview frames, and nested document surfaces as visual weeds unless they improve chart reading.",
+    "Keep musical labels that are part of the chart language, such as section titles, endings, repeats, meter changes, D.S., and Fine.",
+    "Keep the detail page focused on title, artist, compact metadata, and the chart."
+  ],
+  "component_map": [
+    {
+      "screen_id": "songs-index",
+      "components": [
+        "page header",
+        "collection summary row",
+        "song link list",
+        "empty state"
+      ]
+    },
+    {
+      "screen_id": "song-detail",
+      "components": [
+        "back link",
+        "song article header",
+        "inline metadata row",
+        "integrated lead sheet renderer",
+        "not-found fallback"
+      ]
+    }
+  ],
+  "human_checkpoints": [],
+  "design_rule_engine": {
+    "profile_id": "warm-restrained-editorial-utility",
+    "hard_rule_sets": [
+      "layout-rules.json",
+      "core-allowed-patterns"
+    ],
+    "heuristic_sets": [
+      "ux-heuristics.md"
+    ],
+    "allowed_pattern_sets": [
+      "single-primary-action-region",
+      "explicit-state-coverage",
+      "editorial-group-spacing",
+      "quiet-material-treatment"
+    ],
+    "banned_pattern_sets": [
+      "visual-noise-stack",
+      "marketing-shell-for-ops",
+      "gratuitous-luxury-whitespace"
+    ],
+    "review_rubric_id": "core-design-review"
+  },
+  "screen_contexts": [
+    {
+      "screen_id": "songs-index",
+      "screen_type": "collection-index",
+      "layout_intent": "A full-width index with a concise title, short supporting line, summary counts, and stacked song links that read like a blog archive rather than a control dashboard.",
+      "interaction_risks": [
+        "Overloading list items with all detail metadata can recreate the old split workspace clutter.",
+        "Making list cards too large can drift into marketing composition instead of scan-first browsing."
+      ],
+      "required_states": [
+        "default",
+        "empty"
+      ],
+      "notes": [
+        "The index should stay concise and avoid previewing the full detail content."
+      ]
+    },
+    {
+      "screen_id": "song-detail",
+      "screen_type": "detail",
+      "layout_intent": "A focused article-like page where the title and artist lead, concise metadata sits inline, and the chart starts without renderer-demo prose or a heavy document-preview frame.",
+      "interaction_risks": [
+        "Removing too much structure could hide useful musical navigation marks.",
+        "Keeping metadata labels, implementation notes, sample disclaimers, or heavy nested frames would violate the weed-removal requirement."
+      ],
+      "required_states": [
+        "default",
+        "not-found"
+      ],
+      "notes": [
+        "Design review must explicitly check for weeds: redundant labels, explanatory prose that describes the renderer rather than the song, and visual chrome that makes the chart feel like a demo embed."
+      ]
+    }
+  ],
+  "builder_constraints": [
+    {
+      "screen_id": "songs-index",
+      "constraints": [
+        "Use Next.js App Router links for per-song navigation.",
+        "Prefer server-rendered index content unless client state is required.",
+        "Keep list items as links, not buttons, because navigation is the primary behavior.",
+        "Keep summaries short and avoid duplicating all detail-page notes."
+      ],
+      "open_decisions": []
+    },
+    {
+      "screen_id": "song-detail",
+      "constraints": [
+        "Use the existing song data types and LeadSheetRenderer.",
+        "Do not introduce new component libraries.",
+        "Do not remove musical section labels or chart navigation marks.",
+        "Do not render chartNotes by default when they are renderer/transcription disclaimers rather than user-facing song content.",
+        "Reduce nested paper/frame treatment so the chart feels integrated with the detail page.",
+        "Keep lead-sheet rows width-aware and avoid page-level horizontal overflow."
+      ],
+      "open_decisions": []
+    }
+  ],
+  "review_targets": [
+    {
+      "screen_id": "songs-index",
+      "critical_judgments": [
+        "Does /songs clearly behave as an index page rather than a split workspace?",
+        "Can users scan titles and open a detail route quickly?",
+        "Does the page avoid redundant explanatory chrome?"
+      ],
+      "must_not_regress": [
+        "All existing songs remain reachable.",
+        "The page remains warm, restrained, and readable."
+      ]
+    },
+    {
+      "screen_id": "song-detail",
+      "critical_judgments": [
+        "Are all weeds removed: redundant labels, renderer-demo prose, sample disclaimers, and unnecessary visual frames?",
+        "Does the chart start quickly after the song identity and compact metadata?",
+        "Does the lead sheet remain readable and musically structured?",
+        "Do representative rows fit the available pane width?"
+      ],
+      "must_not_regress": [
+        "The lead-sheet renderer still renders chord events, barlines, repeats, endings, jumps, and footers.",
+        "Direct navigation to an invalid id does not crash the app."
+      ]
+    }
+  ],
+  "visual_constraints": [
+    "Do not add decorative cards inside cards or nested card shells.",
+    "Do not add hero-scale typography; songs pages are reading surfaces, not landing pages.",
+    "Use restrained borders and spacing from the existing warm token layer.",
+    "Text inside list items and metadata rows must wrap cleanly on mobile and desktop.",
+    "The song detail page must not show renderer explanation notes above the chart.",
+    "The lead sheet should feel integrated into the article, not like a separate framed preview canvas.",
+    "Browser verification must include /songs and /songs/janhyang-photo-sample screenshots after implementation."
+  ]
+}

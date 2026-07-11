@@ -1,106 +1,51 @@
-"use client";
-
-import { cn } from "@/lib/utils";
 import { getSongSystemCount, type Song } from "@/lib/songs";
+import Link from "next/link";
 
 type SongListProps = {
   songs: Song[];
-  selectedSongId: string | null;
-  onSelectSong: (songId: string) => void;
 };
 
-export function SongList({
-  songs,
-  selectedSongId,
-  onSelectSong,
-}: SongListProps) {
+export function SongList({ songs }: SongListProps) {
   if (songs.length === 0) {
     return (
-      <div className="rounded-[1rem] border border-dashed border-[var(--tone-border)] bg-[color:color-mix(in_srgb,var(--tone-canvas)_82%,white)] p-6 text-sm text-[var(--tone-text-secondary)]">
+      <div className="border border-dashed border-[var(--tone-border)] bg-[color:color-mix(in_srgb,var(--tone-canvas)_82%,white)] p-6 text-sm text-[var(--tone-text-secondary)]">
         No songs yet. Add your copied charts here to start building the library.
       </div>
     );
   }
 
   return (
-    <div className="border border-[color:color-mix(in_srgb,var(--tone-border)_80%,transparent)] bg-[color:color-mix(in_srgb,var(--tone-surface)_85%,var(--tone-canvas))] p-3">
-      <div className="mb-3 flex items-center justify-between border-b border-[color:color-mix(in_srgb,var(--tone-border)_55%,white)] px-2 pt-1 pb-3">
-        <div>
-          <p className="type-kicker text-[var(--tone-text-muted)]">Library</p>
-          <p className="mt-1 text-sm text-[var(--tone-text-secondary)]">
-            Open one chart and keep the rest in view.
-          </p>
-        </div>
-        <span className="type-meta-label border-b border-[color:color-mix(in_srgb,var(--tone-text-secondary)_70%,transparent)] px-1 pb-1 text-[var(--tone-text-secondary)]">
-          {songs.length} charts
-        </span>
-      </div>
-      <div className="flex flex-col gap-2">
-        {songs.map((song) => {
-          const isSelected = song.id === selectedSongId;
-
-          return (
-            <button
-              key={song.id}
-              type="button"
-              onClick={() => onSelectSong(song.id)}
-              className={cn(
-                "w-full border px-4 py-4 text-left transition-[background-color,border-color,color]",
-                "focus-visible:ring-ring/40 focus-visible:ring-4 focus-visible:outline-none",
-                isSelected
-                  ? "border-stone-700 bg-stone-900 text-stone-50"
-                  : "border-[color:color-mix(in_srgb,var(--tone-border)_55%,white)] bg-[color:color-mix(in_srgb,var(--tone-surface)_65%,white)] text-[var(--tone-text-primary)] hover:border-[var(--tone-text-muted)] hover:bg-[color:color-mix(in_srgb,var(--tone-canvas)_82%,white)]",
-              )}
-            >
-              <div className="flex items-start justify-between gap-3">
-                <div className="space-y-1">
-                  <p className="text-base font-semibold">{song.title}</p>
-                  <p
-                    className={cn(
-                      "text-sm",
-                      isSelected
-                        ? "text-stone-300"
-                        : "text-[var(--tone-text-muted)]",
-                    )}
-                  >
-                    {song.keyCenter}
-                  </p>
-                </div>
-                <span
-                  className={cn(
-                    "type-chip-label border px-2 py-1",
-                    isSelected
-                      ? "border-white/15 bg-white/8 text-stone-100"
-                      : "border-[color:color-mix(in_srgb,var(--tone-border)_80%,transparent)] bg-[color:color-mix(in_srgb,var(--tone-accent-soft)_70%,var(--tone-canvas))] text-[var(--tone-text-secondary)]",
-                  )}
-                >
-                  {song.feel}
-                </span>
+    <div className="divide-y divide-[color:color-mix(in_srgb,var(--tone-border)_70%,transparent)] border-y border-[color:color-mix(in_srgb,var(--tone-border)_80%,transparent)]">
+      {songs.map((song) => (
+        <Link
+          key={song.id}
+          href={`/songs/${song.id}`}
+          className="group block px-1 py-6 transition-colors hover:bg-[color:color-mix(in_srgb,var(--tone-surface)_50%,transparent)] focus-visible:ring-4 focus-visible:ring-[color:color-mix(in_srgb,var(--tone-accent)_25%,transparent)] focus-visible:outline-none md:px-3"
+        >
+          <div className="grid gap-4 md:grid-cols-[minmax(0,1fr)_15rem] md:items-start">
+            <div className="min-w-0">
+              <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                <h2 className="text-xl font-semibold tracking-[0] text-[var(--tone-text-primary)] group-hover:underline group-hover:decoration-[var(--tone-text-muted)] group-hover:underline-offset-4">
+                  {song.title}
+                </h2>
+                <p className="text-sm text-[var(--tone-text-muted)]">
+                  {song.artist}
+                </p>
               </div>
-              <p
-                className={cn(
-                  "mt-3 text-sm leading-6",
-                  isSelected
-                    ? "text-stone-200"
-                    : "text-[var(--tone-text-secondary)]",
-                )}
-              >
+              <p className="mt-3 max-w-[44rem] text-sm leading-6 text-[var(--tone-text-secondary)]">
                 {song.summary}
               </p>
-              <div
-                className={cn(
-                  "type-chip-label mt-4 grid grid-cols-3 gap-2 border-t border-current/10 pt-3",
-                  isSelected ? "text-stone-300" : "text-[var(--tone-text-muted)]",
-                )}
-              >
-                <span>{song.meter}</span>
-                <span>{song.sections.length} sections</span>
-                <span>{getSongSystemCount(song)} systems</span>
-              </div>
-            </button>
-          );
-        })}
-      </div>
+            </div>
+            <p className="text-sm leading-6 text-[var(--tone-text-muted)] md:text-right">
+              {song.keyCenter} · {song.feel}
+              <br />
+              {song.meter}
+              <br />
+              {song.sections.length} sections · {getSongSystemCount(song)} systems
+            </p>
+          </div>
+        </Link>
+      ))}
     </div>
   );
 }
