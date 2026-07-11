@@ -175,8 +175,8 @@ export function IntervalQuiz() {
 
   if (!question) {
     return (
-      <section className="rounded-lg border border-[var(--tone-border)] bg-[var(--tone-surface)] p-6 shadow-sm md:p-8">
-        <div className="flex items-center gap-3 text-sm text-[var(--tone-text-secondary)]">
+      <section className="rounded-lg border border-border bg-card p-6 shadow-sm md:p-8">
+        <div className="flex items-center gap-3 text-sm text-muted-foreground">
           <LoaderCircle className="size-4 animate-spin" aria-hidden="true" />
           문제 준비 중
         </div>
@@ -185,11 +185,11 @@ export function IntervalQuiz() {
   }
 
   return (
-    <section className="rounded-lg border border-[var(--tone-border)] bg-[var(--tone-surface)] p-6 shadow-sm md:p-8">
+    <section className="rounded-lg border border-border bg-card p-6 shadow-sm md:p-8">
       <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-start">
         <div className="flex min-w-0 flex-col gap-5">
-          <div className="flex flex-wrap items-center gap-2 text-sm text-[var(--tone-text-secondary)]">
-            <span className="rounded-md bg-[var(--tone-accent-soft)] px-2.5 py-1 font-medium text-[var(--tone-text-primary)]">
+          <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
+            <span className="rounded-md bg-muted px-2.5 py-1 font-medium text-foreground">
               장음계
             </span>
             <span>
@@ -203,14 +203,14 @@ export function IntervalQuiz() {
             </p>
             <div
               aria-live="polite"
-              className="min-h-16 rounded-md border border-[var(--tone-border)] bg-white px-4 py-4"
+              className="min-h-16 rounded-md border border-border bg-background px-4 py-4"
             >
               {isAnswerVisible ? (
-                <p className="text-3xl leading-none font-semibold text-[var(--tone-text-primary)] md:text-5xl">
+                <p className="text-3xl leading-none font-semibold text-foreground md:text-5xl">
                   {question.answer}
                 </p>
               ) : (
-                <p className="text-sm leading-6 text-[var(--tone-text-muted)]">
+                <p className="text-sm leading-6 text-muted-foreground">
                   정답은 버튼을 누르면 공개됩니다.
                 </p>
               )}
@@ -221,7 +221,7 @@ export function IntervalQuiz() {
         <button
           type="button"
           onClick={handlePrimaryAction}
-          className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-md bg-[var(--tone-text-primary)] px-5 text-sm font-semibold text-white transition-colors hover:bg-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--tone-accent)] md:w-40"
+          className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-md bg-primary px-5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring md:w-40"
         >
           {isAnswerVisible ? (
             <ArrowRight className="size-4" aria-hidden="true" />

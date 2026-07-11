@@ -18,6 +18,7 @@ Use this skill as the routing contract for rendered web work in this repository.
 - `specs/design-rule-engine/design-principles.md`
 - `specs/design-rule-engine/ux-heuristics.md`
 - `specs/design-rule-engine/aesthetic-profile.json`
+- `specs/design-rule-engine/theme-usage.md`
 - Relevant `agents/*.md` prompt for the current phase
 
 ## Skill Stack
@@ -47,9 +48,9 @@ If an Anthropic skill is requested but not installed, state that it is not avail
 1. Confirm the task is non-trivial. If it will edit repository files, work in a task-specific worktree unless the user explicitly provides a different path or the task is a trivial read-only answer.
 2. Create or resume the required `./.ai/runs/<run_id>` supervisor workflow before product-code changes, then let `$ai-team-supervisor` own routing decisions.
 3. For visual UI tasks, inspect the current rendered page in a browser before proposing or editing layout, spacing, typography, color, or component styling.
-4. Design Agent: read `skills/design-rule-engine` first, then use Vercel and Anthropic design references to define component map, states, visual constraints, and browser review targets.
-5. Builder: implement with existing repo patterns and relevant Vercel skills. Prefer shadcn/Radix/lucide/Geist conventions already present in the repo before adding new UI abstractions.
-6. Verifier: run deterministic checks and browser verification. Record screenshot-backed evidence for visual changes, including representative rows/grids, redundant labels, available-width fit, and served CSS when semantic classes are added.
+4. Design Agent: read `skills/design-rule-engine` first, select the active profile/register from `aesthetic-profile.json`, apply `theme-usage.md`, then define component map, states, visual constraints, and browser review targets.
+5. Builder: implement with existing repo patterns and relevant Vercel skills. Prefer shadcn/Radix/lucide/Geist conventions and semantic Tailwind/shadcn utilities before adding new UI abstractions or runtime tokens.
+6. Verifier: run deterministic checks and browser verification. Record screenshot-backed evidence for visual changes, including representative rows/grids, redundant labels, available-width fit, and served CSS when styling infrastructure changes.
 7. Critics: review against the repo design-rule-engine first, then use external skill guidance to identify missed frontend, React, or browser-verification risks.
 
 ## Guardrails
@@ -59,3 +60,4 @@ If an Anthropic skill is requested but not installed, state that it is not avail
 - Do not let v0-style ideation override local design-rule-engine hard rules or user-approved constraints.
 - Do not introduce a new component library when shadcn/Radix primitives cover the interaction.
 - Keep marketing-page composition out of operator tools unless the task explicitly asks for a landing page.
+- Do not reintroduce repository-specific global theme variables in `globals.css` without an approved token task and browser evidence.

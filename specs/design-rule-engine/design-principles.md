@@ -51,6 +51,6 @@ Aesthetic judgment is appropriate when:
 - Frontend binding defaults to `Next.js App Router`.
 - UI library binding defaults to `current repo primitives`, currently `shadcn/ui + Radix + Tailwind CSS`.
 - Design token source defaults to `current repo styling layer`, currently `Tailwind CSS v4` until a dedicated token system is chosen.
-- Aesthetic profile defaults to `warm restrained editorial utility`, derived from the current reference set.
+- Aesthetic profile defaults to `product craft workbench`, with brand, dense operations, and music-specific registers available as explicit alternatives.
 - Screen-type priority is `undecided`.
 - If a future project picks a concrete stack or visual direction, record it in profile fields and agent context, not by editing every rule file.

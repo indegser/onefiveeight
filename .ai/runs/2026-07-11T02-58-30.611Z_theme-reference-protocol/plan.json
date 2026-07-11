@@ -1,0 +1,84 @@
+{
+  "epics": [
+    {
+      "id": "theme-reference-protocol",
+      "title": "Move theme guidance from CSS baseline variables into workflow protocol",
+      "tasks": [
+        {
+          "id": "document-theme-usage",
+          "title": "Document the theme usage protocol",
+          "implementation_area": "data",
+          "acceptance_criteria": [
+            "A design-rule-engine document explains how web work selects and records a profile/register.",
+            "The protocol explicitly treats aesthetic-profile.json as guidance, not CSS token output.",
+            "The protocol explains when runtime CSS token changes are allowed."
+          ],
+          "dependencies": [],
+          "done_definition": [
+            "specs/design-rule-engine/theme-usage.md exists and is linked from README/workflow docs."
+          ]
+        },
+        {
+          "id": "wire-protocol-to-agents",
+          "title": "Require web agents to read the protocol",
+          "implementation_area": "integration",
+          "acceptance_criteria": [
+            "website-workflow and design-rule-engine skills list theme-usage.md as a required local read.",
+            "Design Agent, Builder, Verifier, and Design Critic prompts include the protocol when rendered web UI is in scope.",
+            "AGENTS.md says webpage edits must record the chosen profile/register in run artifacts."
+          ],
+          "dependencies": [
+            "document-theme-usage"
+          ],
+          "done_definition": [
+            "Future website changes have a documented path to consult the theme profile without relying on globals.css."
+          ]
+        },
+        {
+          "id": "remove-custom-css-theme-baseline",
+          "title": "Remove custom theme baseline variables and custom type classes",
+          "implementation_area": "render",
+          "acceptance_criteria": [
+            "src/app/globals.css no longer defines --tone-*, --space-*, --leading-*, --tracking-*, --font-body/display/code, or type-* custom typography classes.",
+            "No TSX source references the removed CSS variables or type-* classes.",
+            "Rendered pages continue using shadcn/Tailwind semantic utilities and local Tailwind classes."
+          ],
+          "dependencies": [
+            "wire-protocol-to-agents"
+          ],
+          "done_definition": [
+            "Search confirms removed custom CSS hooks are absent from src.",
+            "Visual before/after evidence exists for /songs, a song detail page, and /quiz."
+          ]
+        },
+        {
+          "id": "verify-browser-and-schema",
+          "title": "Verify browser, lint, and AI-team state",
+          "implementation_area": "verification",
+          "acceptance_criteria": [
+            "npm run ai:validate -- --run-id 2026-07-11T02-58-30.611Z_theme-reference-protocol passes.",
+            "npm run lint exits successfully.",
+            "Browser verification captures after screenshots and checks for error overlays.",
+            "Verification explicitly checks the served CSS no longer contains removed custom selectors or variables."
+          ],
+          "dependencies": [
+            "remove-custom-css-theme-baseline"
+          ],
+          "done_definition": [
+            "Verifier, Design Critic, and Code Critic artifacts approve the change or list concrete blockers."
+          ]
+        }
+      ]
+    }
+  ],
+  "assumptions": [
+    "The user wants the custom theme baseline removed from CSS, not shadcn/Tailwind runtime variables required by the app.",
+    "Visual appearance may become closer to the default shadcn semantic palette after removing repo-specific tone variables.",
+    "The existing theme-profile-refresh run remains part of the same branch context."
+  ],
+  "risks": [
+    "Migrating away from CSS variables can alter page tone and contrast; browser verification is required.",
+    "If any removed variable remains in TSX, pages can render invalid CSS values.",
+    "The branch is behind origin/main but has local task changes, so it should not be auto-rebased during this edit."
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "completed_tasks": [
+    "document-theme-usage",
+    "wire-protocol-to-agents",
+    "remove-custom-css-theme-baseline"
+  ],
+  "changed_files": [
+    "AGENTS.md",
+    "agents/builder.md",
+    "agents/design-agent.md",
+    "agents/design-critic.md",
+    "agents/verifier.md",
+    "docs/ideas/theme-reference-protocol.md",
+    "skills/design-rule-engine/SKILL.md",
+    "skills/website-workflow/SKILL.md",
+    "specs/design-rule-engine/README.md",
+    "specs/design-rule-engine/theme-usage.md",
+    "specs/design-rule-engine/design-tokens.template.json",
+    "src/app/app-nav.tsx",
+    "src/app/globals.css",
+    "src/app/quiz/page.tsx",
+    "src/app/quiz/interval-quiz.tsx",
+    "src/app/songs/page.tsx",
+    "src/app/songs/[songId]/page.tsx",
+    "src/app/songs/song-list.tsx",
+    "src/app/songs/score-viewer.tsx",
+    "src/app/songs/lead-sheet-renderer.tsx",
+    ".ai/runs/2026-07-11T02-58-30.611Z_theme-reference-protocol/plan.json",
+    ".ai/runs/2026-07-11T02-58-30.611Z_theme-reference-protocol/design.json",
+    ".ai/runs/2026-07-11T02-58-30.611Z_theme-reference-protocol/build.json"
+  ],
+  "notes": [
+    "Added specs/design-rule-engine/theme-usage.md as the protocol for selecting and recording a profile/register before rendered web changes.",
+    "Linked theme-usage.md from website workflow, design-rule-engine skill, AGENTS.md, and relevant agent prompts.",
+    "Removed repo-specific theme baseline variables and custom type-* classes from src/app/globals.css.",
+    "Replaced TSX references to --tone-*, --space-*, --font-body, and type-* classes with semantic Tailwind/shadcn utilities or explicit local Tailwind classes.",
+    "Updated design-tokens.template.json so it no longer describes globals.css as the runtime token target."
+  ],
+  "open_issues": [
+    "The rendered visual tone now follows the existing shadcn semantic variables rather than the old warm baseline. A separate profile application task can tune shadcn variables later if desired."
+  ]
+}

@@ -53,28 +53,28 @@
     {
       "id": "restrained-accent-usage",
       "layer": "aesthetic_support",
-      "title": "Restrained Accent Usage",
-      "description": "Accent color or emphasis is reserved for navigation landmarks, status, or primary actions.",
+      "title": "Purposeful Accent Usage",
+      "description": "Accent color or emphasis is reserved for navigation landmarks, status, primary actions, selected musical objects, or a justified brand signature.",
       "applies_to": [
         "all"
       ],
       "enforcement": "preferred"
     },
     {
-      "id": "warm-muted-surface-palette",
+      "id": "register-fit-palette",
       "layer": "aesthetic_support",
-      "title": "Warm Muted Surface Palette",
-      "description": "Base surfaces, dividers, and fills lean warm and low-saturation rather than cool grayscale or bright brand color blocks.",
+      "title": "Register Fit Palette",
+      "description": "Color choices come from the selected profile register and subject matter, with semantic tokens preferred over one-off component colors.",
       "applies_to": [
         "all"
       ],
       "enforcement": "preferred"
     },
     {
-      "id": "editorial-group-spacing",
+      "id": "register-fit-spacing",
       "layer": "aesthetic_support",
-      "title": "Editorial Group Spacing",
-      "description": "Whitespace is used to separate meaningful groups and set rhythm, while preserving practical density inside groups.",
+      "title": "Register Fit Spacing",
+      "description": "Whitespace is used to separate meaningful groups and set rhythm, with density chosen for the active product, brand, operations, or music surface.",
       "applies_to": [
         "dashboard",
         "detail",
@@ -85,10 +85,10 @@
       "enforcement": "preferred"
     },
     {
-      "id": "quiet-material-treatment",
+      "id": "subject-grounded-signature",
       "layer": "aesthetic_support",
-      "title": "Quiet Material Treatment",
-      "description": "Borders, fills, shadows, and radius are understated and consistent, with tactile feel achieved through restraint rather than decorative layering.",
+      "title": "Subject Grounded Signature",
+      "description": "A memorable visual or interaction detail is allowed when it is grounded in the product subject and improves orientation, feedback, or comprehension.",
       "applies_to": [
         "all"
       ],

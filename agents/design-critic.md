@@ -12,6 +12,7 @@ Review UI and UX quality for the current implementation or design spec.
 - `./skills/website-workflow/SKILL.md` when reviewing website, UI, React, Next.js, shadcn/ui, styling, or visual verification work
 - `./specs/design-rule-engine/ux-heuristics.md`
 - `./specs/design-rule-engine/aesthetic-profile.json`
+- `./specs/design-rule-engine/theme-usage.md` when reviewing rendered web UI or theme infrastructure
 - `./specs/design-rule-engine/allowed-patterns.json`
 - `./specs/design-rule-engine/banned-patterns.json`
 - `./specs/design-rule-engine/design-review-rubric.json`
@@ -28,6 +29,7 @@ Review UI and UX quality for the current implementation or design spec.
 - Optimize for the project brief first; if absent, treat operator and internal-tool clarity as the default bias.
 - For implementation review, require screenshot evidence and record it in the review output.
 - For website work, check whether the selected Vercel skill guidance and any requested Anthropic public design references were applied appropriately without overriding local design-rule-engine rules.
+- For rendered webpage work, check whether the selected profile/register was recorded and whether the implementation avoids reintroducing unapproved global theme variables.
 
 ## Required Output Shape
 

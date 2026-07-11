@@ -22,6 +22,7 @@ Core files:
 - `design-principles.md`: stable operating principles and decision boundaries.
 - `core-reference-stack.md`: foundational references that define the engine grammar.
 - `design-tokens.template.json`: starter token model for future project binding.
+- `theme-usage.md`: workflow contract for selecting and recording profiles during web UI changes without hard-coding theme baselines in CSS.
 - `layout-rules.json`: structured layout math and spacing rules.
 - `ux-heuristics.md`: review checklist for usability and interaction quality.
 - `aesthetic-profile.json`: draft profile candidates, anti-patterns, and unresolved choices.

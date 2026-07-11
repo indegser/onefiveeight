@@ -1,0 +1,112 @@
+{
+  "screens": [
+    {
+      "id": "design-profile-assets",
+      "name": "Design Profile Assets",
+      "purpose": "Define the repository's aesthetic profile candidates and review language after discarding the prior warm restrained profile set.",
+      "screen_type": "design-system-asset",
+      "primary_action": "Select a product-first profile as the default design judgment profile.",
+      "states": [
+        "draft profile set",
+        "selected default profile",
+        "future token-binding review"
+      ]
+    }
+  ],
+  "ux_rules": [
+    "Keep the selected profile product-first because the current repository primarily contains app and workflow surfaces.",
+    "Keep brand/editorial and visual/music-led profiles as deliberate alternatives rather than default taste leakage.",
+    "Treat public Anthropic and third-party design skills as external references only; do not imply they are installed locally.",
+    "Do not change rendered UI or runtime CSS tokens in this pass.",
+    "Preserve separate review layers: hard rules, UX heuristics, aesthetic judgment, and token binding."
+  ],
+  "component_map": [
+    {
+      "screen_id": "design-profile-assets",
+      "components": [
+        "specs/design-rule-engine/aesthetic-profile.json",
+        "specs/design-rule-engine/design-principles.md",
+        "specs/design-rule-engine/core-reference-stack.md",
+        "specs/design-rule-engine/design-review-rubric.json"
+      ]
+    }
+  ],
+  "human_checkpoints": [],
+  "design_rule_engine": {
+    "profile_id": "product-craft-workbench",
+    "hard_rule_sets": [
+      "specs/design-rule-engine/layout-rules.json"
+    ],
+    "heuristic_sets": [
+      "specs/design-rule-engine/ux-heuristics.md"
+    ],
+    "allowed_pattern_sets": [
+      "specs/design-rule-engine/allowed-patterns.json"
+    ],
+    "banned_pattern_sets": [
+      "specs/design-rule-engine/banned-patterns.json"
+    ],
+    "review_rubric_id": "specs/design-rule-engine/design-review-rubric.json"
+  },
+  "screen_contexts": [
+    {
+      "screen_id": "design-profile-assets",
+      "screen_type": "design-system-asset",
+      "layout_intent": "Represent the design-rule-engine profile layer as a product-context decision system, not a fixed aesthetic moodboard.",
+      "interaction_risks": [
+        "External skills could be over-treated as installed runtime skills instead of reference material.",
+        "A new profile could contradict unchanged runtime CSS tokens if token-binding caveats are not explicit.",
+        "Replacing the selected profile without updating rubric prompts would leave reviewers judging against stale language."
+      ],
+      "required_states": [
+        "old profile set removed",
+        "new selected profile declared",
+        "new candidate profiles declared",
+        "stale hard-coded profile wording removed"
+      ],
+      "notes": [
+        "No browser evidence is required because the task changes design-system documentation and JSON assets only.",
+        "Runtime token alignment is intentionally deferred."
+      ]
+    }
+  ],
+  "builder_constraints": [
+    {
+      "screen_id": "design-profile-assets",
+      "constraints": [
+        "Replace the old candidate profiles in aesthetic-profile.json rather than adding a fifth candidate beside them.",
+        "Use OpenAI frontend-skill hard-rule ideas for restraint, section focus, brand/product clarity, and anti-card-grid checks.",
+        "Use Anthropic frontend-design as an identity process reference: subject-grounded palette, type, layout, and one justified signature element.",
+        "Use Impeccable as the register model: product surfaces and brand surfaces need different defaults for type, color, density, and motion.",
+        "Use UI UX Pro Max as a structured coverage reference for accessibility, interaction, layout, typography/color, and data/chart concerns.",
+        "Do not modify src/app/globals.css in this task.",
+        "Update stale profile-specific language in design-principles.md, core-reference-stack.md, and design-review-rubric.json."
+      ],
+      "open_decisions": [
+        "Whether the runtime tone variables should be replaced to match the new selected profile is left for a later visual UI task.",
+        "Whether to install any external design skill is out of scope for this repository change."
+      ]
+    }
+  ],
+  "review_targets": [
+    {
+      "screen_id": "design-profile-assets",
+      "critical_judgments": [
+        "The selected profile is no longer the discarded warm restrained profile.",
+        "Candidate profiles are meaningfully different by use case rather than color mood alone.",
+        "External references are credited as references only, not as installed skills.",
+        "Rubric and principle language are aligned with the new selected profile."
+      ],
+      "must_not_regress": [
+        "JSON schema compatibility for aesthetic-profile.json and design-review-rubric.json.",
+        "Separation between aesthetic profile, UX heuristic, hard-rule, and token layers.",
+        "No runtime UI or CSS token changes."
+      ]
+    }
+  ],
+  "visual_constraints": [
+    "No rendered UI surface changes are in scope.",
+    "No browser screenshot evidence is required for this data/documentation-only profile replacement.",
+    "Future visual work must browser-verify any token or CSS changes derived from the new profile."
+  ]
+}

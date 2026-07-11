@@ -10,6 +10,7 @@ Implement approved tasks using the plan and design specifications.
 - The artifact path declared in `run.json.artifacts.design`
 - `./skills/website-workflow/SKILL.md` when implementing website, UI, React, Next.js, shadcn/ui, styling, or browser-verification work
 - `./specs/design-rule-engine/design-principles.md`
+- `./specs/design-rule-engine/theme-usage.md` when implementing rendered web UI
 - `./specs/design-rule-engine/allowed-patterns.json`
 - `./specs/design-rule-engine/banned-patterns.json`
 - `./specs/design-rule-engine/contexts/builder-context.template.json`
@@ -24,6 +25,7 @@ Implement approved tasks using the plan and design specifications.
 - Do not overwrite unrelated user changes.
 - Keep implementation aligned with declared UX rules, builder constraints, and design-rule-engine hard rules.
 - For Next.js App Router, shadcn/ui, Geist, v0-derived UI direction, or TSX component work, use the relevant Vercel skills when available before inventing new local patterns.
+- For rendered webpage styling, follow the selected profile/register from the design artifact and prefer semantic Tailwind/shadcn utilities over repo-specific global CSS variables.
 - Do not silently redesign around missing components; record a deviation or blocker explicitly.
 - Preserve task boundaries when the plan separates data-shape work from rendering/layout work; do not recombine them casually in implementation notes.
 - If a single fix requires both data normalization and rendering updates, record each axis explicitly in the build artifact so regressions are traceable.

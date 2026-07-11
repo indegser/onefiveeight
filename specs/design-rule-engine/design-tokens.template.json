@@ -1,18 +1,14 @@
 {
   "$schema": "../../.ai/schemas/design-tokens.schema.json",
-  "version": "0.2.0",
-  "status": "draft",
+  "version": "0.3.0",
+  "status": "reference-template",
   "binding": {
-    "source": "current-repo-tailwind-layer",
-    "runtime_targets": [
-      "src/app/globals.css",
-      "Tailwind CSS v4 theme variables",
-      "per-surface utility classes"
-    ],
+    "source": "design-rule-engine-profile-selection",
     "notes": [
-      "This file now defines a concrete draft baseline rather than placeholder-only planning fields.",
-      "The baseline is intentionally bound to the current repo Tailwind layer and CSS variables instead of introducing a second runtime token system.",
-      "Some values remain provisional and should be refined through future implementation and design review evidence."
+      "This file describes token categories for future profile-specific token work.",
+      "It is not a runtime source of truth and should not be copied into src/app/globals.css by default.",
+      "Rendered web work should select a profile/register through aesthetic-profile.json and theme-usage.md before introducing or changing runtime tokens.",
+      "Use semantic Tailwind/shadcn utilities first; add new runtime tokens only through an approved browser-verified token task."
     ]
   },
   "tokens": {
@@ -63,25 +59,25 @@
       "weight_strategy": "prefer weight contrast before large size jumps"
     },
     "color": {
-      "palette_mode": "warm-muted-low-saturation",
+      "palette_mode": "profile-selected-semantic",
       "roles": {
-        "background": "#f6f1e8",
-        "surface": "#fbf7f0",
-        "surface_alt": "#f3ecde",
-        "text_primary": "#1f1c19",
-        "text_secondary": "#6b6257",
-        "text_muted": "#8a8175",
-        "accent": "#6f7457",
-        "accent_soft": "#e7e3d6",
-        "success": "#5f7a65",
-        "warning": "#9a7a49",
-        "danger": "#9a5c52",
-        "border": "#cfc4b4"
+        "background": "bg-background",
+        "surface": "bg-card",
+        "surface_alt": "bg-muted",
+        "text_primary": "text-foreground",
+        "text_secondary": "text-muted-foreground",
+        "text_muted": "text-muted-foreground",
+        "accent": "bg-primary",
+        "accent_soft": "bg-muted",
+        "success": "semantic-status-success",
+        "warning": "semantic-status-warning",
+        "danger": "text-destructive",
+        "border": "border-border"
       },
       "notes": [
-        "Avoid bright accent-first palettes.",
-        "Maintain accessible contrast without shifting into cold techno chrome.",
-        "Accent usage should stay sparse and utility-driven."
+        "Do not hard-code profile color values in globals.css by default.",
+        "Translate profile decisions into semantic Tailwind/shadcn utilities unless a runtime-token task is explicitly approved.",
+        "Accent usage should carry action, state, navigation, or subject meaning."
       ]
     },
     "radius": {

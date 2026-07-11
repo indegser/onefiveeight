@@ -1,0 +1,75 @@
+{
+  "approved": true,
+  "preview_evidence": [
+    ".ai/runs/2026-07-11T02-58-30.611Z_theme-reference-protocol/evidence/before-songs.png",
+    ".ai/runs/2026-07-11T02-58-30.611Z_theme-reference-protocol/evidence/after-songs.png",
+    ".ai/runs/2026-07-11T02-58-30.611Z_theme-reference-protocol/evidence/after-song-detail.png",
+    ".ai/runs/2026-07-11T02-58-30.611Z_theme-reference-protocol/evidence/after-quiz.png",
+    ".ai/runs/2026-07-11T02-58-30.611Z_theme-reference-protocol/evidence/after-songs-mobile.png",
+    ".ai/runs/2026-07-11T02-58-30.611Z_theme-reference-protocol/evidence/after-quiz-mobile.png"
+  ],
+  "summary": {
+    "status": "pass_with_followups",
+    "rationale": "Theme direction is now documented as a workflow protocol instead of custom globals.css variables, and the affected pages render cleanly on desktop and mobile after migration."
+  },
+  "findings": [
+    {
+      "id": "visual-tone-followup",
+      "severity": "low",
+      "layer": "aesthetic_judgment",
+      "message": "The pages now use default shadcn semantic tokens, so the visual tone is less warm than before. This is acceptable for removing CSS-encoded theme state, but a later profile application task may tune the shadcn semantic variables.",
+      "screen_id": "songs-pages",
+      "area": "visual tone",
+      "recommendation": "If the new Product Craft Workbench profile needs a more distinctive runtime expression, run a separate browser-verified token task.",
+      "evidence": [
+        "after-songs.png",
+        "after-quiz.png"
+      ]
+    }
+  ],
+  "section_scores": [
+    {
+      "section_id": "hard_rules",
+      "score": 5,
+      "notes": [
+        "No error overlays were detected.",
+        "Mobile checks reported no horizontal overflow for /songs or /quiz.",
+        "Removed CSS variables and selectors are absent from source and served CSS."
+      ]
+    },
+    {
+      "section_id": "ux_heuristics",
+      "score": 4,
+      "notes": [
+        "Songs list, song detail, and quiz routes remain readable and scannable.",
+        "The quiz primary action remains visually obvious.",
+        "The songs detail lead-sheet rows render and remain legible."
+      ]
+    },
+    {
+      "section_id": "aesthetic_judgment",
+      "score": 4,
+      "notes": [
+        "The new theme-usage protocol properly makes profile selection a workflow concern.",
+        "The migration avoids hiding theme decisions in globals.css.",
+        "The visual tone is functional but intentionally not final brand styling."
+      ]
+    }
+  ],
+  "profile_assessment": {
+    "selected_profile_id": "product-craft-workbench",
+    "fit_score": 4,
+    "anti_patterns_detected": [],
+    "notes": [
+      "The implementation follows Product Craft Workbench at the workflow level by preferring task clarity and semantic utilities over decorative global theme variables."
+    ]
+  },
+  "gates": {
+    "hard_rules_passed": true,
+    "needs_human_review": false,
+    "requires_refinement": false
+  },
+  "next_steps": [
+    "Consider a separate visual profile application task if the user wants shadcn semantic variables tuned to a more distinctive Product Craft Workbench runtime look."
+  ]
+}

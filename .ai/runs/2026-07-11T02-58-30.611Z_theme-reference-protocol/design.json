@@ -1,0 +1,220 @@
+{
+  "screens": [
+    {
+      "id": "theme-protocol",
+      "name": "Theme Usage Protocol",
+      "purpose": "Make the selected design profile a required reference for web changes without encoding the theme as global CSS variables.",
+      "screen_type": "design-system-asset",
+      "primary_action": "Read and record the chosen profile/register before changing rendered web UI.",
+      "states": [
+        "profile selected",
+        "profile recorded in run artifacts",
+        "runtime CSS unchanged unless explicitly approved"
+      ]
+    },
+    {
+      "id": "songs-pages",
+      "name": "Songs Pages",
+      "purpose": "Keep songs list and detail pages rendering after removing custom CSS theme variables.",
+      "screen_type": "detail",
+      "primary_action": "Open song detail.",
+      "states": [
+        "list",
+        "detail",
+        "empty list",
+        "not found"
+      ]
+    },
+    {
+      "id": "quiz-page",
+      "name": "Interval Quiz Page",
+      "purpose": "Keep quiz interaction rendering after removing custom CSS theme variables.",
+      "screen_type": "form",
+      "primary_action": "Reveal answer or advance to next question.",
+      "states": [
+        "loading",
+        "question hidden answer",
+        "question revealed answer"
+      ]
+    }
+  ],
+  "ux_rules": [
+    "Web work must select the applicable profile/register from aesthetic-profile.json before visual edits.",
+    "Run artifacts must record the selected profile/register and any deviations.",
+    "Do not use globals.css as a repository-specific theme dump; keep it limited to Tailwind/shadcn runtime variables and base CSS.",
+    "Use shadcn/Tailwind semantic utilities for rendered surfaces unless a task explicitly approves a new runtime token layer.",
+    "Browser verification must compare before/after pages when removing styling infrastructure."
+  ],
+  "component_map": [
+    {
+      "screen_id": "theme-protocol",
+      "components": [
+        "specs/design-rule-engine/theme-usage.md",
+        "skills/website-workflow/SKILL.md",
+        "skills/design-rule-engine/SKILL.md",
+        "agents/design-agent.md",
+        "agents/builder.md",
+        "agents/verifier.md",
+        "agents/design-critic.md",
+        "AGENTS.md"
+      ]
+    },
+    {
+      "screen_id": "songs-pages",
+      "components": [
+        "src/app/songs/page.tsx",
+        "src/app/songs/[songId]/page.tsx",
+        "src/app/songs/song-list.tsx",
+        "src/app/songs/score-viewer.tsx",
+        "src/app/songs/lead-sheet-renderer.tsx",
+        "src/app/globals.css"
+      ]
+    },
+    {
+      "screen_id": "quiz-page",
+      "components": [
+        "src/app/quiz/page.tsx",
+        "src/app/quiz/interval-quiz.tsx",
+        "src/app/globals.css"
+      ]
+    }
+  ],
+  "human_checkpoints": [],
+  "design_rule_engine": {
+    "profile_id": "product-craft-workbench",
+    "hard_rule_sets": [
+      "specs/design-rule-engine/layout-rules.json"
+    ],
+    "heuristic_sets": [
+      "specs/design-rule-engine/ux-heuristics.md",
+      "specs/design-rule-engine/theme-usage.md"
+    ],
+    "allowed_pattern_sets": [
+      "specs/design-rule-engine/allowed-patterns.json"
+    ],
+    "banned_pattern_sets": [
+      "specs/design-rule-engine/banned-patterns.json"
+    ],
+    "review_rubric_id": "specs/design-rule-engine/design-review-rubric.json"
+  },
+  "screen_contexts": [
+    {
+      "screen_id": "theme-protocol",
+      "screen_type": "design-system-asset",
+      "layout_intent": "Move theme decisions into workflow and review artifacts instead of global CSS variables.",
+      "interaction_risks": [
+        "Agents may skip profile selection if the protocol is not listed in required reads.",
+        "Future changes may reintroduce ad-hoc CSS variables unless runtime-token rules are explicit."
+      ],
+      "required_states": [
+        "profile selected",
+        "register recorded",
+        "deviation recorded"
+      ],
+      "notes": [
+        "This asset has no rendered UI surface."
+      ]
+    },
+    {
+      "screen_id": "songs-pages",
+      "screen_type": "detail",
+      "layout_intent": "Use existing page structure while replacing custom CSS-variable styling with semantic Tailwind/shadcn utilities.",
+      "interaction_risks": [
+        "Color contrast may change after falling back to semantic tokens.",
+        "Lead sheet annotations need to remain legible after text color class migration."
+      ],
+      "required_states": [
+        "list",
+        "detail",
+        "not found"
+      ]
+    },
+    {
+      "screen_id": "quiz-page",
+      "screen_type": "form",
+      "layout_intent": "Keep a focused quiz card using semantic backgrounds, borders, foreground, and primary action classes.",
+      "interaction_risks": [
+        "Primary button contrast and focus ring must remain clear.",
+        "Loading and answer states must remain readable."
+      ],
+      "required_states": [
+        "loading",
+        "answer hidden",
+        "answer visible"
+      ]
+    }
+  ],
+  "builder_constraints": [
+    {
+      "screen_id": "theme-protocol",
+      "constraints": [
+        "Create theme-usage.md and link it from design-rule-engine README and website workflow.",
+        "Update agent prompts so future web work reads theme-usage.md.",
+        "Do not install external design skills."
+      ],
+      "open_decisions": [
+        "Whether future tasks introduce a dedicated token system remains open."
+      ]
+    },
+    {
+      "screen_id": "songs-pages",
+      "constraints": [
+        "Remove references to --tone-*, --space-*, and --font-body from TSX.",
+        "Remove type-* class usage from TSX.",
+        "Prefer bg-background, bg-card, bg-muted, text-foreground, text-muted-foreground, border-border, ring-ring, and bg-primary/text-primary-foreground."
+      ],
+      "open_decisions": [
+        "Exact future visual tone should be decided by a separate profile application task."
+      ]
+    },
+    {
+      "screen_id": "quiz-page",
+      "constraints": [
+        "Keep the existing quiz behavior unchanged.",
+        "Preserve visible loading, hidden answer, and visible answer states.",
+        "Use semantic button and focus classes rather than custom accent variables."
+      ],
+      "open_decisions": []
+    }
+  ],
+  "review_targets": [
+    {
+      "screen_id": "theme-protocol",
+      "critical_judgments": [
+        "Future web work is required to consult aesthetic-profile.json and theme-usage.md.",
+        "Theme decisions are recorded in artifacts, not hidden in CSS variables."
+      ],
+      "must_not_regress": [
+        "No external skill is claimed as installed.",
+        "No workflow bypasses browser verification for visual UI edits."
+      ]
+    },
+    {
+      "screen_id": "songs-pages",
+      "critical_judgments": [
+        "The songs list and detail pages load without error overlays.",
+        "The lead sheet remains legible and fits available width."
+      ],
+      "must_not_regress": [
+        "Song links remain keyboard-focusable.",
+        "Representative lead sheet rows do not render blank or overlap incoherently."
+      ]
+    },
+    {
+      "screen_id": "quiz-page",
+      "critical_judgments": [
+        "The quiz page loads without error overlays.",
+        "The primary action remains visually obvious and keyboard-focusable."
+      ],
+      "must_not_regress": [
+        "Question and answer text remain readable.",
+        "Loading state remains visible."
+      ]
+    }
+  ],
+  "visual_constraints": [
+    "Before screenshots are required for /songs, a representative song detail page, and /quiz before CSS migration.",
+    "After screenshots are required for the same routes.",
+    "Served CSS must be checked for absence of removed custom variables and type selectors."
+  ]
+}

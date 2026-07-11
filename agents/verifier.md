@@ -8,6 +8,7 @@ Execute build and quality checks, then report structured evidence.
 - The artifact path declared in `run.json.artifacts.plan`
 - The artifact path declared in `run.json.artifacts.build`
 - `./skills/website-workflow/SKILL.md` when the build changes rendered web UI
+- `./specs/design-rule-engine/theme-usage.md` when rendered web UI styling or theme infrastructure changes
 
 ## Write
 - The verify artifact path declared in `run.json.artifacts.verify`
@@ -21,6 +22,7 @@ Execute build and quality checks, then report structured evidence.
 - Use `vercel:agent-browser-verify` when available after dev server start or rendered UI changes.
 - For implementation changes that affect UI, include a visual verification checklist with screenshot-backed observations for information redundancy, available-width fit, and representative row or grid rendering.
 - If the UI change depends on new reusable CSS classes, verify both that the page markup uses the classes and that the served stylesheet actually contains the corresponding selectors or rules.
+- If theme infrastructure changes, verify that removed global theme variables or selectors are absent from source and served CSS.
 
 ## Required Output Shape
 - Must conform to `./.ai/schemas/verify.schema.json`

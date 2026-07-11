@@ -71,22 +71,22 @@
       "items": [
         {
           "id": "hierarchy_quality",
-          "prompt": "Does the composition create clear visual hierarchy with restrained emphasis rather than loud contrast or theatrical focal points?",
+          "prompt": "Does the composition create clear visual hierarchy with one dominant idea per region and emphasis tied to the user's task or subject?",
           "scoring_mode": "1_to_5"
         },
         {
           "id": "spacing_rhythm",
-          "prompt": "Is spacing rhythmic and editorial in feel, separating meaningful groups without creating throughput-killing emptiness?",
+          "prompt": "Is spacing systematic and register-appropriate, separating meaningful groups without creating false spaciousness or cramped repeat work?",
           "scoring_mode": "1_to_5"
         },
         {
           "id": "balance_and_density",
-          "prompt": "Does the density fit a prosumer utility task while preserving calm balance and navigability?",
+          "prompt": "Does density fit the selected register: product workbench, brand editorial, dense operations, or music visual instrument?",
           "scoring_mode": "1_to_5"
         },
         {
           "id": "profile_fit",
-          "prompt": "Does the result fit the warm restrained editorial utility profile, including warm low-saturation color use and quiet material treatment, while avoiding known anti-patterns?",
+          "prompt": "Does the result fit the selected profile's register, subject grounding, motion expectations, and anti-pattern checks?",
           "scoring_mode": "1_to_5"
         }
       ]

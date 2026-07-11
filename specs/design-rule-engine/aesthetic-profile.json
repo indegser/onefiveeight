@@ -1,123 +1,138 @@
 {
   "$schema": "../../.ai/schemas/aesthetic-profile.schema.json",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "selection_status": "selected",
-  "selected_profile_id": "warm-restrained-editorial-utility",
+  "selected_profile_id": "product-craft-workbench",
   "project_binding": {
-    "product_type": "prosumer-utility",
-    "brand_mode": "quiet-warm-minimal",
+    "product_type": "music-learning-and-prosumer-workflow",
+    "brand_mode": "product-first-with-distinctive-craft",
     "library_binding": "nextjs-app-router + shadcn-ui + radix-ui + tailwind-css-v4",
     "token_source": "current-repo-tailwind-layer"
   },
   "candidate_profiles": [
     {
-      "id": "warm-restrained-editorial-utility",
-      "name": "Warm Restrained Editorial Utility",
-      "summary": "Quiet luxury minimalism adapted for prosumer utility surfaces: warm neutrals, low saturation, calm hierarchy, and disciplined density.",
+      "id": "product-craft-workbench",
+      "name": "Product Craft Workbench",
+      "summary": "A product-surface register for useful app screens: clear task hierarchy, restrained composition, tactile details, and one memorable product-specific gesture only when it helps the work.",
       "fit_signals": [
-        "COS / Kinfolk sensibility",
-        "Aesop, Muji, Jil Sander, Buly reference family",
-        "warm low-saturation palette",
-        "minimal but not cold",
-        "editorial calm with practical usability"
+        "App UI, dashboards, settings, score viewers, editors, and repeat workflows",
+        "Impeccable-style product register rather than brand register",
+        "OpenAI frontend-skill restraint: no default card grids, no hero-card reflex, one dominant idea per section",
+        "Anthropic frontend-design specificity: choices grounded in the product subject, not generic SaaS styling",
+        "UI UX Pro Max coverage: accessibility, interaction, layout, typography, color, and data states"
       ],
       "judgment_axes": {
-        "hierarchy": "soft but legible hierarchy with clear landmarks and restrained emphasis",
-        "density": "moderate density with deliberate breathing room around major groups, not around every element",
-        "tone": "warm, composed, understated, tactile",
-        "motion": "subtle and sparse, used for continuity rather than spectacle"
+        "hierarchy": "task-first hierarchy with one clear working focus, using layout, type weight, and proximity before decorative emphasis",
+        "density": "moderate-to-dense where repeat work benefits, with breathing room reserved for orientation, reading, and complex decision points",
+        "tone": "precise, capable, tactile, and subject-aware without drifting into marketing polish",
+        "motion": "subtle state and spatial continuity only; motion must clarify affordance, selection, or transition"
       }
     },
     {
-      "id": "calm-operational",
-      "name": "Calm Operational",
-      "summary": "Dense and practical with restrained visual emphasis.",
+      "id": "brand-signal-editorial",
+      "name": "Brand Signal Editorial",
+      "summary": "A brand-surface register for first impressions, landing pages, and narrative content where the page needs a distinctive visual thesis before it needs operational density.",
       "fit_signals": [
-        "operator workflows",
-        "table and form heavy surfaces",
-        "low tolerance for decorative noise"
+        "Marketing, launch, portfolio, or public-facing explanatory pages",
+        "OpenAI frontend-skill image-led hierarchy and first-viewport product clarity",
+        "Anthropic frontend-design signature element and deliberate type/palette choices",
+        "Higher tolerance for expressive imagery, asymmetry, and scroll narrative",
+        "Useful when the impression is part of the product"
       ],
       "judgment_axes": {
-        "hierarchy": "clear sectional hierarchy with localized emphasis",
-        "density": "high information density without crowding",
-        "tone": "quiet, professional, controlled",
-        "motion": "minimal and utility-driven"
+        "hierarchy": "first-screen thesis with unmistakable subject signal, strong visual anchor, and sections that each do one job",
+        "density": "spacious but purposeful, with copy and visual assets carrying clear narrative progression",
+        "tone": "distinctive, editorial, confident, and specific to the subject rather than broadly premium",
+        "motion": "noticeable but curated; one entrance, one scroll/depth moment, and one affordance transition only when they reinforce the story"
       }
     },
     {
-      "id": "editorial-guided",
-      "name": "Editorial Guided",
-      "summary": "More narrative hierarchy and breathing room while preserving task clarity.",
+      "id": "dense-ops-console",
+      "name": "Dense Ops Console",
+      "summary": "A high-throughput register for tables, queues, diagnostics, review screens, and expert flows where compact comparison and repeat action matter most.",
       "fit_signals": [
-        "content-led flows",
-        "decision support screens",
-        "higher importance on explanation and framing"
+        "Tables, bulk actions, filters, logs, queues, and status-heavy surfaces",
+        "Expert or repeated operational use",
+        "UI UX Pro Max accessibility and interaction checks take priority over expressive novelty",
+        "Compact controls, clear active state, and strong information scent",
+        "Useful when throughput and recovery paths matter more than visual drama"
       ],
       "judgment_axes": {
-        "hierarchy": "strong headline-to-detail flow",
-        "density": "moderate density with deliberate pauses",
-        "tone": "confident and informative",
-        "motion": "selective and communicative"
+        "hierarchy": "fast-scanning landmarks, persistent controls, and clear current-state indicators",
+        "density": "dense by default, but never cramped below readable type, target size, or recovery affordance requirements",
+        "tone": "direct, reliable, quiet, and operational",
+        "motion": "minimal feedback for loading, selection, expansion, and destructive confirmations; no decorative motion"
       }
     },
     {
-      "id": "sharp-utility",
-      "name": "Sharp Utility",
-      "summary": "High-contrast, fast-scanning, command-surface style.",
+      "id": "music-visual-instrument",
+      "name": "Music Visual Instrument",
+      "summary": "A subject-led register for music theory, fretboard, chord, score, and listening surfaces where notation, rhythm, and instrument metaphors can shape the interface.",
       "fit_signals": [
-        "expert users",
-        "monitoring or control surfaces",
-        "frequent repeated actions"
+        "Songs, scores, chords, fretboards, interval displays, playback, and teaching tools",
+        "Anthropic frontend-design subject grounding: visual choices come from musical materials and use cases",
+        "A signature interaction can be justified when it behaves like an instrument or notation aid",
+        "Visual systems may encode pitch, time, selection, repetition, or harmonic function",
+        "Useful when the interface should feel playable or readable, not merely administrative"
       ],
       "judgment_axes": {
-        "hierarchy": "strong contrast and quick landmarking",
-        "density": "compact and intentional",
-        "tone": "direct and technical",
-        "motion": "rare and immediate"
+        "hierarchy": "musical structure drives visual hierarchy: sections, measures, voicings, playback state, and selected harmonic objects",
+        "density": "variable by mode, from readable score spacing to compact practice controls, with responsive fit checked at the working pane",
+        "tone": "focused, rhythmic, legible, and instrument-like with craft in notation details",
+        "motion": "timing-aware and functional, especially for playback, selection, progression, and learning feedback"
       }
     }
   ],
   "reference_strategy": {
-    "method": "profile-plus-references",
+    "method": "register-plus-subject-fit",
     "notes": [
-      "Reference set currently centers on COS, Kinfolk, Aesop, Muji, Jil Sander, and Officine Universelle Buly.",
-      "Translate references into observable traits: warm neutrals, low saturation, quiet hierarchy, material restraint, and editorial whitespace discipline.",
-      "Avoid encoding taste only as adjectives; tie it to observable composition qualities."
+      "The old warm restrained profile set has been discarded; do not use it as the default aesthetic lens.",
+      "Use Impeccable's brand-surface versus product-surface distinction as the first routing decision for new profiles.",
+      "Use OpenAI frontend-skill hard rules as a restraint check: avoid default cards, hero cards, clutter, weak first-screen product signal, and sections with multiple competing ideas.",
+      "Use Anthropic frontend-design as a process reference: ground palette, typography, layout, and any signature element in the actual subject and audience.",
+      "Use UI UX Pro Max as a coverage reference for accessibility, interaction, layout, typography/color, navigation, and data visualization checks.",
+      "Anthropic public design skills are external references in this repository unless they appear in the active Codex skill registry."
     ]
   },
   "anti_pattern_candidates": [
     {
-      "id": "ornamental-fragmentation",
-      "description": "Too many competing card treatments, accents, or visual containers."
+      "id": "generic-saas-card-grid",
+      "description": "A first screen or primary workspace is made from interchangeable cards, generic stats, and centered SaaS composition instead of a subject-specific layout."
     },
     {
-      "id": "hero-marketing-drift",
-      "description": "Internal workflows presented like promotional landing pages."
+      "id": "wrong-register",
+      "description": "A product workflow is styled like a marketing page, or a brand surface is flattened into a dense app shell without a clear first impression."
     },
     {
-      "id": "over-muted-hierarchy",
-      "description": "Everything is subtle, causing weak navigation and poor landmarking."
+      "id": "signature-without-purpose",
+      "description": "A distinctive visual or motion idea is added because the design needs personality, but it does not help the subject, task, or user decision."
     },
     {
-      "id": "false-airiness",
-      "description": "Large empty gaps that reduce throughput without improving comprehension."
+      "id": "decorative-motion-noise",
+      "description": "Animations compete for attention, fail reduced-motion expectations, or do not clarify hierarchy, continuity, feedback, or affordance."
     },
     {
-      "id": "cold-sterile-minimalism",
-      "description": "Minimalism that feels clinical, bluish, or emotionally flat instead of warm and composed."
+      "id": "raw-token-drift",
+      "description": "Components introduce one-off hex values, spacing, radius, or shadows that bypass the declared token and review layers."
     },
     {
-      "id": "luxury-signaling-over-utility",
-      "description": "Brand-like refinement that hides actions, lowers contrast too far, or impairs prosumer task completion."
+      "id": "density-blindness",
+      "description": "A surface is made spacious or compact by taste alone, without matching the user's task frequency, reading load, or comparison needs."
     },
     {
-      "id": "saturated-accent-breakout",
-      "description": "Bright, high-chroma accents that overpower the otherwise muted surface."
+      "id": "accessibility-aftertaste",
+      "description": "Contrast, focus, keyboard access, touch targets, text fit, or state recovery are treated as cleanup after visual styling instead of core design constraints."
+    },
+    {
+      "id": "music-surface-as-admin-ui",
+      "description": "Music-learning or notation surfaces ignore musical structure and render as generic records, forms, or dashboards."
     }
   ],
   "open_questions": [
-    "How warm should the palette run in product surfaces: paper-beige neutral, olive-tinted neutral, or skin-tone neutral?",
-    "How much editorial whitespace can be preserved before prosumer throughput starts to suffer on dense screens?",
-    "Should the current repo styling layer remain the token source, or should a dedicated token system be introduced later?"
+    "Should runtime CSS tone variables be replaced to match Product Craft Workbench, or should they stay as legacy tokens until a browser-verified visual task is approved?",
+    "Which profile should own the public home page if the repository needs both a product app and a marketing entry point?",
+    "Should Music Visual Instrument become the selected default if songs, scores, and chord workflows remain the product center of gravity?",
+    "How much visual signature is acceptable inside dense product screens before it slows repeat work?",
+    "Should external design skills be installed locally, or should this repository continue treating them as cited references only?"
   ]
 }

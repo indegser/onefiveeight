@@ -59,30 +59,30 @@
       "enforcement": "avoid"
     },
     {
-      "id": "cool-techno-chrome",
+      "id": "wrong-register-surface",
       "layer": "aesthetic_support",
-      "title": "Cool Techno Chrome",
-      "description": "Cold gray-blue UI, glossy highlights, or futuristic contrast that conflicts with the warm restrained reference set.",
+      "title": "Wrong Register Surface",
+      "description": "A screen uses brand, product, operations, or music-surface styling that conflicts with the user's actual task and context.",
       "applies_to": [
         "all"
       ],
       "enforcement": "avoid"
     },
     {
-      "id": "hyper-saturated-highlighting",
+      "id": "decorative-accent-breakout",
       "layer": "aesthetic_support",
-      "title": "Hyper Saturated Highlighting",
-      "description": "High-chroma badges, buttons, or section fills that dominate a low-saturation composition.",
+      "title": "Decorative Accent Breakout",
+      "description": "Badges, buttons, section fills, or highlights dominate the composition without carrying semantic, navigational, or subject-specific meaning.",
       "applies_to": [
         "all"
       ],
       "enforcement": "avoid"
     },
     {
-      "id": "gratuitous-luxury-whitespace",
+      "id": "false-spaciousness",
       "layer": "aesthetic_support",
-      "title": "Gratuitous Luxury Whitespace",
-      "description": "Large empty margins and sparse content blocks that mimic fashion/editorial layouts while degrading task efficiency.",
+      "title": "False Spaciousness",
+      "description": "Large empty margins and sparse content blocks simulate polish while degrading task efficiency, scanability, or information comparison.",
       "applies_to": [
         "dashboard",
         "table",

@@ -1,0 +1,68 @@
+{
+  "checks": [
+    {
+      "name": "ai-team-run-schema",
+      "status": "passed",
+      "details": "npm run ai:validate -- --run-id 2026-07-11T02-58-30.611Z_theme-reference-protocol passed for run, plan, memory, design, and build artifacts before verify/review artifacts were written."
+    },
+    {
+      "name": "source-removed-theme-hooks",
+      "status": "passed",
+      "details": "rg found no removed custom theme variables or type-* classes in src: --tone-*, --space-*, --leading-*, --tracking-*, --font-body/display/code, and type-kicker/display/title/chord variants are absent."
+    },
+    {
+      "name": "changed-json-parse",
+      "status": "passed",
+      "details": "Parsed design-rule-engine JSON files successfully, including design-tokens.template.json after converting it to a reference template."
+    },
+    {
+      "name": "eslint",
+      "status": "passed",
+      "details": "npm run lint exited 0. It reported 8 pre-existing unused-variable warnings in unrelated src files and no errors."
+    },
+    {
+      "name": "next-build",
+      "status": "passed",
+      "details": "npm run build completed successfully with Next.js 16.2.10 and generated static routes including /songs, /songs/[songId], and /quiz."
+    },
+    {
+      "name": "diff-whitespace",
+      "status": "passed",
+      "details": "git diff --check reported no whitespace errors."
+    },
+    {
+      "name": "served-css-removed-theme-hooks",
+      "status": "passed",
+      "details": "Browser-loaded stylesheet text reported hasTone=false, hasSpaceVar=false, hasTypeClass=false."
+    }
+  ],
+  "passed": true,
+  "visual_checks": [
+    {
+      "name": "before-browser-evidence",
+      "status": "passed",
+      "details": "Captured before screenshots for /songs, a representative song detail page, and /quiz at evidence/before-songs.png, evidence/before-song-detail.png, and evidence/before-quiz.png."
+    },
+    {
+      "name": "after-songs-desktop",
+      "status": "passed",
+      "details": "Captured evidence/after-songs.png after rebasing onto origin/main. Browser check reported overlay=false, textLength=429, and 5 song links."
+    },
+    {
+      "name": "after-song-detail-desktop",
+      "status": "passed",
+      "details": "Captured evidence/after-song-detail.png for /songs/gieog-ui-seupjak after rebasing onto origin/main. Browser check reported overlay=false, textLength=783, 13 lead-sheet rows, and a back link."
+    },
+    {
+      "name": "after-quiz-desktop",
+      "status": "passed",
+      "details": "Captured evidence/after-quiz.png after rebasing onto origin/main. Browser check reported overlay=false, textLength=204, and primary button text '정답 보기'."
+    },
+    {
+      "name": "after-mobile-fit",
+      "status": "passed",
+      "details": "Set viewport to 390x844 and captured evidence/after-songs-mobile.png and evidence/after-quiz-mobile.png. Both routes reported scrollWidth=390 and clientWidth=390."
+    }
+  ],
+  "blocking_issues": []
+}

@@ -1,0 +1,30 @@
+{
+  "completed_tasks": [
+    "external-reference-synthesis",
+    "aesthetic-profile-rewrite",
+    "related-design-rule-updates"
+  ],
+  "changed_files": [
+    "docs/ideas/theme-profile-refresh.md",
+    "specs/design-rule-engine/aesthetic-profile.json",
+    "specs/design-rule-engine/design-principles.md",
+    "specs/design-rule-engine/core-reference-stack.md",
+    "specs/design-rule-engine/design-review-rubric.json",
+    "specs/design-rule-engine/allowed-patterns.json",
+    "specs/design-rule-engine/banned-patterns.json",
+    "specs/design-rule-engine/dsl/design-spec.template.json",
+    ".ai/runs/2026-07-11T02-37-12.961Z_theme-profile-refresh/plan.json",
+    ".ai/runs/2026-07-11T02-37-12.961Z_theme-profile-refresh/design.json",
+    ".ai/runs/2026-07-11T02-37-12.961Z_theme-profile-refresh/build.json"
+  ],
+  "notes": [
+    "Replaced the selected profile with product-craft-workbench.",
+    "Replaced the candidate set with Product Craft Workbench, Brand Signal Editorial, Dense Ops Console, and Music Visual Instrument.",
+    "Captured Anthropic frontend-design, OpenAI frontend-skill, Impeccable, and UI UX Pro Max as external references only.",
+    "Updated stale profile-specific wording in principles, reference stack, review rubric, allowed patterns, banned patterns, and DSL template.",
+    "Did not change src/app/globals.css or runtime token values."
+  ],
+  "open_issues": [
+    "Runtime CSS tone variables still reflect the previous token baseline and should be revisited in a separate browser-verified visual task if the new profile is applied to rendered UI."
+  ]
+}

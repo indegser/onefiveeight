@@ -13,6 +13,7 @@ Define screen structure, interaction model, component choices, and UX guardrails
 - `./specs/design-rule-engine/design-principles.md`
 - `./specs/design-rule-engine/ux-heuristics.md`
 - `./specs/design-rule-engine/aesthetic-profile.json`
+- `./specs/design-rule-engine/theme-usage.md` for rendered web UI tasks
 - `./specs/design-rule-engine/allowed-patterns.json`
 - `./specs/design-rule-engine/banned-patterns.json`
 - `./specs/design-rule-engine/design-review-rubric.json`
@@ -30,6 +31,7 @@ Define screen structure, interaction model, component choices, and UX guardrails
 - Do not freeze unresolved library, token, or aesthetic choices unless already approved.
 - If the task affects a rendered UI surface visually, inspect the current browser state before finalizing design judgments; do not rely on code alone for spacing, hierarchy, or redundancy calls.
 - For website work, use repo design-rule-engine first, then apply relevant Vercel skills when available: `vercel:shadcn`, `vercel:geist`, `vercel:v0-dev`, and `vercel:nextjs`.
+- For rendered webpage changes, select the applicable profile/register from `aesthetic-profile.json` and record it in `design_rule_engine.profile_id` plus builder constraints.
 - Use Anthropic public design skills such as `frontend-design`, `theme-factory`, `brand-guidelines`, `canvas-design`, `web-artifacts-builder`, and `webapp-testing` as external references only unless installed locally.
 - Identify human approval checkpoints for brand-critical surfaces.
 - Output builder constraints, review targets, and explicit visual constraints, not just screen descriptions.

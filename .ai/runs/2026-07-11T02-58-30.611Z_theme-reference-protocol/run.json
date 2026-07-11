@@ -1,0 +1,49 @@
+{
+  "run_id": "2026-07-11T02-58-30.611Z_theme-reference-protocol",
+  "goal": "Build an app from docs/ideas/theme-reference-protocol.md",
+  "revision": 1,
+  "phase": "done",
+  "status": "done",
+  "next_agent": "none",
+  "stack": {
+    "frontend": "nextjs",
+    "ui": "shadcn-ui",
+    "backend": "supabase",
+    "language": "typescript"
+  },
+  "inputs": {
+    "idea_file": "docs/ideas/theme-reference-protocol.md",
+    "constraints": [],
+    "brand_critical": false
+  },
+  "artifacts": {
+    "plan": ".ai/runs/2026-07-11T02-58-30.611Z_theme-reference-protocol/plan.json",
+    "memory": ".ai/runs/2026-07-11T02-58-30.611Z_theme-reference-protocol/memory.json",
+    "design": ".ai/runs/2026-07-11T02-58-30.611Z_theme-reference-protocol/design.json",
+    "build": ".ai/runs/2026-07-11T02-58-30.611Z_theme-reference-protocol/build.json",
+    "verify": ".ai/runs/2026-07-11T02-58-30.611Z_theme-reference-protocol/verify.json"
+  },
+  "approvals": {
+    "brand": false,
+    "data_model": false,
+    "destructive_flows": false
+  },
+  "blockers": [],
+  "decisions": [],
+  "risks": [],
+  "refinement_notes": [],
+  "history": [
+    {
+      "at": "2026-07-11T02:58:30.614Z",
+      "event": "Initialized run from docs/ideas/theme-reference-protocol.md"
+    },
+    {
+      "at": "2026-07-11T03:04:30.000Z",
+      "event": "Supervisor routed through planner, design-agent, and builder; before browser evidence captured and build artifact written"
+    },
+    {
+      "at": "2026-07-11T03:12:00.000Z",
+      "event": "Supervisor marked run done after verification, design review, and code review passed"
+    }
+  ]
+}

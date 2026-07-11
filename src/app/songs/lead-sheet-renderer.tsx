@@ -318,7 +318,7 @@ function ChordLayer({ system }: { system: SongSystem }) {
           return (
             <span
               key={`${measure.measure.id}-${event.id}`}
-              className="absolute whitespace-nowrap font-semibold tracking-[0] text-[var(--tone-text-primary)]"
+              className="absolute whitespace-nowrap font-semibold tracking-[0] text-foreground"
               style={{
                 left: toStaffPercent(left),
                 top: `${top}px`,
@@ -356,7 +356,7 @@ function MarksLayer({ system }: { system: SongSystem }) {
           <div key={measure.measure.id}>
             {measure.measure.ending ? (
               <div
-                className="absolute border-t border-l border-[var(--tone-text-primary)] text-[11px] leading-none font-semibold tracking-[0] text-[var(--tone-text-primary)]"
+                className="absolute border-t border-l border-foreground text-[11px] leading-none font-semibold tracking-[0] text-foreground"
                 style={{
                   left: toStaffPercent(left + 5),
                   top: "0px",
@@ -371,7 +371,7 @@ function MarksLayer({ system }: { system: SongSystem }) {
             ) : null}
             {measure.measure.timeSignature ? (
               <span
-                className="absolute text-sm leading-none font-bold tracking-[0] text-[var(--tone-text-primary)]"
+                className="absolute text-sm leading-none font-bold tracking-[0] text-foreground"
               style={{ left: toStaffPercent(left + 8), top: `${STAFF_TOP + 36}px` }}
               >
                 {measure.measure.timeSignature}
@@ -379,7 +379,7 @@ function MarksLayer({ system }: { system: SongSystem }) {
             ) : null}
             {measure.measure.jump ? (
               <span
-                className="absolute text-xs leading-none font-semibold tracking-[0] text-[var(--tone-text-muted)]"
+                className="absolute text-xs leading-none font-semibold tracking-[0] text-muted-foreground"
                 style={{ left: toStaffPercent(left + 8), top: `${STAFF_TOP + 38}px` }}
               >
                 {measure.measure.jump}
@@ -387,7 +387,7 @@ function MarksLayer({ system }: { system: SongSystem }) {
             ) : null}
             {measure.measure.footer ? (
               <span
-                className="absolute text-xs leading-none font-semibold tracking-[0] text-[var(--tone-text-muted)]"
+                className="absolute text-xs leading-none font-semibold tracking-[0] text-muted-foreground"
                 style={{ left: toStaffPercent(left + 8), top: `${STAFF_TOP + 38}px` }}
               >
                 {measure.measure.footer}
@@ -395,7 +395,7 @@ function MarksLayer({ system }: { system: SongSystem }) {
             ) : null}
             {measure.measure.cue ? (
               <span
-                className="absolute text-xs leading-none font-semibold tracking-[0] text-[var(--tone-text-muted)]"
+                className="absolute text-xs leading-none font-semibold tracking-[0] text-muted-foreground"
                 style={{ left: toStaffPercent(left + 8), top: `${STAFF_TOP + 32}px` }}
               >
                 {measure.measure.cue}
@@ -432,7 +432,7 @@ function LeadSheetSystem({
         }
       >
         <div
-          className="absolute left-0 text-xs leading-none font-semibold tracking-[0] text-[var(--tone-text-muted)]"
+          className="absolute left-0 text-xs leading-none font-semibold tracking-[0] text-muted-foreground"
           style={{
             top: `${STAFF_TOP + 13}px`,
             width: `${SIDE_LABEL_WIDTH - 10}px`,
@@ -455,11 +455,11 @@ export function LeadSheetRenderer({ song }: { song: Song }) {
         {song.sections.map((section) => (
           <section key={section.id} aria-label={section.title}>
             <div className="mb-0.5 flex items-baseline justify-between gap-3">
-              <h4 className="text-xs font-semibold uppercase tracking-[0.08em] text-[var(--tone-text-muted)]">
+              <h4 className="text-xs font-semibold uppercase tracking-[0.08em] text-muted-foreground">
                 {section.title}
               </h4>
               {section.annotation ? (
-                <p className="text-xs leading-5 text-[var(--tone-text-muted)]">
+                <p className="text-xs leading-5 text-muted-foreground">
                   {section.annotation}
                 </p>
               ) : null}

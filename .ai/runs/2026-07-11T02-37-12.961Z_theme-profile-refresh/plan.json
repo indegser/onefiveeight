@@ -1,0 +1,87 @@
+{
+  "epics": [
+    {
+      "id": "replace-aesthetic-profile-model",
+      "title": "Replace the design-rule-engine aesthetic profile model",
+      "tasks": [
+        {
+          "id": "external-reference-synthesis",
+          "title": "Synthesize public design-skill references into profile requirements",
+          "implementation_area": "data",
+          "acceptance_criteria": [
+            "The run artifacts identify Anthropic frontend-design, OpenAI frontend-skill, Impeccable, and UI UX Pro Max as external references only.",
+            "The selected profile model distinguishes product surfaces from brand/editorial surfaces instead of using the old warm restrained candidate set.",
+            "The plan keeps Anthropic public skills as references unless installed in the active Codex skill registry."
+          ],
+          "dependencies": [],
+          "done_definition": [
+            "External references are captured in design constraints and build notes.",
+            "No external skill installation is performed."
+          ]
+        },
+        {
+          "id": "aesthetic-profile-rewrite",
+          "title": "Rewrite aesthetic profile candidates and anti-patterns",
+          "implementation_area": "data",
+          "acceptance_criteria": [
+            "specs/design-rule-engine/aesthetic-profile.json no longer selects or lists the old warm restrained profile set.",
+            "The selected profile is product-first and suitable for repository app/workflow surfaces.",
+            "Candidate profiles cover product/workflow, brand/editorial, data-dense, and music/visual-led surfaces.",
+            "Anti-patterns and open questions match the new profile model."
+          ],
+          "dependencies": [
+            "external-reference-synthesis"
+          ],
+          "done_definition": [
+            "The JSON file conforms to .ai/schemas/aesthetic-profile.schema.json.",
+            "The selected profile and candidates are internally consistent."
+          ]
+        },
+        {
+          "id": "related-design-rule-updates",
+          "title": "Align related design-rule-engine wording with the replacement profile",
+          "implementation_area": "data",
+          "acceptance_criteria": [
+            "Stable principles and reference-stack wording no longer claim warm restrained editorial utility as the default profile.",
+            "Review rubric aesthetic prompts no longer hard-code the discarded profile.",
+            "Runtime token files remain unchanged unless a schema or reference conflict requires a documentation-only note."
+          ],
+          "dependencies": [
+            "aesthetic-profile-rewrite"
+          ],
+          "done_definition": [
+            "Related JSON and Markdown files remain parseable.",
+            "No rendered UI or runtime token source is changed."
+          ]
+        },
+        {
+          "id": "schema-and-workflow-validation",
+          "title": "Validate AI-team artifacts and changed design-rule-engine JSON",
+          "implementation_area": "verification",
+          "acceptance_criteria": [
+            "npm run ai:validate -- --run-id 2026-07-11T02-37-12.961Z_theme-profile-refresh passes.",
+            "Changed design-rule-engine JSON files are parsed successfully.",
+            "Verification records that browser checks are skipped because no rendered UI changed."
+          ],
+          "dependencies": [
+            "related-design-rule-updates"
+          ],
+          "done_definition": [
+            "Verifier artifact records pass/fail status and any skipped visual checks.",
+            "Design and code reviews approve the documentation/data-only change or record follow-up risks."
+          ]
+        }
+      ]
+    }
+  ],
+  "assumptions": [
+    "The user wants to discard the current candidate profiles, not the entire design-rule-engine directory.",
+    "The replacement should not install or vendor external skills in this task.",
+    "No runtime CSS token changes are desired until the user approves a visual direction and browser verification task."
+  ],
+  "risks": [
+    "Changing profile language without changing runtime tokens can create a temporary mismatch between design intent and CSS variables.",
+    "External skill sources are evolving; their ideas should be treated as reference guidance rather than frozen product requirements.",
+    "A product-first selected profile may need later adjustment if the repository's primary surface becomes brand or marketing oriented."
+  ]
+}

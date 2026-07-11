@@ -87,4 +87,4 @@ For this repository, apply the stack in this order:
 4. UX laws and heuristics
 5. aesthetic profile fit
 
-The warm restrained editorial utility profile must remain compatible with these core references rather than replacing them.
+The selected aesthetic profile must remain compatible with these core references rather than replacing them.

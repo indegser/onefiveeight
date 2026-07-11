@@ -7,16 +7,16 @@ type ScoreViewerProps = {
 
 export function ScoreViewer({ song }: ScoreViewerProps) {
   return (
-    <article className="bg-[color:color-mix(in_srgb,var(--tone-surface)_60%,white)] p-5 md:p-7">
-      <div className="border-b border-[color:color-mix(in_srgb,var(--tone-border)_55%,white)] pb-5">
+    <article className="bg-card p-5 md:p-7">
+      <div className="border-b border-border pb-5">
         <div className="max-w-[48rem] space-y-2">
-          <h1 className="type-display-compact text-[2.35rem] text-[var(--tone-text-primary)] md:text-[3rem]">
+          <h1 className="text-[2.35rem] leading-[1.02] font-semibold tracking-[-0.04em] text-foreground md:text-[3rem]">
             {song.title}
           </h1>
-          <p className="text-base font-medium text-[var(--tone-text-secondary)]">
+          <p className="text-base font-medium text-muted-foreground">
             {song.artist}
           </p>
-          <p className="text-sm leading-6 text-[var(--tone-text-muted)]">
+          <p className="text-sm leading-6 text-muted-foreground">
             {song.keyCenter} · {song.feel} · {song.meter} ·{" "}
             {song.sections.length} sections · {getSongSystemCount(song)} systems
           </p>

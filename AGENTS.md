@@ -45,6 +45,7 @@
 - Website work means rendered web surfaces, Next.js pages, React components, shadcn/ui components, CSS/Tailwind styling, layout, spacing, typography, color, visual polish, and browser verification.
 - For website work, read `./skills/website-workflow/SKILL.md` and `./skills/design-rule-engine/SKILL.md` before implementation or design review.
 - Apply the repo-local `./specs/design-rule-engine` as the source of design judgment before external style references.
+- For rendered webpage changes, read `./specs/design-rule-engine/theme-usage.md`, select the applicable profile/register from `./specs/design-rule-engine/aesthetic-profile.json`, and record that selection in run artifacts before implementation.
 - Use Vercel skills when available for implementation-specific guidance:
   - `vercel:nextjs` for App Router, routing, rendering, and framework behavior.
   - `vercel:shadcn` for shadcn/ui composition, theming, and Tailwind integration.
@@ -55,6 +56,7 @@
 - Anthropic public design skills may be used as external references when available, especially `frontend-design`, `theme-factory`, `brand-guidelines`, `canvas-design`, `web-artifacts-builder`, and `webapp-testing`.
 - Do not claim an Anthropic design skill is installed unless it appears in the active Codex skill registry. If it is unavailable, state that and use public Anthropic skill material only as reference.
 - Visual UI tasks must include browser evidence before edits and after edits. Verification must check representative rows or grids, redundant labels, available-width fit, and served CSS for new semantic classes.
+- Do not encode repository-specific theme direction as global CSS variables in `src/app/globals.css`; use the design-rule-engine profile and theme-usage protocol as the source of design judgment.
 
 ## Deployment Protocol
 

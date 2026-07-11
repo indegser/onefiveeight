@@ -17,6 +17,7 @@ Apply the repository's shared design judgment layer without freezing unresolved 
 - `specs/design-rule-engine/design-principles.md`
 - `specs/design-rule-engine/core-reference-stack.md`
 - `specs/design-rule-engine/design-tokens.template.json`
+- `specs/design-rule-engine/theme-usage.md`
 - `specs/design-rule-engine/layout-rules.json`
 - `specs/design-rule-engine/ux-heuristics.md`
 - `specs/design-rule-engine/aesthetic-profile.json`

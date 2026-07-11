@@ -1,0 +1,14 @@
+{
+  "approved": true,
+  "findings": [
+    {
+      "severity": "low",
+      "message": "The migration intentionally changes page color tone by falling back to shadcn semantic tokens. This is a product decision follow-up rather than a correctness issue.",
+      "area": "theme semantics"
+    }
+  ],
+  "next_steps": [
+    "Keep future visual tuning in shadcn semantic variables or approved component-level utilities, not repo-specific global theme baselines.",
+    "Use the newly added theme-usage.md protocol for future rendered web changes."
+  ]
+}

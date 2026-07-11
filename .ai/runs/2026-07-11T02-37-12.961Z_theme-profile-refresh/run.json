@@ -1,0 +1,65 @@
+{
+  "run_id": "2026-07-11T02-37-12.961Z_theme-profile-refresh",
+  "goal": "Build an app from docs/ideas/theme-profile-refresh.md",
+  "revision": 1,
+  "phase": "done",
+  "status": "done",
+  "next_agent": "none",
+  "stack": {
+    "frontend": "nextjs",
+    "ui": "shadcn-ui",
+    "backend": "supabase",
+    "language": "typescript"
+  },
+  "inputs": {
+    "idea_file": "docs/ideas/theme-profile-refresh.md",
+    "constraints": [],
+    "brand_critical": false
+  },
+  "artifacts": {
+    "plan": ".ai/runs/2026-07-11T02-37-12.961Z_theme-profile-refresh/plan.json",
+    "memory": ".ai/runs/2026-07-11T02-37-12.961Z_theme-profile-refresh/memory.json",
+    "design": ".ai/runs/2026-07-11T02-37-12.961Z_theme-profile-refresh/design.json",
+    "build": ".ai/runs/2026-07-11T02-37-12.961Z_theme-profile-refresh/build.json",
+    "verify": ".ai/runs/2026-07-11T02-37-12.961Z_theme-profile-refresh/verify.json"
+  },
+  "approvals": {
+    "brand": false,
+    "data_model": false,
+    "destructive_flows": false
+  },
+  "blockers": [],
+  "decisions": [],
+  "risks": [],
+  "refinement_notes": [],
+  "history": [
+    {
+      "at": "2026-07-11T02:37:12.964Z",
+      "event": "Initialized run from docs/ideas/theme-profile-refresh.md"
+    },
+    {
+      "at": "2026-07-11T02:38:20.300Z",
+      "event": "Supervisor routed to design-agent after plan artifact creation"
+    },
+    {
+      "at": "2026-07-11T02:39:10.000Z",
+      "event": "Supervisor routed to builder after design artifact creation"
+    },
+    {
+      "at": "2026-07-11T02:40:25.000Z",
+      "event": "Supervisor routed to verifier after build artifact creation"
+    },
+    {
+      "at": "2026-07-11T02:41:20.000Z",
+      "event": "Supervisor routed to design-critic after verification passed"
+    },
+    {
+      "at": "2026-07-11T02:42:00.000Z",
+      "event": "Supervisor routed to code-critic after design review approved"
+    },
+    {
+      "at": "2026-07-11T02:42:45.000Z",
+      "event": "Supervisor marked run done after verification, design review, and code review passed"
+    }
+  ]
+}

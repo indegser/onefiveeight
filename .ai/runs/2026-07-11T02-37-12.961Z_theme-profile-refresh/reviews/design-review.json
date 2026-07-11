@@ -1,0 +1,70 @@
+{
+  "approved": true,
+  "preview_evidence": [
+    "specs/design-rule-engine/aesthetic-profile.json",
+    "specs/design-rule-engine/design-review-rubric.json",
+    ".ai/runs/2026-07-11T02-37-12.961Z_theme-profile-refresh/verify.json"
+  ],
+  "summary": {
+    "status": "pass_with_followups",
+    "rationale": "The profile set now uses a product-first selected register, keeps brand, dense operations, and music surfaces as explicit alternatives, and removes active rubric dependence on the discarded warm restrained profile."
+  },
+  "findings": [
+    {
+      "id": "token-binding-followup",
+      "severity": "low",
+      "layer": "aesthetic_judgment",
+      "message": "Runtime tone variables and design-tokens.template.json still reflect the prior token baseline, so future rendered UI work needs a token-alignment pass before claiming visual implementation of the new profile.",
+      "screen_id": "design-profile-assets",
+      "area": "token binding",
+      "recommendation": "Handle runtime token alignment as a separate browser-verified visual task.",
+      "evidence": [
+        "build.json records that src/app/globals.css was intentionally not changed.",
+        "aesthetic-profile.json records runtime token alignment as an open question."
+      ]
+    }
+  ],
+  "section_scores": [
+    {
+      "section_id": "hard_rules",
+      "score": 5,
+      "notes": [
+        "No UI hard-rule surface changed.",
+        "Schema-valid run and JSON assets preserve required design-rule-engine structure."
+      ]
+    },
+    {
+      "section_id": "ux_heuristics",
+      "score": 4,
+      "notes": [
+        "The new profile set gives clearer routing by surface type.",
+        "External skill references are framed as references only, reducing workflow ambiguity."
+      ]
+    },
+    {
+      "section_id": "aesthetic_judgment",
+      "score": 4,
+      "notes": [
+        "The selected Product Craft Workbench profile is more suitable for current app/workflow surfaces than the discarded profile.",
+        "Candidate profiles are differentiated by use case and register rather than a single mood family.",
+        "Runtime token alignment remains an intentional follow-up."
+      ]
+    }
+  ],
+  "profile_assessment": {
+    "selected_profile_id": "product-craft-workbench",
+    "fit_score": 4,
+    "anti_patterns_detected": [],
+    "notes": [
+      "The profile model reflects OpenAI frontend-skill restraint, Anthropic frontend-design subject grounding, Impeccable register separation, and UI UX Pro Max coverage without treating those skills as installed."
+    ]
+  },
+  "gates": {
+    "hard_rules_passed": true,
+    "needs_human_review": false,
+    "requires_refinement": false
+  },
+  "next_steps": [
+    "Run a separate browser-verified visual task if runtime tokens or rendered UI should be changed to express the new selected profile."
+  ]
+}
