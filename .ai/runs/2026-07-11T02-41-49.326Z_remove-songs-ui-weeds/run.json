@@ -1,0 +1,57 @@
+{
+  "run_id": "2026-07-11T02-41-49.326Z_remove-songs-ui-weeds",
+  "goal": "Build an app from docs/ideas/remove-songs-ui-weeds.md",
+  "revision": 7,
+  "phase": "done",
+  "status": "done",
+  "next_agent": "none",
+  "stack": {
+    "frontend": "nextjs",
+    "ui": "shadcn-ui",
+    "backend": "supabase",
+    "language": "typescript"
+  },
+  "inputs": {
+    "idea_file": "docs/ideas/remove-songs-ui-weeds.md",
+    "constraints": [],
+    "brand_critical": false
+  },
+  "artifacts": {
+    "plan": ".ai/runs/2026-07-11T02-41-49.326Z_remove-songs-ui-weeds/plan.json",
+    "memory": ".ai/runs/2026-07-11T02-41-49.326Z_remove-songs-ui-weeds/memory.json",
+    "design": ".ai/runs/2026-07-11T02-41-49.326Z_remove-songs-ui-weeds/design.json",
+    "build": ".ai/runs/2026-07-11T02-41-49.326Z_remove-songs-ui-weeds/build.json",
+    "verify": ".ai/runs/2026-07-11T02-41-49.326Z_remove-songs-ui-weeds/verify.json"
+  },
+  "approvals": {
+    "brand": false,
+    "data_model": false,
+    "destructive_flows": false
+  },
+  "blockers": [],
+  "decisions": [],
+  "risks": [],
+  "refinement_notes": [],
+  "history": [
+    {
+      "at": "2026-07-11T02:41:49.329Z",
+      "event": "Initialized run from docs/ideas/remove-songs-ui-weeds.md"
+    },
+    {
+      "at": "2026-07-11T02:43:00.000Z",
+      "event": "Planner and Design Agent produced artifacts after browser evidence identified header and row clutter"
+    },
+    {
+      "at": "2026-07-11T02:47:00.000Z",
+      "event": "Builder compressed the songs index header and list rows"
+    },
+    {
+      "at": "2026-07-11T02:50:00.000Z",
+      "event": "Verifier confirmed lint, build, desktop browser, mobile browser, and remaining detail route"
+    },
+    {
+      "at": "2026-07-11T02:51:00.000Z",
+      "event": "Design Critic and Code Critic approved the UI cleanup"
+    }
+  ]
+}

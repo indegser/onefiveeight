@@ -1,0 +1,65 @@
+{
+  "epics": [
+    {
+      "id": "epic-songs-ui-cleanup",
+      "title": "Remove UI clutter from songs index",
+      "tasks": [
+        {
+          "id": "task-compress-header",
+          "title": "Compress the songs page header",
+          "implementation_area": "render",
+          "acceptance_criteria": [
+            "The header removes redundant kicker, marketing-style headline copy, and separate stats block.",
+            "The page still exposes the main purpose and aggregate count in a compact form."
+          ],
+          "dependencies": [],
+          "done_definition": [
+            "src/app/songs/page.tsx renders a tighter internal-tool header."
+          ]
+        },
+        {
+          "id": "task-clean-list-rows",
+          "title": "Reduce song row visual clutter",
+          "implementation_area": "render",
+          "acceptance_criteria": [
+            "Long summaries are no longer always-visible in the list.",
+            "Metadata is consolidated into compact inline chunks.",
+            "Each row remains a keyboard-focusable link with title and artist visible."
+          ],
+          "dependencies": [
+            "task-compress-header"
+          ],
+          "done_definition": [
+            "src/app/songs/song-list.tsx keeps accessible links while reducing prose and stacked labels."
+          ]
+        },
+        {
+          "id": "task-verify-ui-cleanup",
+          "title": "Verify rendered songs cleanup",
+          "implementation_area": "verification",
+          "acceptance_criteria": [
+            "Browser before and after evidence shows reduced UI clutter.",
+            "Representative rows render without redundant local labels or avoidable horizontal overflow.",
+            "A remaining song detail route still opens successfully.",
+            "Lint, build, and run artifact validation pass."
+          ],
+          "dependencies": [
+            "task-clean-list-rows"
+          ],
+          "done_definition": [
+            "verify.json records terminal and browser evidence with no blocking issues."
+          ]
+        }
+      ]
+    }
+  ],
+  "assumptions": [
+    "The UI weeds are redundant explanatory copy and overly verbose row content on the songs index.",
+    "The previous removal of the temporary sample should remain in place.",
+    "No new search, filters, or detail behavior are needed for this cleanup."
+  ],
+  "risks": [
+    "Removing summaries from the list trades preview context for scanability; detail pages still carry full chart information.",
+    "The user may have a more specific visual weed in mind, but the current screenshot shows the most obvious clutter in header and rows."
+  ]
+}

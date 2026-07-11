@@ -1,0 +1,63 @@
+{
+  "checks": [
+    {
+      "name": "Search removed sample strings",
+      "status": "passed",
+      "details": "rg for janhyang-photo-sample, 잔향, renderer sample, and Photographed handwritten chord chart sample under src/lib/songs.ts and src/app/songs returned no matches."
+    },
+    {
+      "name": "npm run lint",
+      "status": "passed",
+      "details": "eslint exited 0. It reported 8 pre-existing unused-variable warnings in unrelated files: scale-fretboard.tsx, chords/page.tsx, tracker.tsx, caged.ts, and chord-playback.ts."
+    },
+    {
+      "name": "npm run build",
+      "status": "passed",
+      "details": "Next.js production build completed successfully, including TypeScript and static page generation. /songs/[songId] static params no longer included /songs/janhyang-photo-sample."
+    },
+    {
+      "name": "npm run ai:validate",
+      "status": "passed",
+      "details": "Run artifacts validated successfully before verify.json was created; final validation is run after reviews are written."
+    },
+    {
+      "name": "Dependency install setup",
+      "status": "passed",
+      "details": "npm ci could not run because package-lock.json is out of sync with package.json. Used npm install --no-package-lock to install local dependencies without changing lockfiles."
+    }
+  ],
+  "passed": true,
+  "visual_checks": [
+    {
+      "name": "Before /songs evidence",
+      "status": "passed",
+      "details": "Before screenshot /Users/indegser/.agent-browser/tmp/screenshots/screenshot-2026-07-11T02-36-20-727Z-mvmtx5.png showed /songs listing 잔향 as the first row, with 6 charts, 6 key centers, and 58 systems."
+    },
+    {
+      "name": "After /songs evidence",
+      "status": "passed",
+      "details": "After screenshot /Users/indegser/.agent-browser/tmp/screenshots/screenshot-2026-07-11T02-38-31-078Z-17dc3o.png showed 5 remaining chart rows, 5 charts, 5 key centers, and 47 systems. document.body text did not include 잔향 and no framework error overlay was present."
+    },
+    {
+      "name": "Representative rows and width fit",
+      "status": "passed",
+      "details": "Agent-browser snapshot showed all 5 remaining song links rendered as full rows with metadata. No new labels or controls were introduced, and row removal did not create avoidable horizontal overflow."
+    },
+    {
+      "name": "Remaining detail route",
+      "status": "passed",
+      "details": "Screenshot /Users/indegser/.agent-browser/tmp/screenshots/screenshot-2026-07-11T02-38-41-788Z-i0d4zh.png confirmed /songs/gieog-ui-seupjak renders with Back to songs, title 기억의 습작, and no overlay."
+    },
+    {
+      "name": "Removed detail route",
+      "status": "passed",
+      "details": "/songs/janhyang-photo-sample rendered the existing 404 page, did not include 잔향 text, and showed no framework error overlay."
+    },
+    {
+      "name": "Served CSS semantic class check",
+      "status": "skipped",
+      "details": "No reusable semantic CSS classes or CSS rules were added in this change."
+    }
+  ],
+  "blocking_issues": []
+}

@@ -1,0 +1,58 @@
+{
+  "checks": [
+    {
+      "name": "npm run lint",
+      "status": "passed",
+      "details": "eslint exited 0. It reported 8 pre-existing unused-variable warnings in unrelated files: scale-fretboard.tsx, chords/page.tsx, tracker.tsx, caged.ts, and chord-playback.ts."
+    },
+    {
+      "name": "npm run build",
+      "status": "passed",
+      "details": "Next.js production build completed successfully, including TypeScript and static page generation."
+    },
+    {
+      "name": "npm run ai:validate",
+      "status": "passed",
+      "details": "Run artifacts validated successfully before verify.json was created; final validation is run after reviews are written."
+    },
+    {
+      "name": "React best-practices review",
+      "status": "passed",
+      "details": "TSX edits kept simple server components, semantic Link rows, stable song.id keys, existing focus-visible styling, and no unnecessary hooks, state, or abstractions."
+    }
+  ],
+  "passed": true,
+  "visual_checks": [
+    {
+      "name": "Before /songs UI evidence",
+      "status": "passed",
+      "details": "Before screenshot /Users/indegser/.agent-browser/tmp/screenshots/screenshot-2026-07-11T02-41-34-802Z-ufwgu5.png showed redundant header copy and summary-heavy rows."
+    },
+    {
+      "name": "After desktop /songs UI evidence",
+      "status": "passed",
+      "details": "After screenshot /Users/indegser/.agent-browser/tmp/screenshots/screenshot-2026-07-11T02-44-18-246Z-1ayh8g.png showed the compact Songs header, concise aggregate count, compact row metadata, no old headline or intro text, no 잔향 sample, and no framework overlay. scrollWidth equaled clientWidth at 1280px."
+    },
+    {
+      "name": "After mobile /songs UI evidence",
+      "status": "passed",
+      "details": "Mobile screenshot /Users/indegser/.agent-browser/tmp/screenshots/screenshot-2026-07-11T02-44-28-964Z-zofpcd.png showed compact rows at 390px width with no horizontal overflow and no framework overlay."
+    },
+    {
+      "name": "Representative row and redundant-label check",
+      "status": "passed",
+      "details": "Agent-browser snapshots showed five row links reduced to title, artist, feel, section count, and system count. Long summaries and long key-center strings no longer appear in row text."
+    },
+    {
+      "name": "Remaining detail route",
+      "status": "passed",
+      "details": "/songs/gieog-ui-seupjak opened successfully with title 기억의 습작, Back to songs link, and no framework overlay."
+    },
+    {
+      "name": "Served CSS semantic class check",
+      "status": "skipped",
+      "details": "No reusable semantic CSS classes or CSS rules were added in this change."
+    }
+  ],
+  "blocking_issues": []
+}

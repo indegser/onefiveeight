@@ -1,0 +1,100 @@
+{
+  "screens": [
+    {
+      "id": "songs-index",
+      "name": "Songs index",
+      "purpose": "Let a user quickly scan copied charts and open one.",
+      "screen_type": "table",
+      "primary_action": "Open a song row.",
+      "states": [
+        "populated list",
+        "empty list"
+      ]
+    }
+  ],
+  "ux_rules": [
+    "Remove redundant local labels when the page title and navigation already establish context.",
+    "Favor compact, comparable row metadata over stacked prose for repeat scanning.",
+    "Keep row links familiar and keyboard accessible.",
+    "Preserve data-driven counts and the existing empty state."
+  ],
+  "component_map": [
+    {
+      "screen_id": "songs-index",
+      "components": [
+        "src/app/songs/page.tsx",
+        "src/app/songs/song-list.tsx"
+      ]
+    }
+  ],
+  "human_checkpoints": [],
+  "design_rule_engine": {
+    "profile_id": "warm-restrained-editorial-utility",
+    "hard_rule_sets": [
+      "specs/design-rule-engine/design-principles.md",
+      "specs/design-rule-engine/layout-rules.json"
+    ],
+    "heuristic_sets": [
+      "specs/design-rule-engine/ux-heuristics.md"
+    ],
+    "allowed_pattern_sets": [
+      "core-allowed-patterns"
+    ],
+    "banned_pattern_sets": [
+      "core-banned-patterns"
+    ],
+    "review_rubric_id": "core-design-review"
+  },
+  "screen_contexts": [
+    {
+      "screen_id": "songs-index",
+      "screen_type": "table",
+      "layout_intent": "A compact internal library list with one-line orientation and dense row metadata.",
+      "interaction_risks": [
+        "Over-trimming could hide the row target or remove useful artist identity.",
+        "Dense metadata could wrap poorly on mobile or long titles."
+      ],
+      "required_states": [
+        "populated list",
+        "empty list"
+      ],
+      "notes": [
+        "Before screenshot /Users/indegser/.agent-browser/tmp/screenshots/screenshot-2026-07-11T02-41-34-802Z-ufwgu5.png showed redundant header copy and summary-heavy rows."
+      ]
+    }
+  ],
+  "builder_constraints": [
+    {
+      "screen_id": "songs-index",
+      "constraints": [
+        "Do not introduce new components, dependencies, or semantic CSS classes.",
+        "Remove the separate kicker and explanatory paragraph from the header.",
+        "Keep a concise count line in the header.",
+        "Replace long always-visible row summaries with compact metadata.",
+        "Preserve the empty state and Link-based row accessibility."
+      ],
+      "open_decisions": []
+    }
+  ],
+  "review_targets": [
+    {
+      "screen_id": "songs-index",
+      "critical_judgments": [
+        "The page reads as a compact working list rather than a marketing explanation.",
+        "Rows are easier to scan because long summaries are not repeated in the index.",
+        "Representative rows fit the available width and do not introduce redundant labels."
+      ],
+      "must_not_regress": [
+        "The removed sample remains absent.",
+        "Song detail links still work.",
+        "Focus-visible styling remains present on rows."
+      ]
+    }
+  ],
+  "visual_constraints": [
+    "No nested cards or decorative containers.",
+    "No new color palette or ornamental accents.",
+    "Use existing typography utilities and spacing tokens.",
+    "Do not scale font size with viewport width."
+  ]
+}
