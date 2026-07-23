@@ -4,10 +4,24 @@ export type SongChordEvent = {
   offset?: number;
 };
 
+export type SongTabEvent = {
+  id: string;
+  offset: number;
+  frets: [
+    number | null,
+    number | null,
+    number | null,
+    number | null,
+    number | null,
+    number | null,
+  ];
+};
+
 export type SongMeasure = {
   id: string;
   chord?: string;
   chords?: SongChordEvent[];
+  tab?: SongTabEvent[];
   cue?: string;
   analysis?: string;
   span?: number;
@@ -90,19 +104,87 @@ export const songs: Song[] = [
             label: "Verse",
             jump: "Coda",
             measures: [
-              { id: "v1", chord: "Cadd9" },
-              { id: "v2", chord: "Em7/Bb" },
-              { id: "v3", chord: "Absus4" },
-              { id: "v4", chord: "A7" },
+              {
+                id: "v1",
+                chord: "Cadd9",
+                tab: [
+                  { id: "v1-a", offset: 0.12, frets: [0, 3, 0, 2, 3, null] },
+                  { id: "v1-b", offset: 0.38, frets: [3, null, 0, null, null, null] },
+                  { id: "v1-c", offset: 0.64, frets: [0, 3, null, 2, null, null] },
+                  { id: "v1-d", offset: 0.86, frets: [3, null, 0, null, null, null] }
+                ]
+              },
+              {
+                id: "v2",
+                chord: "Em7/Bb",
+                tab: [
+                  { id: "v2-a", offset: 0.12, frets: [0, 3, 0, 0, 1, null] },
+                  { id: "v2-b", offset: 0.38, frets: [3, null, 0, null, null, null] },
+                  { id: "v2-c", offset: 0.64, frets: [0, 3, null, 0, null, null] },
+                  { id: "v2-d", offset: 0.86, frets: [3, null, 0, null, null, null] }
+                ]
+              },
+              {
+                id: "v3",
+                chord: "Absus4",
+                tab: [
+                  { id: "v3-a", offset: 0.12, frets: [4, 4, 6, 6, 4, 4] },
+                  { id: "v3-b", offset: 0.42, frets: [4, null, 6, null, null, 4] },
+                  { id: "v3-c", offset: 0.7, frets: [4, 4, null, 6, null, null] }
+                ]
+              },
+              {
+                id: "v4",
+                chord: "A7",
+                tab: [
+                  { id: "v4-a", offset: 0.12, frets: [0, 2, 0, 2, 0, null] },
+                  { id: "v4-b", offset: 0.38, frets: [0, null, 0, null, null, null] },
+                  { id: "v4-c", offset: 0.64, frets: [0, 2, null, 2, null, null] },
+                  { id: "v4-d", offset: 0.86, frets: [0, null, 0, null, null, null] }
+                ]
+              },
             ],
           },
           {
             id: "verse-b",
             measures: [
-              { id: "v5", chord: "Em/Ab" },
-              { id: "v6", chord: "C/G" },
-              { id: "v7", chord: "D/F#" },
-              { id: "v8", chord: "Gsus4" },
+              {
+                id: "v5",
+                chord: "Em/Ab",
+                tab: [
+                  { id: "v5-a", offset: 0.12, frets: [0, 0, 0, 2, 2, 4] },
+                  { id: "v5-b", offset: 0.42, frets: [0, null, 0, null, null, 4] },
+                  { id: "v5-c", offset: 0.72, frets: [0, 0, null, 2, null, null] }
+                ]
+              },
+              {
+                id: "v6",
+                chord: "C/G",
+                tab: [
+                  { id: "v6-a", offset: 0.12, frets: [0, 1, 0, 2, 3, 3] },
+                  { id: "v6-b", offset: 0.42, frets: [3, null, 0, null, null, 3] },
+                  { id: "v6-c", offset: 0.72, frets: [0, 1, null, 2, null, null] }
+                ]
+              },
+              {
+                id: "v7",
+                chord: "D/F#",
+                tab: [
+                  { id: "v7-a", offset: 0.12, frets: [2, 3, 2, 0, null, 2] },
+                  { id: "v7-b", offset: 0.42, frets: [2, null, 2, null, null, 2] },
+                  { id: "v7-c", offset: 0.72, frets: [2, 3, null, 0, null, null] }
+                ]
+              },
+              {
+                id: "v8",
+                chord: "Gsus4",
+                tab: [
+                  { id: "v8-a", offset: 0.12, frets: [3, 1, 0, 0, 3, 3] },
+                  { id: "v8-b", offset: 0.42, frets: [3, null, 0, null, null, 3] },
+                  { id: "v8-c", offset: 0.72, frets: [3, 1, null, 0, null, null] }
+                ],
+                barline: "double"
+              },
             ],
           },
         ],

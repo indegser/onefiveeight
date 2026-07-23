@@ -1,0 +1,38 @@
+{
+  "checks": [
+    {
+      "name": "TypeScript",
+      "status": "passed",
+      "details": "npx tsc --noEmit completed successfully."
+    },
+    {
+      "name": "ESLint",
+      "status": "passed",
+      "details": "No errors; eight unrelated pre-existing warnings remain."
+    },
+    {
+      "name": "Production build",
+      "status": "passed",
+      "details": "Next.js production build completed successfully."
+    }
+  ],
+  "passed": true,
+  "visual_checks": [
+    {
+      "name": "Global gutter alignment",
+      "status": "passed",
+      "details": "At the 1280px large breakpoint, global brand, page title, and score all begin at x=64 and the score ends at x=1216."
+    },
+    {
+      "name": "Available-width fit",
+      "status": "passed",
+      "details": "The rendered score has no horizontal overflow or alphaTab error."
+    },
+    {
+      "name": "Served responsive gutter classes",
+      "status": "passed",
+      "details": "The song page uses the same px-6 md:px-10 lg:px-16 sequence as the global header."
+    }
+  ],
+  "blocking_issues": []
+}

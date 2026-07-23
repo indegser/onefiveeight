@@ -1,0 +1,17 @@
+{
+  "completed_tasks": [
+    "Aligned the song page to the global header gutter system: 24px mobile, 40px medium, and 64px large.",
+    "Removed the song-only maximum width and nested title gutters.",
+    "Removed alphaTab horizontal page padding at every viewport width."
+  ],
+  "changed_files": [
+    "src/app/songs/[songId]/page.tsx",
+    "src/app/songs/score-viewer.tsx",
+    "src/app/songs/lead-sheet-renderer.tsx",
+    ".ai/runs/2026-07-23T14-14-06.122Z_guitar-score-web-renderer/design.json"
+  ],
+  "notes": [
+    "Title, artist, score container, and global brand now share the same responsive left baseline."
+  ],
+  "open_issues": []
+}

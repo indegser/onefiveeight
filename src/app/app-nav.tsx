@@ -10,6 +10,7 @@ const NAV_ITEMS = [
   { href: "/voicings", label: "Voicings" },
   { href: "/quiz", label: "Quiz" },
   { href: "/songs", label: "Songs" },
+  { href: "/music-fonts", label: "Score Lab" },
 ];
 
 export function AppNav() {

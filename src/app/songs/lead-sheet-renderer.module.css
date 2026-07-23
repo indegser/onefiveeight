@@ -1,0 +1,10 @@
+@font-face {
+  font-family: "Score Scheherazade New";
+  src: url("/alphatab/chord-fonts/ScheherazadeNew-Bold.ttf") format("truetype");
+  font-display: swap;
+  font-weight: 700;
+}
+
+.fontRegistry {
+  isolation: isolate;
+}

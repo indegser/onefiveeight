@@ -1,0 +1,34 @@
+{
+  "approved": true,
+  "preview_evidence": [
+    "Browser coordinate inspection comparing the global brand, song title, and score boundaries."
+  ],
+  "summary": {
+    "status": "pass",
+    "rationale": "The song page now follows one global responsive gutter system instead of layering page, title, maximum-width, and notation-engine margins."
+  },
+  "findings": [],
+  "section_scores": [
+    {
+      "section_id": "layout-system",
+      "score": 5,
+      "notes": [
+        "Header and content baselines match exactly at the representative desktop breakpoint."
+      ]
+    }
+  ],
+  "profile_assessment": {
+    "selected_profile_id": "notation-workspace",
+    "fit_score": 5,
+    "anti_patterns_detected": [],
+    "notes": [
+      "Redundant nested padding and the page-specific width cap were removed."
+    ]
+  },
+  "gates": {
+    "hard_rules_passed": true,
+    "needs_human_review": false,
+    "requires_refinement": false
+  },
+  "next_steps": []
+}
