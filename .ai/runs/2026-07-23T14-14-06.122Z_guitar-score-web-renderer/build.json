@@ -1,0 +1,13 @@
+{
+  "completed_tasks": [
+    "Synchronized pnpm-lock.yaml with @coderline/alphatab 1.8.4 for Vercel's frozen pnpm install."
+  ],
+  "changed_files": [
+    "pnpm-lock.yaml",
+    ".ai/runs/2026-07-23T14-14-06.122Z_guitar-score-web-renderer/run.json"
+  ],
+  "notes": [
+    "The first Vercel preview failed only because package.json and pnpm-lock.yaml were out of sync."
+  ],
+  "open_issues": []
+}

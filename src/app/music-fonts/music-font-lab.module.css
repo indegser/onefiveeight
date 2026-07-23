@@ -1,0 +1,24 @@
+@font-face {
+  font-family: "Score Edwin";
+  src: url("/alphatab/chord-fonts/Edwin-Bold.otf") format("opentype");
+  font-display: swap;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Score JazzCord";
+  src: url("/alphatab/chord-fonts/JazzCord.ttf") format("truetype");
+  font-display: swap;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Score Campania";
+  src: url("/alphatab/chord-fonts/Campania.otf") format("opentype");
+  font-display: swap;
+  font-weight: 400;
+}
+
+.fontRegistry {
+  isolation: isolate;
+}

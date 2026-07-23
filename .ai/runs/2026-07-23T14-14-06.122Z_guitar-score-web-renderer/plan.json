@@ -1,0 +1,97 @@
+{
+  "epics": [
+    {
+      "id": "score-model",
+      "title": "Represent browser-renderable guitar notation",
+      "tasks": [
+        {
+          "id": "score-data",
+          "title": "Extend the song model with tablature events",
+          "implementation_area": "data",
+          "acceptance_criteria": [
+            "A measure can carry timed six-string fret events without changing existing chord-only songs.",
+            "At least one existing sample song contains a representative playable TAB phrase."
+          ],
+          "dependencies": [],
+          "done_definition": [
+            "TypeScript accepts both chord-only and chord-plus-TAB measures."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "score-surface",
+      "title": "Render and play the guitar score in the browser",
+      "tasks": [
+        {
+          "id": "tab-renderer",
+          "title": "Add responsive six-line tablature below chord notation",
+          "implementation_area": "render",
+          "acceptance_criteria": [
+            "Chord symbols, barlines, section structure, and six TAB strings render in one continuous score system.",
+            "Fret numbers align to beats and strings.",
+            "Representative systems fit the available desktop and narrow pane without page-level horizontal overflow.",
+            "Section labels are not repeated when a nearby heading already establishes context.",
+            "The implementation follows the local design-rule-engine and relevant Next.js, shadcn, and Geist guidance."
+          ],
+          "dependencies": [
+            "score-data"
+          ],
+          "done_definition": [
+            "The selected sample visibly reads as a guitar score rather than a chord-only lead sheet."
+          ]
+        },
+        {
+          "id": "transport",
+          "title": "Add compact score playback controls and cursor",
+          "implementation_area": "behavior",
+          "acceptance_criteria": [
+            "A single primary play/pause control starts and pauses a deterministic visual cursor.",
+            "Restart returns playback to the beginning.",
+            "Tempo is visible and the cursor does not require Guitar Pro or an uploaded proprietary file.",
+            "Controls expose accessible names and status."
+          ],
+          "dependencies": [
+            "tab-renderer"
+          ],
+          "done_definition": [
+            "A user can follow the rendered TAB with a moving position indicator."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "quality",
+      "title": "Verify the complete score experience",
+      "tasks": [
+        {
+          "id": "browser-verification",
+          "title": "Run deterministic and browser-backed checks",
+          "implementation_area": "verification",
+          "acceptance_criteria": [
+            "Lint, typecheck, build, and relevant tests pass.",
+            "Before and after browser evidence is captured.",
+            "Desktop and narrow viewport verification checks layout width, representative score rows, redundant labels, and interactive controls.",
+            "Rendered markup and served styles visibly produce TAB lines and fret-number placement."
+          ],
+          "dependencies": [
+            "transport"
+          ],
+          "done_definition": [
+            "Verification and both design/code reviews are approved with no major findings."
+          ]
+        }
+      ]
+    }
+  ],
+  "assumptions": [
+    "This iteration renders the repository's structured song data and does not import proprietary Guitar Pro files.",
+    "Visual cursor playback is sufficient for the first iteration; audio synthesis and editing are future work.",
+    "The existing warm restrained editorial utility profile remains appropriate and the screen is not brand-critical."
+  ],
+  "risks": [
+    "Dense notation can become illegible on narrow screens if measure density is not reduced responsively.",
+    "Playback timing can drift if the cursor is modeled only with repeated timers instead of elapsed time.",
+    "A visual TAB sample may imply full Guitar Pro compatibility unless the interface labels the current capability clearly."
+  ]
+}

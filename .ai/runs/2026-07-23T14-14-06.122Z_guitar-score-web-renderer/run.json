@@ -1,0 +1,458 @@
+{
+  "run_id": "2026-07-23T14-14-06.122Z_guitar-score-web-renderer",
+  "goal": "Build an app from docs/ideas/guitar-score-web-renderer.md",
+  "revision": 35,
+  "phase": "done",
+  "status": "done",
+  "next_agent": "none",
+  "stack": {
+    "frontend": "nextjs",
+    "ui": "shadcn-ui",
+    "backend": "supabase",
+    "language": "typescript"
+  },
+  "inputs": {
+    "idea_file": "docs/ideas/guitar-score-web-renderer.md",
+    "constraints": [],
+    "brand_critical": false
+  },
+  "artifacts": {
+    "plan": ".ai/runs/2026-07-23T14-14-06.122Z_guitar-score-web-renderer/plan.json",
+    "memory": ".ai/runs/2026-07-23T14-14-06.122Z_guitar-score-web-renderer/memory.json",
+    "design": ".ai/runs/2026-07-23T14-14-06.122Z_guitar-score-web-renderer/design.json",
+    "build": ".ai/runs/2026-07-23T14-14-06.122Z_guitar-score-web-renderer/build.json",
+    "verify": ".ai/runs/2026-07-23T14-14-06.122Z_guitar-score-web-renderer/verify.json"
+  },
+  "approvals": {
+    "brand": false,
+    "data_model": false,
+    "destructive_flows": false
+  },
+  "blockers": [],
+  "decisions": [],
+  "risks": [],
+  "refinement_notes": [
+    {
+      "at": "2026-07-23T14:29:40.199Z",
+      "note": "Replace the custom SVG score renderer with OpenSheetMusicDisplay using MusicXML as the notation contract; preserve responsive browser rendering and accessible states.",
+      "target_agent": "builder"
+    },
+    {
+      "at": "2026-07-23T14:36:07.939Z",
+      "note": "Prioritize native OSMD/Guitar Pro visual grammar over the existing site theme. Replace free-form chord and section text with MusicXML harmony and rehearsal semantics, use neutral score typography, and restyle the score player as a dedicated notation workspace.",
+      "target_agent": "builder"
+    },
+    {
+      "at": "2026-07-23T14:43:19.424Z",
+      "note": "Replace OSMD and MusicXML rendering with alphaTab using alphaTex, GuitarPro notation mode, native standard-notation plus TAB layout, and alphaTab's cursor/player API surface.",
+      "target_agent": "builder"
+    },
+    {
+      "at": "2026-07-23T14:52:12.096Z",
+      "note": "Convert Songs to a chord-only alphaTab chart: render a single standard staff with chord symbols and bar structure, use empty beats instead of rests or notes, remove tablature and playback controls.",
+      "target_agent": "builder"
+    },
+    {
+      "at": "2026-07-23T14:57:12.121Z",
+      "note": "Add an in-page chord-font selector to the alphaTab chord chart so users can switch among suitable font treatments and immediately compare the re-rendered score.",
+      "target_agent": "builder"
+    },
+    {
+      "at": "2026-07-23T15:07:44.914Z",
+      "note": "Add a dedicated music-font style lab page with a symbol-rich standard-notation and TAB alphaTab demo, and switchable Bravura, Petaluma, Gootville/Gonville, Finale Maestro, MScore/Emmentaler, and Leland SMuFL fonts using font-specific metadata.",
+      "target_agent": "builder"
+    },
+    {
+      "at": "2026-07-23T15:24:49.253Z",
+      "note": "Make Finale Maestro the default engraving font and add a separate chord-name font selector for Edwin, JazzCord, and Campania on the music font lab.",
+      "target_agent": "builder"
+    },
+    {
+      "at": "2026-07-23T15:30:46.338Z",
+      "note": "Finalize Finale Maestro plus Edwin for production Songs chord charts, remove the experimental chord-font selector from Songs, and retain the style lab for reference.",
+      "target_agent": "builder"
+    },
+    {
+      "at": "2026-07-23T15:34:09.487Z",
+      "note": "Remove all left-side staff and track labels from production chord charts so every score system starts at the same horizontal origin and measure columns remain aligned across rows.",
+      "target_agent": "builder"
+    },
+    {
+      "at": "2026-07-23T15:36:39.265Z",
+      "note": "Simplify production song detail pages to title, artist, and score only: remove duplicate alphaTab score title and artist metadata, remove descriptive metadata summary, and remove all Chord Chart / Finale Maestro / Edwin header chrome above the score.",
+      "target_agent": "builder"
+    },
+    {
+      "at": "2026-07-23T15:42:56.845Z",
+      "note": "Force every production score system, including a short final system, to occupy the same full available width with matching left and right boundaries.",
+      "target_agent": "builder"
+    },
+    {
+      "at": "2026-07-23T15:45:45.865Z",
+      "note": "Increase vertical separation between the initial tempo marking and the first chord name so they never collide, while preserving the simple title-artist-score layout and aligned systems.",
+      "target_agent": "builder"
+    },
+    {
+      "at": "2026-07-23T15:48:07.767Z",
+      "note": "Hide all measure numbers, move chord names slightly lower while retaining a readable gap above the staff, and replace Edwin with a slightly larger Google Fonts Charm typeface in production song charts.",
+      "target_agent": "builder"
+    },
+    {
+      "at": "2026-07-23T15:54:33.743Z",
+      "note": "Add a production chord-font comparison selector for Libre Baskerville, DM Serif Display, Literata (interpreting the requested Liberata), DM Serif Text, and Scheherazade New, with a larger readable chord size and preserved score alignment.",
+      "target_agent": "builder"
+    },
+    {
+      "at": "2026-07-23T16:03:32.643Z",
+      "note": "Finalize Scheherazade New as the production chord font, remove the comparison selector, and left-align chord names at their beat/bar anchor so long first chords never extend left of a measure boundary.",
+      "target_agent": "builder"
+    },
+    {
+      "at": "2026-07-23T16:22:17.849Z",
+      "note": "Render four measures per system on mobile as well as desktop, scaling the notation to the available phone width without horizontal overflow while preserving equal system widths and column alignment.",
+      "target_agent": "builder"
+    },
+    {
+      "at": "2026-07-23T16:25:44.097Z",
+      "note": "Reduce excessive horizontal padding around production song scores on mobile so four-measure systems use substantially more of the phone width, while preserving readable title spacing and desktop layout.",
+      "target_agent": "builder"
+    },
+    {
+      "at": "2026-07-23T16:28:53.762Z",
+      "note": "Remove alphaTab's internal 35-unit horizontal page padding on mobile, since the surrounding page gutter is already minimal; keep vertical notation padding and desktop engraving margins unchanged.",
+      "target_agent": "builder"
+    },
+    {
+      "at": "2026-07-23T16:31:29.557Z",
+      "note": "Align the entire production song page, including title and alphaTab score, to the same responsive horizontal gutter and container system used by the global header on both mobile and desktop; remove page-specific gutter values and redundant inner score padding.",
+      "target_agent": "builder"
+    },
+    {
+      "at": "2026-07-23T16:38:45.687Z",
+      "note": "Synchronize pnpm-lock.yaml with the new alphaTab dependency so Vercel's frozen pnpm install succeeds, then re-run deployment validation.",
+      "target_agent": "builder"
+    }
+  ],
+  "history": [
+    {
+      "at": "2026-07-23T14:14:06.125Z",
+      "event": "Initialized run from docs/ideas/guitar-score-web-renderer.md"
+    },
+    {
+      "at": "2026-07-23T14:18:00.000Z",
+      "event": "Planner produced plan.json with separate data, render, behavior, and verification tasks"
+    },
+    {
+      "at": "2026-07-23T14:20:00.000Z",
+      "event": "Design Agent produced design.json after desktop browser baseline inspection"
+    },
+    {
+      "at": "2026-07-23T14:30:00.000Z",
+      "event": "Builder implemented typed TAB events, responsive score rows, and visual playback controls"
+    },
+    {
+      "at": "2026-07-23T14:35:00.000Z",
+      "event": "Verifier passed typecheck, lint, production build, desktop browser checks, narrow browser checks, and playback interaction"
+    },
+    {
+      "at": "2026-07-23T14:37:00.000Z",
+      "event": "Design Critic approved with one low-severity future audio follow-up"
+    },
+    {
+      "at": "2026-07-23T14:38:00.000Z",
+      "event": "Code Critic approved with no findings; Supervisor marked the run done"
+    },
+    {
+      "at": "2026-07-23T14:29:40.200Z",
+      "event": "Refinement requested for builder: Replace the custom SVG score renderer with OpenSheetMusicDisplay using MusicXML as the notation contract; preserve responsive browser rendering and accessible states."
+    },
+    {
+      "at": "2026-07-23T14:45:00.000Z",
+      "event": "Builder replaced custom engraving with OSMD and added a MusicXML adapter"
+    },
+    {
+      "at": "2026-07-23T14:49:00.000Z",
+      "event": "Verifier passed typecheck, lint, production build, OSMD desktop and narrow rendering, width fit, and native cursor checks"
+    },
+    {
+      "at": "2026-07-23T14:50:00.000Z",
+      "event": "Design and code critics approved the OSMD refinement; Supervisor marked the run done"
+    },
+    {
+      "at": "2026-07-23T14:36:07.940Z",
+      "event": "Refinement requested for builder: Prioritize native OSMD/Guitar Pro visual grammar over the existing site theme. Replace free-form chord and section text with MusicXML harmony and rehearsal semantics, use neutral score typography, and restyle the score player as a dedicated notation workspace."
+    },
+    {
+      "at": "2026-07-23T15:00:00.000Z",
+      "event": "Builder replaced free-form chord text with native MusicXML harmony and applied neutral Guitar Pro-style player chrome"
+    },
+    {
+      "at": "2026-07-23T15:04:00.000Z",
+      "event": "Verifier passed typecheck, lint, build, desktop and narrow visual checks, harmony checks, and width-fit checks"
+    },
+    {
+      "at": "2026-07-23T15:05:00.000Z",
+      "event": "Design and code critics approved the native OSMD visual refinement; Supervisor marked the run done"
+    },
+    {
+      "at": "2026-07-23T14:43:19.425Z",
+      "event": "Refinement requested for builder: Replace OSMD and MusicXML rendering with alphaTab using alphaTex, GuitarPro notation mode, native standard-notation plus TAB layout, and alphaTab's cursor/player API surface."
+    },
+    {
+      "at": "2026-07-23T15:49:00.000Z",
+      "event": "Builder replaced OSMD/MusicXML with alphaTab/alphaTex, Guitar Pro notation mode, local notation assets, and native synthesizer playback."
+    },
+    {
+      "at": "2026-07-23T15:52:00.000Z",
+      "event": "Verifier passed typecheck, lint, production build, desktop and mobile browser rendering, width fit, and alphaTab cursor/player interaction."
+    },
+    {
+      "at": "2026-07-23T15:53:00.000Z",
+      "event": "Design and code critics approved the alphaTab refinement; Supervisor marked the run done."
+    },
+    {
+      "at": "2026-07-23T14:52:12.096Z",
+      "event": "Refinement requested for builder: Convert Songs to a chord-only alphaTab chart: render a single standard staff with chord symbols and bar structure, use empty beats instead of rests or notes, remove tablature and playback controls."
+    },
+    {
+      "at": "2026-07-23T15:58:00.000Z",
+      "event": "Builder converted alphaTab output to chord-only standard staves and removed TAB, notes, rests, and playback UI."
+    },
+    {
+      "at": "2026-07-23T16:00:00.000Z",
+      "event": "Verifier and critics approved desktop and mobile chord-only rendering; Supervisor marked the run done."
+    },
+    {
+      "at": "2026-07-23T14:57:12.121Z",
+      "event": "Refinement requested for builder: Add an in-page chord-font selector to the alphaTab chord chart so users can switch among suitable font treatments and immediately compare the re-rendered score."
+    },
+    {
+      "at": "2026-07-23T16:07:00.000Z",
+      "event": "Builder added five live chord-font options using alphaTab EffectChordNames rendering resources."
+    },
+    {
+      "at": "2026-07-23T16:09:00.000Z",
+      "event": "Verifier confirmed distinct SVG font output, desktop and mobile fit, and successful build; critics approved and Supervisor marked the run done."
+    },
+    {
+      "at": "2026-07-23T15:07:44.915Z",
+      "event": "Refinement requested for builder: Add a dedicated music-font style lab page with a symbol-rich standard-notation and TAB alphaTab demo, and switchable Bravura, Petaluma, Gootville/Gonville, Finale Maestro, MScore/Emmentaler, and Leland SMuFL fonts using font-specific metadata."
+    },
+    {
+      "at": "2026-07-24T00:20:00.000+09:00",
+      "event": "Builder added the dedicated music-font style lab, local SMuFL assets and metadata, and the symbol-rich Ode to Joy standard-notation plus TAB demo."
+    },
+    {
+      "at": "2026-07-24T00:24:00.000+09:00",
+      "event": "Verifier confirmed production build, typecheck, lint, six-font browser switching, symbol coverage, and desktop pane fit."
+    },
+    {
+      "at": "2026-07-24T00:25:00.000+09:00",
+      "event": "Design and code reviews approved the refinement; Supervisor marked the run done."
+    },
+    {
+      "at": "2026-07-23T15:24:49.253Z",
+      "event": "Refinement requested for builder: Make Finale Maestro the default engraving font and add a separate chord-name font selector for Edwin, JazzCord, and Campania on the music font lab."
+    },
+    {
+      "at": "2026-07-24T00:34:00.000+09:00",
+      "event": "Builder made Finale Maestro the default and added locally loaded Edwin, JazzCord, and Campania choices for alphaTab chord names."
+    },
+    {
+      "at": "2026-07-24T00:36:00.000+09:00",
+      "event": "Verifier confirmed typecheck, lint, production build, all three chord-font switches, stable Finale Maestro engraving, and browser evidence."
+    },
+    {
+      "at": "2026-07-24T00:37:00.000+09:00",
+      "event": "Design and code reviews approved the refinement; Supervisor marked the run done."
+    },
+    {
+      "at": "2026-07-23T15:30:46.338Z",
+      "event": "Refinement requested for builder: Finalize Finale Maestro plus Edwin for production Songs chord charts, remove the experimental chord-font selector from Songs, and retain the style lab for reference."
+    },
+    {
+      "at": "2026-07-24T00:43:00.000+09:00",
+      "event": "Builder finalized Finale Maestro plus Edwin in production Songs and removed the experimental selector."
+    },
+    {
+      "at": "2026-07-24T00:45:00.000+09:00",
+      "event": "Verifier confirmed build, typecheck, lint, ten SVG systems, fixed font metadata, selector removal, and pane fit."
+    },
+    {
+      "at": "2026-07-24T00:46:00.000+09:00",
+      "event": "Design and code reviews approved the final typography refinement; Supervisor marked the run done."
+    },
+    {
+      "at": "2026-07-23T15:34:09.488Z",
+      "event": "Refinement requested for builder: Remove all left-side staff and track labels from production chord charts so every score system starts at the same horizontal origin and measure columns remain aligned across rows."
+    },
+    {
+      "at": "2026-07-24T00:51:00.000+09:00",
+      "event": "Builder disabled all single-track and multi-track labels beside production score systems."
+    },
+    {
+      "at": "2026-07-24T00:53:00.000+09:00",
+      "event": "Verifier confirmed build, typecheck, lint, no left-side label, and matching system origins across representative rows."
+    },
+    {
+      "at": "2026-07-24T00:54:00.000+09:00",
+      "event": "Design and code reviews approved the measure-grid alignment refinement; Supervisor marked the run done."
+    },
+    {
+      "at": "2026-07-23T15:36:39.286Z",
+      "event": "Refinement requested for builder: Simplify production song detail pages to title, artist, and score only: remove duplicate alphaTab score title and artist metadata, remove descriptive metadata summary, and remove all Chord Chart / Finale Maestro / Edwin header chrome above the score."
+    },
+    {
+      "at": "2026-07-24T01:01:00.000+09:00",
+      "event": "Builder reduced production song detail pages to title, artist, and score and removed duplicate score metadata and renderer chrome."
+    },
+    {
+      "at": "2026-07-24T01:03:00.000+09:00",
+      "event": "Verifier confirmed build, typecheck, lint, one title, one artist, no redundant labels, and successful score rendering."
+    },
+    {
+      "at": "2026-07-24T01:04:00.000+09:00",
+      "event": "Design and code reviews approved the simplified song-detail refinement; Supervisor marked the run done."
+    },
+    {
+      "at": "2026-07-23T15:42:56.846Z",
+      "event": "Refinement requested for builder: Force every production score system, including a short final system, to occupy the same full available width with matching left and right boundaries."
+    },
+    {
+      "at": "2026-07-24T01:09:00.000+09:00",
+      "event": "Builder enabled alphaTab final-system justification for all production song charts."
+    },
+    {
+      "at": "2026-07-24T01:11:00.000+09:00",
+      "event": "Verifier confirmed build, typecheck, lint, full-width final-system behavior, and pane fit."
+    },
+    {
+      "at": "2026-07-24T01:12:00.000+09:00",
+      "event": "Design and code reviews approved the equal-system-width refinement; Supervisor marked the run done."
+    },
+    {
+      "at": "2026-07-23T15:45:45.865Z",
+      "event": "Refinement requested for builder: Increase vertical separation between the initial tempo marking and the first chord name so they never collide, while preserving the simple title-artist-score layout and aligned systems."
+    },
+    {
+      "at": "2026-07-24T01:17:00.000+09:00",
+      "event": "Builder increased effect-band spacing between the initial tempo marking and first chord name."
+    },
+    {
+      "at": "2026-07-24T01:19:00.000+09:00",
+      "event": "Verifier confirmed build, typecheck, lint, visible tempo-to-chord separation, and preserved system alignment."
+    },
+    {
+      "at": "2026-07-24T01:20:00.000+09:00",
+      "event": "Design and code reviews approved the annotation-spacing refinement; Supervisor marked the run done."
+    },
+    {
+      "at": "2026-07-23T15:48:07.768Z",
+      "event": "Refinement requested for builder: Hide all measure numbers, move chord names slightly lower while retaining a readable gap above the staff, and replace Edwin with a slightly larger Google Fonts Charm typeface in production song charts."
+    },
+    {
+      "at": "2026-07-24T01:24:00.000+09:00",
+      "event": "Builder hid measure numbers, integrated Google Fonts Charm Bold, increased chord names to 17px, and adjusted chord-to-staff spacing."
+    },
+    {
+      "at": "2026-07-24T01:27:00.000+09:00",
+      "event": "Verifier confirmed build, typecheck, lint, hidden measure numbers, Charm rendering, readable chord size, and preserved tempo separation."
+    },
+    {
+      "at": "2026-07-24T01:28:00.000+09:00",
+      "event": "Design and code reviews approved the Charm typography refinement; Supervisor marked the run done."
+    },
+    {
+      "at": "2026-07-23T15:54:33.744Z",
+      "event": "Refinement requested for builder: Add a production chord-font comparison selector for Libre Baskerville, DM Serif Display, Literata (interpreting the requested Liberata), DM Serif Text, and Scheherazade New, with a larger readable chord size and preserved score alignment."
+    },
+    {
+      "at": "2026-07-24T01:34:00.000+09:00",
+      "event": "Builder added the five-family Google Fonts chord selector and standardized comparison size at 19px."
+    },
+    {
+      "at": "2026-07-24T01:37:00.000+09:00",
+      "event": "Verifier confirmed build, typecheck, lint, all five font switches, nine-system rendering, and stable layout."
+    },
+    {
+      "at": "2026-07-24T01:38:00.000+09:00",
+      "event": "Design and code reviews approved the five-font comparison refinement; Supervisor marked the run done."
+    },
+    {
+      "at": "2026-07-23T16:03:32.644Z",
+      "event": "Refinement requested for builder: Finalize Scheherazade New as the production chord font, remove the comparison selector, and left-align chord names at their beat/bar anchor so long first chords never extend left of a measure boundary."
+    },
+    {
+      "at": "2026-07-24T01:10:00.000+09:00",
+      "event": "Builder fixed Scheherazade New at 19px, removed the production selector, and made chord names grow rightward from their alphaTab beat anchors."
+    },
+    {
+      "at": "2026-07-24T01:12:00.000+09:00",
+      "event": "Verifier confirmed build, typecheck, lint, selector removal, Scheherazade rendering, and text-anchor=start on all 34 visible chord labels."
+    },
+    {
+      "at": "2026-07-24T01:13:00.000+09:00",
+      "event": "Design and code reviews approved the final chord typography and measure-boundary alignment refinement; Supervisor marked the run done."
+    },
+    {
+      "at": "2026-07-23T16:22:17.850Z",
+      "event": "Refinement requested for builder: Render four measures per system on mobile as well as desktop, scaling the notation to the available phone width without horizontal overflow while preserving equal system widths and column alignment."
+    },
+    {
+      "at": "2026-07-24T01:24:00.000+09:00",
+      "event": "Builder fixed production charts to four measures per system at every viewport width while retaining compact mobile scaling."
+    },
+    {
+      "at": "2026-07-24T01:26:00.000+09:00",
+      "event": "Verifier confirmed typecheck, lint, build, four-column systems, and available-width fit; design and code reviews approved the refinement."
+    },
+    {
+      "at": "2026-07-23T16:25:44.098Z",
+      "event": "Refinement requested for builder: Reduce excessive horizontal padding around production song scores on mobile so four-measure systems use substantially more of the phone width, while preserving readable title spacing and desktop layout."
+    },
+    {
+      "at": "2026-07-24T01:28:00.000+09:00",
+      "event": "Builder reduced the phone score gutter to 4px while preserving the title inset and desktop gutters."
+    },
+    {
+      "at": "2026-07-24T01:30:00.000+09:00",
+      "event": "Verifier confirmed typecheck, lint, build, served responsive classes, and overflow-free rendering; design and code reviews approved the refinement."
+    },
+    {
+      "at": "2026-07-23T16:28:53.763Z",
+      "event": "Refinement requested for builder: Remove alphaTab's internal 35-unit horizontal page padding on mobile, since the surrounding page gutter is already minimal; keep vertical notation padding and desktop engraving margins unchanged."
+    },
+    {
+      "at": "2026-07-24T01:32:00.000+09:00",
+      "event": "Builder removed alphaTab's compact horizontal page padding while retaining vertical and desktop engraving margins."
+    },
+    {
+      "at": "2026-07-24T01:34:00.000+09:00",
+      "event": "Verifier confirmed typecheck, lint, build, overflow-free score rendering, and the compact padding configuration; design and code reviews approved the refinement."
+    },
+    {
+      "at": "2026-07-23T16:31:29.557Z",
+      "event": "Refinement requested for builder: Align the entire production song page, including title and alphaTab score, to the same responsive horizontal gutter and container system used by the global header on both mobile and desktop; remove page-specific gutter values and redundant inner score padding."
+    },
+    {
+      "at": "2026-07-24T01:36:00.000+09:00",
+      "event": "Builder aligned the song title and score to the global 24/40/64px gutter system and removed nested page and alphaTab horizontal margins."
+    },
+    {
+      "at": "2026-07-24T01:38:00.000+09:00",
+      "event": "Verifier confirmed typecheck, lint, build, matching global baselines, served gutter classes, and overflow-free rendering; design and code reviews approved the refinement."
+    },
+    {
+      "at": "2026-07-23T16:38:45.688Z",
+      "event": "Refinement requested for builder: Synchronize pnpm-lock.yaml with the new alphaTab dependency so Vercel's frozen pnpm install succeeds, then re-run deployment validation."
+    },
+    {
+      "at": "2026-07-24T01:41:00.000+09:00",
+      "event": "Builder synchronized pnpm-lock.yaml; frozen pnpm install, lint, and production build passed."
+    },
+    {
+      "at": "2026-07-24T01:42:00.000+09:00",
+      "event": "Verifier and reviewers approved the lockfile-only deployment refinement; Supervisor marked the run done."
+    }
+  ]
+}

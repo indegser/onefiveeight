@@ -1,0 +1,184 @@
+{
+  "screens": [
+    {
+      "id": "music-font-lab",
+      "name": "Music font style lab",
+      "purpose": "Compare SMuFL engraving fonts against the same symbol-rich guitar score.",
+      "screen_type": "detail",
+      "primary_action": "Select a music font",
+      "states": [
+        "loading font metadata",
+        "ready",
+        "font load error"
+      ]
+    },
+    {
+      "id": "song-score",
+      "name": "Song guitar score",
+      "purpose": "Let a guitarist read chord symbols and six-string tablature and follow the score directly in the browser.",
+      "screen_type": "detail",
+      "primary_action": "Play or pause score following",
+      "states": [
+        "ready with tablature",
+        "ready with chords only",
+        "playing",
+        "paused",
+        "empty or unavailable score"
+      ]
+    }
+  ],
+  "ux_rules": [
+    "Keep one dominant play/pause action; restart and tempo are subordinate.",
+    "Place transport controls immediately before the score they operate.",
+    "Treat chord names, notation, and TAB as aligned layers of one score rather than separate cards.",
+    "Render a clear chords-only message when tablature events are absent.",
+    "Use elapsed-time playback so pausing and resuming remain stable.",
+    "Avoid repeating a system label when the section heading already names the local context.",
+    "Reduce measures per row at narrow widths instead of forcing page-level horizontal scrolling."
+  ],
+  "component_map": [
+    {
+      "screen_id": "song-score",
+      "components": [
+        "existing song metadata header",
+        "client-side score player",
+        "compact transport bar",
+        "score section heading",
+        "responsive combined chord and TAB system",
+        "playback cursor",
+        "chords-only fallback note"
+      ]
+    }
+  ],
+  "design_rule_engine": {
+    "profile_id": "music-visual-instrument",
+    "hard_rule_sets": [
+      "design-principles",
+      "layout-rules"
+    ],
+    "heuristic_sets": [
+      "ux-heuristics"
+    ],
+    "allowed_pattern_sets": [
+      "core-allowed-patterns"
+    ],
+    "banned_pattern_sets": [
+      "core-banned-patterns"
+    ],
+    "review_rubric_id": "core-design-review"
+  },
+  "screen_contexts": [
+    {
+      "screen_id": "song-score",
+      "screen_type": "detail",
+      "layout_intent": "A dense but calm sheet-music canvas with compact controls and stable left alignment across headings, chord symbols, strings, and barlines.",
+      "interaction_risks": [
+        "Playback state is not obvious.",
+        "TAB numbers collide at narrow widths.",
+        "Transport chrome competes with the score.",
+        "Chord-only songs appear broken rather than intentionally supported."
+      ],
+      "required_states": [
+        "ready",
+        "playing",
+        "paused",
+        "chords-only",
+        "empty"
+      ],
+      "notes": [
+        "Baseline evidence: evidence/before-desktop.png.",
+        "Current page has no page-level horizontal overflow at 1440px.",
+        "Current renderer provides chord staff rows but no guitar TAB or playback controls."
+      ]
+    }
+  ],
+  "builder_constraints": [
+    {
+      "screen_id": "music-font-lab",
+      "constraints": [
+        "Keep the engraving-font and chord-font selectors in one compact control strip above the score.",
+        "Use Finale Maestro as the initial engraving font and provide Edwin, JazzCord, and Campania as independently switchable chord-name fonts.",
+        "Use one identical alphaTex demo for every font so visual comparisons remain valid.",
+        "Destroy and recreate AlphaTabApi when changing SMuFL fonts because alphaTab cannot swap music fonts dynamically.",
+        "Show loading and actionable error states while font files and metadata are fetched.",
+        "Fit the rendered score to the pane at desktop and narrow widths without hiding representative notation systems."
+      ],
+      "open_decisions": [
+        "Gootville represents the SMuFL-compatible Gonville lineage.",
+        "MScore represents the SMuFL-compatible MuseScore/Emmentaler lineage."
+      ]
+    },
+    {
+      "screen_id": "song-score",
+      "constraints": [
+        "Use Scheherazade New Bold at 19px as the fixed production chord font and remove the comparison selector.",
+        "Left-align every chord name at its beat or bar anchor so long chord names never extend left of a measure boundary.",
+        "Keep four measures in every system at phone widths, scaling the engraving to the available pane without horizontal overflow.",
+        "Use the global header gutter system for the entire song page: 24px on phones, 40px from medium widths, and 64px from large widths.",
+        "Do not add page-specific maximum widths, nested title gutters, or alphaTab horizontal page padding inside the global gutter.",
+        "Hide measure numbers on every system.",
+        "Position chord names slightly lower than the previous Edwin treatment while preserving a visible gap above the staff.",
+        "Keep at least one clear text-line of vertical separation between the initial tempo marking and first chord name; effect labels must never touch or visually merge.",
+        "Justify the final score system to the full available width even when it contains fewer measures; every system must share the same left and right boundaries.",
+        "Production song detail pages contain only the page title, artist, and score; do not repeat song metadata inside the score or add renderer, font, tempo, or chart header chrome.",
+        "Never render track names, staff names, instrument labels, or other content to the left of a score system; every system must reserve the same left origin so measure columns align across rows.",
+        "Use Finale Maestro engraving and Edwin chord names as the fixed production typography for Songs.",
+        "Keep font experimentation in the Score Lab and remove the font selector from production Songs chord charts.",
+        "Preserve the App Router server boundary and isolate playback state in the smallest practical client component.",
+        "Use existing theme tokens, Geist typography, and lucide icons; do not add a component library.",
+        "Keep the score background warm and quiet, with functional accent reserved for playback state.",
+        "Use responsive row chunking so the working pane fits before considering horizontal overflow.",
+        "Use semantic button elements with visible focus and accessible names.",
+        "Make string labels and fret values real accessible text where practical, while decorative lines remain hidden.",
+        "Keep proprietary Guitar Pro import/export explicitly outside the implementation."
+      ],
+      "open_decisions": [
+        "Audio synthesis remains out of scope.",
+        "Editing and file import remain future capabilities."
+      ]
+    }
+  ],
+  "review_targets": [
+    {
+      "screen_id": "music-font-lab",
+      "critical_judgments": [
+        "Finale Maestro and Edwin are selected on first load.",
+        "Edwin, JazzCord, and Campania visibly change chord-name lettering without changing the engraving font.",
+        "Each option visibly changes clefs, noteheads, rests, accidentals, flags, and repeat glyphs.",
+        "The same demo contains standard notation, TAB, chords, accidentals, rests, articulations, ties or slides, and repeat structures.",
+        "The selected font name and compatibility note are visible without duplicating labels.",
+        "Desktop and narrow layouts fit the available pane."
+      ],
+      "must_not_regress": [
+        "Existing Songs chord charts use the fixed Scheherazade New chord treatment without a local font selector.",
+        "The font lab does not depend on copyrighted song notation.",
+        "No horizontal page overflow."
+      ]
+    },
+    {
+      "screen_id": "song-score",
+      "critical_judgments": [
+        "The combined system reads unmistakably as guitar tablature.",
+        "The play/pause action is visually dominant but does not overpower the score.",
+        "Chord, fret, barline, and cursor alignment stays legible across representative rows.",
+        "Desktop and narrow layouts avoid page-level overflow and clipped supporting chrome.",
+        "Rendered section and system labels are not redundant."
+      ],
+      "must_not_regress": [
+        "Song navigation and metadata remain available.",
+        "Chord-only songs still render.",
+        "Existing repeat, ending, time-signature, and jump marks remain legible.",
+        "No cold techno chrome, bright accent blocks, or card fragmentation."
+      ]
+    }
+  ],
+  "visual_constraints": [
+    "Use warm paper-like surfaces and dark brown-black notation ink from existing theme tokens.",
+    "Use a finite 4/8/12/16/24 spacing rhythm.",
+    "Keep controls in one compact horizontal region with restrained borders and radius.",
+    "Render six evenly spaced TAB strings, left-side string labels, measure barlines, and fret numbers with mono typography.",
+    "Render the cursor as a thin muted-accent line spanning the active score layers.",
+    "At narrow widths, show fewer measures per row rather than shrinking fret numbers below a readable size."
+  ],
+  "human_checkpoints": []
+}

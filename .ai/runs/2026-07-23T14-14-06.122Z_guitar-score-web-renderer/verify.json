@@ -1,0 +1,21 @@
+{
+  "checks": [
+    {
+      "name": "Frozen pnpm install",
+      "status": "passed",
+      "details": "pnpm install --frozen-lockfile --ignore-scripts completed successfully."
+    },
+    {
+      "name": "ESLint",
+      "status": "passed",
+      "details": "No errors; eight unrelated pre-existing warnings remain."
+    },
+    {
+      "name": "Production build",
+      "status": "passed",
+      "details": "pnpm build completed successfully."
+    }
+  ],
+  "passed": true,
+  "blocking_issues": []
+}

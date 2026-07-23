@@ -14,6 +14,9 @@ importers:
       '@amplitude/analytics-browser':
         specifier: ^2.17.9
         version: 2.32.1
+      '@coderline/alphatab':
+        specifier: ^1.8.4
+        version: 1.8.4
       '@radix-ui/react-label':
         specifier: ^2.1.7
         version: 2.1.8(@types/react-dom@19.2.3(@types/react@19.2.7))(@types/react@19.2.7)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -191,6 +194,10 @@ packages:
 
   '@amplitude/plugin-web-vitals-browser@1.1.1':
     resolution: {integrity: sha512-SUVS5imRDwUQiaUXgvACiDV3851EnO4K7NXF94ldEX3aUejIWZI6Fq8XIwEZtemdCBn+JeRtmvMpAKfNMStBXg==}
+
+  '@coderline/alphatab@1.8.4':
+    resolution: {integrity: sha512-VN5rfTZZWgA63Ny1aDKCp02k3Qm9CHhg4Q9AnK0kHm7G+fNDNZo36TeToPDFoJ6VpB9+AHcCrHwHFUP1tKqdsw==}
+    engines: {node: '>=6.0.0'}
 
   '@emnapi/core@1.7.1':
     resolution: {integrity: sha512-o1uhUASyo921r2XtHYOHy7gdkGLge8ghBEQHMWmyJFoXlpU58kIrhhN3w26lpQb6dspetweapMn2CSNwQ8I4wg==}
@@ -2688,6 +2695,8 @@ snapshots:
       '@amplitude/analytics-core': 2.34.0
       tslib: 2.8.1
       web-vitals: 5.0.1
+
+  '@coderline/alphatab@1.8.4': {}
 
   '@emnapi/core@1.7.1':
     dependencies:

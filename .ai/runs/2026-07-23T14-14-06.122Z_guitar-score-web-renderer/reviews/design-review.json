@@ -1,0 +1,26 @@
+{
+  "approved": true,
+  "preview_evidence": [
+    "No rendered UI changed in this lockfile-only deployment refinement."
+  ],
+  "summary": {
+    "status": "pass",
+    "rationale": "The deployment-only lockfile synchronization does not alter the approved interface."
+  },
+  "findings": [],
+  "section_scores": [],
+  "profile_assessment": {
+    "selected_profile_id": "notation-workspace",
+    "fit_score": 5,
+    "anti_patterns_detected": [],
+    "notes": [
+      "No visual changes."
+    ]
+  },
+  "gates": {
+    "hard_rules_passed": true,
+    "needs_human_review": false,
+    "requires_refinement": false
+  },
+  "next_steps": []
+}
