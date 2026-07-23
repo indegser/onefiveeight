@@ -1,7 +1,7 @@
 {
   "run_id": "2026-07-23T14-14-06.122Z_guitar-score-web-renderer",
   "goal": "Build an app from docs/ideas/guitar-score-web-renderer.md",
-  "revision": 34,
+  "revision": 35,
   "phase": "done",
   "status": "done",
   "next_agent": "none",
@@ -125,6 +125,11 @@
     {
       "at": "2026-07-23T16:31:29.557Z",
       "note": "Align the entire production song page, including title and alphaTab score, to the same responsive horizontal gutter and container system used by the global header on both mobile and desktop; remove page-specific gutter values and redundant inner score padding.",
+      "target_agent": "builder"
+    },
+    {
+      "at": "2026-07-23T16:38:45.687Z",
+      "note": "Synchronize pnpm-lock.yaml with the new alphaTab dependency so Vercel's frozen pnpm install succeeds, then re-run deployment validation.",
       "target_agent": "builder"
     }
   ],
@@ -436,6 +441,18 @@
     {
       "at": "2026-07-24T01:38:00.000+09:00",
       "event": "Verifier confirmed typecheck, lint, build, matching global baselines, served gutter classes, and overflow-free rendering; design and code reviews approved the refinement."
+    },
+    {
+      "at": "2026-07-23T16:38:45.688Z",
+      "event": "Refinement requested for builder: Synchronize pnpm-lock.yaml with the new alphaTab dependency so Vercel's frozen pnpm install succeeds, then re-run deployment validation."
+    },
+    {
+      "at": "2026-07-24T01:41:00.000+09:00",
+      "event": "Builder synchronized pnpm-lock.yaml; frozen pnpm install, lint, and production build passed."
+    },
+    {
+      "at": "2026-07-24T01:42:00.000+09:00",
+      "event": "Verifier and reviewers approved the lockfile-only deployment refinement; Supervisor marked the run done."
     }
   ]
 }
