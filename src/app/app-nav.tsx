@@ -6,30 +6,24 @@ import { cn } from "@/lib/utils";
 
 const NAV_ITEMS = [
   { href: "/", label: "Canvas" },
-  { href: "/chords", label: "Chords" },
-  { href: "/voicings", label: "Voicings" },
-  { href: "/quiz", label: "Quiz" },
   { href: "/songs", label: "Songs" },
-  { href: "/music-fonts", label: "Score Lab" },
 ];
 
 export function AppNav() {
   const pathname = usePathname();
 
   return (
-    <header className="border-b border-gray-200 bg-white/90 backdrop-blur">
-      <div className="flex items-center justify-between gap-6 px-6 py-4 md:px-10 lg:px-16">
-        <div>
-          <p className="text-xs leading-4 font-semibold tracking-[0.28em] text-gray-400 uppercase">
-            One Five Eight
-          </p>
-          <p className="mt-1 text-sm text-gray-500">
-            Theory tools and song library
-          </p>
-        </div>
+    <header className="sticky top-0 z-50 border-b border-border/70 bg-background/90 font-[family-name:var(--font-geist-sans)] backdrop-blur-xl supports-[backdrop-filter]:bg-background/80">
+      <div className="flex h-16 items-center justify-between gap-4 px-5 md:px-10 lg:px-16">
+        <Link
+          href="/"
+          className="inline-flex min-h-11 shrink-0 items-center text-[15px] font-semibold tracking-[-0.03em] text-foreground transition-opacity hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring motion-reduce:transition-none"
+        >
+          One Five Eight
+        </Link>
         <nav
           aria-label="Primary"
-          className="flex flex-wrap items-center justify-end gap-2"
+          className="flex h-full items-stretch gap-1 sm:gap-2"
         >
           {NAV_ITEMS.map((item) => {
             const isActive =
@@ -41,11 +35,12 @@ export function AppNav() {
               <Link
                 key={item.href}
                 href={item.href}
+                aria-current={isActive ? "page" : undefined}
                 className={cn(
-                  "rounded-full px-4 py-2 text-sm font-medium transition-colors",
+                  "relative inline-flex min-h-11 items-center px-3 text-sm font-medium transition-colors after:absolute after:inset-x-3 after:bottom-0 after:h-0.5 after:origin-center after:bg-foreground after:transition-transform after:duration-200 after:content-[''] focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-ring motion-reduce:transition-none motion-reduce:after:transition-none",
                   isActive
-                    ? "bg-gray-900 text-white"
-                    : "bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-gray-900",
+                    ? "text-foreground after:scale-x-100"
+                    : "text-muted-foreground after:scale-x-0 hover:text-foreground hover:after:scale-x-100",
                 )}
               >
                 {item.label}

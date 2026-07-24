@@ -1,0 +1,67 @@
+{
+  "epics": [
+    {
+      "id": "epic-remove-quiz-chords",
+      "title": "Remove the Quiz and Chords website surfaces",
+      "tasks": [
+        {
+          "id": "task-remove-routes",
+          "title": "Remove the Quiz and Chords App Router routes",
+          "implementation_area": "render",
+          "acceptance_criteria": [
+            "The Next.js App Router no longer contains page implementations for /quiz or /chords.",
+            "Route-local components used only by the removed pages are removed.",
+            "Unrelated music utilities and website pages remain unchanged.",
+            "The Builder follows the repository design-rule-engine and vercel:nextjs route conventions."
+          ],
+          "dependencies": [],
+          "done_definition": [
+            "src/app/quiz and src/app/chords no longer exist as route segments."
+          ]
+        },
+        {
+          "id": "task-remove-navigation",
+          "title": "Remove navigation entry points to the deleted routes",
+          "implementation_area": "behavior",
+          "acceptance_criteria": [
+            "The shared primary navigation no longer includes Quiz or Chords links.",
+            "The remaining navigation items retain their order and active-state behavior.",
+            "No runtime source file links to /quiz or /chords."
+          ],
+          "dependencies": [
+            "task-remove-routes"
+          ],
+          "done_definition": [
+            "Runtime navigation exposes only the remaining supported routes."
+          ]
+        },
+        {
+          "id": "task-verify-removal",
+          "title": "Verify route and navigation removal",
+          "implementation_area": "verification",
+          "acceptance_criteria": [
+            "A source search finds no runtime links or route files for /quiz or /chords.",
+            "The production route manifest omits /quiz and /chords.",
+            "The rendered shared navigation omits Quiz and Chords while a representative remaining page loads successfully.",
+            "Lint, production build, and AI run validation pass."
+          ],
+          "dependencies": [
+            "task-remove-navigation"
+          ],
+          "done_definition": [
+            "verify.json records deterministic and browser-backed evidence with no blocking issues."
+          ]
+        }
+      ]
+    }
+  ],
+  "assumptions": [
+    "The user's phrase 'quiz chords 페이지' refers to the two existing standalone routes /quiz and /chords.",
+    "Historical documentation and prior AI run artifacts should remain as project history.",
+    "Shared music helpers that may be used by other routes should not be removed solely because a deleted page imported them."
+  ],
+  "risks": [
+    "An undocumented external bookmark may still target a removed route and will receive the application's normal not-found response.",
+    "Deleting route-local components requires confirming that no remaining runtime source imports them."
+  ]
+}

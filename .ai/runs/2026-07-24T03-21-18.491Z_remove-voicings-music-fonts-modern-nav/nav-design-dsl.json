@@ -1,0 +1,50 @@
+{
+  "version": "0.1.0",
+  "screen_id": "shared-gnb",
+  "screen_type": "navigation-shell",
+  "goal": "Keep the two remaining product destinations immediately available in a calm one-row header on desktop and mobile.",
+  "layout": {
+    "grid_mode": "single-row-edge-aligned",
+    "regions": [
+      {
+        "id": "brand-home",
+        "purpose": "Product identity and conventional home anchor",
+        "priority": "high"
+      },
+      {
+        "id": "primary-navigation",
+        "purpose": "Direct access to Canvas and Songs with current-route orientation",
+        "priority": "high"
+      }
+    ]
+  },
+  "hierarchy": {
+    "primary_action": "Open the selected primary destination",
+    "secondary_actions": [
+      "Return home through the brand anchor"
+    ],
+    "emphasis_strategy": "text-weight-and-bottom-indicator-before-fill-or-decoration"
+  },
+  "states": [
+    "Canvas active",
+    "Songs active",
+    "keyboard focus",
+    "pointer hover",
+    "removed route not found"
+  ],
+  "interaction_rules": [
+    "Keep Canvas and Songs visible at every supported width",
+    "Use semantic links and aria-current for the active route",
+    "Maintain at least 44px target height",
+    "Do not require a menu expansion for two destinations",
+    "Use visible focus rings and motion-reduced transitions"
+  ],
+  "aesthetic_rules": [
+    "Product Craft Workbench register",
+    "Geist Sans interface typography",
+    "Semantic background, foreground, muted, border, and ring tokens",
+    "One restrained active-route line instead of filled navigation pills",
+    "No shadows, gradients, badges, or decorative containers"
+  ],
+  "open_questions": []
+}

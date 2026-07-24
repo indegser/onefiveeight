@@ -1,0 +1,78 @@
+{
+  "checks": [
+    {
+      "name": "npm run lint",
+      "status": "passed",
+      "details": "ESLint exited 0 with 7 pre-existing unused-variable warnings in unrelated Canvas, tracker, and shared library files and no errors."
+    },
+    {
+      "name": "npm run build",
+      "status": "passed",
+      "details": "Next.js 16.0.10 compiled, typechecked, and generated static pages successfully. The route table contains only /, /songs, /songs/[songId], and framework not-found output."
+    },
+    {
+      "name": "Production route manifest",
+      "status": "passed",
+      "details": ".next/server/app-paths-manifest.json omits /voicings, /music-fonts, /quiz, and /chords."
+    },
+    {
+      "name": "Removed route source and navigation references",
+      "status": "passed",
+      "details": "All four removed route page files are absent and targeted runtime source searches found no navigation link to them."
+    },
+    {
+      "name": "React best-practices review",
+      "status": "passed",
+      "details": "AppNav keeps its existing narrow client boundary, uses semantic Next.js links, stable href keys, aria-current, visible keyboard focus, and no unnecessary hook, state, effect, memoization, or abstraction."
+    },
+    {
+      "name": "git diff --check",
+      "status": "passed",
+      "details": "Git reported no whitespace errors."
+    }
+  ],
+  "passed": true,
+  "visual_checks": [
+    {
+      "name": "Before desktop and mobile GNB evidence",
+      "status": "passed",
+      "details": "Before screenshots .ai/runs/2026-07-24T03-21-18.491Z_remove-voicings-music-fonts-modern-nav/evidence/before-desktop.png and before-mobile.png show four filled pill links. At 390px the old header was 113px high and each nav link was 36px high."
+    },
+    {
+      "name": "After desktop GNB evidence",
+      "status": "passed",
+      "details": "Screenshot .ai/runs/2026-07-24T03-21-18.491Z_remove-voicings-music-fonts-modern-nav/evidence/after-desktop.png shows the one-row brand, Canvas, and Songs header with no filled pills, no stale route labels, and no framework overlay. clientWidth and scrollWidth both measured 1280px."
+    },
+    {
+      "name": "After 390px mobile GNB evidence",
+      "status": "passed",
+      "details": "Screenshot .ai/runs/2026-07-24T03-21-18.491Z_remove-voicings-music-fonts-modern-nav/evidence/after-mobile.png shows One Five Eight, Canvas, and Songs on one row. Header height is 65px including its border; clientWidth and scrollWidth both measured 390px."
+    },
+    {
+      "name": "Mobile target size and narrow-width fit",
+      "status": "passed",
+      "details": "At 390px the brand link measured 44px high and both nav links measured 64px high. At 320px all header links remained within x=20..300, confirming the GNB itself fits the narrow viewport without wrapping."
+    },
+    {
+      "name": "Active route and served styling",
+      "status": "passed",
+      "details": "Computed browser styles confirmed Geist / Geist Fallback on the header, 0px link radii, transparent link backgrounds, a 2px pseudo-element indicator, active scale=1, inactive scale=0 1, and aria-current=page moving correctly from Canvas on / to Songs on /songs."
+    },
+    {
+      "name": "Keyboard focus",
+      "status": "passed",
+      "details": "Tab navigation focused One Five Eight and then Canvas in document order; each received a visible 2px solid focus outline."
+    },
+    {
+      "name": "Removed route behavior",
+      "status": "passed",
+      "details": "Browser checks and direct HTTP requests confirmed /voicings and /music-fonts each return the normal 404 page with no framework error overlay."
+    },
+    {
+      "name": "Representative rows, redundant labels, and CSS boundary",
+      "status": "passed",
+      "details": "The header has one brand label and two destination labels with no obsolete subtitle or duplicate route explanation. No new reusable semantic CSS class, global rule, runtime token, row, or grid was introduced; computed served styles were verified instead."
+    }
+  ],
+  "blocking_issues": []
+}
