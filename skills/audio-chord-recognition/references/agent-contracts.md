@@ -15,6 +15,10 @@ Save roles separately:
 
 Evidence producers do not choose final chords. The Musician Judgment role consumes candidates and form context.
 
+Validate `04_harmony_evidence.json` and `05_chord_candidates.json` against
+[the measurement-only evidence contract](evidence-contract.md). Their numeric
+`evidence_support` is not the final analysis `confidence`.
+
 ## Form Context
 
 Module mode requires:
@@ -144,6 +148,7 @@ For each decision:
 - choose a readable source-harmony label,
 - record rejected candidates and reasons,
 - preserve unresolved ambiguity.
+- keep external corroboration separate from source evidence and record conflicts.
 
 ```json
 {

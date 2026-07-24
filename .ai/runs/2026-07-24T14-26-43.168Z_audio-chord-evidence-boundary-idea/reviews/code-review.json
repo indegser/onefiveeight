@@ -1,0 +1,8 @@
+{
+  "approved": true,
+  "findings": [],
+  "next_steps": [
+    "Keep final chord adjudication outside extract_harmony_evidence.py as the skill evolves.",
+    "Retain the realistic-audio, mismatched-source, partial-evidence, and installed-skill synchronization checks in future revisions."
+  ]
+}

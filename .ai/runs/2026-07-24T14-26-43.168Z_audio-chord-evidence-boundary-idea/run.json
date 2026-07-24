@@ -1,0 +1,89 @@
+{
+  "run_id": "2026-07-24T14-26-43.168Z_audio-chord-evidence-boundary-idea",
+  "goal": "Build an app from /tmp/audio-chord-evidence-boundary-idea.md",
+  "revision": 2,
+  "phase": "done",
+  "status": "done",
+  "next_agent": "none",
+  "stack": {
+    "frontend": "nextjs",
+    "ui": "shadcn-ui",
+    "backend": "supabase",
+    "language": "typescript"
+  },
+  "inputs": {
+    "idea_file": "/tmp/audio-chord-evidence-boundary-idea.md",
+    "constraints": [],
+    "brand_critical": false
+  },
+  "artifacts": {
+    "plan": ".ai/runs/2026-07-24T14-26-43.168Z_audio-chord-evidence-boundary-idea/plan.json",
+    "memory": ".ai/runs/2026-07-24T14-26-43.168Z_audio-chord-evidence-boundary-idea/memory.json",
+    "design": ".ai/runs/2026-07-24T14-26-43.168Z_audio-chord-evidence-boundary-idea/design.json",
+    "build": ".ai/runs/2026-07-24T14-26-43.168Z_audio-chord-evidence-boundary-idea/build.json",
+    "verify": ".ai/runs/2026-07-24T14-26-43.168Z_audio-chord-evidence-boundary-idea/verify.json",
+    "design_review": ".ai/runs/2026-07-24T14-26-43.168Z_audio-chord-evidence-boundary-idea/reviews/design-review.json",
+    "code_review": ".ai/runs/2026-07-24T14-26-43.168Z_audio-chord-evidence-boundary-idea/reviews/code-review.json"
+  },
+  "approvals": {
+    "brand": false,
+    "data_model": false,
+    "destructive_flows": false
+  },
+  "blockers": [],
+  "decisions": [],
+  "risks": [],
+  "refinement_notes": [
+    {
+      "at": "2026-07-24T14:38:52.208Z",
+      "note": "Code review requires partial_evidence status for weak rhythm, per-source frame times, non-authoritative recurrence descriptors, and actionable explicit-binary and conversion failures.",
+      "target_agent": "builder"
+    }
+  ],
+  "history": [
+    {
+      "at": "2026-07-24T14:26:43.181Z",
+      "event": "Initialized run from /tmp/audio-chord-evidence-boundary-idea.md"
+    },
+    {
+      "at": "2026-07-24T14:29:00.000Z",
+      "event": "Planner completed plan.json; Supervisor routed to Design Agent"
+    },
+    {
+      "at": "2026-07-24T14:31:00.000Z",
+      "event": "Design Agent completed non-visual workflow design; Supervisor routed to Builder"
+    },
+    {
+      "at": "2026-07-24T14:38:00.000Z",
+      "event": "Builder completed skill, evidence tooling, tests, realistic audio check, and installed-skill synchronization; Supervisor routed to Verifier"
+    },
+    {
+      "at": "2026-07-24T14:41:00.000Z",
+      "event": "Verifier passed all applicable deterministic checks; Supervisor routed to Design Critic"
+    },
+    {
+      "at": "2026-07-24T14:43:00.000Z",
+      "event": "Design Critic approved the non-visual workflow; Supervisor routed to Code Critic"
+    },
+    {
+      "at": "2026-07-24T14:38:52.209Z",
+      "event": "Refinement requested for builder: Code review requires partial_evidence status for weak rhythm, per-source frame times, non-authoritative recurrence descriptors, and actionable explicit-binary and conversion failures."
+    },
+    {
+      "at": "2026-07-24T14:48:00.000Z",
+      "event": "Builder completed requested refinement and reinstalled the validated skill; Supervisor routed to Verifier"
+    },
+    {
+      "at": "2026-07-24T14:51:00.000Z",
+      "event": "Verifier passed the refined implementation, realistic audio, mismatched-stem, and installed-skill checks; Supervisor routed to Design Critic"
+    },
+    {
+      "at": "2026-07-24T14:54:00.000Z",
+      "event": "Design Critic approved the refined non-visual evidence and adjudication workflow; Supervisor routed to Code Critic"
+    },
+    {
+      "at": "2026-07-24T14:57:00.000Z",
+      "event": "Code Critic confirmed all refinement findings were resolved; Supervisor marked the run done"
+    }
+  ]
+}

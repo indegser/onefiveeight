@@ -19,6 +19,14 @@ These heuristics guide the Musician Judgment Agent. They are not a scoring formu
 - Distinguish detected sonority from chart label. A dense mix can contain many pitch classes without requiring an over-specific chord name.
 - When evidence conflicts, preserve alternatives instead of inventing certainty.
 
+## Metrical Adjudication
+
+- Treat half-time, observed-pulse, and double-time tempo outputs as hypotheses.
+- Select the musician-facing tempo and beat grid through harmonic rhythm, phrase length, pickups, cadence placement, and readable bar structure.
+- Compare multiple anchor phases before declaring a downbeat. Beat trackers often miss pickups or the first clear pulse.
+- In standalone mode, keep measures provisional until recurrence and cadence evidence support the grid.
+- Do not let the evidence extractor freeze bars or form.
+
 ## Dense Mix Evidence Priority
 
 1. Bass stem or stable low-register evidence.
@@ -77,6 +85,13 @@ Examples:
 - Compare verse/chorus repeats before finalizing.
 - Reuse the interpretation with better evidence when repeated sections are harmonically equivalent.
 - Allow meaningful variation between repeats, but do not let local noise create fake reharmonizations.
+
+## External Corroboration
+
+- Treat external chord charts as secondary references, not source-audio evidence.
+- Record the URL, agreement, conflicts, and whether the reference changed an interpretation.
+- Never let an external chart silently override stable bass or harmonic-source evidence.
+- When the external chart and audio disagree, preserve the conflict and prefer the label that best explains the supplied recording.
 
 ## Context Patterns
 

@@ -1,0 +1,136 @@
+{
+  "epics": [
+    {
+      "id": "epic-boundary",
+      "title": "Separate deterministic evidence from musical adjudication",
+      "tasks": [
+        {
+          "id": "contract-boundary",
+          "title": "Define script and agent responsibilities",
+          "implementation_area": "behavior",
+          "acceptance_criteria": [
+            "The skill states that scripts measure evidence and never authoritatively select final chords, form, meter level, or extensions.",
+            "The agent owns metrical-level selection, provisional form, functional labels, recurrence consensus, inversions, extensions, and unresolved ambiguity.",
+            "External chord charts are optional corroboration with explicit provenance and cannot silently override source-audio evidence."
+          ],
+          "dependencies": [],
+          "done_definition": [
+            "SKILL.md remains concise and imperative.",
+            "Detailed evidence and adjudication fields live in a directly linked artifact contract."
+          ]
+        },
+        {
+          "id": "contract-evidence",
+          "title": "Specify reusable evidence artifacts",
+          "implementation_area": "data",
+          "acceptance_criteria": [
+            "Evidence includes tempo-level and beat-grid hypotheses, source-specific chroma, bass candidates, chord candidates, recurrence descriptors, warnings, and provenance.",
+            "Candidate artifacts include do_not_select_automatically set to true and preserve at least two plausible options for uncertain segments.",
+            "Evidence strength is distinct from agent-assigned decision confidence."
+          ],
+          "dependencies": [
+            "contract-boundary"
+          ],
+          "done_definition": [
+            "The contract includes concrete standalone JSON examples and invariants.",
+            "Existing module-mode form coordinates remain supported."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "epic-tooling",
+      "title": "Add deterministic measurement tools",
+      "tasks": [
+        {
+          "id": "preprocess-portability",
+          "title": "Make audio preprocessing portable",
+          "implementation_area": "integration",
+          "acceptance_criteria": [
+            "Preprocessing resolves ffmpeg and ffprobe from PATH and common package-manager locations.",
+            "When ffprobe is unavailable, supported Python audio metadata provides a safe inspection fallback.",
+            "Failures report actionable missing-tool or unsupported-format diagnostics."
+          ],
+          "dependencies": [
+            "contract-evidence"
+          ],
+          "done_definition": [
+            "Existing preprocessing behavior remains compatible.",
+            "Automated tests cover direct discovery and fallback behavior."
+          ]
+        },
+        {
+          "id": "extract-evidence",
+          "title": "Implement harmony evidence extraction",
+          "implementation_area": "behavior",
+          "acceptance_criteria": [
+            "The script extracts multiple tempo-level hypotheses, beat-grid candidates, key hypotheses, source-specific chroma, low-register bass candidates, and multiple chord candidates.",
+            "The script emits evidence only and never emits a final harmony analysis or selected chord.",
+            "Extension candidates receive a complexity penalty unless their added tones have stable source support.",
+            "The script accepts a harmonic stem and full mix separately and remains usable with the full mix alone."
+          ],
+          "dependencies": [
+            "contract-evidence",
+            "preprocess-portability"
+          ],
+          "done_definition": [
+            "A deterministic JSON artifact is produced from a short audio fixture and the supplied MP3.",
+            "Every candidate segment is explicitly marked as non-authoritative."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "epic-quality",
+      "title": "Validate the hybrid workflow",
+      "tasks": [
+        {
+          "id": "validate-contracts",
+          "title": "Strengthen validators and tests",
+          "implementation_area": "verification",
+          "acceptance_criteria": [
+            "Validation rejects candidate evidence that appears authoritative, lacks multiple hypotheses where required, or conflates evidence support with final confidence.",
+            "Unit tests cover metrical ambiguity, candidate preservation, extension restraint, and preprocessing fallback.",
+            "The final analysis validator remains backward compatible with standalone and module artifacts."
+          ],
+          "dependencies": [
+            "extract-evidence"
+          ],
+          "done_definition": [
+            "All skill tests pass.",
+            "Repository AI run validation passes."
+          ]
+        },
+        {
+          "id": "forward-check",
+          "title": "Exercise the skill on realistic audio",
+          "implementation_area": "verification",
+          "acceptance_criteria": [
+            "The supplied recording yields both approximately 70 BPM and double-time alternatives without the script choosing between them.",
+            "Evidence contains plausible E-flat-major and C-minor key hypotheses plus multiple chord candidates.",
+            "The installed Codex skill is synchronized from the repository source after validation."
+          ],
+          "dependencies": [
+            "validate-contracts"
+          ],
+          "done_definition": [
+            "The generated evidence is reviewed without using the prior final chart as hidden ground truth.",
+            "Skill source and installed copy report no drift."
+          ]
+        }
+      ]
+    }
+  ],
+  "assumptions": [
+    "The active Python environment provides numpy, librosa, scipy, and soundfile for evidence extraction; the script must fail clearly when optional dependencies are missing.",
+    "Demucs remains optional and stem separation is not embedded into the evidence extractor.",
+    "No rendered product UI or production data is changed.",
+    "The supplied MP3 is a validation input and is not committed."
+  ],
+  "risks": [
+    "Numeric chord templates can over-label sevenths and major qualities when vocals or dense arrangements dominate the chroma.",
+    "Beat trackers can return half-time or double-time pulses and miss the first downbeat.",
+    "Adding too much automated smoothing could recreate an authoritative chord-answerer despite the intended boundary.",
+    "Environment-specific multimedia tools may exist outside PATH."
+  ]
+}

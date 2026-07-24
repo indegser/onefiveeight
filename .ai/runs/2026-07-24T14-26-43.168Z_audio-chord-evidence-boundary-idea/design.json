@@ -1,0 +1,178 @@
+{
+  "screens": [
+    {
+      "id": "evidence-extraction-workflow",
+      "name": "Harmony evidence extraction workflow",
+      "purpose": "Produce inspectable, non-authoritative measurements for an agent to adjudicate.",
+      "screen_type": "non-visual-skill-workflow",
+      "states": [
+        "source-ready",
+        "missing-dependency",
+        "evidence-ready",
+        "partial-evidence",
+        "validation-error"
+      ]
+    },
+    {
+      "id": "musician-adjudication-workflow",
+      "name": "Musician adjudication workflow",
+      "purpose": "Turn measured hypotheses into form-aware chord decisions while preserving alternatives.",
+      "screen_type": "non-visual-agent-workflow",
+      "states": [
+        "provisional-form",
+        "candidate-review",
+        "recurrence-consensus",
+        "unresolved",
+        "analysis-ready"
+      ]
+    }
+  ],
+  "ux_rules": [
+    "Present evidence extraction before musician adjudication and never imply that numeric rank equals a final chord.",
+    "Keep evidence support, decision confidence, and external corroboration as separate provenance layers.",
+    "Expose half-time, nominal, and double-time metrical hypotheses when plausible rather than hiding octave ambiguity.",
+    "Require the agent to state why a selected label explains bass motion, local key, phrase function, and recurrence peers.",
+    "Use actionable diagnostics for missing tools and optional dependencies.",
+    "Keep generated output compact enough for an agent to compare candidates without re-reading raw frame data."
+  ],
+  "component_map": [
+    {
+      "screen_id": "evidence-extraction-workflow",
+      "components": [
+        "portable audio inspector",
+        "tempo hypothesis extractor",
+        "beat-grid candidate extractor",
+        "key hypothesis extractor",
+        "source-aware chroma summarizer",
+        "low-register bass summarizer",
+        "non-authoritative chord candidate generator",
+        "evidence validator"
+      ]
+    },
+    {
+      "screen_id": "musician-adjudication-workflow",
+      "components": [
+        "provisional form context",
+        "metrical-level decision",
+        "candidate comparison",
+        "recurrence consensus",
+        "extension and inversion policy",
+        "ambiguity ledger",
+        "final analysis validator"
+      ]
+    }
+  ],
+  "human_checkpoints": [],
+  "design_rule_engine": {
+    "profile_id": null,
+    "hard_rule_sets": [],
+    "heuristic_sets": [],
+    "allowed_pattern_sets": [],
+    "banned_pattern_sets": [],
+    "review_rubric_id": "not-applicable-non-visual-skill"
+  },
+  "screen_contexts": [
+    {
+      "screen_id": "evidence-extraction-workflow",
+      "screen_type": "non-visual-skill-workflow",
+      "layout_intent": "Use staged JSON artifacts with concise summaries and raw evidence references.",
+      "interaction_risks": [
+        "Treating the highest template score as authoritative.",
+        "Suppressing half-time or double-time tempo alternatives.",
+        "Allowing a vocal-dominated full mix to outweigh a harmonic source.",
+        "Emitting excessive frame-level data that obscures comparison."
+      ],
+      "required_states": [
+        "source-ready",
+        "missing-dependency",
+        "evidence-ready",
+        "partial-evidence",
+        "validation-error"
+      ],
+      "notes": [
+        "No rendered product surface is changed."
+      ]
+    },
+    {
+      "screen_id": "musician-adjudication-workflow",
+      "screen_type": "non-visual-agent-workflow",
+      "layout_intent": "Keep decisions adjacent to candidates, evidence references, alternatives, and recurrence actions.",
+      "interaction_risks": [
+        "Conflating evidence support with decision confidence.",
+        "Over-labeling extensions detected only in vocals.",
+        "Forcing repeated slots to match despite genuine variation.",
+        "Using an external chart as ground truth."
+      ],
+      "required_states": [
+        "provisional-form",
+        "candidate-review",
+        "recurrence-consensus",
+        "unresolved",
+        "analysis-ready"
+      ]
+    }
+  ],
+  "builder_constraints": [
+    {
+      "screen_id": "evidence-extraction-workflow",
+      "constraints": [
+        "Name the reusable tool extract_harmony_evidence.py rather than analyze_harmony.py.",
+        "Never emit chosen_chord, final confidence, final form, or a finished chord chart from the evidence extractor.",
+        "Set do_not_select_automatically to true at artifact and segment levels.",
+        "Use evidence_support naming for numeric candidate scores.",
+        "Retain at least two candidates for every emitted segment.",
+        "Apply a documented complexity penalty to seventh, extended, altered, and slash candidates unless stable source support exists.",
+        "Keep Demucs outside the extractor and accept optional harmonic and bass source paths.",
+        "Bound output size by aggregating over requested segment resolution."
+      ],
+      "open_decisions": [
+        "Exact stem-separation model remains caller-selected.",
+        "Agent-selected downbeat and form coordinates remain outside the extractor."
+      ]
+    },
+    {
+      "screen_id": "musician-adjudication-workflow",
+      "constraints": [
+        "Require explicit metrical-level and beat-grid selection before final beat-positioned harmony.",
+        "Require functional and recurrence reasoning for low- and medium-confidence decisions.",
+        "Keep external corroboration in a separate field with URL and agreement or conflict notes.",
+        "Preserve unresolved harmony rather than inventing precision."
+      ],
+      "open_decisions": []
+    }
+  ],
+  "review_targets": [
+    {
+      "screen_id": "evidence-extraction-workflow",
+      "critical_judgments": [
+        "The script measures rather than adjudicates.",
+        "Tempo and beat-grid ambiguity remains visible.",
+        "Full mix and harmonic-source evidence remain distinguishable.",
+        "Complexity penalties prevent automatic extension inflation.",
+        "Portable preprocessing failures are actionable."
+      ],
+      "must_not_regress": [
+        "Standalone analysis remains usable.",
+        "Module-mode approved form coordinates remain compatible.",
+        "The final analysis validator remains backward compatible."
+      ]
+    },
+    {
+      "screen_id": "musician-adjudication-workflow",
+      "critical_judgments": [
+        "The agent owns final chord and form decisions.",
+        "Evidence support is not presented as final confidence.",
+        "Recurrence is advisory and permits real variation.",
+        "External charts cannot silently override audio."
+      ],
+      "must_not_regress": [
+        "Alternatives and ambiguity remain visible.",
+        "Bass motion, cadence, and phrase function remain first-class evidence.",
+        "Generated accompaniment remains excluded."
+      ]
+    }
+  ],
+  "visual_constraints": [
+    "Not applicable: the task changes a non-visual skill, contracts, scripts, and tests only."
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "completed_tasks": [
+    "Separated deterministic measurement from agent musical adjudication in the skill workflow and evidence contract.",
+    "Added portable ffmpeg and ffprobe discovery, explicit-path diagnostics, conversion failure handling, and a Python soundfile metadata fallback.",
+    "Added a measurement-only harmony evidence extractor that preserves tempo-level, beat-grid, key, source-specific chroma, bass, chord, and recurrence hypotheses.",
+    "Preserved frame timing independently for full-mix and harmonic sources so differently trimmed stems remain safe.",
+    "Emitted valid partial_evidence instead of evidence_ready when tempo, beat-grid, or segment measurements are incomplete.",
+    "Added structural validation that forbids final-decision fields and confidence inside measurement artifacts.",
+    "Added complexity restraint for unsupported seventh candidates and retained multiple candidates per segment.",
+    "Added unit tests for preprocessing errors, metrical ambiguity, grid hypotheses, recurrence similarity, extension restraint, partial evidence, evidence contracts, and final-analysis compatibility.",
+    "Exercised the extractor on the supplied recording and on intentionally mismatched full-mix and stem durations without feeding it the previous final chord chart.",
+    "Installed the refined repository skill into the active Codex skill directory and confirmed zero drift."
+  ],
+  "changed_files": [
+    "skills/audio-chord-recognition/SKILL.md",
+    "skills/audio-chord-recognition/references/agent-contracts.md",
+    "skills/audio-chord-recognition/references/chord-heuristics.md",
+    "skills/audio-chord-recognition/references/evidence-contract.md",
+    "skills/audio-chord-recognition/scripts/preprocess_audio.py",
+    "skills/audio-chord-recognition/scripts/extract_harmony_evidence.py",
+    "skills/audio-chord-recognition/scripts/validate_evidence.py",
+    "skills/audio-chord-recognition/scripts/test_preprocess_audio.py",
+    "skills/audio-chord-recognition/scripts/test_extract_harmony_evidence.py",
+    "skills/audio-chord-recognition/scripts/test_validate_evidence.py",
+    ".ai/runs/2026-07-24T14-26-43.168Z_audio-chord-evidence-boundary-idea/run.json",
+    ".ai/runs/2026-07-24T14-26-43.168Z_audio-chord-evidence-boundary-idea/plan.json",
+    ".ai/runs/2026-07-24T14-26-43.168Z_audio-chord-evidence-boundary-idea/design.json",
+    ".ai/runs/2026-07-24T14-26-43.168Z_audio-chord-evidence-boundary-idea/build.json"
+  ],
+  "notes": [
+    "The extractor writes measurement artifacts only and cannot write a final chord chart.",
+    "The supplied recording produced approximately 69.84 and 139.68 BPM hypotheses, each requiring agent selection.",
+    "The supplied recording preserved multiple key hypotheses including C minor and E-flat major rather than automatically selecting one.",
+    "A 20-second full mix and 19.5-second harmonic stem completed successfully with 12 segments and 12 non-authoritative recurrence descriptors.",
+    "The installed skill source hash is e932861e0f1b32be930fe0e0e336fce6c90077e948dc1cb2b7202e16a29746d9.",
+    "No product UI, song data, or source audio was committed."
+  ],
+  "open_issues": []
+}
