@@ -1,0 +1,126 @@
+{
+  "screens": [
+    {
+      "id": "shared-gnb",
+      "name": "Shared global navigation",
+      "purpose": "Orient users and provide immediate access to the two remaining website sections.",
+      "screen_type": "navigation-shell",
+      "primary_action": "Open Canvas or Songs.",
+      "states": [
+        "Canvas active",
+        "Songs active",
+        "keyboard focus",
+        "pointer hover",
+        "removed route not found"
+      ]
+    }
+  ],
+  "ux_rules": [
+    "Keep both remaining destinations visible rather than hiding them behind a hamburger or sheet.",
+    "Use a conventional brand link to home, semantic nav and links, and aria-current on the active destination.",
+    "Use typography and a two-pixel bottom indicator for active state instead of filled pill backgrounds.",
+    "Give every brand and navigation link a minimum 44px touch target and visible focus treatment.",
+    "Keep the header in one 64px row at 390px and above with no horizontal overflow.",
+    "Remove obsolete destination labels without adding explanatory replacement copy."
+  ],
+  "component_map": [
+    {
+      "screen_id": "shared-gnb",
+      "components": [
+        "src/app/app-nav.tsx",
+        "Next.js Link",
+        "usePathname active-route state",
+        "src/app/voicings route segment (remove)",
+        "src/app/music-fonts route segment (remove)"
+      ]
+    }
+  ],
+  "human_checkpoints": [],
+  "design_rule_engine": {
+    "profile_id": "product-craft-workbench",
+    "hard_rule_sets": [
+      "specs/design-rule-engine/design-principles.md",
+      "specs/design-rule-engine/layout-rules.json"
+    ],
+    "heuristic_sets": [
+      "specs/design-rule-engine/ux-heuristics.md"
+    ],
+    "allowed_pattern_sets": [
+      "core-allowed-patterns"
+    ],
+    "banned_pattern_sets": [
+      "core-banned-patterns"
+    ],
+    "review_rubric_id": "core-design-review"
+  },
+  "screen_contexts": [
+    {
+      "screen_id": "shared-gnb",
+      "screen_type": "navigation-shell",
+      "layout_intent": "A single 64px edge-aligned product header with a left brand/home anchor and right-aligned Canvas and Songs text links.",
+      "interaction_risks": [
+        "Small link padding could leave mobile targets below 44px.",
+        "Brand copy and links could collide or wrap at 390px.",
+        "Active state could become ambiguous if it relies on subtle color alone.",
+        "Duplicating the old filled pills would fail the requested visual direction."
+      ],
+      "required_states": [
+        "Canvas active",
+        "Songs active",
+        "keyboard focus",
+        "pointer hover",
+        "removed route not found"
+      ],
+      "notes": [
+        "Before desktop evidence: .ai/runs/2026-07-24T03-21-18.491Z_remove-voicings-music-fonts-modern-nav/evidence/before-desktop.png.",
+        "Before mobile evidence: .ai/runs/2026-07-24T03-21-18.491Z_remove-voicings-music-fonts-modern-nav/evidence/before-mobile.png.",
+        "The existing mobile header is 113px tall and its four pill links are only 36px high."
+      ]
+    }
+  ],
+  "builder_constraints": [
+    {
+      "screen_id": "shared-gnb",
+      "constraints": [
+        "Follow vercel:nextjs App Router conventions by deleting route page files rather than adding redirects or replacement pages.",
+        "Follow vercel:shadcn direction through semantic Tailwind/shadcn tokens; no new component package is needed for two direct links.",
+        "Follow vercel:geist direction with restrained weight and tight tracking; do not add another font or use mono for normal navigation.",
+        "Keep the existing client boundary because usePathname is needed only in AppNav.",
+        "Render One Five Eight as the brand/home link and Canvas and Songs as the only primary nav labels.",
+        "Use a one-row h-16 header with consistent page gutters and no forced minimum width.",
+        "Use bg-background, text-foreground, text-muted-foreground, border-border, and ring-ring or equivalent existing semantic tokens.",
+        "Use aria-current='page' for the active link and a bottom pseudo-element indicator tied to current route state.",
+        "Use min-h-11 or equivalent on every interactive target, visible focus-visible outlines, and motion-reduce-safe transitions.",
+        "Do not add a hamburger, Sheet, icons, filled nav pills, shadows, gradients, global CSS variables, or new semantic CSS classes."
+      ],
+      "open_decisions": []
+    }
+  ],
+  "review_targets": [
+    {
+      "screen_id": "shared-gnb",
+      "critical_judgments": [
+        "The result reads as a modern product header, not a collection of chips.",
+        "One Five Eight, Canvas, and Songs fit on a single row at 390px.",
+        "The active route is unmistakable through aria-current, foreground contrast, and the bottom indicator.",
+        "All three links measure at least 44px high and show keyboard focus.",
+        "Desktop and mobile screenshots show no redundant subtitle, stale route label, or avoidable overflow."
+      ],
+      "must_not_regress": [
+        "Canvas and Songs remain directly reachable.",
+        "Canvas and Songs route content remains unchanged.",
+        "Previously removed Quiz and Chords routes remain absent.",
+        "No new reusable CSS rule is required to produce the active indicator."
+      ]
+    }
+  ],
+  "visual_constraints": [
+    "Header height is 64px on desktop and mobile.",
+    "Use a single subtle bottom border and translucent semantic background; no raised container or shadow.",
+    "Brand typography is concise Geist Sans with restrained semibold weight and tight tracking.",
+    "Navigation uses plain text targets with a two-pixel bottom active indicator.",
+    "Use 16px or 20px mobile horizontal gutter and preserve existing larger desktop page-gutter rhythm.",
+    "Avoid pills, badges, rounded navigation backgrounds, decorative icons, and more than one emphasis mechanism.",
+    "Desktop and 390px mobile document scrollWidth must equal clientWidth."
+  ]
+}
