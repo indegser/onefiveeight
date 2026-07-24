@@ -1,0 +1,33 @@
+{
+  "checks": [
+    {
+      "name": "TypeScript",
+      "status": "passed",
+      "details": "npx tsc --noEmit exited 0."
+    },
+    {
+      "name": "Focused ESLint",
+      "status": "passed",
+      "details": "src/app/songs/lead-sheet-renderer.tsx passed ESLint with --max-warnings=0."
+    },
+    {
+      "name": "Production build",
+      "status": "passed",
+      "details": "npm run build completed successfully and generated all Songs detail routes."
+    }
+  ],
+  "passed": true,
+  "visual_checks": [
+    {
+      "name": "Mobile chord offset 10",
+      "status": "passed",
+      "details": "At 390x844 the rendered score reports chord vertical offset 10. Plain, extended, superscripted, and slash chords sit close to the staff without line collisions. Evidence: evidence/after-mobile-chord-offset-10.png."
+    },
+    {
+      "name": "Mobile layout regression",
+      "status": "passed",
+      "details": "The page retains four bars per system, no horizontal overflow, no framework overlay, and no console errors."
+    }
+  ],
+  "blocking_issues": []
+}

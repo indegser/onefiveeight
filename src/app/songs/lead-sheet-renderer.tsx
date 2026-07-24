@@ -9,6 +9,8 @@ import styles from "./lead-sheet-renderer.module.css";
 const CHORD_FONT_FAMILY = "Score Scheherazade New";
 const MAJOR_SYMBOL = "△";
 const MINOR_SYMBOL = "-";
+const CHORD_EFFECT_BAND_PADDING_BOTTOM = 0;
+const CHORD_VERTICAL_OFFSET = 10;
 const COMPACT_CHORD_ATTRIBUTE = "data-compact-chord";
 const SVG_NAMESPACE = "http://www.w3.org/2000/svg";
 const ACCIDENTAL_SEGMENT_PATTERN = /([#b]+)/;
@@ -130,6 +132,7 @@ function formatChordNames(container: HTMLElement) {
     if (!text.getAttribute("style")?.includes(CHORD_FONT_FAMILY)) continue;
 
     text.setAttribute("text-anchor", "start");
+    text.setAttribute("dy", String(CHORD_VERTICAL_OFFSET));
     if (text.hasAttribute(COMPACT_CHORD_ATTRIBUTE)) continue;
 
     const chord = text.textContent ?? "";
@@ -154,11 +157,7 @@ export function LeadSheetRenderer({ song }: { song: Song }) {
   const [status, setStatus] = useState<"loading" | "ready" | "error">(
     "loading",
   );
-  const isImportedScore = Boolean(song.scorePath);
-  const alphaTex = useMemo(
-    () => (song.scorePath ? null : songToAlphaTex(song)),
-    [song],
-  );
+  const alphaTex = useMemo(() => songToAlphaTex(song), [song]);
 
   useEffect(() => {
     let disposed = false;
@@ -204,11 +203,12 @@ export function LeadSheetRenderer({ song }: { song: Song }) {
         ]);
         settings.display.layoutMode = alphaTab.LayoutMode.Page;
         settings.display.scale = compact ? 0.72 : 0.9;
-        settings.display.padding = isImportedScore ? [16, 60] : [0, 35];
+        settings.display.padding = [0, 35];
         settings.display.stretchForce = 0.8;
         settings.display.justifyLastSystem = true;
-        settings.display.barsPerRow = compact ? 3 : 4;
-        settings.display.effectBandPaddingBottom = 6;
+        settings.display.barsPerRow = 4;
+        settings.display.effectBandPaddingBottom =
+          CHORD_EFFECT_BAND_PADDING_BOTTOM;
         settings.display.resources.engravingSettings.fillFromSmufl(metadata);
         settings.display.resources.elementFonts.set(
           alphaTab.NotationElement.EffectChordNames,
@@ -226,23 +226,21 @@ export function LeadSheetRenderer({ song }: { song: Song }) {
           score.stylesheet.barNumberDisplay =
             alphaTab.model.BarNumberDisplay.Hide;
 
-          if (!isImportedScore) {
-            score.stylesheet.singleTrackTrackNamePolicy =
-              alphaTab.model.TrackNamePolicy.Hidden;
-            score.stylesheet.multiTrackTrackNamePolicy =
-              alphaTab.model.TrackNamePolicy.Hidden;
-            const transparent = alphaTab.model.Color.fromJson("#00000000");
-            for (const track of score.tracks) {
-              for (const staff of track.staves) {
-                for (const bar of staff.bars) {
-                  for (const voice of bar.voices) {
-                    for (const beat of voice.beats) {
-                      beat.style = new alphaTab.model.BeatStyle();
-                      beat.style.colors.set(
-                        alphaTab.model.BeatSubElement.StandardNotationRests,
-                        transparent,
-                      );
-                    }
+          score.stylesheet.singleTrackTrackNamePolicy =
+            alphaTab.model.TrackNamePolicy.Hidden;
+          score.stylesheet.multiTrackTrackNamePolicy =
+            alphaTab.model.TrackNamePolicy.Hidden;
+          const transparent = alphaTab.model.Color.fromJson("#00000000");
+          for (const track of score.tracks) {
+            for (const staff of track.staves) {
+              for (const bar of staff.bars) {
+                for (const voice of bar.voices) {
+                  for (const beat of voice.beats) {
+                    beat.style = new alphaTab.model.BeatStyle();
+                    beat.style.colors.set(
+                      alphaTab.model.BeatSubElement.StandardNotationRests,
+                      transparent,
+                    );
                   }
                 }
               }
@@ -261,11 +259,7 @@ export function LeadSheetRenderer({ song }: { song: Song }) {
         });
 
         alphaTabRef.current = api;
-        if (song.scorePath) {
-          api.load(song.scorePath, song.scoreTrackIndexes);
-        } else if (alphaTex) {
-          api.tex(alphaTex);
-        }
+        api.tex(alphaTex);
       } catch (error) {
         if (abortController.signal.aborted) return;
         console.error("alphaTab score rendering failed", error);
@@ -281,7 +275,7 @@ export function LeadSheetRenderer({ song }: { song: Song }) {
       alphaTabRef.current?.destroy();
       alphaTabRef.current = null;
     };
-  }, [alphaTex, isImportedScore, song.scorePath, song.scoreTrackIndexes]);
+  }, [alphaTex]);
 
   return (
     <div
@@ -304,10 +298,14 @@ export function LeadSheetRenderer({ song }: { song: Song }) {
         <div
           ref={containerRef}
           data-score-engine="alphatab"
+          data-score-content="chords-only"
+          data-bars-per-system="4"
+          data-chord-band-padding-bottom={CHORD_EFFECT_BAND_PADDING_BOTTOM}
+          data-chord-vertical-offset={CHORD_VERTICAL_OFFSET}
           data-music-font="finale-maestro"
           data-chord-font="scheherazade-new"
           className="min-w-0 bg-white [&_svg]:max-w-full"
-          aria-label={`${song.title} ${isImportedScore ? "멜로디와 피아노 악보" : "코드 악보"}`}
+          aria-label={`${song.title} 코드 악보`}
         />
       </div>
     </div>

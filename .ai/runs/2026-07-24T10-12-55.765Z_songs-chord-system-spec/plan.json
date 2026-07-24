@@ -1,0 +1,140 @@
+{
+  "epics": [
+    {
+      "id": "songs-chart-contract",
+      "title": "Establish the Songs chord-chart contract",
+      "tasks": [
+        {
+          "id": "canonical-spec",
+          "title": "Record the non-negotiable Songs rendering rules",
+          "implementation_area": "data",
+          "acceptance_criteria": [
+            "A repository-local specification states that Songs charts are chord-only.",
+            "The specification preserves alphaTab as the required score renderer.",
+            "The specification requires exactly four equal-width measures per system at every supported viewport.",
+            "The specification forbids notes, rests, track names, and any text to the left of a system.",
+            "The specification requires final-system padding with empty measures.",
+            "The specification excludes the Songs score surface from Design Agent authority."
+          ],
+          "dependencies": [],
+          "done_definition": [
+            "The specification is committed with the implementation sample.",
+            "The implementation and browser review use the same requirements."
+          ]
+        },
+        {
+          "id": "normalized-chart-data",
+          "title": "Normalize source songs into four-measure chord systems",
+          "implementation_area": "data",
+          "acceptance_criteria": [
+            "Imported-score songs use the approved Song section and chord data as the rendering source rather than note tracks.",
+            "Every source measure appears once and in order.",
+            "The final system is padded with non-semantic empty measures until it contains four measures."
+          ],
+          "dependencies": [
+            "canonical-spec"
+          ],
+          "done_definition": [
+            "The generated chart input contains a multiple of four measures.",
+            "Padding does not change the reported musical measure count."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "songs-chart-rendering",
+      "title": "Render the canonical four-measure chord chart",
+      "tasks": [
+        {
+          "id": "chord-only-renderer",
+          "title": "Configure alphaTab to render chord-only systems",
+          "implementation_area": "render",
+          "acceptance_criteria": [
+            "All Songs detail routes remain on the alphaTab renderer and use Song chord data rather than imported note tracks.",
+            "All Songs detail routes render chord symbols without melody notes, accompaniment notes, rests, or tablature.",
+            "Track names and other left-side text are hidden for every song source.",
+            "No custom HTML, canvas, or replacement score grid is introduced.",
+            "Loading and error states remain visible and accessible."
+          ],
+          "dependencies": [
+            "normalized-chart-data"
+          ],
+          "done_definition": [
+            "The representative imported song and generated songs use the same alphaTab chord-only rendering path.",
+            "No notes, tablature, or visible rests are present in representative rendered systems."
+          ]
+        },
+        {
+          "id": "four-measure-layout",
+          "title": "Enforce four full-width measures per system",
+          "implementation_area": "behavior",
+          "acceptance_criteria": [
+            "Desktop and mobile systems both contain exactly four equal-width measures.",
+            "Every system spans the full available score container width.",
+            "The last system is four measures wide even when the song ends with fewer source measures.",
+            "No avoidable horizontal overflow or clipping is introduced."
+          ],
+          "dependencies": [
+            "chord-only-renderer"
+          ],
+          "done_definition": [
+            "Representative first, middle, and final systems pass browser inspection at 1440px and 390px.",
+            "System left edges align consistently without a label gutter."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "verification",
+      "title": "Verify the sample and repository gates",
+      "tasks": [
+        {
+          "id": "deterministic-checks",
+          "title": "Run focused tests and repository checks",
+          "implementation_area": "verification",
+          "acceptance_criteria": [
+            "Focused tests or deterministic inspection cover AlphaTex final padding.",
+            "Lint, TypeScript, production build, and Supervisor validation pass.",
+            "React and Next.js implementation guidance is reviewed after TSX changes."
+          ],
+          "dependencies": [
+            "four-measure-layout"
+          ],
+          "done_definition": [
+            "All applicable checks have recorded exit codes.",
+            "No blocking code-quality finding remains."
+          ]
+        },
+        {
+          "id": "browser-checks",
+          "title": "Capture responsive visual evidence",
+          "implementation_area": "verification",
+          "acceptance_criteria": [
+            "Before and after evidence exists for desktop and 390px mobile.",
+            "Browser review checks representative first, middle, and final systems.",
+            "Browser review confirms no notes, rests, left-side labels, clipping, or framework overlays.",
+            "Browser review confirms exactly four measures per system and full available-width fit."
+          ],
+          "dependencies": [
+            "deterministic-checks"
+          ],
+          "done_definition": [
+            "Screenshot paths and measured browser evidence are recorded in verify.json.",
+            "The rendered result is ready for the user to judge as the canonical sample."
+          ]
+        }
+      ]
+    }
+  ],
+  "assumptions": [
+    "The existing Song section and measure structures are the authoritative chord-chart source for every Songs entry.",
+    "Four measures per system applies to mobile as well as desktop, even when chord text must become more compact.",
+    "The score surface is governed by specs/songs-score-rendering.md rather than a design-rule-engine profile."
+  ],
+  "risks": [
+    "Long chord symbols may collide at 390px when four measures are forced into one system.",
+    "The imported song's Song data may contain less harmonic detail than its MusicXML note asset.",
+    "alphaTab may require rendered SVG inspection to distinguish hidden rests from empty notation space.",
+    "Four compact measures on a 390px viewport may require alphaTab scale tuning without changing its current score design."
+  ]
+}

@@ -1,6 +1,7 @@
 import type { Song, SongMeasure } from "@/lib/songs";
 
 const BEATS_PER_MEASURE = 4;
+export const SONG_BARS_PER_SYSTEM = 4;
 
 function escapeAlphaTex(value: string) {
   return value.replaceAll("\\", "\\\\").replaceAll('"', '\\"');
@@ -75,8 +76,11 @@ export function songToAlphaTex(song: Song) {
     }
   }
 
-  return `\\tempo 76
-\\track "Chord Chart"
+  while (bars.length % SONG_BARS_PER_SYSTEM !== 0) {
+    bars.push(`${measureToAlphaTex({ id: `${song.id}-padding` })} |`);
+  }
+
+  return `\\track "Chord Chart"
 \\staff {score}
 ${chordDefinitions(song)}
 .

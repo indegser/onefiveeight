@@ -14,6 +14,7 @@
     "ai:refine": "node scripts/ai-team/supervisor.mjs refine",
     "skill:check": "node scripts/sync-codex-skill.mjs check",
     "skill:install": "node scripts/sync-codex-skill.mjs install",
+    "test:song-alphatex": "node --experimental-strip-types --test src/lib/song-alphatex.test.ts",
     "test:skill-sync": "node --test scripts/sync-codex-skill.test.mjs"
   },
   "dependencies": {

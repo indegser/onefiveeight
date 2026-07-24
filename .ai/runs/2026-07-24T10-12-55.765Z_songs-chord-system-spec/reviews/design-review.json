@@ -1,0 +1,35 @@
+{
+  "approved": true,
+  "preview_evidence": [
+    ".ai/runs/2026-07-24T10-12-55.765Z_songs-chord-system-spec/evidence/after-mobile-chord-offset-10.png"
+  ],
+  "summary": {
+    "status": "pass",
+    "rationale": "The surrounding Songs shell is unchanged. The alphaTab score surface remains outside Design Critic scope and was technically verified."
+  },
+  "findings": [],
+  "section_scores": [
+    {
+      "section_id": "songs-page-shell-preservation",
+      "score": 10,
+      "notes": [
+        "No shell change occurred.",
+        "No aesthetic judgment was applied to the score."
+      ]
+    }
+  ],
+  "profile_assessment": {
+    "selected_profile_id": "music-visual-instrument",
+    "fit_score": 10,
+    "anti_patterns_detected": [],
+    "notes": [
+      "Assessment applies only to the unchanged shell."
+    ]
+  },
+  "gates": {
+    "hard_rules_passed": true,
+    "needs_human_review": false,
+    "requires_refinement": false
+  },
+  "next_steps": []
+}
