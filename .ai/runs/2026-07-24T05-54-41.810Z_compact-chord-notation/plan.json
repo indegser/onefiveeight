@@ -1,0 +1,73 @@
+{
+  "epics": [
+    {
+      "id": "epic-standard-jazz-chord-notation",
+      "title": "Render compact Jazz chord symbols from stored plain-text chords",
+      "tasks": [
+        {
+          "id": "task-notation-mapping",
+          "title": "Define a reference-backed display mapping",
+          "implementation_area": "behavior",
+          "acceptance_criteria": [
+            "The display convention is based on SMuFL chord-symbol glyph categories and official MuseScore, LilyPond, and Dorico chord-symbol guidance.",
+            "Major seventh renders as △7, minor renders with −, diminished with °, half-diminished with ø, and augmented with +.",
+            "Chord identity and unaltered extension numbers remain on the baseline.",
+            "Alterations and modifiers such as b5, #5, b9, #9, sus4, and add9 render smaller and raised.",
+            "The mapping preserves stored chord strings and distinguishes slash-bass notes from suffix modifiers."
+          ],
+          "dependencies": [],
+          "done_definition": [
+            "The approved design artifact contains an explicit source-to-display mapping table expressed as builder constraints.",
+            "Ambiguous or unsupported suffixes remain legible instead of being silently discarded."
+          ]
+        },
+        {
+          "id": "task-svg-rendering",
+          "title": "Apply the notation mapping to alphaTab chord SVG text",
+          "implementation_area": "render",
+          "acceptance_criteria": [
+            "Only alphaTab chord-name text nodes are transformed.",
+            "The transformed SVG remains readable and idempotent across alphaTab rerenders.",
+            "Root and slash-bass accidentals use ♭ and ♯ display glyphs.",
+            "Representative chords render as C△7, C−7, C7 plus raised ♭9, and E7 plus raised ♯9."
+          ],
+          "dependencies": [
+            "task-notation-mapping"
+          ],
+          "done_definition": [
+            "TypeScript, lint, and production build checks pass.",
+            "No source song data or alphaTex output changes."
+          ]
+        },
+        {
+          "id": "task-mobile-verification",
+          "title": "Verify mobile fit and musical readability",
+          "implementation_area": "verification",
+          "acceptance_criteria": [
+            "Browser evidence is captured at 390px for 기억의 습작 before and after the approved implementation.",
+            "Previously detected negative horizontal gaps between adjacent chord symbols are eliminated.",
+            "The page has no new horizontal overflow and representative rows remain fully visible.",
+            "A chord containing a sharp alteration is verified on a representative song."
+          ],
+          "dependencies": [
+            "task-svg-rendering"
+          ],
+          "done_definition": [
+            "Visual checks cover notation semantics, dense-row fit, redundant labels, and available-width behavior.",
+            "The AI-team run validates with approved design and code reviews."
+          ]
+        }
+      ]
+    }
+  ],
+  "assumptions": [
+    "The requested convention is the compact Jazz-symbol family rather than text-heavy maj/min spellings.",
+    "The user's explicit baseline-versus-raised distinction takes precedence where scoring applications expose several configurable conventions.",
+    "Source chord strings remain plain-text input and are normalized only in the rendered SVG."
+  ],
+  "risks": [
+    "Chord-symbol typography has multiple established presets rather than one universal layout; the chosen mapping must be explicit and consistent.",
+    "A broad suffix parser could misclassify malformed or uncommon source strings, so unknown tails must be preserved.",
+    "alphaTab regenerates SVG nodes asynchronously, requiring an idempotent post-render transformation."
+  ]
+}

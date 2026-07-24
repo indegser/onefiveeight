@@ -1,0 +1,119 @@
+{
+  "screens": [
+    {
+      "id": "song-score-detail",
+      "name": "Song Score Detail",
+      "purpose": "Present dense lead-sheet chord symbols with established Jazz shorthand and perceptually clear chord grouping.",
+      "screen_type": "detail",
+      "primary_action": "Read and follow the score",
+      "states": ["loading", "ready", "error", "not-found"]
+    }
+  ],
+  "ux_rules": [
+    "Preserve the approved Jazz shorthand mapping and baseline-versus-raised semantic hierarchy.",
+    "Judge readability by visible chord grouping and minimum whitespace, not by non-overlapping bounding boxes alone.",
+    "Prefer fewer measures per mobile system over shrinking chord symbols below a comfortable reading size.",
+    "Keep root, quality, unaltered extension, and slash bass on the primary baseline.",
+    "Keep raised alterations and modifiers subordinate but large enough to read without zooming.",
+    "Preserve unsupported source text visibly and do not mutate source song data."
+  ],
+  "component_map": [
+    {
+      "screen_id": "song-score-detail",
+      "components": [
+        "song identity header",
+        "alphaTab score renderer",
+        "baseline chord identity group",
+        "raised alteration and modifier group",
+        "slash-bass group",
+        "loading state",
+        "error state"
+      ]
+    }
+  ],
+  "human_checkpoints": [],
+  "design_rule_engine": {
+    "profile_id": "music-visual-instrument",
+    "hard_rule_sets": ["layout-rules.json", "core-allowed-patterns"],
+    "heuristic_sets": ["ux-heuristics.md"],
+    "allowed_pattern_sets": [
+      "explicit-state-coverage",
+      "register-fit-spacing",
+      "subject-grounded-signature"
+    ],
+    "banned_pattern_sets": [
+      "wrong-register-surface",
+      "raw-token-drift",
+      "density-blindness",
+      "music-surface-as-admin-ui"
+    ],
+    "review_rubric_id": "core-design-review"
+  },
+  "screen_contexts": [
+    {
+      "screen_id": "song-score-detail",
+      "screen_type": "detail",
+      "layout_intent": "Use responsive system density and restrained chord-part scaling so every chord reads as a distinct musical object at 390px.",
+      "interaction_risks": [
+        "Moving every chord to a centered anchor can improve one pair while worsening long slash-chord pairs.",
+        "Using SVG super directly raises modifiers too far and makes them look detached.",
+        "Keeping four measures per system can leave less than one pixel of visible whitespace even after shorthand compression."
+      ],
+      "required_states": ["loading", "ready", "error", "not-found"],
+      "notes": [
+        "Refinement baseline: the densest approved shorthand pair has only 0.6px of visible whitespace.",
+        "The first refinement experiment centered every chord and enlarged modifiers to 78%; it was rejected because another long-code pair fell to 0.6px.",
+        "The current 70% modifier renders at 9.576px and rises 9px above the root, making it look like a detached footnote.",
+        "Use three to five browser-backed iterations as explicitly requested by the user."
+      ]
+    }
+  ],
+  "builder_constraints": [
+    {
+      "screen_id": "song-score-detail",
+      "constraints": [
+        "Keep the approved △, −, °, ø, +, ♭, and ♯ mapping unchanged.",
+        "Do not globally center chord anchors; the first refinement experiment showed regressions for long slash chords.",
+        "Test three measures per row at widths up to 640px while retaining four per row on larger screens.",
+        "Increase raised modifier size from 70% into the 76-80% range.",
+        "Replace the browser-defined super position with an explicit, smaller rise tuned in the rendered score.",
+        "Target at least 4px visible whitespace between adjacent chord groups on representative dense rows when practical.",
+        "Do not reduce the baseline chord size below the current rendered 13.68px at 390px.",
+        "Capture and compare each iteration before accepting it.",
+        "Do not change source song strings, alphaTex generation, global theme variables, or dependencies."
+      ],
+      "open_decisions": [
+        "Choose the smallest explicit modifier rise that preserves semantic hierarchy without appearing detached.",
+        "Choose between 76%, 78%, and 80% modifier scale based on the 390px screenshots."
+      ]
+    }
+  ],
+  "review_targets": [
+    {
+      "screen_id": "song-score-detail",
+      "critical_judgments": [
+        "Can A♭△7 and G−7 be identified immediately as two separate chords?",
+        "Do long slash chords remain separate from their neighbors?",
+        "Does raised ♭9 or ♯9 read as part of its chord rather than as an annotation above it?",
+        "Does sus4 remain subordinate without becoming too small?",
+        "Does the additional system count remain a reasonable mobile scrolling tradeoff?",
+        "Are there no row, header, or page-width regressions at 390px?"
+      ],
+      "must_not_regress": [
+        "Jazz shorthand semantics",
+        "non-chord SVG text and staff engraving",
+        "stored chord strings and alphaTex generation",
+        "loading and error states",
+        "desktop four-measure systems"
+      ]
+    }
+  ],
+  "visual_constraints": [
+    "Use three mobile measures per system if it materially improves chord grouping.",
+    "Keep baseline symbols at least the current mobile size.",
+    "Use 76-80% scale for raised parts and an explicit rise smaller than SVG super.",
+    "Aim for at least 4px visible separation between adjacent chord groups in representative dense systems.",
+    "The page must not create horizontal overflow.",
+    "Final evidence must include 기억의 습작 and a sharp-alteration sample at 390px."
+  ]
+}
