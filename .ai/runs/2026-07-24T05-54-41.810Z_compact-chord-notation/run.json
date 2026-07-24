@@ -1,7 +1,7 @@
 {
   "run_id": "2026-07-24T05-54-41.810Z_compact-chord-notation",
   "goal": "Build an app from docs/ideas/compact-chord-notation.md",
-  "revision": 28,
+  "revision": 47,
   "phase": "done",
   "status": "done",
   "next_agent": "none",
@@ -32,7 +32,7 @@
   "decisions": [
     "Preserve stored chord strings and alphaTex generation; limit the change to rendered chord-name typography.",
     "Use a Jazz shorthand convention: baseline quality symbols and extension numbers, with only alterations and modifiers raised.",
-    "Render major and minor quality marks with dedicated bundled SMuFL glyphs while keeping roots and extension numbers in the chord text font."
+    "Render chord roots, shorthand qualities, extension numbers, modifiers, accidentals, slash marks, and bass letters in the user-selected Scheherazade New Bold treatment."
   ],
   "risks": [
     "alphaTab regenerates SVG chord-name text asynchronously, so the visual transformation must be idempotent.",
@@ -57,6 +57,21 @@
     {
       "at": "2026-07-24T07:01:38.121Z",
       "note": "User requested three additional browser-reviewed visual refinements of the dedicated SMuFL major and minor chord glyph treatment. Preserve the dedicated glyph mapping and compare three successive adjustments for optical size, weight, spacing, and baseline alignment before selecting the final values.",
+      "target_agent": "design-agent"
+    },
+    {
+      "at": "2026-07-24T08:13:40.042Z",
+      "note": "Production mobile review found the SMuFL font-size/baseline-shift treatment visually weak and browser-metric dependent. Replace the percentage-compensated Finale Maestro quality marks with the bundled JazzCord chord-suffix font, verify its actual character mapping, and complete multiple mobile browser iterations before approval.",
+      "target_agent": "design-agent"
+    },
+    {
+      "at": "2026-07-24T09:08:09.339Z",
+      "note": "User and design review rejected the mixed Scheherazade root plus handwritten JazzCord suffix as a visible type-family mismatch. Reopen design and compare whole-chord font treatments in the rendered mobile score. Prefer one coherent chord-font system, verify root accidentals, slash basses, dominant alterations, and supported suffix mappings, then approve only a browser-backed option that looks intentional.",
+      "target_agent": "design-agent"
+    },
+    {
+      "at": "2026-07-24T09:23:54.755Z",
+      "note": "User explicitly rejected the Edwin choice and selected the Scheherazade row from the recorded single-font comparison. Roll back the Edwin document-chord treatment and implement that exact Scheherazade direction: root, triangle/minus quality, extension numbers, slash, and bass letters in Scheherazade; keep only true alterations raised. Do not explore another font candidate.",
       "target_agent": "design-agent"
     }
   ],
@@ -172,6 +187,78 @@
     {
       "at": "2026-07-24T07:27:00.000Z",
       "event": "Code Critic approved the scoped per-glyph attribute selection after React best-practices review; Supervisor marked the refinement done."
+    },
+    {
+      "at": "2026-07-24T08:13:40.043Z",
+      "event": "Refinement requested for design-agent: Production mobile review found the SMuFL font-size/baseline-shift treatment visually weak and browser-metric dependent. Replace the percentage-compensated Finale Maestro quality marks with the bundled JazzCord chord-suffix font, verify its actual character mapping, and complete multiple mobile browser iterations before approval."
+    },
+    {
+      "at": "2026-07-24T08:20:00.000Z",
+      "event": "Design Agent generated and inspected JazzCord character maps, rejected standalone quality glyphs plus text extensions, and approved precomposed verified suffix glyphs with three native-baseline size iterations; Supervisor routed the run to Builder."
+    },
+    {
+      "at": "2026-07-24T08:21:00.000Z",
+      "event": "Builder implemented precomposed JazzCord chord suffixes and completed three browser-backed size refinements, selecting the 110% native-baseline treatment; Supervisor routed the run to Verifier."
+    },
+    {
+      "at": "2026-07-24T08:24:00.000Z",
+      "event": "Verifier passed diff, lint, typecheck, production build, DPR 3 mobile fit, collision, font loading, served CSS, representative notation, and desktop regression checks; Supervisor routed the run to Design Critic."
+    },
+    {
+      "at": "2026-07-24T08:25:00.000Z",
+      "event": "Design Critic approved the selected JazzCord proportions and native-baseline rendering across the recorded mobile and desktop evidence; Supervisor routed the run to Code Critic."
+    },
+    {
+      "at": "2026-07-24T08:26:00.000Z",
+      "event": "Code Critic approved the scoped suffix mapping and idempotent SVG rendering changes; Supervisor marked the refinement done."
+    },
+    {
+      "at": "2026-07-24T09:08:09.340Z",
+      "event": "Refinement requested for design-agent: User and design review rejected the mixed Scheherazade root plus handwritten JazzCord suffix as a visible type-family mismatch. Reopen design and compare whole-chord font treatments in the rendered mobile score. Prefer one coherent chord-font system, verify root accidentals, slash basses, dominant alterations, and supported suffix mappings, then approve only a browser-backed option that looks intentional."
+    },
+    {
+      "at": "2026-07-24T09:15:00.000Z",
+      "event": "Design Agent browser-compared mixed families, whole JazzCord, and six neutral whole-font treatments; rejected the handwritten whole-score register and approved a unified Edwin Bold chord system with compact attached accidentals; Supervisor routed the run to Builder."
+    },
+    {
+      "at": "2026-07-24T09:23:00.000Z",
+      "event": "Builder implemented the unified Edwin Bold chord renderer, preserved raised alterations, completed 68%, 72%, and 76% mobile iterations, and selected 76%; Supervisor routed the run to Verifier."
+    },
+    {
+      "at": "2026-07-24T09:29:00.000Z",
+      "event": "Verifier passed formatting, lint, typecheck, production build, all-song browser checks, served CSS, DPR 3 mobile fit, alteration details, collision detection, and desktop regression; Supervisor routed the run to Design Critic."
+    },
+    {
+      "at": "2026-07-24T09:30:00.000Z",
+      "event": "Design Critic approved the unified Edwin register, compact attached accidentals, and selected 76% suffix hierarchy across recorded evidence; Supervisor routed the run to Code Critic."
+    },
+    {
+      "at": "2026-07-24T09:31:00.000Z",
+      "event": "Code Critic approved the scoped idempotent SVG segmentation and local font-registry update after React and Next.js review; Supervisor marked the refinement done."
+    },
+    {
+      "at": "2026-07-24T09:23:54.756Z",
+      "event": "Refinement requested for design-agent: User explicitly rejected the Edwin choice and selected the Scheherazade row from the recorded single-font comparison. Roll back the Edwin document-chord treatment and implement that exact Scheherazade direction: root, triangle/minus quality, extension numbers, slash, and bass letters in Scheherazade; keep only true alterations raised. Do not explore another font candidate."
+    },
+    {
+      "at": "2026-07-24T09:28:00.000Z",
+      "event": "Design Agent locked the user-selected Scheherazade comparison row as the final direction, specified 72% native-baseline qualities and inline root or bass accidentals, and prohibited further font exploration; Supervisor routed the run to Builder."
+    },
+    {
+      "at": "2026-07-24T09:29:10.000Z",
+      "event": "Builder rolled back the rejected Edwin treatment and implemented the user-selected unified Scheherazade chord typography; Supervisor routed the run to Verifier."
+    },
+    {
+      "at": "2026-07-24T09:29:11.000Z",
+      "event": "Verifier passed formatting, lint, typecheck, production build, all-song browser coverage, DPR 3 mobile fit, collision, alteration hierarchy, served-font, runtime, and desktop checks; Supervisor routed the run to Design Critic."
+    },
+    {
+      "at": "2026-07-24T09:29:12.000Z",
+      "event": "Design Critic approved the exact Scheherazade comparison direction, native-baseline qualities, raised alterations, inline accidentals, and responsive evidence; Supervisor routed the run to Code Critic."
+    },
+    {
+      "at": "2026-07-24T09:29:13.000Z",
+      "event": "Code Critic approved the scoped idempotent SVG typography change after React and Next.js review; Supervisor marked the refinement done."
     }
   ]
 }
