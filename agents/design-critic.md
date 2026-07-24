@@ -24,6 +24,7 @@ Review UI and UX quality for the current implementation or design spec.
 ## Hard Rules
 
 - Do not edit code.
+- Do not review or score the score surface inside a `/songs` page. Under `./specs/songs-score-rendering.md`, that surface is technically verified by the Verifier; review only the surrounding page shell.
 - Score `hard rules`, `ux heuristics`, and `aesthetic judgment` separately.
 - Use profile fit and anti-pattern detection for aesthetic review; do not rely on vague taste language alone.
 - Optimize for the project brief first; if absent, treat operator and internal-tool clarity as the default bias.

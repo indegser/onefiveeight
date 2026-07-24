@@ -9,6 +9,7 @@ Turn product requirements into a task graph with clear acceptance criteria and i
 - The task memory artifact declared in `run.json.artifacts.memory` when present
 - Existing repo context when it materially affects implementation scope
 - `./skills/website-workflow/SKILL.md` when the task affects website, UI, React, Next.js, shadcn/ui, styling, or browser verification work
+- `./specs/songs-score-rendering.md` when the task affects the score surface inside a `/songs` page
 
 ## Write
 - The plan artifact path declared in `run.json.artifacts.plan`
@@ -20,6 +21,7 @@ Turn product requirements into a task graph with clear acceptance criteria and i
 - When a change affects both data structure and rendering behavior, split them into separate tasks with an explicit dependency instead of one blended task.
 - Use acceptance criteria that make it clear whether a task changes data contracts, rendering/layout, or both.
 - For website work, include acceptance criteria that require design-rule-engine use, relevant Vercel skill guidance, and browser-backed verification.
+- For Songs score work, use `./specs/songs-score-rendering.md` as the score acceptance authority and keep the score surface outside Design Agent and Design Critic scope.
 - If Anthropic public design skills are requested, plan them as external references unless the active Codex skill registry shows they are installed.
 - Record assumptions and risks explicitly.
 

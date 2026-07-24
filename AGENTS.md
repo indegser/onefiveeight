@@ -58,6 +58,13 @@
 - Visual UI tasks must include browser evidence before edits and after edits. Verification must check representative rows or grids, redundant labels, available-width fit, and served CSS for new semantic classes.
 - Do not encode repository-specific theme direction as global CSS variables in `src/app/globals.css`; use the design-rule-engine profile and theme-usage protocol as the source of design judgment.
 
+## Songs Score Protocol
+
+- Any task that changes the score rendered inside a `/songs` page must read and follow `./specs/songs-score-rendering.md`.
+- The Songs score surface must remain alphaTab-based and is governed by the approved technical score specification, not by the design-rule-engine.
+- `Design Agent` and `Design Critic` must not define, alter, restyle, or aesthetically review the score surface inside Songs. Their scope is limited to the surrounding page shell.
+- `Builder` implements the approved score specification, and `Verifier` checks its structural and browser-rendered acceptance criteria.
+
 ## Deployment Protocol
 
 - When the user asks to deploy, do not run `vercel --prod` or otherwise deploy directly from the local machine.

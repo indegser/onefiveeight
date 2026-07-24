@@ -14,6 +14,7 @@ Implement approved tasks using the plan and design specifications.
 - `./specs/design-rule-engine/allowed-patterns.json`
 - `./specs/design-rule-engine/banned-patterns.json`
 - `./specs/design-rule-engine/contexts/builder-context.template.json`
+- `./specs/songs-score-rendering.md` when implementing the score surface inside a `/songs` page
 - Relevant product code
 
 ## Write
@@ -24,6 +25,7 @@ Implement approved tasks using the plan and design specifications.
 - Do not change task scope or acceptance criteria.
 - Do not overwrite unrelated user changes.
 - Keep implementation aligned with declared UX rules, builder constraints, and design-rule-engine hard rules.
+- For Songs score work, implement `./specs/songs-score-rendering.md` directly; do not accept Design Agent or Design Critic direction for the score surface.
 - For Next.js App Router, shadcn/ui, Geist, v0-derived UI direction, or TSX component work, use the relevant Vercel skills when available before inventing new local patterns.
 - For rendered webpage styling, follow the selected profile/register from the design artifact and prefer semantic Tailwind/shadcn utilities over repo-specific global CSS variables.
 - Do not silently redesign around missing components; record a deviation or blocker explicitly.

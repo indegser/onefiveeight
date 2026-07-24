@@ -1,0 +1,107 @@
+{
+  "screens": [
+    {
+      "id": "song-detail-shell",
+      "name": "Songs detail page shell",
+      "purpose": "Preserve the existing page shell around the user-governed alphaTab score.",
+      "screen_type": "music-score-detail",
+      "primary_action": "Read the chord chart",
+      "states": [
+        "loading",
+        "ready",
+        "error",
+        "not-found"
+      ]
+    }
+  ],
+  "ux_rules": [
+    "The Design Agent has no authority over the rendered Songs score surface.",
+    "Do not redesign, replace, restyle, or critique alphaTab score composition.",
+    "Preserve the current title, artist, analysis digest, page gutter, loading state, and error state.",
+    "Treat chord-only content, four measures per system, full-width systems, final padding, and hidden left labels as user-approved technical requirements rather than design judgments."
+  ],
+  "component_map": [
+    {
+      "screen_id": "song-detail-shell",
+      "components": [
+        "SongDetailPage",
+        "ScoreViewer",
+        "LeadSheetRenderer alphaTab client boundary"
+      ]
+    }
+  ],
+  "design_rule_engine": {
+    "profile_id": "music-visual-instrument",
+    "hard_rule_sets": [
+      "design-principles",
+      "layout-rules",
+      "user-approved-songs-chord-system-spec"
+    ],
+    "heuristic_sets": [
+      "ux-heuristics"
+    ],
+    "allowed_pattern_sets": [
+      "core-allowed-patterns"
+    ],
+    "banned_pattern_sets": [
+      "core-banned-patterns"
+    ],
+    "review_rubric_id": "core-design-review"
+  },
+  "screen_contexts": [
+    {
+      "screen_id": "song-detail-shell",
+      "screen_type": "music-score-detail",
+      "layout_intent": "Keep the existing shell unchanged and allow alphaTab to fill the available score container.",
+      "interaction_risks": [
+        "A surrounding page change could reduce the width available to alphaTab.",
+        "A review role could incorrectly treat the score surface as design-owned."
+      ],
+      "required_states": [
+        "loading",
+        "ready",
+        "error",
+        "not-found"
+      ],
+      "notes": [
+        "The rendered score is explicitly excluded from Design Agent intervention by user direction.",
+        "Score compliance is owned by the technical specification and Verifier."
+      ]
+    }
+  ],
+  "builder_constraints": [
+    {
+      "screen_id": "song-detail-shell",
+      "constraints": [
+        "Do not alter the surrounding page design.",
+        "Keep alphaTab as the score renderer.",
+        "Apply the chord-only and four-measure rules through AlphaTex input, alphaTab settings, and score stylesheet policies.",
+        "Do not introduce a custom score renderer.",
+        "Do not add global theme variables or score-surface styling chosen by the Design Agent."
+      ],
+      "open_decisions": []
+    }
+  ],
+  "review_targets": [
+    {
+      "screen_id": "song-detail-shell",
+      "critical_judgments": [
+        "The surrounding title and metadata shell is unchanged.",
+        "The alphaTab container still receives the full available pane width.",
+        "Loading and error states remain available."
+      ],
+      "must_not_regress": [
+        "Existing page shell",
+        "Existing alphaTab score appearance",
+        "Songs navigation",
+        "Responsive page gutters"
+      ]
+    }
+  ],
+  "visual_constraints": [
+    "No Design Agent-authored changes inside the alphaTab score surface.",
+    "Preserve the current alphaTab notation design.",
+    "Browser evidence is required only to verify the user-approved technical score contract and unchanged page shell."
+  ],
+  "human_checkpoints": []
+}

@@ -1,0 +1,31 @@
+{
+  "completed_tasks": [
+    "canonical-spec",
+    "normalized-chart-data",
+    "chord-only-renderer",
+    "four-measure-layout",
+    "chord-proximity-refinement",
+    "chord-text-offset-refinement"
+  ],
+  "changed_files": [
+    "AGENTS.md",
+    "agents/planner.md",
+    "agents/builder.md",
+    "agents/verifier.md",
+    "agents/design-agent.md",
+    "agents/design-critic.md",
+    "specs/songs-score-rendering.md",
+    "docs/ideas/songs-chord-system-spec.md",
+    "src/lib/song-alphatex.ts",
+    "src/lib/song-alphatex.test.ts",
+    "src/app/songs/lead-sheet-renderer.tsx",
+    "package.json"
+  ],
+  "notes": [
+    "Preserved alphaTab and every approved Songs score structural rule.",
+    "Increased the idempotent chord-text SVG dy offset from 6 to 10 score units at the user's request.",
+    "The change affects only the vertical chord position; horizontal bar alignment is unchanged.",
+    "Kept the Songs score surface outside Design Agent and Design Critic authority."
+  ],
+  "open_issues": []
+}

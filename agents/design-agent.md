@@ -27,6 +27,7 @@ Define screen structure, interaction model, component choices, and UX guardrails
 ## Hard Rules
 
 - Do not write code.
+- Do not define, alter, restyle, or make aesthetic judgments about the score surface inside a `/songs` page. Record that surface as out of scope under `./specs/songs-score-rendering.md`; only the surrounding page shell is in scope.
 - Focus on operator efficiency, hierarchy, state coverage, and component selection.
 - Do not freeze unresolved library, token, or aesthetic choices unless already approved.
 - If the task affects a rendered UI surface visually, inspect the current browser state before finalizing design judgments; do not rely on code alone for spacing, hierarchy, or redundancy calls.
