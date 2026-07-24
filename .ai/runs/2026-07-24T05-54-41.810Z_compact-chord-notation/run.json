@@ -1,7 +1,7 @@
 {
   "run_id": "2026-07-24T05-54-41.810Z_compact-chord-notation",
   "goal": "Build an app from docs/ideas/compact-chord-notation.md",
-  "revision": 16,
+  "revision": 28,
   "phase": "done",
   "status": "done",
   "next_agent": "none",
@@ -31,7 +31,8 @@
   "blockers": [],
   "decisions": [
     "Preserve stored chord strings and alphaTex generation; limit the change to rendered chord-name typography.",
-    "Use a Jazz shorthand convention: baseline quality symbols and extension numbers, with only alterations and modifiers raised."
+    "Use a Jazz shorthand convention: baseline quality symbols and extension numbers, with only alterations and modifiers raised.",
+    "Render major and minor quality marks with dedicated bundled SMuFL glyphs while keeping roots and extension numbers in the chord text font."
   ],
   "risks": [
     "alphaTab regenerates SVG chord-name text asynchronously, so the visual transformation must be idempotent.",
@@ -46,6 +47,16 @@
     {
       "at": "2026-07-24T06:21:46.509Z",
       "note": "User rejected the first browser result as hard to read and explicitly requested three to five iterative improvements. Reopen visual design: judge perceptual chord separation rather than bounding-box overlap alone; tune modifier size and rise; preserve Jazz shorthand; browser-check each iteration at 390px with representative dense rows and sharp alterations.",
+      "target_agent": "design-agent"
+    },
+    {
+      "at": "2026-07-24T06:50:59.152Z",
+      "note": "User approved replacing the oversized generic triangle and long mathematical minus with dedicated chord-symbol glyphs. Verify the bundled SMuFL font contains csymMajorSeventh U+E873 and csymMinor U+E874, preserve the existing chord text font for roots/numbers, and browser-compare the symbol proportions before implementation approval.",
+      "target_agent": "design-agent"
+    },
+    {
+      "at": "2026-07-24T07:01:38.121Z",
+      "note": "User requested three additional browser-reviewed visual refinements of the dedicated SMuFL major and minor chord glyph treatment. Preserve the dedicated glyph mapping and compare three successive adjustments for optical size, weight, spacing, and baseline alignment before selecting the final values.",
       "target_agent": "design-agent"
     }
   ],
@@ -113,6 +124,54 @@
     {
       "at": "2026-07-24T06:32:00.000Z",
       "event": "Code Critic approved the scoped responsive settings and SVG modifier changes after React/Next.js review; Supervisor marked the refinement done."
+    },
+    {
+      "at": "2026-07-24T06:50:59.153Z",
+      "event": "Refinement requested for design-agent: User approved replacing the oversized generic triangle and long mathematical minus with dedicated chord-symbol glyphs. Verify the bundled SMuFL font contains csymMajorSeventh U+E873 and csymMinor U+E874, preserve the existing chord text font for roots/numbers, and browser-compare the symbol proportions before implementation approval."
+    },
+    {
+      "at": "2026-07-24T07:04:00.000Z",
+      "event": "Design Agent verified the bundled Finale Maestro SMuFL glyphs, browser-compared their proportions and baseline, and approved isolated U+E873/U+E874 tspans; Supervisor routed the run to Builder."
+    },
+    {
+      "at": "2026-07-24T07:08:00.000Z",
+      "event": "Builder implemented isolated Finale Maestro chord-symbol tspans, explicit font loading, and browser-tuned responsive metrics; Supervisor routed the run to Verifier."
+    },
+    {
+      "at": "2026-07-24T07:11:00.000Z",
+      "event": "Verifier passed formatting, lint, typecheck, production build, font loading, served CSS, mobile fit, glyph proportion, baseline alignment, and desktop regression checks; Supervisor routed the run to Design Critic."
+    },
+    {
+      "at": "2026-07-24T07:12:00.000Z",
+      "event": "Design Critic approved the dedicated chord-mark proportions and mobile/desktop browser evidence; Supervisor routed the run to Code Critic."
+    },
+    {
+      "at": "2026-07-24T07:13:00.000Z",
+      "event": "Code Critic approved the scoped font loading and idempotent SVG segmentation; Supervisor marked the refinement done."
+    },
+    {
+      "at": "2026-07-24T07:01:38.121Z",
+      "event": "Refinement requested for design-agent: User requested three additional browser-reviewed visual refinements of the dedicated SMuFL major and minor chord glyph treatment. Preserve the dedicated glyph mapping and compare three successive adjustments for optical size, weight, spacing, and baseline alignment before selecting the final values."
+    },
+    {
+      "at": "2026-07-24T07:18:00.000Z",
+      "event": "Design Agent reviewed the current 185%/98% mobile baseline and specified three successive optical refinements covering shared scale, baseline alignment, and per-glyph balancing; Supervisor routed the run to Builder."
+    },
+    {
+      "at": "2026-07-24T07:22:00.000Z",
+      "event": "Builder completed three browser-backed refinements and selected independent major 192%/103% and minor 188%/106% optical values; Supervisor routed the run to Verifier."
+    },
+    {
+      "at": "2026-07-24T07:25:00.000Z",
+      "event": "Verifier passed formatting, lint, typecheck, production build, React review, three-iteration evidence, font loading, served CSS, mobile fit, route integrity, and desktop regression checks; Supervisor routed the run to Design Critic."
+    },
+    {
+      "at": "2026-07-24T07:26:00.000Z",
+      "event": "Design Critic approved the third iteration's per-glyph optical balance across mobile and desktop evidence; Supervisor routed the run to Code Critic."
+    },
+    {
+      "at": "2026-07-24T07:27:00.000Z",
+      "event": "Code Critic approved the scoped per-glyph attribute selection after React best-practices review; Supervisor marked the refinement done."
     }
   ]
 }

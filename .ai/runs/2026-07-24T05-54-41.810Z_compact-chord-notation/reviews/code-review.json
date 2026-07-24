@@ -1,7 +1,5 @@
 {
   "approved": true,
   "findings": [],
-  "next_steps": [
-    "If additional responsive score-density modes are introduced later, promote the 640px and measures-per-row choices into named renderer constants."
-  ]
+  "next_steps": []
 }

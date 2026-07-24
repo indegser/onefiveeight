@@ -3,19 +3,19 @@
     {
       "id": "song-score-detail",
       "name": "Song Score Detail",
-      "purpose": "Present dense lead-sheet chord symbols with established Jazz shorthand and perceptually clear chord grouping.",
+      "purpose": "Present dense lead-sheet chord symbols with standard Jazz shorthand and optically balanced dedicated quality marks.",
       "screen_type": "detail",
       "primary_action": "Read and follow the score",
       "states": ["loading", "ready", "error", "not-found"]
     }
   ],
   "ux_rules": [
-    "Preserve the approved Jazz shorthand mapping and baseline-versus-raised semantic hierarchy.",
-    "Judge readability by visible chord grouping and minimum whitespace, not by non-overlapping bounding boxes alone.",
-    "Prefer fewer measures per mobile system over shrinking chord symbols below a comfortable reading size.",
-    "Keep root, quality, unaltered extension, and slash bass on the primary baseline.",
-    "Keep raised alterations and modifiers subordinate but large enough to read without zooming.",
-    "Preserve unsupported source text visibly and do not mutate source song data."
+    "Preserve Finale Maestro SMuFL csymMajorSeventh and csymMinor as the approved semantic glyphs.",
+    "Keep roots, accidentals, extension numbers, and slash basses in the existing chord text font.",
+    "Evaluate quality marks by rapid recognition at the rendered mobile size, not by font-box dimensions alone.",
+    "Keep the triangle clearly smaller than the original generic geometric triangle while avoiding a weak or disappearing mark.",
+    "Keep the minor dash short while giving it enough optical weight to remain legible during score scanning.",
+    "Preserve the established raised alteration and modifier hierarchy."
   ],
   "component_map": [
     {
@@ -24,6 +24,8 @@
         "song identity header",
         "alphaTab score renderer",
         "baseline chord identity group",
+        "SMuFL major quality glyph",
+        "SMuFL minor quality glyph",
         "raised alteration and modifier group",
         "slash-bass group",
         "loading state",
@@ -53,18 +55,18 @@
     {
       "screen_id": "song-score-detail",
       "screen_type": "detail",
-      "layout_intent": "Use responsive system density and restrained chord-part scaling so every chord reads as a distinct musical object at 390px.",
+      "layout_intent": "Retain the approved score density and dedicated SMuFL mapping while optically balancing each quality mark against the root and extension.",
       "interaction_risks": [
-        "Moving every chord to a centered anchor can improve one pair while worsening long slash-chord pairs.",
-        "Using SVG super directly raises modifiers too far and makes them look detached.",
-        "Keeping four measures per system can leave less than one pixel of visible whitespace even after shorthand compression."
+        "Increasing both marks uniformly can make the triangle acceptable while making the minor dash too long.",
+        "Using only font-box measurements is misleading because Finale Maestro has unusually tall music-font metrics.",
+        "Excessive baseline lift can make the marks read as superscripts instead of baseline chord qualities."
       ],
       "required_states": ["loading", "ready", "error", "not-found"],
       "notes": [
-        "Refinement baseline: the densest approved shorthand pair has only 0.6px of visible whitespace.",
-        "The first refinement experiment centered every chord and enlarged modifiers to 78%; it was rejected because another long-code pair fell to 0.6px.",
-        "The current 70% modifier renders at 9.576px and rises 9px above the root, making it look like a detached footnote.",
-        "Use three to five browser-backed iterations as explicitly requested by the user."
+        "The current browser baseline uses 185% size and 98% baseline shift for both glyphs.",
+        "At 390px the current major glyph is about 7.11px wide and the minor glyph is about 6.00px wide.",
+        "The current dedicated marks are compact but appear slightly weak beside the bold 13.68px chord text during rapid scanning.",
+        "Baseline evidence is stored at evidence/glyph-refinement-0-baseline.png."
       ]
     }
   ],
@@ -72,19 +74,18 @@
     {
       "screen_id": "song-score-detail",
       "constraints": [
-        "Keep the approved △, −, °, ø, +, ♭, and ♯ mapping unchanged.",
-        "Do not globally center chord anchors; the first refinement experiment showed regressions for long slash chords.",
-        "Test three measures per row at widths up to 640px while retaining four per row on larger screens.",
-        "Increase raised modifier size from 70% into the 76-80% range.",
-        "Replace the browser-defined super position with an explicit, smaller rise tuned in the rendered score.",
-        "Target at least 4px visible whitespace between adjacent chord groups on representative dense rows when practical.",
-        "Do not reduce the baseline chord size below the current rendered 13.68px at 390px.",
-        "Capture and compare each iteration before accepting it.",
-        "Do not change source song strings, alphaTex generation, global theme variables, or dependencies."
+        "Complete and capture exactly three successive browser-backed adjustments after the current baseline.",
+        "Iteration 1 must test a modest shared scale increase without changing the dedicated glyph mapping.",
+        "Iteration 2 must refine shared scale and baseline alignment based on the first screenshot.",
+        "Iteration 3 may use separate major and minor optical values if the second screenshot shows their different shapes need independent treatment.",
+        "Keep each symbol in an isolated SVG tspan at regular font weight.",
+        "Do not change roots, extension numbers, raised modifiers, slash basses, score density, source song data, alphaTex generation, global theme, or dependencies.",
+        "Select the final values from the three rendered comparisons rather than accepting the last iteration automatically.",
+        "Verify mobile 390px and desktop widths with no missing glyphs or horizontal overflow."
       ],
       "open_decisions": [
-        "Choose the smallest explicit modifier rise that preserves semantic hierarchy without appearing detached.",
-        "Choose between 76%, 78%, and 80% modifier scale based on the 390px screenshots."
+        "Choose the final major scale and baseline shift after the three comparisons.",
+        "Choose whether the minor glyph should share the major values or use a smaller independent optical scale."
       ]
     }
   ],
@@ -92,28 +93,28 @@
     {
       "screen_id": "song-score-detail",
       "critical_judgments": [
-        "Can A♭△7 and G−7 be identified immediately as two separate chords?",
-        "Do long slash chords remain separate from their neighbors?",
-        "Does raised ♭9 or ♯9 read as part of its chord rather than as an annotation above it?",
-        "Does sus4 remain subordinate without becoming too small?",
-        "Does the additional system count remain a reasonable mobile scrolling tradeoff?",
-        "Are there no row, header, or page-width regressions at 390px?"
+        "Is the triangle immediately recognizable without returning to the oversized generic-character appearance?",
+        "Is the minor dash short but strong enough to survive mobile score scanning?",
+        "Do both marks read on the baseline with the root and extension number rather than as superscripts?",
+        "Does independent optical treatment, if used, remain visually consistent across major, minor, and slash-chord examples?",
+        "Do representative mobile rows retain clear chord separation and pane-width fit?"
       ],
       "must_not_regress": [
-        "Jazz shorthand semantics",
+        "SMuFL chord-symbol semantics",
+        "root and extension typography",
+        "raised alteration and modifier hierarchy",
         "non-chord SVG text and staff engraving",
         "stored chord strings and alphaTex generation",
         "loading and error states",
-        "desktop four-measure systems"
+        "responsive system density"
       ]
     }
   ],
   "visual_constraints": [
-    "Use three mobile measures per system if it materially improves chord grouping.",
-    "Keep baseline symbols at least the current mobile size.",
-    "Use 76-80% scale for raised parts and an explicit rise smaller than SVG super.",
-    "Aim for at least 4px visible separation between adjacent chord groups in representative dense systems.",
-    "The page must not create horizontal overflow.",
-    "Final evidence must include 기억의 습작 and a sharp-alteration sample at 390px."
+    "Use only the bundled Finale Maestro SMuFL quality glyphs.",
+    "Keep the final major mark visibly smaller than the former 11.84px generic triangle.",
+    "Keep the final minor mark visibly shorter than the former 8.88px mathematical minus.",
+    "Avoid any horizontal page overflow at 390px.",
+    "Final evidence must include the baseline plus all three refinements and a desktop regression screenshot."
   ]
 }

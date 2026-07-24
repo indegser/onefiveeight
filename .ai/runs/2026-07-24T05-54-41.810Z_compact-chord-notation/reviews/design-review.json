@@ -1,18 +1,15 @@
 {
   "approved": true,
   "preview_evidence": [
-    ".ai/runs/2026-07-24T05-54-41.810Z_compact-chord-notation/evidence/refinement-0-baseline.png",
-    ".ai/runs/2026-07-24T05-54-41.810Z_compact-chord-notation/evidence/refinement-1-centered-78-super.png",
-    ".ai/runs/2026-07-24T05-54-41.810Z_compact-chord-notation/evidence/refinement-2-three-bars-78-super.png",
-    ".ai/runs/2026-07-24T05-54-41.810Z_compact-chord-notation/evidence/refinement-3-three-bars-78-rise28.png",
-    ".ai/runs/2026-07-24T05-54-41.810Z_compact-chord-notation/evidence/refinement-4-three-bars-80-rise38.png",
-    ".ai/runs/2026-07-24T05-54-41.810Z_compact-chord-notation/evidence/final-mobile-readable.png",
-    ".ai/runs/2026-07-24T05-54-41.810Z_compact-chord-notation/evidence/final-sharp-readable.png",
-    ".ai/runs/2026-07-24T05-54-41.810Z_compact-chord-notation/evidence/final-desktop-readable.png"
+    ".ai/runs/2026-07-24T05-54-41.810Z_compact-chord-notation/evidence/glyph-refinement-0-baseline.png",
+    ".ai/runs/2026-07-24T05-54-41.810Z_compact-chord-notation/evidence/glyph-refinement-1.png",
+    ".ai/runs/2026-07-24T05-54-41.810Z_compact-chord-notation/evidence/glyph-refinement-2.png",
+    ".ai/runs/2026-07-24T05-54-41.810Z_compact-chord-notation/evidence/glyph-refinement-3.png",
+    ".ai/runs/2026-07-24T05-54-41.810Z_compact-chord-notation/evidence/glyph-refinement-3-desktop.png"
   ],
   "summary": {
     "status": "pass",
-    "rationale": "The refinement addresses the user's readability objection rather than stopping at collision geometry: mobile system density now creates clear chord groups, and raised modifiers remain readable, subordinate, and visibly attached."
+    "rationale": "The third refinement is the strongest comparison result: the triangle gains enough presence without returning to a generic geometric scale, while the independently shorter and higher minor dash reads quickly as a chord quality mark."
   },
   "findings": [],
   "section_scores": [
@@ -20,34 +17,34 @@
       "section_id": "hard_rules",
       "score": 1,
       "notes": [
-        "Existing loading and error states remain intact.",
-        "No new interaction, destructive action, overflow, or redundant-label issue was introduced."
+        "All three requested refinements have screenshot evidence.",
+        "Existing state coverage, score semantics, responsive density, and width fit remain intact."
       ]
     },
     {
       "section_id": "ux_heuristics",
-      "score": 4.8,
+      "score": 4.9,
       "notes": [
-        "The densest mobile chord gap is now 13.8px instead of 0.6px.",
-        "Three measures per row is an appropriate scroll-versus-readability tradeoff for this score surface."
+        "Independent optical values reflect the different recognition needs of a triangular outline and a horizontal dash.",
+        "Root, quality, and extension continue to form a compact scan unit on representative mobile rows."
       ]
     },
     {
       "section_id": "aesthetic_judgment",
-      "score": 4.8,
+      "score": 4.9,
       "notes": [
-        "The baseline chord identity and raised modifier form one perceptual group.",
-        "The notation remains restrained, subject-grounded, and consistent on mobile and desktop."
+        "Iteration 1 was correctly rejected as slightly heavy and iteration 2 exposed the limitation of shared metrics.",
+        "Iteration 3 achieves restrained, engraving-specific proportions on both mobile and desktop."
       ]
     }
   ],
   "profile_assessment": {
     "selected_profile_id": "music-visual-instrument",
-    "fit_score": 0.98,
+    "fit_score": 0.99,
     "anti_patterns_detected": [],
     "notes": [
-      "The final density follows musical reading needs rather than a generic compact-layout preference.",
-      "The rejected center-alignment experiment demonstrates that long slash chords were considered before acceptance."
+      "The result is grounded in the existing music notation system and actual rendered score rather than generic UI typography.",
+      "The per-glyph correction is small, explicit, and limited to the dedicated quality symbols."
     ]
   },
   "gates": {

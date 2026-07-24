@@ -1,19 +1,21 @@
 {
   "completed_tasks": [
-    "Preserved the approved reference-backed Jazz shorthand formatter and idempotent alphaTab SVG transformation.",
-    "Changed mobile score density from four to three measures per row while retaining four measures per row above 640px.",
-    "Increased raised alterations and modifiers to 80% and replaced SVG super with an explicit 38% baseline shift.",
-    "Completed four browser-backed visual iterations, rejecting global center alignment before selecting the final responsive layout and modifier treatment."
+    "Preserved Finale Maestro SMuFL csymMajorSeventh U+E873 and csymMinor U+E874 while keeping roots and extension numbers in Score Scheherazade New.",
+    "Completed three successive browser-backed optical refinements at 390px after the current dedicated-glyph baseline.",
+    "Selected independent major and minor size and baseline values after comparing the three rendered iterations.",
+    "Preserved the approved responsive score density and raised modifier treatment."
   ],
   "changed_files": [
-    "src/app/songs/lead-sheet-renderer.tsx"
+    "src/app/songs/lead-sheet-renderer.tsx",
+    "src/app/songs/lead-sheet-renderer.module.css"
   ],
   "notes": [
-    "Iteration 1 centered chord anchors and used 78% super modifiers; rejected because long slash-chord pairs became cramped.",
-    "Iteration 2 used three mobile measures per row and 78% super modifiers; chord separation improved but modifiers remained detached.",
-    "Iteration 3 kept three measures and 78% size with 28% shift; attachment improved but semantic hierarchy was too weak.",
-    "Iteration 4 used three measures, 80% size, and 38% shift; accepted for readable grouping and clear modifier hierarchy.",
-    "No source song data, alphaTex generation, CSS, dependencies, or desktop measure density changed."
+    "Baseline: shared 185% size and 98% shift; compact but slightly weak during rapid scanning.",
+    "Iteration 1: shared 195% size and 100% shift; stronger, but the triangle became slightly heavy beside the extension number.",
+    "Iteration 2: shared 190% size and 102% shift; improved triangle balance and baseline integration, but the minor mark still benefited from independent optical treatment.",
+    "Iteration 3 selected: major 192%/103% and minor 188%/106%; the major width is about 7.39px and the minor width about 6.09px at 390px.",
+    "The final triangle remains substantially narrower than the previous 11.84px generic character and the final minor mark remains shorter than the previous 8.88px mathematical minus.",
+    "No source song data, alphaTex generation, dependencies, or global theme rules changed."
   ],
   "open_issues": []
 }
