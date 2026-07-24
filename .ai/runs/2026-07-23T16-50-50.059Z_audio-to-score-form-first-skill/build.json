@@ -1,0 +1,43 @@
+{
+  "completed_tasks": [
+    "Created the form-first audio-to-score orchestrator skill and UI metadata.",
+    "Defined form, melody, accompaniment, verification, provenance, linear-score, and written-form contracts.",
+    "Added deterministic final-score validation with valid and representative invalid cases.",
+    "Repositioned audio-chord-recognition as a standalone or approved-form-aware harmony module.",
+    "Kept standalone chord-analysis validation backward compatible while enforcing form coordinates in module mode.",
+    "Added explicit one-skill drift-check and atomic install commands with content receipts and rollback behavior.",
+    "Installed and hash-verified audio-to-score and audio-chord-recognition in the Codex skill directory.",
+    "Refined validation to enforce section membership ranges, continuous bar-in-section values, linear performance order, approved reviewer identity, lyric structure, and melody source timing."
+  ],
+  "changed_files": [
+    "docs/ideas/audio-to-score-form-first-skill.md",
+    "package.json",
+    "scripts/sync-codex-skill.mjs",
+    "scripts/sync-codex-skill.test.mjs",
+    "skills/README.md",
+    "skills/audio-to-score/SKILL.md",
+    "skills/audio-to-score/agents/openai.yaml",
+    "skills/audio-to-score/references/accompaniment-arrangement.md",
+    "skills/audio-to-score/references/artifact-contracts.md",
+    "skills/audio-to-score/references/form-analysis.md",
+    "skills/audio-to-score/references/melody-transcription.md",
+    "skills/audio-to-score/references/verification.md",
+    "skills/audio-to-score/scripts/test_validate_score.py",
+    "skills/audio-to-score/scripts/validate_score.py",
+    "skills/audio-chord-recognition/SKILL.md",
+    "skills/audio-chord-recognition/agents/openai.yaml",
+    "skills/audio-chord-recognition/references/agent-contracts.md",
+    "skills/audio-chord-recognition/references/chord-heuristics.md",
+    "skills/audio-chord-recognition/scripts/test_validate_analysis.py",
+    "skills/audio-chord-recognition/scripts/validate_analysis.py"
+  ],
+  "notes": [
+    "Evidence extraction is parallel, but form is the first adjudicated artifact.",
+    "The approved form map cannot be silently rewritten by harmony or arrangement passes.",
+    "The complete linear performance timeline remains authoritative; written repeats are derived through explicit mappings.",
+    "Generated accompaniment uses separate provenance and approval from source transcription.",
+    "The installed copies contain .codex-source.json receipts; the generated receipt is excluded from content drift hashing.",
+    "No rendered product UI or songs data was changed."
+  ],
+  "open_issues": []
+}

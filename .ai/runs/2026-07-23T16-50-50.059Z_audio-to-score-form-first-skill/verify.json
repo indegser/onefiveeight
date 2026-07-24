@@ -1,0 +1,53 @@
+{
+  "checks": [
+    {
+      "name": "Codex skill structure",
+      "status": "passed",
+      "details": "quick_validate.py reported both skills valid: skills/audio-to-score and skills/audio-chord-recognition."
+    },
+    {
+      "name": "Audio-to-score contract validation",
+      "status": "passed",
+      "details": "Ten Python unit tests passed, covering valid source and generated layers plus form approval, reviewer identity, section range, melody overlap, lyric structure, form-coordinate, provenance, and written mapping failures."
+    },
+    {
+      "name": "Form-aware chord validation",
+      "status": "passed",
+      "details": "Five Python unit tests passed for backward-compatible standalone analysis, approved-form module mode, form-coordinate enforcement, and generated-harmony rejection."
+    },
+    {
+      "name": "Skill synchronization safety",
+      "status": "passed",
+      "details": "Three Node tests passed for exact one-skill install, receipt/hash checks, read-only clean check, drift detection, repair, unrelated-skill preservation, and invalid-target rejection."
+    },
+    {
+      "name": "Installed skill drift",
+      "status": "passed",
+      "details": "audio-to-score and audio-chord-recognition both reported clean with matching repository, installed, and receipt hashes after refinement."
+    },
+    {
+      "name": "Lint",
+      "status": "passed",
+      "details": "npm run lint completed with zero errors. Eight pre-existing unused-symbol warnings remain in unrelated source files."
+    },
+    {
+      "name": "Production build",
+      "status": "passed",
+      "details": "npm run build compiled, typechecked, generated static routes, and completed successfully after refinement."
+    },
+    {
+      "name": "Diff hygiene",
+      "status": "passed",
+      "details": "git diff --check completed without whitespace errors."
+    }
+  ],
+  "passed": true,
+  "visual_checks": [
+    {
+      "name": "Rendered UI verification",
+      "status": "skipped",
+      "details": "No rendered website, TSX, CSS, songs data, or visual surface changed."
+    }
+  ],
+  "blocking_issues": []
+}

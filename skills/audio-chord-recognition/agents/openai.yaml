@@ -1,4 +1,4 @@
 interface:
   display_name: "Audio Chord Recognition"
-  short_description: "Estimate chords, key, BPM from audio"
-  default_prompt: "Use $audio-chord-recognition to estimate the chord progression, key, BPM, and musician-friendly chart for this audio file."
+  short_description: "Estimate form-aware harmony and bass from audio"
+  default_prompt: "Use $audio-chord-recognition to estimate form-aware chords, bass motion, key, and beat-positioned harmony for this audio file."

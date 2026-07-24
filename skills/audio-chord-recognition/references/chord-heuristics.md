@@ -2,6 +2,15 @@
 
 These heuristics guide the Musician Judgment Agent. They are not a scoring formula.
 
+## Form Authority
+
+- In `audio_to_score_module` mode, treat the approved form map as immutable input.
+- Index every segment by measure, section occurrence, recurrence group, and bar-in-section.
+- Use preliminary harmony to challenge a form hypothesis, but emit a form-change request after approval rather than silently moving boundaries.
+- Compare recurrence peers before finalizing low-confidence harmony.
+- Do not force corresponding form slots to match when bass, melody, cadence, or arrangement evidence supports a genuine altered repeat.
+- Keep source harmony separate from generated accompaniment voicings.
+
 ## Human-Style Judgment
 
 - Treat scripts as measuring instruments. Use them to gather evidence, then decide like a musician.

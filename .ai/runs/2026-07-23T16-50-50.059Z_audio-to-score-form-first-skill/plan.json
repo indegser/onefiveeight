@@ -1,0 +1,135 @@
+{
+  "epics": [
+    {
+      "id": "epic-contract",
+      "title": "Define the form-first audio-to-score contract",
+      "tasks": [
+        {
+          "id": "contract-skill",
+          "title": "Create the audio-to-score orchestrator skill",
+          "implementation_area": "behavior",
+          "acceptance_criteria": [
+            "The skill treats parallel signal extraction as evidence and song form as the first adjudicated musical artifact.",
+            "The skill separates preliminary form hypotheses, frozen form, linear source transcription, generated accompaniment, and compressed written form.",
+            "The skill defines human approval gates for form, transcription, and accompaniment."
+          ],
+          "dependencies": [],
+          "done_definition": [
+            "SKILL.md is concise, imperative, and routes detailed contracts to references.",
+            "agents/openai.yaml matches the final skill description."
+          ]
+        },
+        {
+          "id": "contract-artifacts",
+          "title": "Define reusable artifact contracts",
+          "implementation_area": "data",
+          "acceptance_criteria": [
+            "Contracts cover source audio, evidence extraction, tempo and meter maps, neutral recurrence groups, form hypotheses, frozen form, melody notes, harmony events, linear score, accompaniment arrangement, written form, approvals, and uncertainty.",
+            "Every melody and harmony event can be traced to the linear timeline and an approved form position.",
+            "Generated accompaniment remains structurally separate from observed source transcription."
+          ],
+          "dependencies": [
+            "contract-skill"
+          ],
+          "done_definition": [
+            "Reference files contain concrete JSON examples and invariants without duplicating the core SKILL.md workflow."
+          ]
+        },
+        {
+          "id": "contract-validator",
+          "title": "Validate final audio-to-score artifacts",
+          "implementation_area": "verification",
+          "acceptance_criteria": [
+            "Validation rejects missing or unapproved frozen form before notation-ready output.",
+            "Validation rejects invalid measure ordering, meter lengths, melody timing, form mappings, generated/source layer mixing, and malformed approval state.",
+            "A valid fixture and representative invalid fixtures exercise the validation behavior."
+          ],
+          "dependencies": [
+            "contract-artifacts"
+          ],
+          "done_definition": [
+            "The validator runs deterministically with the standard library.",
+            "Fixture checks pass."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "epic-harmony",
+      "title": "Reposition chord recognition as a form-aware module",
+      "tasks": [
+        {
+          "id": "harmony-update",
+          "title": "Update the audio chord recognition skill",
+          "implementation_area": "integration",
+          "acceptance_criteria": [
+            "The skill no longer claims ownership of the complete audio-to-score workflow.",
+            "When invoked inside audio-to-score, chord decisions require approved form coordinates and preserve recurrence-group consensus.",
+            "Standalone chord-chart use remains supported with explicit estimated-output language."
+          ],
+          "dependencies": [
+            "contract-artifacts"
+          ],
+          "done_definition": [
+            "The skill and its role contracts reference the repository-owned form contract.",
+            "Its validator remains compatible with standalone chord analysis."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "epic-sync",
+      "title": "Make repository skills the source of truth",
+      "tasks": [
+        {
+          "id": "sync-command",
+          "title": "Add explicit skill drift-check and install commands",
+          "implementation_area": "integration",
+          "acceptance_criteria": [
+            "The command requires a mode and an explicit skill name.",
+            "Check mode performs no writes and returns a failing exit status on drift.",
+            "Install mode stages and atomically replaces only the named installed skill.",
+            "The installed copy records a content hash and repository source path without affecting content comparison.",
+            "Traversal, missing source, and non-skill targets are rejected."
+          ],
+          "dependencies": [],
+          "done_definition": [
+            "Temporary-directory tests verify install, clean check, drift detection, and target validation.",
+            "Package scripts expose the commands without hiding the required skill name."
+          ]
+        },
+        {
+          "id": "sync-install",
+          "title": "Synchronize the completed skills into the installed Codex directory",
+          "implementation_area": "verification",
+          "acceptance_criteria": [
+            "The repository copies validate before installation.",
+            "audio-to-score and audio-chord-recognition install successfully from the repository source.",
+            "Post-install check reports no drift for both skills."
+          ],
+          "dependencies": [
+            "contract-validator",
+            "harmony-update",
+            "sync-command"
+          ],
+          "done_definition": [
+            "Installed skill receipts match the repository hashes.",
+            "No unrelated installed skill is modified."
+          ]
+        }
+      ]
+    }
+  ],
+  "assumptions": [
+    "The first practical score target is a melody-and-chord lead sheet with optional generated piano or guitar accompaniment, not note-for-note polyphonic transcription of every source instrument.",
+    "Signal extraction tools produce evidence artifacts but do not need to be implemented in this skill-definition task.",
+    "The repository skills directory is the canonical source; the installed Codex directory is a generated deployment target.",
+    "No rendered product UI changes are part of this task."
+  ],
+  "risks": [
+    "Freezing form too early can hide evidence from melody or harmony, so the contract must distinguish preliminary hypotheses from adjudicated form.",
+    "A generated accompaniment could be mistaken for source transcription unless provenance is required per score layer.",
+    "Replacing an installed skill can lose direct local edits; the sync command must detect drift and make mutation explicit.",
+    "The current active Codex process may require a new session to reload newly installed skill metadata."
+  ]
+}

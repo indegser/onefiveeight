@@ -1,0 +1,53 @@
+{
+  "approved": true,
+  "preview_evidence": [
+    "skills/audio-to-score/SKILL.md and its directly linked contract references",
+    ".ai/runs/2026-07-23T16-50-50.059Z_audio-to-score-form-first-skill/design.json",
+    ".ai/runs/2026-07-23T16-50-50.059Z_audio-to-score-form-first-skill/verify.json; visual review is not applicable because no rendered surface changed"
+  ],
+  "summary": {
+    "status": "pass",
+    "rationale": "The refined non-visual workflow has a clear dependency order, explicit preliminary and approved states, three human review gates, reversible form change requests, enforceable reviewer identity, and a safe single-target synchronization command."
+  },
+  "findings": [],
+  "section_scores": [
+    {
+      "section_id": "hard_rules",
+      "score": 1,
+      "notes": [
+        "Workflow states and approval gates are explicit and enforced by validation.",
+        "The mutating install action is separate from read-only check mode and uses exact targets and rollback."
+      ]
+    },
+    {
+      "section_id": "ux_heuristics",
+      "score": 0.97,
+      "notes": [
+        "The next artifact and gate are clear throughout the workflow.",
+        "Progressive disclosure keeps SKILL.md concise and moves detailed contracts into one-level references.",
+        "Failure, form revision, and installation recovery paths are actionable."
+      ]
+    },
+    {
+      "section_id": "aesthetic_judgment",
+      "score": 1,
+      "notes": [
+        "Not applicable to this non-rendered skill and command-line task; no visual register or styling was introduced."
+      ]
+    }
+  ],
+  "profile_assessment": {
+    "selected_profile_id": null,
+    "fit_score": 1,
+    "anti_patterns_detected": [],
+    "notes": [
+      "No rendered UI surface was created or changed."
+    ]
+  },
+  "gates": {
+    "hard_rules_passed": true,
+    "needs_human_review": false,
+    "requires_refinement": false
+  },
+  "next_steps": []
+}
