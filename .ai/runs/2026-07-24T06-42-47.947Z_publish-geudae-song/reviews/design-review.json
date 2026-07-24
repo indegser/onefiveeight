@@ -1,0 +1,63 @@
+{
+  "approved": true,
+  "preview_evidence": [
+    ".ai/runs/2026-07-24T06-42-47.947Z_publish-geudae-song/evidence/songs-before-desktop.png",
+    ".ai/runs/2026-07-24T06-42-47.947Z_publish-geudae-song/evidence/songs-after-desktop.png",
+    ".ai/runs/2026-07-24T06-42-47.947Z_publish-geudae-song/evidence/songs-after-mobile.png",
+    ".ai/runs/2026-07-24T06-42-47.947Z_publish-geudae-song/evidence/song-detail-after-desktop-clean.png",
+    ".ai/runs/2026-07-24T06-42-47.947Z_publish-geudae-song/evidence/song-detail-after-desktop-middle.png",
+    ".ai/runs/2026-07-24T06-42-47.947Z_publish-geudae-song/evidence/song-detail-after-desktop-final.png",
+    ".ai/runs/2026-07-24T06-42-47.947Z_publish-geudae-song/evidence/song-detail-after-mobile.png",
+    ".ai/runs/2026-07-24T06-42-47.947Z_publish-geudae-song/evidence/song-detail-after-lan.png"
+  ],
+  "summary": {
+    "status": "pass",
+    "rationale": "The implementation preserves the restrained Songs list, makes musical form immediately visible, and lets the three-part notation remain the dominant subject-specific surface at desktop and mobile widths."
+  },
+  "findings": [],
+  "section_scores": [
+    {
+      "section_id": "hard_rules",
+      "score": 5,
+      "notes": [
+        "Existing empty, loading, error, ready, and not-found states remain defined.",
+        "There are no destructive actions or competing calls to action.",
+        "No new global theme token or custom semantic CSS class was introduced."
+      ]
+    },
+    {
+      "section_id": "ux_heuristics",
+      "score": 4.75,
+      "notes": [
+        "The new list row matches sibling information hierarchy and remains scannable.",
+        "The form digest improves orientation without repeating labels around each system.",
+        "Desktop and 390px layouts fit available width with no horizontal document overflow."
+      ]
+    },
+    {
+      "section_id": "aesthetic_judgment",
+      "score": 4.75,
+      "notes": [
+        "Music notation, rehearsal labels, chords, and staves drive the visual hierarchy.",
+        "The result avoids cards, badges, gradients, shadows, and marketing composition.",
+        "Geist title and metadata hierarchy remain consistent with the current product shell."
+      ]
+    }
+  ],
+  "profile_assessment": {
+    "selected_profile_id": "music-visual-instrument",
+    "fit_score": 4.9,
+    "anti_patterns_detected": [],
+    "notes": [
+      "The detail page behaves as a readable musical instrument rather than an administrative record.",
+      "The compact form line is subject-grounded and useful for navigation.",
+      "No raw-token drift, density blindness, visual-noise stack, or music-surface-as-admin-ui pattern appears."
+    ]
+  },
+  "gates": {
+    "hard_rules_passed": true,
+    "needs_human_review": false,
+    "requires_refinement": false
+  },
+  "next_steps": []
+}

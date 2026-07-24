@@ -1,0 +1,179 @@
+{
+  "screens": [
+    {
+      "id": "songs-index",
+      "name": "Songs index",
+      "purpose": "Let the user scan the existing chart library and open the newly published song.",
+      "screen_type": "music-library-list",
+      "primary_action": "Open a song row",
+      "states": [
+        "populated",
+        "empty"
+      ]
+    },
+    {
+      "id": "song-detail",
+      "name": "Song score detail",
+      "purpose": "Present the complete melody and piano score with chord symbols in the current notation surface.",
+      "screen_type": "music-score-detail",
+      "primary_action": "Read and inspect the score",
+      "states": [
+        "loading",
+        "ready",
+        "error",
+        "not-found"
+      ]
+    }
+  ],
+  "ux_rules": [
+    "Preserve the current Songs list hierarchy; the new entry should behave like every existing row.",
+    "Use musical form, measures, staves, and chord symbols as the detail-page hierarchy rather than adding dashboard containers.",
+    "Keep the approved neutral section labels and do not rename them to Verse, Chorus, or Bridge without evidence.",
+    "Keep automatic-transcription caveats in the song data, but do not duplicate them as repeated labels around every score system.",
+    "Retain visible loading and error feedback while alphaTab imports the MusicXML asset.",
+    "Legacy chord-only entries must remain on the current AlphaTex path."
+  ],
+  "component_map": [
+    {
+      "screen_id": "songs-index",
+      "components": [
+        "SongsPage server component",
+        "SongList",
+        "Next.js Link row"
+      ]
+    },
+    {
+      "screen_id": "song-detail",
+      "components": [
+        "SongDetailPage server component",
+        "ScoreViewer",
+        "LeadSheetRenderer client component",
+        "alphaTab MusicXML importer",
+        "existing loading and error state panels"
+      ]
+    }
+  ],
+  "design_rule_engine": {
+    "profile_id": "music-visual-instrument",
+    "hard_rule_sets": [
+      "design-principles",
+      "layout-rules"
+    ],
+    "heuristic_sets": [
+      "ux-heuristics"
+    ],
+    "allowed_pattern_sets": [
+      "core-allowed-patterns",
+      "subject-grounded-signature",
+      "register-fit-spacing"
+    ],
+    "banned_pattern_sets": [
+      "core-banned-patterns",
+      "music-surface-as-admin-ui",
+      "visual-noise-stack"
+    ],
+    "review_rubric_id": "core-design-review"
+  },
+  "screen_contexts": [
+    {
+      "screen_id": "songs-index",
+      "screen_type": "music-library-list",
+      "layout_intent": "Keep the current single-column, width-aware list with title and artist on the left and compact musical metadata on the right.",
+      "interaction_risks": [
+        "A long Korean title could crowd the metadata column at intermediate widths.",
+        "A new row could introduce redundant badges or labels not present on sibling rows."
+      ],
+      "required_states": [
+        "populated",
+        "empty"
+      ],
+      "notes": [
+        "Baseline desktop and mobile screenshots show the current row pattern fitting without horizontal overflow."
+      ]
+    },
+    {
+      "screen_id": "song-detail",
+      "screen_type": "music-score-detail",
+      "layout_intent": "Use the full available pane width for notation while preserving the existing title hierarchy and responsive page gutter.",
+      "interaction_risks": [
+        "The three-part 86-measure MusicXML score may be dense or clip at mobile widths.",
+        "Chord-chart-only rest suppression would damage the full score.",
+        "alphaTab may fail while importing the static asset."
+      ],
+      "required_states": [
+        "loading",
+        "ready",
+        "error",
+        "not-found"
+      ],
+      "notes": [
+        "The current renderer already has loading and error treatments.",
+        "No new interactive control or destructive action is required."
+      ]
+    }
+  ],
+  "builder_constraints": [
+    {
+      "screen_id": "songs-index",
+      "constraints": [
+        "Do not change page layout, colors, typography, or row composition.",
+        "Use the existing Song data and SongList path so static route generation includes the new entry.",
+        "Keep semantic Tailwind utilities and current Geist hierarchy; do not add global CSS variables or page-specific color tokens."
+      ],
+      "open_decisions": []
+    },
+    {
+      "screen_id": "song-detail",
+      "constraints": [
+        "Keep LeadSheetRenderer as the client boundary and ScoreViewer/SongDetailPage as existing server composition.",
+        "Switch between MusicXML and AlphaTex based on an optional Song asset field rather than forking a second renderer.",
+        "Apply chord-chart-only rest hiding and track-name hiding only to legacy AlphaTex charts.",
+        "Use alphaTab's existing page layout and responsive scale; change display settings only if browser evidence shows clipping.",
+        "Preserve loading, ready, and error state semantics.",
+        "Apply Next.js App Router, shadcn semantic styling, and Geist guidance without importing new component or font systems.",
+        "v0 exploration is intentionally not used because the approved design preserves an existing surface rather than inventing a new UI."
+      ],
+      "open_decisions": [
+        "Whether alphaTab's default MusicXML staff sizing already fits a 390px viewport; decide from post-build browser evidence."
+      ]
+    }
+  ],
+  "review_targets": [
+    {
+      "screen_id": "songs-index",
+      "critical_judgments": [
+        "The sixth row is immediately scannable and consistent with sibling rows.",
+        "Title, artist, feel, section count, and system count fit the available width.",
+        "No redundant label or badge was added."
+      ],
+      "must_not_regress": [
+        "Existing five song links and routes",
+        "Desktop and mobile row fit",
+        "Keyboard focus styling"
+      ]
+    },
+    {
+      "screen_id": "song-detail",
+      "critical_judgments": [
+        "Melody, piano right hand, piano left hand, and chord symbols visibly render.",
+        "Representative first, middle, and final score systems use the available pane width without avoidable horizontal clipping.",
+        "The title or part labels do not redundantly repeat in the local score context.",
+        "No framework or alphaTab error overlay appears."
+      ],
+      "must_not_regress": [
+        "Legacy chord-only score rendering",
+        "Loading and error state coverage",
+        "Existing responsive gutter"
+      ]
+    }
+  ],
+  "visual_constraints": [
+    "Selected profile: music-visual-instrument.",
+    "Musical notation is the dominant visual object; avoid cards, badges, gradients, shadows, and decorative chrome.",
+    "Preserve four-measure system behavior where alphaTab's imported score allows it.",
+    "Use semantic foreground/background/border utilities and current white score paper.",
+    "Desktop and 390px mobile screenshots are mandatory after implementation.",
+    "Browser verification must explicitly check representative score systems, redundant labels, available-width fit, and error overlays."
+  ],
+  "human_checkpoints": []
+}

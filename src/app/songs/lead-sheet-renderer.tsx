@@ -20,7 +20,11 @@ export function LeadSheetRenderer({ song }: { song: Song }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const alphaTabRef = useRef<AlphaTabApi | null>(null);
   const [status, setStatus] = useState<"loading" | "ready" | "error">("loading");
-  const alphaTex = useMemo(() => songToAlphaTex(song), [song]);
+  const isImportedScore = Boolean(song.scorePath);
+  const alphaTex = useMemo(
+    () => (song.scorePath ? null : songToAlphaTex(song)),
+    [song],
+  );
 
   useEffect(() => {
     let disposed = false;
@@ -69,7 +73,7 @@ export function LeadSheetRenderer({ song }: { song: Song }) {
         ]);
         settings.display.layoutMode = alphaTab.LayoutMode.Page;
         settings.display.scale = compact ? 0.72 : 0.9;
-        settings.display.padding = [0, 35];
+        settings.display.padding = isImportedScore ? [16, 60] : [0, 35];
         settings.display.stretchForce = 0.8;
         settings.display.justifyLastSystem = true;
         settings.display.barsPerRow = 4;
@@ -88,23 +92,26 @@ export function LeadSheetRenderer({ song }: { song: Song }) {
         const api = new alphaTab.AlphaTabApi(containerRef.current, settings);
 
         api.scoreLoaded.on((score) => {
-          score.stylesheet.singleTrackTrackNamePolicy =
-            alphaTab.model.TrackNamePolicy.Hidden;
-          score.stylesheet.multiTrackTrackNamePolicy =
-            alphaTab.model.TrackNamePolicy.Hidden;
           score.stylesheet.barNumberDisplay =
             alphaTab.model.BarNumberDisplay.Hide;
-          const transparent = alphaTab.model.Color.fromJson("#00000000");
-          for (const track of score.tracks) {
-            for (const staff of track.staves) {
-              for (const bar of staff.bars) {
-                for (const voice of bar.voices) {
-                  for (const beat of voice.beats) {
-                    beat.style = new alphaTab.model.BeatStyle();
-                    beat.style.colors.set(
-                      alphaTab.model.BeatSubElement.StandardNotationRests,
-                      transparent,
-                    );
+
+          if (!isImportedScore) {
+            score.stylesheet.singleTrackTrackNamePolicy =
+              alphaTab.model.TrackNamePolicy.Hidden;
+            score.stylesheet.multiTrackTrackNamePolicy =
+              alphaTab.model.TrackNamePolicy.Hidden;
+            const transparent = alphaTab.model.Color.fromJson("#00000000");
+            for (const track of score.tracks) {
+              for (const staff of track.staves) {
+                for (const bar of staff.bars) {
+                  for (const voice of bar.voices) {
+                    for (const beat of voice.beats) {
+                      beat.style = new alphaTab.model.BeatStyle();
+                      beat.style.colors.set(
+                        alphaTab.model.BeatSubElement.StandardNotationRests,
+                        transparent,
+                      );
+                    }
                   }
                 }
               }
@@ -123,7 +130,11 @@ export function LeadSheetRenderer({ song }: { song: Song }) {
         });
 
         alphaTabRef.current = api;
-        api.tex(alphaTex);
+        if (song.scorePath) {
+          api.load(song.scorePath, song.scoreTrackIndexes);
+        } else if (alphaTex) {
+          api.tex(alphaTex);
+        }
       } catch (error) {
         if (abortController.signal.aborted) return;
         console.error("alphaTab score rendering failed", error);
@@ -139,7 +150,7 @@ export function LeadSheetRenderer({ song }: { song: Song }) {
       alphaTabRef.current?.destroy();
       alphaTabRef.current = null;
     };
-  }, [alphaTex]);
+  }, [alphaTex, isImportedScore, song.scorePath, song.scoreTrackIndexes]);
 
   return (
     <div
@@ -165,7 +176,7 @@ export function LeadSheetRenderer({ song }: { song: Song }) {
           data-music-font="finale-maestro"
           data-chord-font="scheherazade-new"
           className="min-w-0 bg-white [&_svg]:max-w-full"
-          aria-label={`${song.title} 코드 악보`}
+          aria-label={`${song.title} ${isImportedScore ? "멜로디와 피아노 악보" : "코드 악보"}`}
         />
       </div>
     </div>

@@ -1,0 +1,27 @@
+{
+  "completed_tasks": [
+    "data-contract",
+    "songs-library-entry",
+    "musicxml-rendering"
+  ],
+  "changed_files": [
+    "src/lib/songs.ts",
+    "src/lib/song-data/geudae-naege-dasi.ts",
+    "src/app/songs/lead-sheet-renderer.tsx",
+    "src/app/songs/score-viewer.tsx",
+    "public/scores/geudae-naege-dasi.musicxml",
+    "public/scores/geudae-naege-dasi.mid",
+    ".ai/runs/2026-07-24T06-42-47.947Z_publish-geudae-song/plan.json",
+    ".ai/runs/2026-07-24T06-42-47.947Z_publish-geudae-song/design.json",
+    ".ai/runs/2026-07-24T06-42-47.947Z_publish-geudae-song/build.json",
+    ".ai/runs/2026-07-24T06-42-47.947Z_publish-geudae-song/run.json"
+  ],
+  "notes": [
+    "Data axis: added optional MusicXML track metadata to Song and a compact form-first song definition that expands to 86 chord measures across ten sections.",
+    "Rendering axis: the existing alphaTab client component loads all three MusicXML tracks for the new song while preserving the AlphaTex path and chord-chart-only rest suppression for legacy songs.",
+    "Visual axis: exposed the existing analysisDigest field as a compact Geist Mono form map; no global styles, theme variables, component libraries, or page layout were added.",
+    "Asset axis: copied the validated MusicXML and MIDI into public/scores; removed redundant embedded score title and per-measure metronome marks from the web-display MusicXML.",
+    "Browser-before evidence was captured before implementation, and initial desktop/mobile after evidence shows no horizontal overflow or error overlay."
+  ],
+  "open_issues": []
+}

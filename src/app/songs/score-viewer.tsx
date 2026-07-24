@@ -15,6 +15,11 @@ export function ScoreViewer({ song }: ScoreViewerProps) {
         <p className="text-base font-medium text-muted-foreground">
           {song.artist}
         </p>
+        {song.analysisDigest ? (
+          <p className="max-w-4xl font-mono text-xs leading-5 text-muted-foreground">
+            {song.analysisDigest}
+          </p>
+        ) : null}
       </header>
 
       <div className="mt-8">
