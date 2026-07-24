@@ -1,7 +1,7 @@
 {
   "run_id": "2026-07-24T06-42-47.947Z_publish-geudae-song",
   "goal": "Build an app from /tmp/publish-geudae-song.md",
-  "revision": 1,
+  "revision": 2,
   "phase": "done",
   "status": "done",
   "next_agent": "none",
@@ -31,7 +31,13 @@
   "blockers": [],
   "decisions": [],
   "risks": [],
-  "refinement_notes": [],
+  "refinement_notes": [
+    {
+      "at": "2026-07-24T09:18:38.039Z",
+      "note": "Integrate origin/main compact chord typography and three-bar mobile layout while preserving imported MusicXML multi-part loading, form visibility, and full-score accessibility.",
+      "target_agent": "builder"
+    }
+  ],
   "history": [
     {
       "at": "2026-07-24T06:42:47.950Z",
@@ -60,6 +66,26 @@
     {
       "at": "2026-07-24T06:56:14Z",
       "event": "Code Critic approved the scoped data and renderer changes; Supervisor marked the run done"
+    },
+    {
+      "at": "2026-07-24T09:18:38.040Z",
+      "event": "Refinement requested for builder: Integrate origin/main compact chord typography and three-bar mobile layout while preserving imported MusicXML multi-part loading, form visibility, and full-score accessibility."
+    },
+    {
+      "at": "2026-07-24T09:23:00.000Z",
+      "event": "Builder resolved the renderer conflict by preserving imported MusicXML multi-part loading alongside origin/main compact chord formatting and responsive system density."
+    },
+    {
+      "at": "2026-07-24T09:27:00.000Z",
+      "event": "Verifier passed lint, typecheck, production build, final-score validation, LAN asset checks, desktop/mobile browser checks, and legacy song regression."
+    },
+    {
+      "at": "2026-07-24T09:29:00.000Z",
+      "event": "Design Critic approved the form-first Music Visual Instrument result with four-measure desktop and readable three-measure mobile systems."
+    },
+    {
+      "at": "2026-07-24T09:30:00.000Z",
+      "event": "Code Critic approved the merged legacy and imported score paths; Supervisor marked revision 2 done."
     }
   ]
 }

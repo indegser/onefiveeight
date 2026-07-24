@@ -1,57 +1,48 @@
 {
   "approved": true,
   "preview_evidence": [
-    ".ai/runs/2026-07-24T06-42-47.947Z_publish-geudae-song/evidence/songs-before-desktop.png",
-    ".ai/runs/2026-07-24T06-42-47.947Z_publish-geudae-song/evidence/songs-after-desktop.png",
-    ".ai/runs/2026-07-24T06-42-47.947Z_publish-geudae-song/evidence/songs-after-mobile.png",
-    ".ai/runs/2026-07-24T06-42-47.947Z_publish-geudae-song/evidence/song-detail-after-desktop-clean.png",
-    ".ai/runs/2026-07-24T06-42-47.947Z_publish-geudae-song/evidence/song-detail-after-desktop-middle.png",
-    ".ai/runs/2026-07-24T06-42-47.947Z_publish-geudae-song/evidence/song-detail-after-desktop-final.png",
-    ".ai/runs/2026-07-24T06-42-47.947Z_publish-geudae-song/evidence/song-detail-after-mobile.png",
-    ".ai/runs/2026-07-24T06-42-47.947Z_publish-geudae-song/evidence/song-detail-after-lan.png"
+    ".ai/runs/2026-07-24T06-42-47.947Z_publish-geudae-song/evidence/song-detail-after-merge-desktop-top.png",
+    ".ai/runs/2026-07-24T06-42-47.947Z_publish-geudae-song/evidence/song-detail-after-merge-mobile.png",
+    ".ai/runs/2026-07-24T06-42-47.947Z_publish-geudae-song/evidence/songs-after-merge-mobile.png"
   ],
   "summary": {
     "status": "pass",
-    "rationale": "The implementation preserves the restrained Songs list, makes musical form immediately visible, and lets the three-part notation remain the dominant subject-specific surface at desktop and mobile widths."
+    "rationale": "The merged score viewer remains form-first, uses musical section and measure structure as its hierarchy, preserves the complete three-part score, and adapts system density without horizontal overflow."
   },
   "findings": [],
   "section_scores": [
     {
       "section_id": "hard_rules",
-      "score": 5,
+      "score": 1,
       "notes": [
-        "Existing empty, loading, error, ready, and not-found states remain defined.",
-        "There are no destructive actions or competing calls to action.",
-        "No new global theme token or custom semantic CSS class was introduced."
+        "Loading and error states remain present.",
+        "No destructive flow or competing primary action was introduced."
       ]
     },
     {
       "section_id": "ux_heuristics",
-      "score": 4.75,
+      "score": 0.98,
       "notes": [
-        "The new list row matches sibling information hierarchy and remains scannable.",
-        "The form digest improves orientation without repeating labels around each system.",
-        "Desktop and 390px layouts fit available width with no horizontal document overflow."
+        "The approved form is visible before notation.",
+        "Desktop keeps four-measure score systems while mobile uses a readable three-measure fallback.",
+        "Songs list and detail fit 390px without avoidable overflow or redundant local labels."
       ]
     },
     {
       "section_id": "aesthetic_judgment",
-      "score": 4.75,
+      "score": 0.97,
       "notes": [
-        "Music notation, rehearsal labels, chords, and staves drive the visual hierarchy.",
-        "The result avoids cards, badges, gradients, shadows, and marketing composition.",
-        "Geist title and metadata hierarchy remain consistent with the current product shell."
+        "The Music Visual Instrument profile is expressed through score hierarchy, rehearsal labels, notation fonts, and restrained surrounding UI.",
+        "Compact chord typography from main is preserved across legacy and imported score paths."
       ]
     }
   ],
   "profile_assessment": {
     "selected_profile_id": "music-visual-instrument",
-    "fit_score": 4.9,
+    "fit_score": 0.98,
     "anti_patterns_detected": [],
     "notes": [
-      "The detail page behaves as a readable musical instrument rather than an administrative record.",
-      "The compact form line is subject-grounded and useful for navigation.",
-      "No raw-token drift, density blindness, visual-noise stack, or music-surface-as-admin-ui pattern appears."
+      "The result is organized as a readable musical document rather than a generic data-detail page."
     ]
   },
   "gates": {

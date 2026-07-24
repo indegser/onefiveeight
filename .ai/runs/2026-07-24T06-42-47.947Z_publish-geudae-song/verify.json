@@ -1,77 +1,57 @@
 {
   "checks": [
     {
-      "name": "npm run lint",
+      "name": "lint",
       "status": "passed",
-      "details": "Exited 0 with seven pre-existing unused-symbol warnings outside the changed files and zero errors."
+      "details": "npm run lint exited 0 with 7 pre-existing unrelated unused-symbol warnings and no errors."
     },
     {
-      "name": "npx tsc --noEmit",
+      "name": "typecheck",
       "status": "passed",
-      "details": "TypeScript completed with no diagnostics."
+      "details": "npx tsc --noEmit exited 0 after the renderer merge resolution."
     },
     {
-      "name": "npm run build",
+      "name": "production build",
       "status": "passed",
-      "details": "Next.js 16 production build completed; /songs/geudae-naege-dasi was included in the statically generated song routes."
+      "details": "npm run build compiled, typechecked, and generated /songs/geudae-naege-dasi as a static route."
     },
     {
-      "name": "audio-to-score final artifact validation",
+      "name": "audio-to-score final artifact",
       "status": "passed",
-      "details": "validate_score.py reported OK for the authoritative 11_final_score.json."
+      "details": "validate_score.py accepted the canonical 11_final_score.json."
     },
     {
-      "name": "published notation asset validation",
+      "name": "LAN routes and assets",
       "status": "passed",
-      "details": "MusicXML parses as three parts with 86 measures each; web-display metronome marks are removed; MIDI parses as four tracks with a 245.853-second duration."
+      "details": "Songs, song detail, MusicXML, and MIDI each returned HTTP 200 through 192.168.0.5:3100."
     },
     {
-      "name": "git diff --check",
+      "name": "legacy song regression",
       "status": "passed",
-      "details": "No whitespace errors were reported."
+      "details": "기억의 습작 rendered 11 alphaTab SVG pages with the chord-score accessibility label and no alert."
     },
     {
-      "name": "LAN HTTP access",
+      "name": "merge conflict and diff hygiene",
       "status": "passed",
-      "details": "The server listens on TCP *:3100; /songs, /songs/geudae-naege-dasi, the MusicXML asset, and the MIDI asset each returned HTTP 200 through 192.168.0.5."
+      "details": "No conflict markers remain and git diff --check passed."
     }
   ],
   "passed": true,
   "visual_checks": [
     {
-      "name": "Browser before/after evidence",
+      "name": "desktop full-score integration",
       "status": "passed",
-      "details": "Before evidence: evidence/songs-before-desktop.png, evidence/songs-before-mobile.png, evidence/song-detail-before-desktop.png. After evidence: evidence/songs-after-desktop.png, evidence/songs-after-mobile.png, evidence/song-detail-after-desktop-clean.png, evidence/song-detail-after-mobile.png."
+      "details": "song-detail-after-merge-desktop-top.png shows title, artist, form digest, rehearsal labels, Melody, Piano RH, Piano LH, four-measure systems, and compact chord symbols with no error overlay."
     },
     {
-      "name": "Songs representative row and redundancy",
+      "name": "mobile score width and readability",
       "status": "passed",
-      "details": "The new first row uses the same title/artist and feel/section/system hierarchy as sibling rows. No badge, duplicate heading, or extra local label was introduced."
+      "details": "song-detail-after-merge-mobile.png at 390px has document width 390px, score/SVG width 342px, no overflow, no alert, visible form, and three-measure compact systems."
     },
     {
-      "name": "Songs available-width fit",
+      "name": "mobile songs catalog",
       "status": "passed",
-      "details": "At 390px, document scrollWidth equals viewport width (390px); the Korean title, artist, Ballad label, ten-section count, and 24-system count wrap without clipping."
-    },
-    {
-      "name": "Full-score representative systems",
-      "status": "passed",
-      "details": "Desktop first, middle, and final evidence files show Melody, Piano RH, Piano LH, chord symbols, section rehearsal labels, and the final barline. The redundant embedded MusicXML title and per-measure tempo marks were removed."
-    },
-    {
-      "name": "Full-score mobile fit",
-      "status": "passed",
-      "details": "At 390px, the score container is 342px wide, rendered SVG pages are 342px wide, document scrollWidth remains 390px, and three staves plus chord/form labels remain visible."
-    },
-    {
-      "name": "Browser runtime and legacy regression",
-      "status": "passed",
-      "details": "Home, Songs, the new detail route, and the existing 기억의 습작 route load with content, no alphaTab alert, and no Next.js error overlay. The legacy AlphaTex chart still renders."
-    },
-    {
-      "name": "Served CSS",
-      "status": "skipped",
-      "details": "No reusable semantic CSS class or global theme variable was added; implementation uses existing Tailwind utilities and the existing score CSS module."
+      "details": "songs-after-merge-mobile.png shows 그대 내게 다시 and its form summary with document width equal to viewport width."
     }
   ],
   "blocking_issues": []

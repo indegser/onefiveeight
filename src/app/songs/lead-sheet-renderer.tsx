@@ -7,19 +7,151 @@ import type { Song } from "@/lib/songs";
 import styles from "./lead-sheet-renderer.module.css";
 
 const CHORD_FONT_FAMILY = "Score Scheherazade New";
+const CHORD_SYMBOL_FONT_FAMILY = "Score Finale Maestro Chord Symbols";
+const MAJOR_SEVENTH_SYMBOL = "\uE873";
+const MINOR_SYMBOL = "\uE874";
+const COMPACT_CHORD_ATTRIBUTE = "data-compact-chord";
+const SVG_NAMESPACE = "http://www.w3.org/2000/svg";
+const CHORD_QUALITY_SYMBOL_PATTERN = /([\uE873\uE874])/;
+const CHORD_SYMBOL_PATTERN =
+  /^([A-G](?:#{1,2}|b{1,2})?)([^/]*)(\/[A-G](?:#{1,2}|b{1,2})?)?$/;
+const RAISED_MODIFIER_PATTERN =
+  /^(?:(?:[#b](?:5|9|11|13)|sus(?:2|4|9)?|add[#b]?(?:2|4|5|6|9|11|13)|no(?:3|5|7|9|11|13)|omit(?:3|5|7|9|11|13)|alt),?)+$/;
 
-function leftAlignChordNames(container: HTMLElement) {
-  for (const text of container.querySelectorAll<SVGTextElement>("svg text")) {
-    if (text.getAttribute("style")?.includes(CHORD_FONT_FAMILY)) {
-      text.setAttribute("text-anchor", "start");
+type ChordPartRole = "root" | "quality" | "modifier" | "bass";
+
+type FormattedChordBody = {
+  baseline: string;
+  raised: string;
+};
+
+function typographicAccidentals(value: string) {
+  return value.replaceAll("b", "♭").replaceAll("#", "♯");
+}
+
+function splitRaisedModifier(value: string) {
+  const unwrapped =
+    value.startsWith("(") && value.endsWith(")") ? value.slice(1, -1) : value;
+
+  return RAISED_MODIFIER_PATTERN.test(unwrapped) ? unwrapped : null;
+}
+
+function formatChordBody(body: string): FormattedChordBody {
+  let baseline = "";
+  let remainder = body;
+
+  const halfDiminished = remainder.match(/^m7(?:b5|\(b5\))/);
+  const minorMajor = remainder.match(/^m(?:maj|Maj|M)(7|9|11|13)/);
+  const major = remainder.match(/^(?:maj|M)(7|9|11|13)/);
+  const diminished = remainder.match(/^dim(7)?/);
+  const minorExtension = remainder.match(/^m(6|7|9|11|13)/);
+  const plainExtension = remainder.match(/^(6|7|9|11|13)/);
+
+  if (halfDiminished) {
+    baseline = "ø7";
+    remainder = remainder.slice(halfDiminished[0].length);
+  } else if (minorMajor) {
+    baseline = `${MINOR_SYMBOL}${MAJOR_SEVENTH_SYMBOL}${minorMajor[1]}`;
+    remainder = remainder.slice(minorMajor[0].length);
+  } else if (major) {
+    baseline = `${MAJOR_SEVENTH_SYMBOL}${major[1]}`;
+    remainder = remainder.slice(major[0].length);
+  } else if (diminished) {
+    baseline = `°${diminished[1] ?? ""}`;
+    remainder = remainder.slice(diminished[0].length);
+  } else if (remainder.startsWith("aug")) {
+    baseline = "+";
+    remainder = remainder.slice(3);
+  } else if (minorExtension) {
+    baseline = `${MINOR_SYMBOL}${minorExtension[1]}`;
+    remainder = remainder.slice(minorExtension[0].length);
+  } else if (
+    remainder === "m" ||
+    /^(?:m)(?=sus|add|no|omit|alt)/.test(remainder)
+  ) {
+    baseline = MINOR_SYMBOL;
+    remainder = remainder.slice(1);
+  } else if (plainExtension) {
+    baseline = plainExtension[1];
+    remainder = remainder.slice(plainExtension[0].length);
+  } else if (remainder === "maj" || remainder === "M") {
+    baseline = MAJOR_SEVENTH_SYMBOL;
+    remainder = "";
+  }
+
+  const raised = splitRaisedModifier(remainder);
+  if (raised !== null) {
+    return { baseline, raised };
+  }
+
+  return {
+    baseline: `${baseline}${remainder}`,
+    raised: "",
+  };
+}
+
+function appendChordPart(
+  text: SVGTextElement,
+  value: string,
+  role: ChordPartRole,
+) {
+  const segments = typographicAccidentals(value)
+    .split(CHORD_QUALITY_SYMBOL_PATTERN)
+    .filter(Boolean);
+
+  for (const segment of segments) {
+    const part = document.createElementNS(SVG_NAMESPACE, "tspan");
+    part.textContent = segment;
+    part.setAttribute("data-chord-role", role);
+
+    if (segment === MAJOR_SEVENTH_SYMBOL || segment === MINOR_SYMBOL) {
+      const isMajorSeventh = segment === MAJOR_SEVENTH_SYMBOL;
+      part.setAttribute("font-family", CHORD_SYMBOL_FONT_FAMILY);
+      part.setAttribute("font-weight", "400");
+      part.setAttribute("font-size", isMajorSeventh ? "192%" : "188%");
+      part.setAttribute("baseline-shift", isMajorSeventh ? "103%" : "106%");
+      part.setAttribute(
+        "data-chord-glyph",
+        isMajorSeventh ? "major-seventh" : "minor",
+      );
+    } else if (role === "modifier") {
+      part.setAttribute("font-size", "80%");
+      part.setAttribute("baseline-shift", "38%");
     }
+
+    text.append(part);
+  }
+}
+
+function formatChordNames(container: HTMLElement) {
+  for (const text of container.querySelectorAll<SVGTextElement>("svg text")) {
+    if (!text.getAttribute("style")?.includes(CHORD_FONT_FAMILY)) continue;
+
+    text.setAttribute("text-anchor", "start");
+    if (text.hasAttribute(COMPACT_CHORD_ATTRIBUTE)) continue;
+
+    const chord = text.textContent ?? "";
+    const match = chord.match(CHORD_SYMBOL_PATTERN);
+    if (!match) continue;
+
+    const [, root, suffix, bass = ""] = match;
+    const { baseline, raised } = formatChordBody(suffix);
+    text.setAttribute(COMPACT_CHORD_ATTRIBUTE, "true");
+    text.setAttribute("data-source-chord", chord);
+    text.replaceChildren();
+    appendChordPart(text, root, "root");
+    if (baseline) appendChordPart(text, baseline, "quality");
+    if (raised) appendChordPart(text, raised, "modifier");
+    if (bass) appendChordPart(text, bass, "bass");
   }
 }
 
 export function LeadSheetRenderer({ song }: { song: Song }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const alphaTabRef = useRef<AlphaTabApi | null>(null);
-  const [status, setStatus] = useState<"loading" | "ready" | "error">("loading");
+  const [status, setStatus] = useState<"loading" | "ready" | "error">(
+    "loading",
+  );
   const isImportedScore = Boolean(song.scorePath);
   const alphaTex = useMemo(
     () => (song.scorePath ? null : songToAlphaTex(song)),
@@ -37,7 +169,7 @@ export function LeadSheetRenderer({ song }: { song: Song }) {
       setStatus("loading");
       containerRef.current.replaceChildren();
       chordAlignmentObserver = new MutationObserver(() => {
-        if (containerRef.current) leftAlignChordNames(containerRef.current);
+        if (containerRef.current) formatChordNames(containerRef.current);
       });
       chordAlignmentObserver.observe(containerRef.current, {
         childList: true,
@@ -50,9 +182,10 @@ export function LeadSheetRenderer({ song }: { song: Song }) {
           fetch("/alphatab/smufl/finale-maestro/metadata.json", {
             signal: abortController.signal,
           }),
+          document.fonts.load(`700 19px "${CHORD_FONT_FAMILY}"`, "D A7 G Bm"),
           document.fonts.load(
-            `700 19px "${CHORD_FONT_FAMILY}"`,
-            "D A7 G Bm",
+            `400 19px "${CHORD_SYMBOL_FONT_FAMILY}"`,
+            `${MAJOR_SEVENTH_SYMBOL}${MINOR_SYMBOL}`,
           ),
         ]);
         if (!metadataResponse.ok) {
@@ -76,7 +209,7 @@ export function LeadSheetRenderer({ song }: { song: Song }) {
         settings.display.padding = isImportedScore ? [16, 60] : [0, 35];
         settings.display.stretchForce = 0.8;
         settings.display.justifyLastSystem = true;
-        settings.display.barsPerRow = 4;
+        settings.display.barsPerRow = compact ? 3 : 4;
         settings.display.effectBandPaddingBottom = 6;
         settings.display.resources.engravingSettings.fillFromSmufl(metadata);
         settings.display.resources.elementFonts.set(
@@ -120,7 +253,7 @@ export function LeadSheetRenderer({ song }: { song: Song }) {
         });
         api.renderFinished.on(() => {
           if (!disposed && containerRef.current) {
-            leftAlignChordNames(containerRef.current);
+            formatChordNames(containerRef.current);
             setStatus("ready");
           }
         });

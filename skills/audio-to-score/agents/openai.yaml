@@ -1,0 +1,4 @@
+interface:
+  display_name: "Audio to Score"
+  short_description: "Build form-first melody and accompaniment scores"
+  default_prompt: "Use $audio-to-score to turn this audio file into a form-first melody score with a reviewable accompaniment arrangement."

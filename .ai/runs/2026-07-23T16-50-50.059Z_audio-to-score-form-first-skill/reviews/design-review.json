@@ -1,0 +1,54 @@
+{
+  "approved": true,
+  "preview_evidence": [
+    "skills/audio-to-score/SKILL.md publication handoff workflow",
+    "skills/audio-to-score/references/publication-handoff.md manifest and consumer integration contract",
+    "skills/audio-to-score/references/verification.md publication checks",
+    ".ai/runs/2026-07-23T16-50-50.059Z_audio-to-score-form-first-skill/verify.json; rendered UI review is not applicable because no product surface changed"
+  ],
+  "summary": {
+    "status": "pass",
+    "rationale": "The non-visual workflow keeps musical form as the primary consumer structure, makes the four-measure system preference conditional on readability, preserves section authority and provenance, and defines clear publication success and failure checks."
+  },
+  "findings": [],
+  "section_scores": [
+    {
+      "section_id": "hard_rules",
+      "score": 1,
+      "notes": [
+        "The workflow has a single ordered publication path after final-score validation.",
+        "Automatic-draft, approval, uncertainty, asset failure, responsive failure, and generated-layer states remain explicit."
+      ]
+    },
+    {
+      "section_id": "ux_heuristics",
+      "score": 0.98,
+      "notes": [
+        "The form digest precedes notation, improving whole-song orientation and scanability.",
+        "Four-measure systems are a readable default with explicit section, pickup, meter, density, and viewport exceptions.",
+        "The consumer checklist covers first, middle, final, repeated, desktop, mobile, assets, and playback."
+      ]
+    },
+    {
+      "section_id": "aesthetic_judgment",
+      "score": 1,
+      "notes": [
+        "No rendered styling is introduced; the layout guidance is grounded in score readability and musical structure."
+      ]
+    }
+  ],
+  "profile_assessment": {
+    "selected_profile_id": null,
+    "fit_score": 1,
+    "anti_patterns_detected": [],
+    "notes": [
+      "The task is a non-visual skill contract. Its future consumer guidance aligns with the Music Visual Instrument register by making form, measures, sections, and score readability authoritative."
+    ]
+  },
+  "gates": {
+    "hard_rules_passed": true,
+    "needs_human_review": false,
+    "requires_refinement": false
+  },
+  "next_steps": []
+}
