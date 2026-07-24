@@ -1,15 +1,17 @@
 {
   "approved": true,
   "preview_evidence": [
-    ".ai/runs/2026-07-24T05-54-41.810Z_compact-chord-notation/evidence/glyph-refinement-0-baseline.png",
-    ".ai/runs/2026-07-24T05-54-41.810Z_compact-chord-notation/evidence/glyph-refinement-1.png",
-    ".ai/runs/2026-07-24T05-54-41.810Z_compact-chord-notation/evidence/glyph-refinement-2.png",
-    ".ai/runs/2026-07-24T05-54-41.810Z_compact-chord-notation/evidence/glyph-refinement-3.png",
-    ".ai/runs/2026-07-24T05-54-41.810Z_compact-chord-notation/evidence/glyph-refinement-3-desktop.png"
+    ".ai/runs/2026-07-24T05-54-41.810Z_compact-chord-notation/evidence/coherence-neutral-whole-font-grid.png",
+    ".ai/runs/2026-07-24T05-54-41.810Z_compact-chord-notation/evidence/scheherazade-final-375-dpr3.png",
+    ".ai/runs/2026-07-24T05-54-41.810Z_compact-chord-notation/evidence/scheherazade-final-390-dpr3-hires.png",
+    ".ai/runs/2026-07-24T05-54-41.810Z_compact-chord-notation/evidence/scheherazade-final-430-dpr3.png",
+    ".ai/runs/2026-07-24T05-54-41.810Z_compact-chord-notation/evidence/scheherazade-final-flat9.png",
+    ".ai/runs/2026-07-24T05-54-41.810Z_compact-chord-notation/evidence/scheherazade-final-sharp9.png",
+    ".ai/runs/2026-07-24T05-54-41.810Z_compact-chord-notation/evidence/scheherazade-final-desktop-1024.png"
   ],
   "summary": {
     "status": "pass",
-    "rationale": "The third refinement is the strongest comparison result: the triangle gains enough presence without returning to a generic geometric scale, while the independently shorter and higher minor dash reads quickly as a chord quality mark."
+    "rationale": "The final score reproduces the user-selected Scheherazade comparison direction as one coherent type family. Compact baseline qualities remain legible, true alterations keep their hierarchy, and dense mobile rows fit without collisions."
   },
   "findings": [],
   "section_scores": [
@@ -17,34 +19,35 @@
       "section_id": "hard_rules",
       "score": 1,
       "notes": [
-        "All three requested refinements have screenshot evidence.",
-        "Existing state coverage, score semantics, responsive density, and width fit remain intact."
+        "The rejected Edwin treatment is absent from rendered document chords and served component CSS.",
+        "All required mobile and desktop browser evidence is present.",
+        "Representative rows contain no redundant labels, horizontal overflow, or detected chord collisions."
       ]
     },
     {
       "section_id": "ux_heuristics",
       "score": 4.9,
       "notes": [
-        "Independent optical values reflect the different recognition needs of a triangular outline and a horizontal dash.",
-        "Root, quality, and extension continue to form a compact scan unit on representative mobile rows."
+        "Roots and suffixes read as a unified scan unit while the 72% quality scale reduces crowding.",
+        "Inline root and bass accidentals stay attached to their note names, while true alterations remain distinctly raised."
       ]
     },
     {
       "section_id": "aesthetic_judgment",
-      "score": 4.9,
+      "score": 5,
       "notes": [
-        "Iteration 1 was correctly rejected as slightly heavy and iteration 2 exposed the limitation of shared metrics.",
-        "Iteration 3 achieves restrained, engraving-specific proportions on both mobile and desktop."
+        "The result directly follows the comparison option selected by the user.",
+        "The Scheherazade triangle and minus have restrained, compatible proportions beside the letterforms and extension figures."
       ]
     }
   ],
   "profile_assessment": {
     "selected_profile_id": "music-visual-instrument",
-    "fit_score": 0.99,
+    "fit_score": 1,
     "anti_patterns_detected": [],
     "notes": [
-      "The result is grounded in the existing music notation system and actual rendered score rather than generic UI typography.",
-      "The per-glyph correction is small, explicit, and limited to the dedicated quality symbols."
+      "The notation remains grounded in the score surface and the established jazz shorthand hierarchy.",
+      "One chord type family avoids the mixed-register mismatch rejected in earlier refinements."
     ]
   },
   "gates": {

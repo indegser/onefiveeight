@@ -7,12 +7,11 @@ import type { Song } from "@/lib/songs";
 import styles from "./lead-sheet-renderer.module.css";
 
 const CHORD_FONT_FAMILY = "Score Scheherazade New";
-const CHORD_SYMBOL_FONT_FAMILY = "Score Finale Maestro Chord Symbols";
-const MAJOR_SEVENTH_SYMBOL = "\uE873";
-const MINOR_SYMBOL = "\uE874";
+const MAJOR_SYMBOL = "△";
+const MINOR_SYMBOL = "-";
 const COMPACT_CHORD_ATTRIBUTE = "data-compact-chord";
 const SVG_NAMESPACE = "http://www.w3.org/2000/svg";
-const CHORD_QUALITY_SYMBOL_PATTERN = /([\uE873\uE874])/;
+const ACCIDENTAL_SEGMENT_PATTERN = /([#b]+)/;
 const CHORD_SYMBOL_PATTERN =
   /^([A-G](?:#{1,2}|b{1,2})?)([^/]*)(\/[A-G](?:#{1,2}|b{1,2})?)?$/;
 const RAISED_MODIFIER_PATTERN =
@@ -51,10 +50,10 @@ function formatChordBody(body: string): FormattedChordBody {
     baseline = "ø7";
     remainder = remainder.slice(halfDiminished[0].length);
   } else if (minorMajor) {
-    baseline = `${MINOR_SYMBOL}${MAJOR_SEVENTH_SYMBOL}${minorMajor[1]}`;
+    baseline = `${MINOR_SYMBOL}${MAJOR_SYMBOL}${minorMajor[1]}`;
     remainder = remainder.slice(minorMajor[0].length);
   } else if (major) {
-    baseline = `${MAJOR_SEVENTH_SYMBOL}${major[1]}`;
+    baseline = `${MAJOR_SYMBOL}${major[1]}`;
     remainder = remainder.slice(major[0].length);
   } else if (diminished) {
     baseline = `°${diminished[1] ?? ""}`;
@@ -75,7 +74,7 @@ function formatChordBody(body: string): FormattedChordBody {
     baseline = plainExtension[1];
     remainder = remainder.slice(plainExtension[0].length);
   } else if (remainder === "maj" || remainder === "M") {
-    baseline = MAJOR_SEVENTH_SYMBOL;
+    baseline = MAJOR_SYMBOL;
     remainder = "";
   }
 
@@ -95,28 +94,31 @@ function appendChordPart(
   value: string,
   role: ChordPartRole,
 ) {
-  const segments = typographicAccidentals(value)
-    .split(CHORD_QUALITY_SYMBOL_PATTERN)
-    .filter(Boolean);
+  const splitAccidentals = role === "modifier";
+  const segments = splitAccidentals
+    ? value.split(ACCIDENTAL_SEGMENT_PATTERN).filter(Boolean)
+    : [value];
 
   for (const segment of segments) {
+    const isAccidental = /^[#b]+$/.test(segment);
     const part = document.createElementNS(SVG_NAMESPACE, "tspan");
-    part.textContent = segment;
+    part.textContent = typographicAccidentals(segment);
     part.setAttribute("data-chord-role", role);
+    part.setAttribute("font-family", CHORD_FONT_FAMILY);
+    part.setAttribute("font-weight", "700");
 
-    if (segment === MAJOR_SEVENTH_SYMBOL || segment === MINOR_SYMBOL) {
-      const isMajorSeventh = segment === MAJOR_SEVENTH_SYMBOL;
-      part.setAttribute("font-family", CHORD_SYMBOL_FONT_FAMILY);
-      part.setAttribute("font-weight", "400");
-      part.setAttribute("font-size", isMajorSeventh ? "192%" : "188%");
-      part.setAttribute("baseline-shift", isMajorSeventh ? "103%" : "106%");
-      part.setAttribute(
-        "data-chord-glyph",
-        isMajorSeventh ? "major-seventh" : "minor",
-      );
+    if (isAccidental) {
+      part.setAttribute("font-size", "54%");
+      part.setAttribute("dx", "-0.04em");
+      part.setAttribute("data-chord-accidental", "true");
+      part.setAttribute("baseline-shift", "34%");
+    } else if (role === "quality") {
+      part.setAttribute("font-size", "72%");
     } else if (role === "modifier") {
-      part.setAttribute("font-size", "80%");
-      part.setAttribute("baseline-shift", "38%");
+      part.setAttribute("font-size", "58%");
+      part.setAttribute("baseline-shift", "34%");
+    } else if (role === "bass") {
+      part.setAttribute("font-size", "82%");
     }
 
     text.append(part);
@@ -183,10 +185,6 @@ export function LeadSheetRenderer({ song }: { song: Song }) {
             signal: abortController.signal,
           }),
           document.fonts.load(`700 19px "${CHORD_FONT_FAMILY}"`, "D A7 G Bm"),
-          document.fonts.load(
-            `400 19px "${CHORD_SYMBOL_FONT_FAMILY}"`,
-            `${MAJOR_SEVENTH_SYMBOL}${MINOR_SYMBOL}`,
-          ),
         ]);
         if (!metadataResponse.ok) {
           throw new Error(`SMuFL metadata ${metadataResponse.status}`);

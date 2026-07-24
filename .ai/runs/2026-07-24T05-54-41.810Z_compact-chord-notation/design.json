@@ -3,19 +3,19 @@
     {
       "id": "song-score-detail",
       "name": "Song Score Detail",
-      "purpose": "Present dense lead-sheet chord symbols with standard Jazz shorthand and optically balanced dedicated quality marks.",
+      "purpose": "Present compact lead-sheet chord symbols in the user-selected Scheherazade treatment.",
       "screen_type": "detail",
       "primary_action": "Read and follow the score",
       "states": ["loading", "ready", "error", "not-found"]
     }
   ],
   "ux_rules": [
-    "Preserve Finale Maestro SMuFL csymMajorSeventh and csymMinor as the approved semantic glyphs.",
-    "Keep roots, accidentals, extension numbers, and slash basses in the existing chord text font.",
-    "Evaluate quality marks by rapid recognition at the rendered mobile size, not by font-box dimensions alone.",
-    "Keep the triangle clearly smaller than the original generic geometric triangle while avoiding a weak or disappearing mark.",
-    "Keep the minor dash short while giving it enough optical weight to remain legible during score scanning.",
-    "Preserve the established raised alteration and modifier hierarchy."
+    "Use the bundled Scheherazade New Bold face for root letters, triangle and hyphen qualities, extension numbers, slash marks, bass letters, and chord accidentals.",
+    "Match the approved Scheherazade row from the recorded neutral whole-font comparison instead of exploring another font.",
+    "Keep major and minor quality suffixes at 72% on the native baseline.",
+    "Keep root and slash-bass accidentals inline with their note names in the same Scheherazade face.",
+    "Raise only true alterations and modifiers such as flat-nine and sharp-nine.",
+    "Preserve stored chord strings, alphaTex generation, staff engraving, responsive score density, loading behavior, and error behavior."
   ],
   "component_map": [
     {
@@ -23,11 +23,11 @@
       "components": [
         "song identity header",
         "alphaTab score renderer",
-        "baseline chord identity group",
-        "SMuFL major quality glyph",
-        "SMuFL minor quality glyph",
-        "raised alteration and modifier group",
-        "slash-bass group",
+        "Scheherazade chord root",
+        "Scheherazade compact quality suffix",
+        "Scheherazade inline accidental",
+        "raised alteration group",
+        "Scheherazade slash-bass group",
         "loading state",
         "error state"
       ]
@@ -55,18 +55,18 @@
     {
       "screen_id": "song-score-detail",
       "screen_type": "detail",
-      "layout_intent": "Retain the approved score density and dedicated SMuFL mapping while optically balancing each quality mark against the root and extension.",
+      "layout_intent": "Roll back the rejected Edwin implementation and reproduce the exact Scheherazade single-font option selected by the user.",
       "interaction_risks": [
-        "Increasing both marks uniformly can make the triangle acceptable while making the minor dash too long.",
-        "Using only font-box measurements is misleading because Finale Maestro has unusually tall music-font metrics.",
-        "Excessive baseline lift can make the marks read as superscripts instead of baseline chord qualities."
+        "Retaining Edwin in any alphanumeric chord part would violate the explicit rollback.",
+        "Keeping the compact Edwin accidental segmentation would not match the selected Scheherazade comparison row.",
+        "Raising triangle-seven or minus-seven would violate the previously approved notation hierarchy.",
+        "Returning suffixes to full root size could recreate mobile crowding."
       ],
       "required_states": ["loading", "ready", "error", "not-found"],
       "notes": [
-        "The current browser baseline uses 185% size and 98% baseline shift for both glyphs.",
-        "At 390px the current major glyph is about 7.11px wide and the minor glyph is about 6.00px wide.",
-        "The current dedicated marks are compact but appear slightly weak beside the bold 13.68px chord text during rapid scanning.",
-        "Baseline evidence is stored at evidence/glyph-refinement-0-baseline.png."
+        "The user-selected direction is already browser-recorded as the Scheherazade row in evidence/coherence-neutral-whole-font-grid.png.",
+        "The rejected Edwin mobile baseline is recorded in evidence/scheherazade-rollback-0-edwin.png.",
+        "No further typeface comparison is required because the user made the final selection."
       ]
     }
   ],
@@ -74,47 +74,43 @@
     {
       "screen_id": "song-score-detail",
       "constraints": [
-        "Complete and capture exactly three successive browser-backed adjustments after the current baseline.",
-        "Iteration 1 must test a modest shared scale increase without changing the dedicated glyph mapping.",
-        "Iteration 2 must refine shared scale and baseline alignment based on the first screenshot.",
-        "Iteration 3 may use separate major and minor optical values if the second screenshot shows their different shapes need independent treatment.",
-        "Keep each symbol in an isolated SVG tspan at regular font weight.",
-        "Do not change roots, extension numbers, raised modifiers, slash basses, score density, source song data, alphaTex generation, global theme, or dependencies.",
-        "Select the final values from the three rendered comparisons rather than accepting the last iteration automatically.",
-        "Verify mobile 390px and desktop widths with no missing glyphs or horizontal overflow."
+        "Set the document chord font back to the existing Score Scheherazade New family.",
+        "Remove the Score Edwin @font-face and Edwin-Bold document-font loading path.",
+        "Render root and slash-bass accidentals inline with their note names through typographic accidental conversion.",
+        "Keep triangle, hyphen, and extension quality text at 72% with no baseline shift.",
+        "Keep the established raised modifier scale and baseline shift for flat-nine, sharp-nine, sharp-five, and equivalent supported modifiers.",
+        "Preserve the original source chord in data-source-chord and keep the SVG transformation idempotent.",
+        "Verify 375px, 390px, and 430px at devicePixelRatio 3 plus a 1024px desktop viewport.",
+        "Do not change song data, alphaTex generation, score density, staff SMuFL settings, global theme, dependencies, or routes."
       ],
-      "open_decisions": [
-        "Choose the final major scale and baseline shift after the three comparisons.",
-        "Choose whether the minor glyph should share the major values or use a smaller independent optical scale."
-      ]
+      "open_decisions": []
     }
   ],
   "review_targets": [
     {
       "screen_id": "song-score-detail",
       "critical_judgments": [
-        "Is the triangle immediately recognizable without returning to the oversized generic-character appearance?",
-        "Is the minor dash short but strong enough to survive mobile score scanning?",
-        "Do both marks read on the baseline with the root and extension number rather than as superscripts?",
-        "Does independent optical treatment, if used, remain visually consistent across major, minor, and slash-chord examples?",
-        "Do representative mobile rows retain clear chord separation and pane-width fit?"
+        "Does the rendered score match the selected Scheherazade comparison row?",
+        "Do root, triangle-seven, minus-seven, dominant extensions, accidentals, and slash basses read as one family?",
+        "Are triangle-seven and minus-seven compact but legible on mobile?",
+        "Do flat-nine and sharp-nine remain raised while root and bass accidentals remain inline?",
+        "Do dense mobile rows remain collision-free and fit the available pane width?"
       ],
       "must_not_regress": [
-        "SMuFL chord-symbol semantics",
-        "root and extension typography",
-        "raised alteration and modifier hierarchy",
-        "non-chord SVG text and staff engraving",
-        "stored chord strings and alphaTex generation",
+        "stored chord semantics",
+        "raised alteration hierarchy",
+        "staff engraving and non-chord SVG text",
         "loading and error states",
-        "responsive system density"
+        "responsive three-measure mobile density",
+        "desktop four-measure density"
       ]
     }
   ],
   "visual_constraints": [
-    "Use only the bundled Finale Maestro SMuFL quality glyphs.",
-    "Keep the final major mark visibly smaller than the former 11.84px generic triangle.",
-    "Keep the final minor mark visibly shorter than the former 8.88px mathematical minus.",
-    "Avoid any horizontal page overflow at 390px.",
-    "Final evidence must include the baseline plus all three refinements and a desktop regression screenshot."
+    "Use only Scheherazade New Bold for document chord alphanumeric content and accidentals.",
+    "Use the approved 72% native-baseline quality suffix treatment.",
+    "Do not retain Edwin or JazzCord in the rendered document chord typography.",
+    "Keep root and slash-bass accidentals inline rather than optically separated into smaller tspans.",
+    "Avoid horizontal overflow and same-row collisions at all verified widths."
   ]
 }
