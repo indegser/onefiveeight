@@ -1,0 +1,58 @@
+{
+  "checks": [
+    {
+      "name": "lint",
+      "status": "passed",
+      "details": "npm run lint exited 0 with 7 pre-existing unrelated unused-symbol warnings and no errors."
+    },
+    {
+      "name": "typecheck",
+      "status": "passed",
+      "details": "npx tsc --noEmit exited 0 after the renderer merge resolution."
+    },
+    {
+      "name": "production build",
+      "status": "passed",
+      "details": "npm run build compiled, typechecked, and generated /songs/geudae-naege-dasi as a static route."
+    },
+    {
+      "name": "audio-to-score final artifact",
+      "status": "passed",
+      "details": "validate_score.py accepted the canonical 11_final_score.json."
+    },
+    {
+      "name": "LAN routes and assets",
+      "status": "passed",
+      "details": "Songs, song detail, MusicXML, and MIDI each returned HTTP 200 through 192.168.0.5:3100."
+    },
+    {
+      "name": "legacy song regression",
+      "status": "passed",
+      "details": "기억의 습작 rendered 11 alphaTab SVG pages with the chord-score accessibility label and no alert."
+    },
+    {
+      "name": "merge conflict and diff hygiene",
+      "status": "passed",
+      "details": "No conflict markers remain and git diff --check passed."
+    }
+  ],
+  "passed": true,
+  "visual_checks": [
+    {
+      "name": "desktop full-score integration",
+      "status": "passed",
+      "details": "song-detail-after-merge-desktop-top.png shows title, artist, form digest, rehearsal labels, Melody, Piano RH, Piano LH, four-measure systems, and compact chord symbols with no error overlay."
+    },
+    {
+      "name": "mobile score width and readability",
+      "status": "passed",
+      "details": "song-detail-after-merge-mobile.png at 390px has document width 390px, score/SVG width 342px, no overflow, no alert, visible form, and three-measure compact systems."
+    },
+    {
+      "name": "mobile songs catalog",
+      "status": "passed",
+      "details": "songs-after-merge-mobile.png shows 그대 내게 다시 and its form summary with document width equal to viewport width."
+    }
+  ],
+  "blocking_issues": []
+}

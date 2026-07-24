@@ -1,0 +1,54 @@
+{
+  "approved": true,
+  "preview_evidence": [
+    ".ai/runs/2026-07-24T06-42-47.947Z_publish-geudae-song/evidence/song-detail-after-merge-desktop-top.png",
+    ".ai/runs/2026-07-24T06-42-47.947Z_publish-geudae-song/evidence/song-detail-after-merge-mobile.png",
+    ".ai/runs/2026-07-24T06-42-47.947Z_publish-geudae-song/evidence/songs-after-merge-mobile.png"
+  ],
+  "summary": {
+    "status": "pass",
+    "rationale": "The merged score viewer remains form-first, uses musical section and measure structure as its hierarchy, preserves the complete three-part score, and adapts system density without horizontal overflow."
+  },
+  "findings": [],
+  "section_scores": [
+    {
+      "section_id": "hard_rules",
+      "score": 1,
+      "notes": [
+        "Loading and error states remain present.",
+        "No destructive flow or competing primary action was introduced."
+      ]
+    },
+    {
+      "section_id": "ux_heuristics",
+      "score": 0.98,
+      "notes": [
+        "The approved form is visible before notation.",
+        "Desktop keeps four-measure score systems while mobile uses a readable three-measure fallback.",
+        "Songs list and detail fit 390px without avoidable overflow or redundant local labels."
+      ]
+    },
+    {
+      "section_id": "aesthetic_judgment",
+      "score": 0.97,
+      "notes": [
+        "The Music Visual Instrument profile is expressed through score hierarchy, rehearsal labels, notation fonts, and restrained surrounding UI.",
+        "Compact chord typography from main is preserved across legacy and imported score paths."
+      ]
+    }
+  ],
+  "profile_assessment": {
+    "selected_profile_id": "music-visual-instrument",
+    "fit_score": 0.98,
+    "anti_patterns_detected": [],
+    "notes": [
+      "The result is organized as a readable musical document rather than a generic data-detail page."
+    ]
+  },
+  "gates": {
+    "hard_rules_passed": true,
+    "needs_human_review": false,
+    "requires_refinement": false
+  },
+  "next_steps": []
+}

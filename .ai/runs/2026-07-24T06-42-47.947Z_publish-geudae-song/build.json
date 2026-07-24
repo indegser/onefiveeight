@@ -1,0 +1,26 @@
+{
+  "completed_tasks": [
+    "Published the validated form-first automatic score for 그대 내게 다시 in the Songs catalog.",
+    "Added the complete MusicXML and MIDI assets plus form-aware song metadata and four-measure section systems.",
+    "Loaded Melody, Piano RH, and Piano LH from the imported MusicXML while preserving the legacy generated chord-chart path.",
+    "Displayed the approved whole-song form digest before the notation.",
+    "Integrated origin/main compact chord typography, music-font resources, and three-measure mobile fallback without losing imported-score behavior.",
+    "Preserved imported track names and rests while continuing to hide those elements only for legacy chord charts."
+  ],
+  "changed_files": [
+    "src/lib/song-data/geudae-naege-dasi.ts",
+    "src/lib/songs.ts",
+    "src/app/songs/score-viewer.tsx",
+    "src/app/songs/lead-sheet-renderer.tsx",
+    "public/scores/geudae-naege-dasi.musicxml",
+    "public/scores/geudae-naege-dasi.mid",
+    ".ai/runs/2026-07-24T06-42-47.947Z_publish-geudae-song/run.json",
+    ".ai/runs/2026-07-24T06-42-47.947Z_publish-geudae-song/build.json"
+  ],
+  "notes": [
+    "Desktop score layout uses four measures per system; the latest responsive compact layout reduces to three measures on a 390px viewport to preserve notation readability.",
+    "The automatic-draft disclosure continues to distinguish generated piano accompaniment from source transcription.",
+    "The latest main branch audio-to-score publication handoff and compact chord typography are included through the merge."
+  ],
+  "open_issues": []
+}

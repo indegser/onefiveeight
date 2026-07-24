@@ -1,0 +1,118 @@
+{
+  "epics": [
+    {
+      "id": "score-ingestion",
+      "title": "Ingest the validated automatic score",
+      "tasks": [
+        {
+          "id": "data-contract",
+          "title": "Represent a song with an optional notation asset",
+          "implementation_area": "data",
+          "acceptance_criteria": [
+            "The Song contract can point to a MusicXML source without changing existing song behavior.",
+            "The new song preserves the approved 86-measure neutral form and beat-positioned chord changes.",
+            "Uncertainty notes identify the automated melody, reference-guided harmony, missing lyrics, and generated accompaniment."
+          ],
+          "dependencies": [],
+          "done_definition": [
+            "The new song data typechecks and existing songs remain valid.",
+            "The MusicXML and MIDI artifacts are available as static app assets."
+          ]
+        },
+        {
+          "id": "songs-library-entry",
+          "title": "Publish 그대 내게 다시 in the Songs library",
+          "implementation_area": "integration",
+          "acceptance_criteria": [
+            "The Songs index includes 그대 내게 다시 by 변진섭.",
+            "The detail route uses a stable song ID and carries all ten form sections.",
+            "List metadata counts the new sections and score systems consistently."
+          ],
+          "dependencies": [
+            "data-contract"
+          ],
+          "done_definition": [
+            "The song is discoverable from /songs and resolves at its detail route.",
+            "No existing song entry is modified or removed."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "score-rendering",
+      "title": "Render the full notation source",
+      "tasks": [
+        {
+          "id": "musicxml-rendering",
+          "title": "Load MusicXML through the existing alphaTab surface",
+          "implementation_area": "render",
+          "acceptance_criteria": [
+            "Songs with a notation asset load it through alphaTab while legacy chord-only songs keep the AlphaTex path.",
+            "Full-score rests and part names are not suppressed by chord-chart-only presentation rules.",
+            "Loading and error states continue to be visible and accessible.",
+            "The implementation follows existing Next.js client boundaries and current shadcn/Tailwind/Geist conventions without new global theme variables."
+          ],
+          "dependencies": [
+            "data-contract"
+          ],
+          "done_definition": [
+            "The generated melody, piano right hand, piano left hand, and chord symbols render in the browser.",
+            "Existing chord charts still render."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "verification",
+      "title": "Verify score publication and LAN access",
+      "tasks": [
+        {
+          "id": "deterministic-checks",
+          "title": "Run repository and score checks",
+          "implementation_area": "verification",
+          "acceptance_criteria": [
+            "Lint, TypeScript, production build, and Supervisor artifact validation pass.",
+            "The copied MusicXML parses and the MIDI duration remains aligned with the source audio."
+          ],
+          "dependencies": [
+            "songs-library-entry",
+            "musicxml-rendering"
+          ],
+          "done_definition": [
+            "All applicable deterministic checks have recorded exit status.",
+            "No blocking issue remains."
+          ]
+        },
+        {
+          "id": "browser-checks",
+          "title": "Verify list, detail, responsive fit, and IP binding",
+          "implementation_area": "verification",
+          "acceptance_criteria": [
+            "Browser evidence exists before and after the change for desktop and mobile Songs surfaces.",
+            "Representative score systems render without avoidable horizontal clipping, redundant local labels, or framework error overlays.",
+            "A server bound to 0.0.0.0 responds through both loopback and the machine LAN IP."
+          ],
+          "dependencies": [
+            "deterministic-checks"
+          ],
+          "done_definition": [
+            "Screenshot-backed visual checks are recorded in verify.json.",
+            "The LAN URL is reported to the user."
+          ]
+        }
+      ]
+    }
+  ],
+  "assumptions": [
+    "The completed audio-to-score run is the authoritative source for form, harmony, MusicXML, and MIDI.",
+    "The current alphaTab renderer can import MusicXML by URL through AlphaTabApi.load.",
+    "This is a product music surface, so the music-visual-instrument design register applies while existing page composition remains unchanged.",
+    "IP access means local-network access to the development server, not a public production deployment."
+  ],
+  "risks": [
+    "alphaTab may interpret the generated MusicXML differently from a desktop notation editor.",
+    "The 86-measure three-part score may require responsive scaling to avoid clipping on narrow screens.",
+    "The automatic melody remains a draft even when the file renders correctly.",
+    "LAN access can still be blocked by the host firewall or client network isolation."
+  ]
+}

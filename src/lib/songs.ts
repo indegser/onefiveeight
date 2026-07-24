@@ -1,3 +1,5 @@
+import { geudaeNaegeDasi } from "@/lib/song-data/geudae-naege-dasi";
+
 export type SongChordEvent = {
   id: string;
   chord: string;
@@ -58,6 +60,9 @@ export type Song = {
   title: string;
   artist: string;
   source: string;
+  scorePath?: string;
+  scoreTrackIndexes?: number[];
+  midiPath?: string;
   keyCenter: string;
   feel: string;
   meter: string;
@@ -79,6 +84,7 @@ export function getSongById(songId: string) {
 }
 
 export const songs: Song[] = [
+  geudaeNaegeDasi,
   {
     id: "gieog-ui-seupjak",
     title: "기억의 습작",
