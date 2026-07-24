@@ -1,0 +1,103 @@
+{
+  "screens": [
+    {
+      "id": "shared-primary-navigation",
+      "name": "Shared primary navigation",
+      "purpose": "Expose only the website routes that remain supported after Quiz and Chords are removed.",
+      "screen_type": "navigation-shell",
+      "primary_action": "Open one of the remaining website sections.",
+      "states": [
+        "default",
+        "remaining route active",
+        "removed route not found"
+      ]
+    }
+  ],
+  "ux_rules": [
+    "Do not advertise routes that no longer exist.",
+    "Preserve the existing order, labels, active-state logic, keyboard behavior, and visual treatment of remaining links.",
+    "Use the normal Next.js not-found behavior for removed routes instead of adding replacement content or redirects.",
+    "Do not change unrelated page content, shared music utilities, or historical records."
+  ],
+  "component_map": [
+    {
+      "screen_id": "shared-primary-navigation",
+      "components": [
+        "src/app/app-nav.tsx",
+        "src/app/quiz route segment (remove)",
+        "src/app/chords route segment (remove)"
+      ]
+    }
+  ],
+  "human_checkpoints": [],
+  "design_rule_engine": {
+    "profile_id": "product-craft-workbench",
+    "hard_rule_sets": [
+      "specs/design-rule-engine/design-principles.md",
+      "specs/design-rule-engine/layout-rules.json"
+    ],
+    "heuristic_sets": [
+      "specs/design-rule-engine/ux-heuristics.md"
+    ],
+    "allowed_pattern_sets": [
+      "core-allowed-patterns"
+    ],
+    "banned_pattern_sets": [
+      "core-banned-patterns"
+    ],
+    "review_rubric_id": "core-design-review"
+  },
+  "screen_contexts": [
+    {
+      "screen_id": "shared-primary-navigation",
+      "screen_type": "navigation-shell",
+      "layout_intent": "Keep the existing compact wrapped navigation while removing two obsolete destinations.",
+      "interaction_risks": [
+        "Leaving a stale link would send users to a removed route.",
+        "Editing the navigation beyond the requested items could reorder or restyle unrelated destinations."
+      ],
+      "required_states": [
+        "default",
+        "remaining route active",
+        "removed route not found"
+      ],
+      "notes": [
+        "Before browser evidence at .ai/runs/2026-07-23T16-47-54.798Z_remove-quiz-chords-pages/evidence/before-home.png shows both Chords and Quiz in the primary navigation."
+      ]
+    }
+  ],
+  "builder_constraints": [
+    {
+      "screen_id": "shared-primary-navigation",
+      "constraints": [
+        "Follow vercel:nextjs App Router file conventions: removing page.tsx removes the public route.",
+        "Delete the complete src/app/quiz and src/app/chords route-local implementations after confirming they have no external runtime importers.",
+        "Remove only the /quiz and /chords NAV_ITEMS entries.",
+        "Preserve remaining navigation order and active-state behavior.",
+        "Do not add redirects, replacement pages, dependencies, CSS rules, or visual styling changes.",
+        "Keep the product-craft-workbench register by leaving the existing navigation presentation unchanged."
+      ],
+      "open_decisions": []
+    }
+  ],
+  "review_targets": [
+    {
+      "screen_id": "shared-primary-navigation",
+      "critical_judgments": [
+        "Quiz and Chords are absent from the rendered primary navigation.",
+        "The remaining navigation is complete, ordered as before, and fits the available pane width.",
+        "Direct requests to /quiz and /chords receive the normal not-found experience."
+      ],
+      "must_not_regress": [
+        "Canvas, Voicings, Songs, and Score Lab links remain available.",
+        "Remaining navigation active states still work.",
+        "No unrelated visual or content change is introduced."
+      ]
+    }
+  ],
+  "visual_constraints": [
+    "No changes to typography, spacing, color, radius, borders, or responsive behavior.",
+    "Do not introduce redundant labels or replacement navigation items.",
+    "The reduced navigation must fit without avoidable horizontal overflow at representative desktop and mobile widths."
+  ]
+}

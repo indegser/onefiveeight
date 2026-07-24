@@ -1,0 +1,71 @@
+{
+  "epics": [
+    {
+      "id": "epic-simplify-site-navigation",
+      "title": "Remove obsolete tools and modernize the shared GNB",
+      "tasks": [
+        {
+          "id": "task-remove-voicings-music-fonts",
+          "title": "Remove Voicings and Music Fonts route segments",
+          "implementation_area": "render",
+          "acceptance_criteria": [
+            "The App Router no longer contains public pages for /voicings or /music-fonts.",
+            "Route-local components and styles used only by those pages are removed.",
+            "Shared music utilities and the remaining Canvas and Songs routes are preserved.",
+            "Previously removed /quiz and /chords routes remain absent."
+          ],
+          "dependencies": [],
+          "done_definition": [
+            "The production route manifest omits /voicings and /music-fonts."
+          ]
+        },
+        {
+          "id": "task-redesign-gnb",
+          "title": "Redesign the GNB for two remaining destinations",
+          "implementation_area": "render",
+          "acceptance_criteria": [
+            "The GNB presents a clear brand/home anchor and immediate Canvas and Songs access without pill-chip styling.",
+            "The active route is communicated by aria-current, text hierarchy, and a restrained non-pill visual indicator.",
+            "Mobile navigation fits 390px in a single compact header row with no horizontal overflow.",
+            "Every navigation target is at least 44px high and remains keyboard accessible.",
+            "The design uses the repository design-rule-engine, product-craft-workbench profile, Geist typography, semantic Tailwind/shadcn tokens, and relevant Vercel guidance."
+          ],
+          "dependencies": [
+            "task-remove-voicings-music-fonts"
+          ],
+          "done_definition": [
+            "src/app/app-nav.tsx renders the approved responsive GNB on Canvas and Songs."
+          ]
+        },
+        {
+          "id": "task-verify-simplified-site",
+          "title": "Verify routes and responsive navigation",
+          "implementation_area": "verification",
+          "acceptance_criteria": [
+            "Browser before/after evidence covers desktop and 390px mobile layouts.",
+            "Browser checks confirm exact remaining navigation labels, active states, target sizes, header height, redundant-label absence, and available-width fit.",
+            "Direct requests to /voicings and /music-fonts return the normal not-found response.",
+            "Source search, production route manifest, lint, build, React review, and AI run validation pass.",
+            "Served styling is verified through computed browser values because no new reusable semantic CSS class is planned."
+          ],
+          "dependencies": [
+            "task-redesign-gnb"
+          ],
+          "done_definition": [
+            "verify.json records deterministic and screenshot-backed evidence with no blocking issue."
+          ]
+        }
+      ]
+    }
+  ],
+  "assumptions": [
+    "The user wants Voicings and Score Lab removed entirely, not merely hidden from navigation.",
+    "With only two primary destinations, persistent direct links are more mobile-friendly than a menu button and hidden sheet.",
+    "The existing white product surface and Geist font remain appropriate; this task modernizes composition rather than changing the whole theme."
+  ],
+  "risks": [
+    "Deleting route-local files must not remove similarly named Canvas components that are separate implementations.",
+    "A compact header can become cramped if brand text and navigation are not tested at 390px.",
+    "Old bookmarks to removed routes will receive the standard not-found page."
+  ]
+}
