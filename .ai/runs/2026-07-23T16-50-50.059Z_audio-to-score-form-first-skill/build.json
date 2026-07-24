@@ -1,0 +1,26 @@
+{
+  "completed_tasks": [
+    "Preserved the existing form-first audio-to-score workflow, validators, and explicit one-skill synchronization behavior.",
+    "Added an optional post-validation publication handoff as 12_publication_handoff.json.",
+    "Defined a consumer manifest that carries song identity, approved form, layout intent, score parts, exported assets, disclosures, approvals, and warnings.",
+    "Made the approved form digest visible before notation a publication requirement.",
+    "Set four measures per system as the preferred readable 4/4 songbook layout while preserving section authority, shorter final systems, and responsive fallback.",
+    "Added consumer verification for all requested parts, generated provenance, first/middle/final systems, asset delivery, responsive width, and playback.",
+    "Installed the updated repository source into the active Codex audio-to-score skill and confirmed zero drift."
+  ],
+  "changed_files": [
+    "skills/audio-to-score/SKILL.md",
+    "skills/audio-to-score/references/artifact-contracts.md",
+    "skills/audio-to-score/references/publication-handoff.md",
+    "skills/audio-to-score/references/verification.md",
+    ".ai/runs/2026-07-23T16-50-50.059Z_audio-to-score-form-first-skill/run.json",
+    ".ai/runs/2026-07-23T16-50-50.059Z_audio-to-score-form-first-skill/build.json"
+  ],
+  "notes": [
+    "The handoff is derived from 11_final_score.json and exported assets; it is not a second musical source of truth.",
+    "The four-measure system rule is a preferred layout, not permission to alter approved form or compress unreadable notation.",
+    "No rendered product UI or song data changed in this refinement.",
+    "The installed skill receipt matches repository source hash 5a3603c4cc099472e0ce8053415860174990761ee7e020ede91b249f8604735e."
+  ],
+  "open_issues": []
+}

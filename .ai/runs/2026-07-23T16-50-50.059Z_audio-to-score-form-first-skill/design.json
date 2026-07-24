@@ -1,0 +1,186 @@
+{
+  "screens": [
+    {
+      "id": "audio-to-score-workflow",
+      "name": "Audio-to-score artifact workflow",
+      "purpose": "Define the ordered evidence, adjudication, transcription, arrangement, notation, and review surfaces consumed by Codex.",
+      "screen_type": "non-visual-skill-workflow",
+      "primary_action": "Advance only when the required upstream artifact and approval state exist.",
+      "states": [
+        "evidence-extracting",
+        "form-hypothesis",
+        "form-needs-human",
+        "form-approved",
+        "transcription-needs-human",
+        "transcription-approved",
+        "arrangement-needs-human",
+        "ready"
+      ]
+    },
+    {
+      "id": "skill-sync-command",
+      "name": "Repository skill synchronization command",
+      "purpose": "Check or deploy one explicit repository-owned skill without touching unrelated installed skills.",
+      "screen_type": "command-line-workflow",
+      "primary_action": "Check or install an explicitly named skill.",
+      "states": [
+        "clean",
+        "drifted",
+        "missing-source",
+        "invalid-target",
+        "installed",
+        "failed-with-rollback"
+      ]
+    }
+  ],
+  "ux_rules": [
+    "Use neutral structural labels until semantic form labels have evidence.",
+    "Allow evidence extraction before form approval, but prohibit notation-ready melody or harmony decisions until form is approved.",
+    "Keep the linear performance timeline authoritative and derive compressed written form from explicit mappings.",
+    "Keep observed source transcription and generated accompaniment in separate provenance layers.",
+    "Require explicit human decisions when form, transcription, or arrangement confidence falls below the contract threshold.",
+    "Make skill synchronization check-only by default in verification and require an explicit install mode for mutation."
+  ],
+  "component_map": [
+    {
+      "screen_id": "audio-to-score-workflow",
+      "components": [
+        "SKILL.md orchestrator",
+        "artifact-contracts reference",
+        "form-analysis reference",
+        "melody-transcription reference",
+        "accompaniment-arrangement reference",
+        "verification reference",
+        "final-artifact validator",
+        "valid and invalid JSON fixtures"
+      ]
+    },
+    {
+      "screen_id": "skill-sync-command",
+      "components": [
+        "explicit mode parser",
+        "explicit skill-name validator",
+        "repository source resolver",
+        "content-hash calculator",
+        "staged atomic installer",
+        "installed-source receipt",
+        "non-mutating drift checker"
+      ]
+    }
+  ],
+  "human_checkpoints": [
+    "Approve or correct the frozen song form before notation-ready transcription.",
+    "Approve low-confidence melody, bass, harmony, and lyric alignment before the linear score is final.",
+    "Approve generated accompaniment separately from source transcription.",
+    "Review detected drift before overwriting an installed skill that contains direct local edits."
+  ],
+  "design_rule_engine": {
+    "profile_id": null,
+    "hard_rule_sets": [],
+    "heuristic_sets": [],
+    "allowed_pattern_sets": [],
+    "banned_pattern_sets": [],
+    "review_rubric_id": "not-applicable-non-visual-skill"
+  },
+  "screen_contexts": [
+    {
+      "screen_id": "audio-to-score-workflow",
+      "screen_type": "non-visual-skill-workflow",
+      "layout_intent": "Keep the core procedure concise while routing concrete schemas and domain checks to one-level references.",
+      "interaction_risks": [
+        "Finalizing form before melody and harmony evidence can challenge it.",
+        "Allowing chord analysis to redefine approved form silently.",
+        "Mixing generated arrangement notes with observed source notes.",
+        "Compressing repeats before the linear timeline is verified."
+      ],
+      "required_states": [
+        "preliminary",
+        "needs-human",
+        "approved",
+        "rejected",
+        "ready"
+      ],
+      "notes": [
+        "No rendered product surface is changed."
+      ]
+    },
+    {
+      "screen_id": "skill-sync-command",
+      "screen_type": "command-line-workflow",
+      "layout_intent": "Use explicit positional arguments and short actionable diagnostics.",
+      "interaction_risks": [
+        "Path traversal outside the repository skill root.",
+        "Overwriting the wrong installed skill.",
+        "Partial installation after an I/O failure.",
+        "Treating the receipt file as repository content drift."
+      ],
+      "required_states": [
+        "usage-error",
+        "clean",
+        "drifted",
+        "installed",
+        "rolled-back"
+      ]
+    }
+  ],
+  "builder_constraints": [
+    {
+      "screen_id": "audio-to-score-workflow",
+      "constraints": [
+        "Keep SKILL.md below 500 lines and move detailed schemas into directly linked references.",
+        "Use imperative instructions.",
+        "Do not claim that signal extraction tools provide authoritative musical answers.",
+        "Require stable IDs and source references across form, melody, harmony, and score mappings.",
+        "Do not require every measure to contain a chord; rests, tacet, and unresolved harmony must remain representable."
+      ],
+      "open_decisions": [
+        "Exact signal-extraction model selection remains implementation-specific evidence tooling.",
+        "Exact piano or guitar accompaniment vocabulary remains user-configurable."
+      ]
+    },
+    {
+      "screen_id": "skill-sync-command",
+      "constraints": [
+        "Require a lowercase skill name matching the repository directory name.",
+        "Resolve and verify both source and target remain under their expected skill roots.",
+        "Stage the full skill before replacing the exact installed target.",
+        "Never enumerate and replace multiple skills implicitly.",
+        "Exclude only the generated receipt from drift comparison."
+      ],
+      "open_decisions": []
+    }
+  ],
+  "review_targets": [
+    {
+      "screen_id": "audio-to-score-workflow",
+      "critical_judgments": [
+        "Parallel evidence extraction and form-first adjudication are not conflated.",
+        "Preliminary and frozen form are distinct.",
+        "Linear and written-form scores have explicit bidirectional mappings.",
+        "Source transcription and accompaniment arrangement cannot share provenance.",
+        "Approval gates are structurally enforceable."
+      ],
+      "must_not_regress": [
+        "Standalone chord-chart analysis remains possible.",
+        "Uncertainty and alternatives remain visible.",
+        "Pickup, meter change, repeated occurrence, and altered repeat handling remain supported."
+      ]
+    },
+    {
+      "screen_id": "skill-sync-command",
+      "critical_judgments": [
+        "Check mode has no filesystem writes.",
+        "Install changes only one exact target.",
+        "A failed replacement restores the previous installed copy.",
+        "Content hashes are deterministic."
+      ],
+      "must_not_regress": [
+        "Unrelated installed skills remain untouched.",
+        "Direct local drift remains detectable."
+      ]
+    }
+  ],
+  "visual_constraints": [
+    "Not applicable: this task changes skills, contracts, validation, and a command-line synchronization workflow only."
+  ]
+}

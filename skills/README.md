@@ -13,7 +13,8 @@ Suggested skills:
 - `supabase-guardrails`
 - `code-review-rubric`
 
-In the MVP, these remain lightweight documents rather than a fully wired Codex skill registry.
+Repository skill directories are the source of truth. Installed copies under the Codex skill
+directory are generated deployments and must not be edited directly.
 
 ## Supervisor
 
@@ -24,3 +25,18 @@ Use `ai-team-supervisor` as the active routing skill for AI-team runs. It owns t
 Use `website-workflow` for rendered web surfaces, Next.js page work, shadcn/ui component work, layout, styling, visual verification, and web design reviews.
 
 Use `design-rule-engine` as the local source of design judgment before applying external guidance. `website-workflow` binds that local design system to the Vercel skill stack and Anthropic public design-skill references.
+
+## Audio to Score
+
+Use `audio-to-score` as the form-first orchestrator for turning recorded audio into melody,
+harmony, a verified linear score, optional generated accompaniment, and written-form notation.
+
+Use `audio-chord-recognition` as its downstream form-aware harmony module or for standalone
+estimated chord-chart requests.
+
+Check or install one explicit skill with:
+
+```bash
+npm run skill:check -- audio-to-score
+npm run skill:install -- audio-to-score
+```

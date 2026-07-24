@@ -1,106 +1,78 @@
 ---
 name: audio-chord-recognition
-description: Estimate chord progressions, key, tempo, section-aware chord charts, measure-based charts, timestamped chords, confidence values, ambiguity notes, Roman numerals, and simplified or guitar-friendly charts from audio files. Use when Codex is asked to analyze a song recording, MP3/WAV/M4A/FLAC/audio file, detect chords like Moises-style chord recognition, transcribe harmony, estimate key or BPM from audio, or produce a musician-friendly chord chart from recorded music, especially dense mixes with vocals, piano, guitar, strings, bass, or drums.
+description: Estimate form-aware chord progressions, bass motion, key, tempo, beat-positioned harmony, confidence, alternatives, Roman numerals, and readable charts from MP3, WAV, M4A, FLAC, or other recorded audio. Use for standalone chord-chart requests or as the downstream harmony module inside the repository audio-to-score workflow.
 ---
 
 # Audio Chord Recognition
 
-## Core Rule
+## Scope
 
-Treat every result as estimated unless a human has verified it. Scripts, MIR libraries, stem separators, chroma features, bass detectors, and template scores produce evidence, not chord answers. The final chord chart must be chosen by musical judgment over all evidence; candidate scores are inputs, never a ranking to accept automatically.
+Act as a harmony evidence and adjudication module. Do not own melody transcription, accompaniment generation, score engraving, or final song-form authority.
 
-## Orchestration Principles
+Treat every result as estimated until reviewed. Scripts, stem separators, chroma, bass detectors, and template scores provide evidence, not chord answers.
 
-- Keep the original audio untouched and write every artifact to the task run directory.
-- Use deterministic tools for preprocessing, stem separation, feature extraction, candidate generation, and validation.
-- Delegate musical judgment to the agent role, not to code. The agent must compare candidates the way a musician would: bass motion, harmonic rhythm, phrase function, key center, neighboring chords, repeated sections, cadence, section role, voicing evidence, and readable chart conventions.
-- Preserve candidate evidence. Do not collapse uncertainty into one confident label when evidence conflicts.
-- Separate detected sonority from chart label. Dense audio may contain color tones that should be reported as ambiguity rather than forced into an over-specific chord symbol.
-- Make the advanced chart primary. Include a simplified chart only as a secondary musician convenience.
+## Select the Mode
+
+- `standalone`: estimate a chord chart when no upstream form map exists.
+- `audio_to_score_module`: consume an approved form map from `audio-to-score` and return harmony events aligned to it.
+
+In module mode, load [the audio-to-score artifact contract](../audio-to-score/references/artifact-contracts.md) and use its IDs and coordinates exactly.
+
+## Form Rules
+
+- In module mode, require approved measure IDs, section IDs, occurrences, recurrence groups, and bar-in-section positions before final chord decisions.
+- In standalone mode, create a provisional measure and form hypothesis before writing a chart. Label it estimated and preserve alternatives.
+- Use preliminary harmony as evidence that may request a form revision.
+- After form approval, never change section membership, measure numbering, meter, or performance order. Emit a `form_change_request` with affected measures and evidence.
+- Do not smooth harmony across section, ending, pickup, or irregular-meter boundaries.
 
 ## Workflow
 
-1. Create a task run directory next to the input audio, or in the user-provided output directory.
-2. Preprocess the audio with `scripts/preprocess_audio.py` when `ffmpeg` and `ffprobe` are available.
-3. Load `references/agent-contracts.md` before assigning or emulating expert roles.
-4. Prefer stem separation when available. For dense mixes, prioritize `other` or harmonic stem plus bass stem; exclude or downweight vocals and drums for harmony decisions.
-5. Run independent evidence extraction in parallel when possible: stems, tempo/bar grid, key estimate, chroma, bass pitch, and section repetition.
-6. Generate multiple chord candidates per bar or segment. Keep source-specific evidence, bass evidence, extension evidence, rejected alternatives, and uncertainty.
-7. Load `references/chord-heuristics.md`, then run a required Musician Judgment Pass. This pass may override top-scoring candidates when musical context supports another label.
-8. Segment sections and create advanced section, measure-based, timestamped, and simplified charts.
-9. Validate final JSON shape with `scripts/validate_analysis.py`. Passing validation means the artifact is well-formed, not that the harmony is correct.
-10. Return a readable musician-facing chart and explicitly describe uncertainty.
+1. Preserve the source audio and create a run directory.
+2. Preprocess a working copy with `scripts/preprocess_audio.py`.
+3. Load `references/agent-contracts.md`.
+4. In module mode, load the approved `05_form_map.json`. In standalone mode, create and mark provisional form context.
+5. Extract or locate useful stems. Prefer stable bass evidence plus harmonic or `other` stems; use full mix for comparison and downweight vocals.
+6. Extract chroma, bass pitch, tuning, local key, and onset evidence by approved measure, beat, or half-measure.
+7. Generate multiple candidates with source-specific support, conflicts, extension evidence, and alternatives.
+8. Load `references/chord-heuristics.md` and adjudicate candidates using bass motion, phrase function, local key, cadence, form role, and recurrence peers.
+9. Run recurrence-group consensus by `bar_in_section`. Preserve genuine altered repeats and reharmonization.
+10. Return beat-positioned harmony events. Do not collapse multiple changes into one chord string.
+11. Preserve unresolved harmony as `null`, N.C., tacet, or an explicit ambiguity.
+12. Validate the final artifact with `scripts/validate_analysis.py`.
 
-## Expert Roles
+## Musician Judgment
 
-Use subagents when available and permitted by the current environment; otherwise perform the roles sequentially. Save each role's JSON artifact separately and never let roles overwrite each other's output.
+Choose readable performance-relevant labels. Preserve sevenths, suspensions, slash basses, secondary dominants, borrowed chords, and stable extensions when they affect function or voice leading.
 
-- Audio Preprocessing Agent
-- Stem Separation Agent
-- Tempo and Bar Grid Agent
-- Pitch and Chroma Evidence Agent
-- Chord Candidate Agent
-- Section Segmentation Agent
-- Musician Judgment Agent
-- Final Chart Writer Agent
+Do not accept the top numeric candidate automatically. Compare plausible alternatives for low- and medium-confidence segments. Record rejected candidates and reasons.
 
-The Musician Judgment Agent is mandatory. It is the final harmonic adjudicator and must choose, revise, downgrade, or reject machine-generated candidates before `09_final_analysis.json` is written.
+Keep generated accompaniment decisions out of harmony evidence. This skill describes or adjudicates the source harmony only.
 
-## Tool Guidance
+## Output
 
-Use the best available local tools and libraries, but keep them in their lane:
+Module mode must include:
 
-- `ffprobe`/`ffmpeg`: validation, metadata, conversion, downmixing, and sample-rate normalization.
-- `demucs`, `spleeter`, or existing stems: vocal/drum exclusion and bass/harmonic source separation.
-- `librosa`, `essentia`, `madmom`, `aubio`, or similar MIR packages: tempo, beat, chroma, CQT/STFT, bass pitch, and candidate evidence.
-- Validation scripts: shape, timestamp, confidence, and artifact consistency checks only.
+- `mode: "audio_to_score_module"`,
+- approved `form_context`,
+- beat-positioned `timestamped_chords`,
+- measure, section, occurrence, recurrence-group, and bar-in-section coordinates,
+- confidence, alternatives, evidence references, and consensus action,
+- form-change requests rather than silent form edits.
 
-Do not use any script as the authoritative final chord judge. If a scoring helper is used, it must output candidates and evidence for the Musician Judgment Agent.
+Standalone mode may also include section, measure, timestamped, advanced, Roman-numeral, and simplified charts. State that form and harmony remain estimated.
 
-## Retry Strategy
+## Retry Policy
 
-If confidence is low or dense-mix evidence conflicts:
-
-1. Retry with separated `other` or harmonic stem plus bass stem.
-2. Retry with full mix as a comparison source, not the sole authority.
-3. Retry with bar-level or half-bar-level smoothing.
-4. Compare repeated sections and reuse the interpretation with stronger evidence.
-5. Use a coarser label only when richer tones are unstable, ornamental, or not useful to a musician.
-6. Preserve alternatives and report uncertainty instead of forcing precision.
-
-## Final Output
-
-Include these sections unless the user asks for a different format:
-
-```md
-# Estimated Chord Analysis
-
-Audio: {filename}
-Duration: {duration}
-Estimated Key: {key} ({confidence})
-Estimated BPM: {bpm} ({confidence})
-
-## Summary
-
-## Advanced Section Chart
-
-## Measure Chart
-
-## Timestamped Chords
-
-## Simplified Chart (Secondary)
-
-## Ambiguities
-
-## Verification Notes
-This is an AI-estimated chord chart. For performance, transcription, or publishing, manually verify the bass notes and extensions.
-```
-
-Use measure labels such as `m.1`, `m.2`, and `m.67-68` when beat tracking supports a bar grid. State the pickup/pre-roll rule, first-bar timestamp, and downbeat confidence when known.
+1. Compare bass plus harmonic stem against full mix.
+2. Retry low-confidence slots at beat, half-measure, and measure resolution.
+3. Compare recurrence peers.
+4. Retry with a coarser chord vocabulary.
+5. Preserve alternatives or unresolved harmony instead of forcing precision.
 
 ## Bundled Resources
 
-- `scripts/preprocess_audio.py`: Validate an audio file, extract metadata, and optionally create a normalized WAV working copy.
-- `scripts/validate_analysis.py`: Validate final analysis JSON for required fields and common shape errors.
-- `references/agent-contracts.md`: Expert role contracts, artifact schemas, candidate evidence flow, and Musician Judgment requirements.
-- `references/chord-heuristics.md`: Dense-mix and human-style harmonic judgment heuristics.
+- `references/agent-contracts.md`: standalone and module artifact flow.
+- `references/chord-heuristics.md`: evidence priority and form-aware chord naming.
+- `scripts/preprocess_audio.py`: source inspection and working-copy creation.
+- `scripts/validate_analysis.py`: standalone and module artifact validation.
