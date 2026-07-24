@@ -45,6 +45,7 @@ Record the selected mode in `00_job.json`.
 12. Run transcription, arrangement, form, notation, and provenance review. Record approvals in `10_review.json`.
 13. Assemble `11_final_score.json` and validate it with `scripts/validate_score.py`.
 14. Export notation formats only from the validated final artifact. Prefer an internal JSON source of truth plus MusicXML for interchange and MIDI for audition.
+15. When the result will be published into a score consumer, create `12_publication_handoff.json` from the validated final artifact and exported assets. Load [publication-handoff.md](references/publication-handoff.md) and keep the approved form visible in the consumer.
 
 ## Form Authority
 
@@ -92,6 +93,17 @@ python3 scripts/validate_score.py 11_final_score.json
 
 Schema validation does not prove musical correctness. Review low-confidence events by looping the corresponding source interval, comparing useful stems, auditioning the symbolic result, and checking recurrence peers.
 
+## Publication Handoff
+
+Load [publication-handoff.md](references/publication-handoff.md) when publishing or integrating the result.
+
+- Derive publication metadata and assets from `11_final_score.json`; do not maintain a second hand-authored musical truth.
+- Put the approved form digest before the rendered notation.
+- Prefer four measures per system for readable 4/4 lead-sheet and songbook layouts. Keep section boundaries authoritative, allow a shorter final system, and reduce the count when the available width would make notation unreadable.
+- Publish every requested score part and identify generated accompaniment explicitly.
+- Carry uncertainty, omitted-content, and approval notes into the consumer-facing draft status.
+- Verify the first, middle, and final systems, asset delivery, responsive width, and playback before calling the handoff ready.
+
 ## Failure Policy
 
 - Preserve `unknown`, rests, tacet, and unresolved harmony instead of inventing content.
@@ -107,4 +119,5 @@ Schema validation does not prove musical correctness. Review low-confidence even
 - `references/melody-transcription.md`: principal melody, rhythm, lyric, and notation rules.
 - `references/accompaniment-arrangement.md`: generated accompaniment constraints.
 - `references/verification.md`: review gates, invariants, and evaluation checks.
+- `references/publication-handoff.md`: form-visible score-consumer manifest, four-measure layout guidance, assets, and integration checks.
 - `scripts/validate_score.py`: deterministic final-artifact validator.

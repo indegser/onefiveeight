@@ -11,7 +11,8 @@ Review in dependency order:
 5. bass and harmony,
 6. complete linear score,
 7. generated accompaniment,
-8. compressed written form and export.
+8. compressed written form and export,
+9. publication handoff when requested.
 
 Do not approve a downstream layer while an upstream artifact is reopened.
 
@@ -48,6 +49,17 @@ Do not approve a downstream layer while an upstream artifact is reopened.
 - Audition melody, bass, chords, and accompaniment separately.
 - Compare recurrence peers at the same bar-in-section position.
 - Render the tempo map rather than auditioning at one fixed BPM when tempo drifts.
+
+## Publication Checks
+
+- The form digest is visible before the notation and matches the approved performance order.
+- Four-measure systems are preferred for readable 4/4 songbook layouts; section boundaries remain authoritative and the final system may be shorter.
+- Every requested part is present, and generated accompaniment remains labeled as generated.
+- MusicXML, MIDI, and any other declared assets load from their published paths.
+- The first, middle, and final systems render without missing measures, duplicate titles, or repeated tempo marks.
+- Representative desktop and mobile widths avoid horizontal overflow and unreadably compressed notation.
+- Consumer-facing notes preserve uncertainty, omitted content, simplifications, and approval state.
+- Playback duration and track selection agree with the exported score.
 
 ## Evaluation
 

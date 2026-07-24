@@ -18,6 +18,7 @@ Use stable names and never overwrite evidence with later judgments:
 | `09_written_form.json` | compressed notation form and pass mappings |
 | `10_review.json` | approval gates, findings, and reopened dependencies |
 | `11_final_score.json` | validated final package |
+| `12_publication_handoff.json` | optional score-consumer metadata, layout intent, assets, and draft disclosures derived from the validated final package |
 
 Every artifact must include `schema_version`, stable IDs, evidence references, confidence where relevant, warnings, and provenance.
 
@@ -259,3 +260,7 @@ Every linear measure must have one mapping entry. Multiple linear measures may m
 ```
 
 Use approval statuses `pending`, `approved`, `rejected`, or `not_required`. Form and transcription must be `approved` for a final score. Arrangement must be `approved` when present and `not_required` when omitted.
+
+## Publication Handoff
+
+Create `12_publication_handoff.json` only after `11_final_score.json` validates. It is a derived consumer contract, not another musical source of truth. See `publication-handoff.md` for the complete contract and integration checks.

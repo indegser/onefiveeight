@@ -1,52 +1,47 @@
 {
   "checks": [
     {
-      "name": "Codex skill structure",
+      "name": "skill structure validation",
       "status": "passed",
-      "details": "quick_validate.py reported both skills valid: skills/audio-to-score and skills/audio-chord-recognition."
+      "details": "quick_validate.py accepted skills/audio-to-score, including the new one-level publication-handoff reference."
     },
     {
-      "name": "Audio-to-score contract validation",
+      "name": "final-score validator tests",
       "status": "passed",
-      "details": "Ten Python unit tests passed, covering valid source and generated layers plus form approval, reviewer identity, section range, melody overlap, lyric structure, form-coordinate, provenance, and written mapping failures."
+      "details": "python3 -m unittest test_validate_score.py passed all 10 tests."
     },
     {
-      "name": "Form-aware chord validation",
+      "name": "skill synchronization tests",
       "status": "passed",
-      "details": "Five Python unit tests passed for backward-compatible standalone analysis, approved-form module mode, form-coordinate enforcement, and generated-harmony rejection."
+      "details": "npm run test:skill-sync passed all 3 install, drift-repair, and target-safety tests."
     },
     {
-      "name": "Skill synchronization safety",
+      "name": "installed skill drift check",
       "status": "passed",
-      "details": "Three Node tests passed for exact one-skill install, receipt/hash checks, read-only clean check, drift detection, repair, unrelated-skill preservation, and invalid-target rejection."
+      "details": "Repository and installed audio-to-score hashes both equal 5a3603c4cc099472e0ce8053415860174990761ee7e020ede91b249f8604735e and the receipt matches."
     },
     {
-      "name": "Installed skill drift",
+      "name": "lint",
       "status": "passed",
-      "details": "audio-to-score and audio-chord-recognition both reported clean with matching repository, installed, and receipt hashes after refinement."
+      "details": "npm run lint exited 0 with 7 pre-existing unrelated unused-symbol warnings and no errors."
     },
     {
-      "name": "Lint",
+      "name": "production build",
       "status": "passed",
-      "details": "npm run lint completed with zero errors. Eight pre-existing unused-symbol warnings remain in unrelated source files."
+      "details": "npm run build compiled, typechecked, and generated all static routes successfully."
     },
     {
-      "name": "Production build",
+      "name": "diff hygiene",
       "status": "passed",
-      "details": "npm run build compiled, typechecked, generated static routes, and completed successfully after refinement."
-    },
-    {
-      "name": "Diff hygiene",
-      "status": "passed",
-      "details": "git diff --check completed without whitespace errors."
+      "details": "git diff --check passed."
     }
   ],
   "passed": true,
   "visual_checks": [
     {
-      "name": "Rendered UI verification",
+      "name": "rendered UI verification",
       "status": "skipped",
-      "details": "No rendered website, TSX, CSS, songs data, or visual surface changed."
+      "details": "This refinement changes only skill instructions, artifact contracts, verification guidance, and run records; no rendered product surface changed."
     }
   ],
   "blocking_issues": []

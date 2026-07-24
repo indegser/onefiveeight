@@ -1,7 +1,7 @@
 {
   "run_id": "2026-07-23T16-50-50.059Z_audio-to-score-form-first-skill",
   "goal": "Build an app from docs/ideas/audio-to-score-form-first-skill.md",
-  "revision": 2,
+  "revision": 3,
   "phase": "done",
   "status": "done",
   "next_agent": "none",
@@ -35,6 +35,11 @@
     {
       "at": "2026-07-23T17:06:29.210Z",
       "note": "Strengthen final-score validation for section ranges, linear order, reviewer identity, and melody lyric/source timing contracts",
+      "target_agent": "builder"
+    },
+    {
+      "at": "2026-07-24T09:12:39.938Z",
+      "note": "Add a tested publication handoff: keep form visible, default 4/4 score systems to four bars when readable, preserve all parts/assets/provenance, and sync the installed skill from the repository source.",
       "target_agent": "builder"
     }
   ],
@@ -86,6 +91,30 @@
     {
       "at": "2026-07-23T18:03:00.000Z",
       "event": "Supervisor marked the run done after all plan, design, build, verification, and review gates passed"
+    },
+    {
+      "at": "2026-07-24T09:12:39.939Z",
+      "event": "Refinement requested for builder: Add a tested publication handoff: keep form visible, default 4/4 score systems to four bars when readable, preserve all parts/assets/provenance, and sync the installed skill from the repository source."
+    },
+    {
+      "at": "2026-07-24T09:18:00.000Z",
+      "event": "Builder added the derived publication handoff contract, form-visible four-measure layout guidance, consumer verification rules, and synchronized the installed audio-to-score skill."
+    },
+    {
+      "at": "2026-07-24T09:22:00.000Z",
+      "event": "Verifier passed skill structure, validator tests, synchronization tests, installed drift check, lint, production build, and diff hygiene."
+    },
+    {
+      "at": "2026-07-24T09:25:00.000Z",
+      "event": "Design Critic approved the form-visible publication workflow, four-measure readability default, responsive exceptions, disclosures, and consumer verification coverage."
+    },
+    {
+      "at": "2026-07-24T09:27:00.000Z",
+      "event": "Code Critic approved the concise one-level reference design, derived-manifest authority, synchronization safety, and maintainability."
+    },
+    {
+      "at": "2026-07-24T09:28:00.000Z",
+      "event": "Supervisor marked revision 3 done after build, verification, design review, and code review passed."
     }
   ]
 }
