@@ -1,0 +1,4 @@
+interface:
+  display_name: "곡 크레딧 계보 찾기"
+  short_description: "한 곡의 제작진을 따라 관련 음악과 Spotify 링크 찾기"
+  default_prompt: "Use $trace-song-credits to trace this song’s verified credits, recommend connected recordings with reasons, and provide exact Spotify links."

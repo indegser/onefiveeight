@@ -34,9 +34,18 @@ harmony, a verified linear score, optional generated accompaniment, and written-
 Use `audio-chord-recognition` as its downstream form-aware harmony module or for standalone
 estimated chord-chart requests.
 
+## Song Credit Discovery
+
+Use `trace-song-credits` to lock an exact recording, verify its writers, arrangers, producers,
+and session musicians, and turn those credits into evidence-backed listening paths with exact
+Spotify links. It keeps audio-derived similarity outside the workflow and separates read-only
+Spotify resolution from user-approved playlist writes.
+
 Check or install one explicit skill with:
 
 ```bash
 npm run skill:check -- audio-to-score
 npm run skill:install -- audio-to-score
+npm run skill:check -- trace-song-credits
+npm run skill:install -- trace-song-credits
 ```
