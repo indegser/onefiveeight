@@ -65,6 +65,12 @@
 - `Design Agent` and `Design Critic` must not define, alter, restyle, or aesthetically review the score surface inside Songs. Their scope is limited to the surrounding page shell.
 - `Builder` implements the approved score specification, and `Verifier` checks its structural and browser-rendered acceptance criteria.
 
+## Song Credit Discovery Protocol
+
+- Any task that starts from a named song, recording, or Spotify link and asks for credits, personnel-based recommendations, music lineage, exact Spotify links, or a derived playlist must read and follow `./skills/trace-song-credits/SKILL.md`.
+- Keep credit-based discovery separate from audio-derived similarity. Use an audio-analysis skill only when the user explicitly requests that additional analysis and provides suitable audio.
+- Keep Spotify discovery read-only until the user approves an exact playlist manifest, and never request credentials, OTPs, cookies, or tokens in chat.
+
 ## Deployment Protocol
 
 - When the user asks to deploy, do not run `vercel --prod` or otherwise deploy directly from the local machine.
