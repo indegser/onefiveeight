@@ -1,0 +1,98 @@
+{
+  "screens": [
+    {
+      "id": "practice",
+      "name": "F Major Ballad",
+      "purpose": "Read the approved eight-bar chart while the original accompaniment loops, following the active chord region.",
+      "screen_type": "detail",
+      "primary_action": "Play or pause the accompaniment",
+      "states": ["ready", "loading", "playing", "buffering", "paused", "error", "retrying"]
+    }
+  ],
+  "ux_rules": [
+    "Use /practice with one visible title F Major Ballad and one metadata line 68 BPM · 4/4. Do not duplicate title, chart labels or key information.",
+    "Use four rows of two equal-width measures. Each split measure still occupies exactly one measure width. Bars 6 and 8 contain two equal half-width chord regions.",
+    "Scale labels sit immediately above the chord row, sharing its measure columns. Row 1 spans F major across bars 1–2; row 2 spans C major across bars 3–4; row 3 has C major above bar 5 and D harmonic minor above bar 6; row 4 spans F major across bars 7–8.",
+    "Number each measure once in its upper corner; place chord names beneath so a measure number does not consume the narrow split chord width. Keep both chord symbols of a split bar on one line, with a thin internal divider and stronger measure boundary.",
+    "Render the ten events Fmaj7, Dm7, Am7, G7, Cmaj7, Em7♭5, A7(♭9), Dm7, Gm7, C7, with start beats 0,4,8,12,16,20,22,24,28,30 and lengths 4,4,4,4,4,2,2,4,2,2.",
+    "Only the region containing actual media time receives active styling. Do not advance an independent timer while paused, stalled or buffering. At the musical boundary reset both sound and active region to bar 1. Do not highlight the whole split measure when only one half is sounding.",
+    "One obvious play/pause button beneath the chart; no seek control, tempo control, loop switch, restart button, target notes, expanded theory, extra panels or dashboard. Static text ↻ 자동 반복 indicates the default looping behavior.",
+    "Ready state shows 재생, with no playback highlight before first start. Loading/retrying retains chart and shows 불러오는 중…; buffering freezes highlight at actual media position and shows 버퍼링 중… without pretending time advances. Pause remains available if playback intent is active.",
+    "Paused state preserves the actual last region and offers 재생 to resume. Playing shows 일시정지. Errors show short actionable Korean feedback and replace the same transport action with 다시 시도. Retry reloads the asset and attempts playback from a safe saved position under the new tap.",
+    "An empty catalogue is inapplicable because this is one fixed track; unavailable audio uses the recoverable error state. Do not show a transient success toast on each loop.",
+    "Start requires a user gesture on mobile. Never promise automatic initial playback. Looping after that initial tap remains enabled until pause or navigation.",
+    "Chart regions are read-only, not additional seek buttons. Use appropriate current-item semantics for the active chord and accessible measure/chord names; avoid live-announcing every frame or beat. Transport is keyboard accessible with visible focus and minimum 44px touch target."
+  ],
+  "component_map": [
+    {
+      "screen_id": "practice",
+      "components": ["Existing AppNav with Practice link and mobile-safe layout", "Practice route heading and compact metadata", "Four-row measure chart with aligned scale bands", "Eight measure containers and ten chord regions", "One play/pause/retry transport button", "Short loop/status line", "Persistent same-origin original audio element"]
+    }
+  ],
+  "human_checkpoints": [
+    "User approved the minimal wireframe and explicitly requested build and publication. This is a non-brand-critical utility; no additional brand checkpoint is required.",
+    "No destructive action, authentication or persisted data-model change is introduced."
+  ],
+  "design_rule_engine": {
+    "profile_id": "music-visual-instrument",
+    "hard_rule_sets": ["specs/design-rule-engine/design-principles.md", "specs/design-rule-engine/layout-rules.json", "specs/design-rule-engine/theme-usage.md"],
+    "heuristic_sets": ["specs/design-rule-engine/ux-heuristics.md"],
+    "allowed_pattern_sets": ["core-allowed-patterns"],
+    "banned_pattern_sets": ["core-banned-patterns"],
+    "review_rubric_id": "core-design-review"
+  },
+  "screen_contexts": [
+    {
+      "screen_id": "practice",
+      "screen_type": "detail",
+      "layout_intent": "A compact music chart, maximum about 560px wide, in the existing white semantic application shell; two measures per row even on mobile, with scale bands aligned to musical time.",
+      "interaction_risks": ["Long D harmonic minor scale label at 320px", "Em7♭5 and A7(♭9) within half a measure", "Three navigation links plus full brand exceed 320px in the existing single-row header", "Media stalls can detach timer-based highlighting from sound", "MP3 decoded tail exceeds the 32-beat musical period"],
+      "required_states": ["ready", "loading", "playing", "buffering", "paused", "error", "retrying"],
+      "notes": [
+        "Pre-edit evidence supplied by Supervisor: production https://onefiveeight-indegser.vercel.app/songs inspected and screenshot captured before implementation; white semantic theme, compact Canvas/Songs navigation, simple unboxed list. Design Agent did not operate a separate browser.",
+        "Reject memory's generic list-detail and Card suggestions for this fixed read-only chart; retain only applicable state coverage and existing primitive conventions.",
+        "The score surface within /songs is fully out of scope under specs/songs-score-rendering.md. Do not apply aesthetic changes there.",
+        "Website workflow and design-rule-engine local skills are applied. vercel:nextjs, vercel:shadcn, vercel:geist, vercel:v0-dev and vercel:agent-browser-verify are unavailable in the active registry; do not claim they were used. Existing Next.js/Geist conventions remain the binding. Available React review and verification skills apply to downstream implementation and verification. No external Anthropic skill is required."
+      ]
+    }
+  ],
+  "builder_constraints": [
+    {
+      "screen_id": "practice",
+      "constraints": [
+        "Implement the approved wireframe rather than adding another design option. Keep app code isolated from AI-team machinery and do not change Songs score code.",
+        "Use Next.js server route plus a small client transport/chart boundary as existing patterns allow. Do not add a backend, component library or playback dependency for this fixed asset.",
+        "Use music-visual-instrument register: measures and rhythmic subdivisions drive the visual hierarchy. White/semantic background, thin border-border measure edges, restrained text-muted-foreground scale labels, active bg-primary/text-primary-foreground or equivalent existing semantic treatment. Active selection should remain clear beyond hue through contrasting fill and current semantics. No gradients, shadows, decorative badges, or hero block.",
+        "Use semantic Tailwind/shadcn utilities and existing Geist family. Do not add arbitrary colors or profile globals to globals.css. Prefer existing utility classes; any new reusable semantic class needs served CSS verification.",
+        "At 320px keep 16px page padding and a 288px chart. Two 144px measures allow two 72px half-bars; use modest internal padding and minimum 16px chord text on narrow screens. Compact notation may visually raise the suffix while preserving complete accessible names. D harmonic minor may wrap into two lines inside bar 6's scale band without crossing the bar boundary; align both scale labels in that row to a common band height.",
+        "Render measure numbers above the chord baseline with no extra first-cell number prefix. Two codes in bars 6 and 8 must remain centered in equal halves; do not shrink the second bar or make four unequal row columns.",
+        "Use a two-row header below sm if necessary: brand on the first row, Canvas/Songs/Practice navigation on the next row with a compact 44px navigation height. Preserve visible brand, existing links, active underline and accessible focus; no horizontal scrolling or hamburger menu for three links. Above sm keep existing single-row header.",
+        "Use exact-length loop asset derived from the existing original MP3 or another proven boundary strategy. Preserve actual accompaniment, do not synthesize replacement music, and never embed expiring signed URLs. The musical duration is 32*60/68 seconds; audio clock controls highlight and loop wrap.",
+        "Keep chart stable during load/error. Place the sole transport at least 24px below chart; use one low-contrast line for repeat and transient state. Error copy can occupy this reserved area without replacing the chart.",
+        "Functional active-state updates require no interpolated animation. Respect reduced motion and do not autoscroll a four-row chart. Avoid sticky or fixed transport overlays."
+      ],
+      "open_decisions": ["Builder may choose exact audio encoding/loop mechanism after checking decoded source boundaries, provided original accompaniment and accurate 32-beat looping are preserved."]
+    }
+  ],
+  "review_targets": [
+    {
+      "screen_id": "practice",
+      "critical_judgments": [
+        "Browser screenshots at 320px and 390px show every scale band and chord without clipping or page horizontal scroll, including row 3 with D harmonic minor / Em7♭5 / A7(♭9).",
+        "Measure widths are equal across all four rows; scale spans align to measure boundaries; bars 6 and 8 divide exactly in half. Numbers are present once per measure without crowding chords.",
+        "The transport is the sole chart action; default automatic repeat is visible. No target-note, extra-scale, explanatory or decorative panels have returned.",
+        "Browser verification exercises loading, pause/resume, buffering or equivalent stalled-clock check, recoverable asset error, beat22/30 changes, and the 32-beat loop boundary against actual audio position.",
+        "Inspect header at 320px for brand/navigation fit, active Practice state, touch targets and keyboard focus. Record before/after browser evidence in review artifacts.",
+        "Review semantic style output in rendered page and served CSS if reusable CSS classes are added; verify foreground contrast in active half-bars and readable minimum typography."
+      ],
+      "must_not_regress": ["Existing Canvas and Songs routes/navigation", "Songs alphaTab score surface", "Original accompaniment and tempo", "User approved minimal content and two-measures-per-row structure"]
+    }
+  ],
+  "visual_constraints": [
+    "One title, one metadata line, four compact musical rows, one transport action, one repeat/status area.",
+    "Scale band spans correspond to measure widths; do not imply D harmonic minor is a conventional key signature.",
+    "Use a finite 4/8/12/16/24px spacing rhythm; enough space between chart rows to identify scale groups without cards or excessive whitespace.",
+    "At desktop retain the same four-row chart rather than stretching eight measures across an unreadable full-width row.",
+    "No visually redundant Current/Next/Scale/Chord headings, bar list duplication, play icons scattered across cells, or icon-only transport."
+  ]
+}

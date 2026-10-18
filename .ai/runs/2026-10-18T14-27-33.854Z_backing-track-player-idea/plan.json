@@ -1,0 +1,62 @@
+{
+  "epics": [
+    {
+      "id": "practice",
+      "title": "Publish minimal backing-track player",
+      "tasks": [
+        {
+          "id": "timing",
+          "title": "Define verified audio and 10 chord-event timeline",
+          "implementation_area": "data",
+          "acceptance_criteria": [
+            "68 BPM, 32 beats, 8 measures and 10 events",
+            "Beat 22 and 30 select second half of bars 6 and 8",
+            "Persistent same-origin audio, no signed URLs"
+          ],
+          "dependencies": []
+        },
+        {
+          "id": "player",
+          "title": "Render approved mobile chart and synchronized playback",
+          "implementation_area": "render",
+          "acceptance_criteria": [
+            "Two measures per row, scale band aligned by measure",
+            "Only active chord region highlighted using actual audio time",
+            "User tap to play; automatic repeat enabled by default",
+            "No target-note panels, extra theory or cards",
+            "Loading, buffering, paused and retryable errors",
+            "320px and 390px browser fit with readable split bars",
+            "Music visual instrument profile and semantic theme utilities"
+          ],
+          "dependencies": [
+            "timing"
+          ]
+        },
+        {
+          "id": "release",
+          "title": "Verify and publish via GitHub",
+          "implementation_area": "verification",
+          "acceptance_criteria": [
+            "Build/lint/typecheck/timing tests pass",
+            "Browser evidence checks half-bar changes, loop, pause/resume and mobile fit",
+            "Design and code reviews pass",
+            "PR checks including Vercel preview pass before merge",
+            "Production Ready and public URL succeeds"
+          ],
+          "dependencies": [
+            "player"
+          ]
+        }
+      ]
+    }
+  ],
+  "assumptions": [
+    "The approved wireframe is final; implementation belongs on existing site at /practice",
+    "User request to publish authorizes PR merge and GitHub-triggered deployment",
+    "Public asset is original generated backing track, not the reference recording"
+  ],
+  "risks": [
+    "MP3 decoded length exceeds musical loop by 60.7ms; use exact-length loop asset or precise musical boundary",
+    "Mobile browser playback requires an initial gesture; actual phone listening cannot be claimed from desktop emulation"
+  ]
+}
