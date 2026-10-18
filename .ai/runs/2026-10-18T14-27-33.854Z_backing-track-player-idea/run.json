@@ -4,7 +4,7 @@
   "revision": 1,
   "phase": "review",
   "status": "in_progress",
-  "next_agent": "design-critic",
+  "next_agent": "supervisor",
   "stack": {
     "frontend": "nextjs",
     "ui": "shadcn-ui",
@@ -60,6 +60,10 @@
     {
       "at": "2026-10-18T14:37:47.450554+00:00",
       "event": "Verifier checks passed; actual-media browser loop/retry/mobile fit captured; route independent Design Critic and Code Critic."
+    },
+    {
+      "at": "2026-10-18T14:40:04.834052+00:00",
+      "event": "Both independent critics approved; quality gates satisfied. Release remains pending preview verification, PR merge and productionReady."
     }
   ]
 }
