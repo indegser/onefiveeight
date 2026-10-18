@@ -1,0 +1,20 @@
+{
+  "version": "0.1.0",
+  "screen_id": "practice",
+  "screen_type": "detail",
+  "goal": "Follow the minimal approved mobile chord chart while the original 68 BPM accompaniment loops.",
+  "layout": {
+    "grid_mode": "two-equal-measures-per-row",
+    "regions": [
+      { "id": "navigation", "purpose": "Existing brand and Canvas/Songs/Practice links with narrow-screen fit", "priority": "medium" },
+      { "id": "identity", "purpose": "F Major Ballad and 68 BPM · 4/4", "priority": "medium" },
+      { "id": "chart", "purpose": "Four rows with scale spans above eight numbered measures and ten chord regions", "priority": "high" },
+      { "id": "transport", "purpose": "One play/pause/retry action and visible automatic repeat/status", "priority": "high" }
+    ]
+  },
+  "hierarchy": { "primary_action": "Play/pause", "secondary_actions": [], "emphasis_strategy": "Musical grid and a single active chord region with semantic contrast" },
+  "states": ["ready", "loading", "playing", "buffering", "paused", "error", "retrying"],
+  "interaction_rules": ["First tap starts playback", "Automatic looping uses a verified 32-beat boundary", "Actual media clock drives active region", "Chart is read-only", "Retry reuses the sole transport"],
+  "aesthetic_rules": ["music-visual-instrument", "semantic theme utilities", "equal measure widths", "half-bar divisions match two beats", "no decorative panels or additional theory"],
+  "open_questions": ["Audio encoding and loop mechanism selected after source boundary verification"]
+}

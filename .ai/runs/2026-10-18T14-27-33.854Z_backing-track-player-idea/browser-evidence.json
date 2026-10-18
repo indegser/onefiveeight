@@ -1,0 +1,84 @@
+{
+  "before": {
+    "url": "https://onefiveeight-indegser.vercel.app/songs",
+    "screenshots": "Captured in conversation before implementation at desktop and320px; existing semantic white shell and Canvas/Songs nav"
+  },
+  "after": {
+    "url": "http://localhost:3007/practice",
+    "screenshots": "Captured in conversation at320px and390px, including paused Dm7, playing C7 half-bar, recovered Fmaj7 state",
+    "width320": {
+      "chart": 288,
+      "document_client": 320,
+      "document_scroll": 320,
+      "chord_font_px": 16,
+      "split_region_widths_including_border": [
+        70.5,
+        71.5
+      ],
+      "split_region_client_scroll_equal": true,
+      "play_button_bottom": 649
+    },
+    "width390": {
+      "chart": 358,
+      "document_client": 390,
+      "document_scroll": 390,
+      "split_region_client_scroll_equal": true
+    },
+    "observations": [
+      "Four stable rows, scale labels align with measures, D harmonic minor fully readable",
+      "One measure number per bar; no Current/Next/target panels or redundant labels",
+      "One play/pause/retry button and automatic repetition label",
+      "Primary action fits small viewport after spacing refinement"
+    ]
+  },
+  "actual_media_transitions": [
+    {
+      "time": 19.665074,
+      "chord": "A7(♭9)"
+    },
+    {
+      "time": 21.529457,
+      "chord": "Dm7"
+    },
+    {
+      "time": 24.808083,
+      "chord": "Gm7"
+    },
+    {
+      "time": 26.681819,
+      "chord": "C7"
+    },
+    {
+      "time": 0.238757,
+      "chord": "Fmaj7"
+    },
+    {
+      "time": 3.980726,
+      "chord": "Dm7"
+    },
+    {
+      "time": 7.253376,
+      "chord": "Am7"
+    },
+    {
+      "time": 10.999201,
+      "chord": "G7"
+    },
+    {
+      "time": 14.274306,
+      "chord": "Cmaj7"
+    },
+    {
+      "time": 18.011376,
+      "chord": "Em7♭5"
+    }
+  ],
+  "recovery": {
+    "method": "Temporarily withhold local WAV; reload, observe Korean error+same retry button; restore original file; retry resumes actual playback",
+    "result": "duration28.235292,currentTime0.151214,pausedfalse; chart retained"
+  },
+  "limits": [
+    "Desktop browser mobile viewport emulation; physical phone listening not performed",
+    "Network throttling buffering was not forced; paused actual media clock was confirmed frozen and waiting handler reviewed"
+  ]
+}

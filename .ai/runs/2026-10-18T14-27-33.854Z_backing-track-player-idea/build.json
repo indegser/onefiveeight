@@ -1,0 +1,28 @@
+{
+  "completed_tasks": [
+    "timing: fixed 68 BPM, 32-beat, ten-event timeline and exact-length persistent original accompaniment",
+    "player: approved minimal mobile chart, aligned scale bands, split bars and actual-media-clock highlighting",
+    "player: native default looping, tap-to-start transport, pause/resume, loading/buffering and retryable errors",
+    "navigation: Practice entry with mobile-safe two-row navigation"
+  ],
+  "changed_files": [
+    "src/app/app-nav.tsx",
+    "src/app/practice/page.tsx",
+    "src/app/practice/practice-player.tsx",
+    "src/lib/practice-track.ts",
+    "src/lib/practice-track.test.ts",
+    "public/audio/f-major-ballad-68bpm.wav"
+  ],
+  "notes": [
+    "Data axis: ten immutable chord events start at beats 0,4,8,12,16,20,22,24,28,30. Pure time lookup uses media currentTime with no independent elapsed timer.",
+    "Audio axis: existing original r001 MP3 decoded at 48kHz and trimmed to 1,355,294 stereo PCM16 frames. WAV duration 28.235292 seconds differs from 32*60/68 by less than 3 microseconds; 5,421,254 bytes. No regeneration, backend or signed URL.",
+    "Render axis: music-visual-instrument register; semantic Tailwind utilities only, no custom CSS classes or global variables. Four rows retain equal measure widths; bars 6/8 use flex-1 equal halves and minimum 16px unbroken chord symbols. Chart has no seek actions or extra theory panels.",
+    "Transport: requestAnimationFrame samples currentTime while playing; timeupdate/seeked reconcile actual position, waiting/pause stop frame sampling. Native audio loop handles the exact-length media boundary. Audio event listeners and frame callback are removed and audio paused on unmount.",
+    "Retry: load under a fresh tap, seek to safe saved media position on loadedmetadata, handle play promise rejection and ignore obsolete or unmounted promise results.",
+    "Builder checks passed: three meaningful timing tests, npx tsc --noEmit, and focused ESLint with zero warnings after refinement.",
+    "React review: server metadata/page boundary plus small client player; module-level static chart data, stable effect listeners, accessible named transport and aria-current chord region; active index state updates only when the media crosses an event boundary.",
+    "Supervisor owns before/after browser evidence, full verification and release. Builder did not browser-automate or update run.json. No scope deviations.",
+    "Browser refinement requested by Supervisor: reduce mobile page/heading spacing, scale band minimum 20px, row gap 12px, number leading 16px and read-only chord minimum 44px. Preserve minimum 16px chord symbols and 48px transport. This keeps the complete mobile chart and transport in the first viewport."
+  ],
+  "open_issues": []
+}

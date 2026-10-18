@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 const NAV_ITEMS = [
   { href: "/", label: "Canvas" },
   { href: "/songs", label: "Songs" },
+  { href: "/practice", label: "Practice" },
 ];
 
 export function AppNav() {
@@ -14,7 +15,7 @@ export function AppNav() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/70 bg-background/90 font-[family-name:var(--font-geist-sans)] backdrop-blur-xl supports-[backdrop-filter]:bg-background/80">
-      <div className="flex h-16 items-center justify-between gap-4 px-5 md:px-10 lg:px-16">
+      <div className="flex flex-col items-start gap-0 px-4 pt-1 sm:h-16 sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:px-5 sm:pt-0 md:px-10 lg:px-16">
         <Link
           href="/"
           className="inline-flex min-h-11 shrink-0 items-center text-[15px] font-semibold tracking-[-0.03em] text-foreground transition-opacity hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring motion-reduce:transition-none"
@@ -23,7 +24,7 @@ export function AppNav() {
         </Link>
         <nav
           aria-label="Primary"
-          className="flex h-full items-stretch gap-1 sm:gap-2"
+          className="flex h-11 items-stretch gap-1 sm:h-full sm:gap-2"
         >
           {NAV_ITEMS.map((item) => {
             const isActive =
