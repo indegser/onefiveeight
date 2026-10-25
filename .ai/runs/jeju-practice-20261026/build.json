@@ -1,0 +1,23 @@
+{
+  "completed_tasks": [
+    "data",
+    "player",
+    "playback"
+  ],
+  "changed_files": [
+    "src/lib/practice-track.ts",
+    "src/lib/practice-track.test.ts",
+    "src/app/practice/page.tsx",
+    "src/app/practice/[id]/page.tsx",
+    "src/app/practice/practice-player.tsx",
+    "public/audio/jeju-blue-night-110bpm-r001-loop.wav"
+  ],
+  "notes": [
+    "Original F-major WAV and musical contents retained; data normalized independently of renderer changes",
+    "Scale spans and chord widths use actual event durations; keyed route player preserves cancellation and cleanup",
+    "Published Jeju loop is lossless-derived exact837818frames at48kHz; MP3 remains in production workspace",
+    "React skill applied: event listener cleanup, audio clock refs, keyed track ownership, async rejection guard; semantic Tailwind only",
+    "Before evidence evidence/before-390.png; after evidence includes library/Jeju/original320px and Jeju390px"
+  ],
+  "open_issues": []
+}

@@ -1,0 +1,48 @@
+{
+  "checks": [
+    {
+      "name": "build",
+      "status": "passed",
+      "details": "Next16 production build; static library and both dynamic detail pages generated"
+    },
+    {
+      "name": "lint/typecheck",
+      "status": "passed",
+      "details": "Scoped ESLint clean, full lint7 existing unrelated warnings; tsc noEmit passed"
+    },
+    {
+      "name": "timeline tests",
+      "status": "passed",
+      "details": "Both track coverage, scales, exact/full/split boundaries, hundred-loop wrap, asset existence"
+    },
+    {
+      "name": "browser playback",
+      "status": "passed",
+      "details": "evidence/browser-checks.json: first tap, pause freeze, C7→Bbmaj7 native wrap, route cleanup, network-abort error/retry, original split harmony"
+    },
+    {
+      "name": "HTTP/media",
+      "status": "passed",
+      "details": "Unknown id404, new WAV206byte-range and source SHA256match"
+    }
+  ],
+  "passed": true,
+  "visual_checks": [
+    {
+      "name": "mobile grid and typography",
+      "status": "passed",
+      "details": "evidence/jeju-320.png,jeju-390.png,original-320.png: full and split cells fit; no horizontal overflow or redundant local labels"
+    },
+    {
+      "name": "library",
+      "status": "passed",
+      "details": "evidence/library-320.png,library-390.png: compact links, title wraps and metadata fit"
+    },
+    {
+      "name": "semantic CSS",
+      "status": "passed",
+      "details": "No reusable custom CSS classes introduced; rendered semantic Tailwind active state shown in evidence/jeju-playing.png"
+    }
+  ],
+  "blocking_issues": []
+}

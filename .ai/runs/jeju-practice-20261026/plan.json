@@ -1,0 +1,70 @@
+{
+  "epics": [
+    {
+      "id": "practice-library",
+      "title": "Growing backing-track library",
+      "tasks": [
+        {
+          "id": "data",
+          "title": "Normalize track registry and musical timeline",
+          "implementation_area": "data",
+          "acceptance_criteria": [
+            "Preserve original chart, scale spans and WAV",
+            "Register Jeju only after actual verified export exists",
+            "Model event durations, scale spans and measured loop timing"
+          ],
+          "dependencies": []
+        },
+        {
+          "id": "player",
+          "title": "Shared player and stable routes",
+          "implementation_area": "render",
+          "acceptance_criteria": [
+            "/practice lists real tracks and /practice/[id] identifies selected track",
+            "Music Visual Instrument profile, semantic styles, two measures per mobile row",
+            "Proportional chord divisions and scale bands, no extra theory panels",
+            "Browser evidence before and after at 320 and 390px"
+          ],
+          "dependencies": [
+            "data"
+          ]
+        },
+        {
+          "id": "playback",
+          "title": "Audio clock and lifecycle",
+          "implementation_area": "behavior",
+          "acceptance_criteria": [
+            "First tap plays selected media; pause freezes highlight; automatic loop returns to first chord",
+            "Leaving/changing tracks stops old audio and stale callbacks",
+            "Error and retry preserve chart and playback position"
+          ],
+          "dependencies": [
+            "player"
+          ]
+        },
+        {
+          "id": "release",
+          "title": "Verify and publish through GitHub",
+          "implementation_area": "verification",
+          "acceptance_criteria": [
+            "Build lint typecheck timeline and browser checks pass",
+            "Both track pages, audio ranges, mobile fit, error/retry and loop verified",
+            "Supervisor validation/reviews pass; PR preview passes then merge and production Ready/public URLs verified"
+          ],
+          "dependencies": [
+            "playback"
+          ]
+        }
+      ]
+    }
+  ],
+  "assumptions": [
+    "Existing minimal player design remains approved",
+    "No auth or database required",
+    "Jeju scales F major bars1-4, C major bars5-6, F major bars7-8"
+  ],
+  "risks": [
+    "MP3 encoder padding must not redefine loop period",
+    "Audio route changes must not leak old playback"
+  ]
+}

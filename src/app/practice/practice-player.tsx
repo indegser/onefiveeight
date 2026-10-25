@@ -2,16 +2,11 @@
 
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
-import {
-  PRACTICE_AUDIO,
-  PRACTICE_CHORDS,
-  PRACTICE_ROWS,
-  practiceChordAtTime,
-} from "@/lib/practice-track";
+import { practiceChordAtTime, type PracticeTrack } from "@/lib/practice-track";
 
 type Status = "ready" | "loading" | "playing" | "buffering" | "paused" | "error";
 
-export function PracticePlayer() {
+export function PracticePlayer({ track }: { track: PracticeTrack }) {
   const audioRef = useRef<HTMLAudioElement>(null);
   const intentRef = useRef(false);
   const startedRef = useRef(false);
@@ -31,7 +26,7 @@ export function PracticePlayer() {
     const sync = () => {
       if (startedRef.current) {
         savedTimeRef.current = audio.currentTime;
-        setActiveChord(practiceChordAtTime(audio.currentTime));
+        setActiveChord(practiceChordAtTime(track, audio.currentTime));
       }
     };
     const stopFrame = () => cancelAnimationFrame(frame);
@@ -73,11 +68,12 @@ export function PracticePlayer() {
     for (const [event, handler] of Object.entries(events)) audio.addEventListener(event, handler);
     return () => {
       mountedRef.current = false;
+      intentRef.current = false;
       stopFrame();
       for (const [event, handler] of Object.entries(events)) audio.removeEventListener(event, handler);
       audio.pause();
     };
-  }, []);
+  }, [track]);
 
   async function togglePlayback() {
     const audio = audioRef.current;
@@ -107,6 +103,14 @@ export function PracticePlayer() {
     }
   }
 
+  const rows = Array.from({ length: Math.ceil(track.measureCount / 2) }, (_, index) => {
+    const firstMeasure = index * 2 + 1;
+    const measures = [firstMeasure, firstMeasure + 1].filter((measure) => measure <= track.measureCount);
+    const startBeat = (firstMeasure - 1) * track.beatsPerMeasure;
+    const endBeat = startBeat + measures.length * track.beatsPerMeasure;
+    return { measures, startBeat, endBeat };
+  });
+
   const message = status === "error"
     ? "음원을 불러오지 못했어요. 다시 시도해 주세요."
     : status === "loading"
@@ -117,29 +121,35 @@ export function PracticePlayer() {
 
   return (
     <section aria-label="반복 연습" lang="ko">
-      <audio ref={audioRef} src={PRACTICE_AUDIO} preload="metadata" loop />
-      <div className="space-y-3" aria-label="8마디 코드 진행">
-        {PRACTICE_ROWS.map((row) => (
+      <audio ref={audioRef} src={track.audio} preload="metadata" loop />
+      <div className="space-y-3" aria-label={`${track.measureCount}마디 코드 진행`}>
+        {rows.map((row) => (
           <div key={row.measures[0]}>
-            <div className="mb-1 grid min-h-5 grid-cols-2 items-end text-sm leading-5 text-muted-foreground">
-              {row.scales.map((scale) => (
-                <div key={scale} className={cn("px-2", row.scales.length === 1 && "col-span-2")}>
-                  {scale}
-                </div>
-              ))}
+            <div className="mb-1 flex min-h-5 items-end text-sm leading-5 text-muted-foreground">
+              {track.scales.map((scale) => {
+                const start = Math.max(row.startBeat, scale.beat);
+                const end = Math.min(row.endBeat, scale.beat + scale.duration);
+                if (end <= start) return null;
+                return (
+                  <div key={scale.beat} className="min-w-0 px-2" style={{ width: `${((end - start) / (2 * track.beatsPerMeasure)) * 100}%` }}>
+                    {scale.label}
+                  </div>
+                );
+              })}
             </div>
             <div className="grid grid-cols-2 border border-border">
               {row.measures.map((measure, measureIndex) => (
                 <div key={measure} className={cn("min-w-0", measureIndex === 1 && "border-l border-border")}>
                   <div className="px-2 pt-1 text-xs leading-4 text-muted-foreground" aria-hidden="true">{measure}</div>
                   <div className="flex">
-                    {PRACTICE_CHORDS.map((event, index) => event.measure === measure ? (
+                    {track.chords.map((event, index) => event.measure === measure ? (
                       <div
                         key={event.beat}
+                        style={{ width: `${(event.duration / track.beatsPerMeasure) * 100}%` }}
                         aria-label={`${measure}마디 ${event.chord}`}
                         aria-current={activeChord === index ? "true" : undefined}
                         className={cn(
-                          "flex min-h-11 min-w-0 flex-1 items-center justify-center whitespace-nowrap px-0.5 text-base font-medium tracking-tight sm:min-h-16 sm:text-xl [&+div]:border-l [&+div]:border-border",
+                          "flex min-h-11 min-w-0 items-center justify-center whitespace-nowrap px-0.5 text-base font-medium tracking-tight sm:min-h-16 sm:text-xl [&+div]:border-l [&+div]:border-border",
                           activeChord === index && "bg-primary text-primary-foreground",
                         )}
                       >

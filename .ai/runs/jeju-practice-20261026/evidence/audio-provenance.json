@@ -1,0 +1,15 @@
+{
+  "revision": "r001",
+  "source": "Logic simultaneous offline bounce, bars 1\u20139, no tail",
+  "asset": "public/audio/jeju-blue-night-110bpm-r001-loop.wav",
+  "sha256": "20e72764ba9b72c1ea34e568e80de8bdcc497b9a2ac9f91f9e6fda0cd87170ac",
+  "frames": 837818,
+  "sample_rate": 48000,
+  "offset_seconds": 0,
+  "duration_seconds": 17.454541666666668,
+  "checks": [
+    "Parent producer verified MP3 and lossless render; start, G7 transition and ending non-silent; no clips",
+    "WAV derived from lossless AIFF to avoid MP3 encoder lead-in"
+  ],
+  "listening": "Technical verification only"
+}
