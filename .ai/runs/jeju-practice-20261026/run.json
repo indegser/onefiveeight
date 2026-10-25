@@ -1,0 +1,70 @@
+{
+  "run_id": "jeju-practice-20261026",
+  "goal": "Publish Jeju Blue Night backing track in growing practice library",
+  "revision": 1,
+  "phase": "review",
+  "status": "in_progress",
+  "next_agent": "supervisor",
+  "stack": {
+    "frontend": "nextjs",
+    "ui": "shadcn-ui",
+    "backend": "none",
+    "language": "typescript"
+  },
+  "inputs": {
+    "idea_file": ".ai/runs/jeju-practice-20261026/requirements.md",
+    "constraints": [
+      "Preserve existing practice recording",
+      "No Songs changes",
+      "Verified audio required before registration"
+    ],
+    "brand_critical": false
+  },
+  "artifacts": {
+    "plan": ".ai/runs/jeju-practice-20261026/plan.json",
+    "design": ".ai/runs/jeju-practice-20261026/design.json",
+    "build": ".ai/runs/jeju-practice-20261026/build.json",
+    "verify": ".ai/runs/jeju-practice-20261026/verify.json"
+  },
+  "approvals": {
+    "brand": false,
+    "data_model": false,
+    "destructive_flows": false
+  },
+  "blockers": [],
+  "decisions": [
+    "Emulate minimal phase roles as permitted by Supervisor skill"
+  ],
+  "risks": [],
+  "refinement_notes": [],
+  "history": [
+    {
+      "at": "2026-10-25T15:44:01.955022+00:00",
+      "event": "Supervisor initialized explicit run and routed to Planner"
+    },
+    {
+      "at": "2026-10-25T15:44:01.955022+00:00",
+      "event": "Planner artifact completed; Supervisor routed to Design Agent"
+    },
+    {
+      "at": "2026-10-25T15:44:01.955022+00:00",
+      "event": "Design Agent inspected before screenshot, selected music-visual-instrument; Supervisor routed to Builder"
+    },
+    {
+      "at": "2026-10-25T15:50:15.475946+00:00",
+      "event": "Builder completed scoped registry/render/lifecycle changes; Supervisor routed to Verifier"
+    },
+    {
+      "at": "2026-10-25T15:50:15.475946+00:00",
+      "event": "Verifier gates passed; Supervisor routed to Design Critic"
+    },
+    {
+      "at": "2026-10-25T15:50:15.475946+00:00",
+      "event": "Design review approved browser evidence; Supervisor routed to Code Critic"
+    },
+    {
+      "at": "2026-10-25T15:50:15.475946+00:00",
+      "event": "Code review approved typed registry, exact-boundary tests, lifecycle cleanup and bounded scope; Supervisor proceeds to authorized GitHub release"
+    }
+  ]
+}

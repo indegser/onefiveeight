@@ -1,0 +1,63 @@
+{
+  "viewport_checks": {
+    "Jeju320": {
+      "viewport": 320,
+      "scrollWidth": 320,
+      "Bbmaj7": {
+        "width": 143,
+        "scrollWidth": 143
+      },
+      "Am7": {
+        "width": 142,
+        "scrollWidth": 142
+      }
+    },
+    "Jeju390": {
+      "viewport": 390,
+      "scrollWidth": 390
+    },
+    "Original320": {
+      "viewport": 320,
+      "scrollWidth": 320,
+      "Em7b5width": 71,
+      "A7b9width": 70
+    }
+  },
+  "playback": {
+    "JejuDuration": 17.454542,
+    "firstSeekableTime": 0,
+    "beforeWrap": {
+      "time": 16.183915,
+      "chord": "8마디 C7"
+    },
+    "afterWrap": {
+      "time": 0.114812,
+      "chord": "1마디 B♭maj7"
+    },
+    "pauseStable": true,
+    "leave": {
+      "oldAudioPaused": true,
+      "oldAudioConnected": false,
+      "audioNodes": 0
+    },
+    "retryAfterNetworkAbort": {
+      "playing": true,
+      "status": "",
+      "audioNodes": 1
+    },
+    "original": {
+      "duration": 28.235292,
+      "seek": 19.5,
+      "chord": "6마디 A7(♭9)"
+    }
+  },
+  "http": {
+    "unknownId": 404,
+    "range": 206,
+    "contentRange": "bytes 0-1023/3351350"
+  },
+  "limits": [
+    "No physical phone listening test",
+    "No subjective sound-quality claim"
+  ]
+}
