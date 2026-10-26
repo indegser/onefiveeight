@@ -1,0 +1,1 @@
+Publish the already-generated Bb-major 100 BPM backing track on the existing /practice library, with synchronized chords/scales and seamless eight-bar automatic repeat. Deploy through GitHub PR and verify production.

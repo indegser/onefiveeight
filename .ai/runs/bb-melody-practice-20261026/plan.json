@@ -1,0 +1,52 @@
+{
+  "epics": [
+    {
+      "id": "bb-backing",
+      "title": "Publish Bb major melody backing",
+      "tasks": [
+        {
+          "id": "loop",
+          "title": "Prepare exact eight-bar loop from existing generated WAV",
+          "acceptance_criteria": [
+            "No count-in or outro in loop asset",
+            "846720 frames at 44100 Hz for 32 beats at 100 BPM",
+            "Original voice memo remains private"
+          ],
+          "dependencies": []
+        },
+        {
+          "id": "register",
+          "title": "Add one track to existing registry",
+          "acceptance_criteria": [
+            "Bb F Bb Bb F Eb F Bb; each chord four beats",
+            "Bb major scale spans all 32 beats",
+            "Library and generated detail route show track",
+            "No player, CSS or existing track edits"
+          ],
+          "dependencies": [
+            "loop"
+          ]
+        },
+        {
+          "id": "verify-release",
+          "title": "Verify then deploy through GitHub",
+          "acceptance_criteria": [
+            "Timeline tests, build, lint and typecheck pass",
+            "Browser library/detail layout, playback, pause and loop verified",
+            "Preview passes; PR merges; production Ready; public page/audio succeed"
+          ],
+          "dependencies": [
+            "register"
+          ]
+        }
+      ]
+    }
+  ],
+  "assumptions": [
+    "Use existing approved practice grid and semantic styles",
+    "Website version is one repeating eight-bar loop of delivered backing"
+  ],
+  "risks": [
+    "Loop sample boundaries must match media clock"
+  ]
+}
