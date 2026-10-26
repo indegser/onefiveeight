@@ -1,0 +1,16 @@
+{
+  "completed_tasks": [
+    "loop",
+    "register"
+  ],
+  "changed_files": [
+    "src/lib/practice-track.ts",
+    "public/audio/bb-major-melody-100bpm-r001-loop.wav"
+  ],
+  "notes": [
+    "Prepared a 19.2-second eight-bar loop from second pass of delivered synthesized accompaniment",
+    "Two-millisecond endpoint fades; no source voice memo published",
+    "Existing renderer and CSS reused without edits; before browser evidence in evidence/before-390.png"
+  ],
+  "open_issues": []
+}

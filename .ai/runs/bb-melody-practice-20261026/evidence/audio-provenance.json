@@ -1,0 +1,29 @@
+{
+  "provenance": "generated accompaniment; no source voice memo",
+  "source_file": "Bb-major-backing-100bpm.wav",
+  "source_sha256": "39dbfda4c9292b598a28e02ce16dd673a931fd5c7fb065a8636a85c002c5529d",
+  "published_file": "public/audio/bb-major-melody-100bpm-r001-loop.wav",
+  "published_sha256": "6ffc0c63974dba9cb257120e2799f58f2e77bbafccf79ecc2dcda67d43b2d81c",
+  "sample_rate": 44100,
+  "channels": 2,
+  "frames": 846720,
+  "duration": 19.2,
+  "source_interval_seconds": [
+    21.6,
+    40.8
+  ],
+  "endpoint_fades_seconds": 0.002,
+  "key": "Bb major",
+  "bpm": 100,
+  "chords": [
+    "Bb",
+    "F",
+    "Bb",
+    "Bb",
+    "F",
+    "Eb",
+    "F",
+    "Bb"
+  ],
+  "melody_included": false
+}

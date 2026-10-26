@@ -1,0 +1,76 @@
+{
+  "fit": {
+    "chartCells": [
+      {
+        "label": "8마디 코드 진행",
+        "scroll": 288,
+        "width": 288
+      },
+      {
+        "label": "1마디 B♭",
+        "scroll": 143,
+        "width": 143
+      },
+      {
+        "label": "2마디 F",
+        "scroll": 142,
+        "width": 142
+      },
+      {
+        "label": "3마디 B♭",
+        "scroll": 143,
+        "width": 143
+      },
+      {
+        "label": "4마디 B♭",
+        "scroll": 142,
+        "width": 142
+      },
+      {
+        "label": "5마디 F",
+        "scroll": 143,
+        "width": 143
+      },
+      {
+        "label": "6마디 E♭",
+        "scroll": 142,
+        "width": 142
+      },
+      {
+        "label": "7마디 F",
+        "scroll": 143,
+        "width": 143
+      },
+      {
+        "label": "8마디 B♭",
+        "scroll": 142,
+        "width": 142
+      }
+    ],
+    "documentWidth": 320,
+    "width": 320
+  },
+  "playbackA": {
+    "active": "6마디 E♭",
+    "at": 1792996127462,
+    "duration": 19.2,
+    "paused": false,
+    "time": 13.043342
+  },
+  "playbackB": {
+    "active": "6마디 E♭",
+    "at": 1792996145648,
+    "duration": 19.2,
+    "paused": true,
+    "time": 14.339213
+  },
+  "started": {
+    "paused": false,
+    "time": 14.447455
+  },
+  "stopped": {
+    "paused": true,
+    "time": 14.54207
+  },
+  "note": "Browser host pauses media between tool interactions; native loop configuration and wrap arithmetic verified separately."
+}

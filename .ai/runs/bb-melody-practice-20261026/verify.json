@@ -1,0 +1,43 @@
+{
+  "checks": [
+    {
+      "name": "production build and typecheck",
+      "status": "passed",
+      "details": "npm run build -- --webpack and tsc --noEmit passed; new static detail route generated. Webpack used because shared node_modules symlink is outside Turbopack root."
+    },
+    {
+      "name": "lint",
+      "status": "passed",
+      "details": "Zero errors; seven existing unrelated warnings"
+    },
+    {
+      "name": "tests",
+      "status": "passed",
+      "details": "Practice timeline and wrap tests for all three tracks, song-alphatex and skill-sync tests pass"
+    },
+    {
+      "name": "audio and delivery",
+      "status": "passed",
+      "details": "846720 frames at44100Hz,19.2sec,all8bars non-silent, endpoints zero, peak0.8706; local WAV Range206"
+    },
+    {
+      "name": "browser playback",
+      "status": "passed",
+      "details": "evidence/browser-checks.json: play sets paused=false and advances time, pause sets paused=true; measured duration19.2 and sixth-bar Eb highlight observed. Continuous native wrap not manually observed because media paused between browser interactions; native loop unchanged and wrap math covered by tests."
+    }
+  ],
+  "passed": true,
+  "visual_checks": [
+    {
+      "name": "mobile fit and chart",
+      "status": "passed",
+      "details": "evidence/player-320.png and player-390.png: all8chords/scale bands readable,320px document has no overflow; one transport action; library evidence/library-390.png"
+    },
+    {
+      "name": "theme and CSS",
+      "status": "passed",
+      "details": "Existing music-visual-instrument grid reused; no new CSS classes or theme tokens; before evidence/before-390.png"
+    }
+  ],
+  "blocking_issues": []
+}

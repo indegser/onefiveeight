@@ -1,0 +1,158 @@
+{
+  "screens": [
+    {
+      "id": "library",
+      "name": "Practice library",
+      "purpose": "Choose an existing backing track",
+      "screen_type": "list",
+      "primary_action": "Open a track",
+      "states": [
+        "populated",
+        "empty"
+      ]
+    },
+    {
+      "id": "player",
+      "name": "Track practice",
+      "purpose": "Play and repeat with synchronized harmony",
+      "screen_type": "music-practice",
+      "primary_action": "Play/pause",
+      "states": [
+        "ready",
+        "loading",
+        "playing",
+        "buffering",
+        "paused",
+        "error/retry",
+        "not-found"
+      ]
+    }
+  ],
+  "ux_rules": [
+    "Keep library compact, one linked row per actual track",
+    "Preserve existing two-measure grid, restrained primary highlight and quiet automatic-repeat label",
+    "Use proportional chord widths and scale spans; no target-note/theory panels",
+    "Stop previous audio on route change, cancellation and pending requests must be guarded"
+  ],
+  "component_map": [
+    {
+      "screen_id": "library",
+      "components": [
+        "Server library page",
+        "Track links"
+      ]
+    },
+    {
+      "screen_id": "player",
+      "components": [
+        "Server dynamic route",
+        "Keyed shared PracticePlayer",
+        "Scale bands",
+        "Measure/chord cells",
+        "One transport button"
+      ]
+    }
+  ],
+  "design_rule_engine": {
+    "profile_id": "music-visual-instrument",
+    "hard_rule_sets": [
+      "specs/design-rule-engine/design-principles.md",
+      "specs/design-rule-engine/theme-usage.md"
+    ],
+    "heuristic_sets": [
+      "specs/design-rule-engine/ux-heuristics.md"
+    ],
+    "allowed_pattern_sets": [
+      "core-allowed-patterns"
+    ],
+    "banned_pattern_sets": [
+      "core-banned-patterns"
+    ],
+    "review_rubric_id": "core-design-review"
+  },
+  "screen_contexts": [
+    {
+      "screen_id": "library",
+      "screen_type": "list",
+      "layout_intent": "Same compact 592px reading column with simple separated rows",
+      "interaction_risks": [
+        "Long Korean track title wraps"
+      ],
+      "required_states": [
+        "populated",
+        "empty"
+      ],
+      "notes": [
+        "Browser inspected current library: evidence/before-390.png"
+      ]
+    },
+    {
+      "screen_id": "player",
+      "screen_type": "music-practice",
+      "layout_intent": "Preserve approved minimal layout and two equal measures per row",
+      "interaction_risks": [
+        "Split chord fit",
+        "Media stale callbacks"
+      ],
+      "required_states": [
+        "ready",
+        "loading",
+        "playing",
+        "paused",
+        "buffering",
+        "error/retry"
+      ],
+      "notes": [
+        "No Songs score surface scope"
+      ]
+    }
+  ],
+  "builder_constraints": [
+    {
+      "screen_id": "library",
+      "constraints": [
+        "Semantic Tailwind utilities",
+        "No card grid or ornamental hero",
+        "Show title, key and BPM"
+      ],
+      "open_decisions": []
+    },
+    {
+      "screen_id": "player",
+      "constraints": [
+        "Register one generated track only; no renderer, CSS or prior track changes",
+        "Exact 8-bar 100 BPM loop and Bb-major scale; no count-in/outro",
+        "Title: 내 멜로디 — B♭장조"
+      ],
+      "open_decisions": []
+    }
+  ],
+  "review_targets": [
+    {
+      "screen_id": "library",
+      "critical_judgments": [
+        "Readable title and clear link rows at 320/390px"
+      ],
+      "must_not_regress": [
+        "Existing bookmark remains useful"
+      ]
+    },
+    {
+      "screen_id": "player",
+      "critical_judgments": [
+        "Representative full/split rows, redundant labels and pane-width fit"
+      ],
+      "must_not_regress": [
+        "Original track timing/scales",
+        "One audio source",
+        "Error retry and pause"
+      ]
+    }
+  ],
+  "visual_constraints": [
+    "No global CSS theme tokens",
+    "Use current semantic Tailwind classes; no new semantic CSS class pipeline",
+    "Accent only sounding chord and transport"
+  ],
+  "human_checkpoints": []
+}

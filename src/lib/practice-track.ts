@@ -18,6 +18,31 @@ export type PracticeTrack = {
 
 export const PRACTICE_TRACKS: PracticeTrack[] = [
   {
+    id: "bb-major-melody",
+    title: "내 멜로디 — B♭장조",
+    revision: "r001",
+    key: "B♭ major",
+    bpm: 100,
+    beatUnit: 4,
+    meter: "4/4",
+    beatsPerMeasure: 4,
+    measureCount: 8,
+    audio: "/audio/bb-major-melody-100bpm-r001-loop.wav",
+    loopStart: 0,
+    loopEnd: 846720 / 44100,
+    chords: [
+      { measure: 1, chord: "B♭", beat: 0, duration: 4 },
+      { measure: 2, chord: "F", beat: 4, duration: 4 },
+      { measure: 3, chord: "B♭", beat: 8, duration: 4 },
+      { measure: 4, chord: "B♭", beat: 12, duration: 4 },
+      { measure: 5, chord: "F", beat: 16, duration: 4 },
+      { measure: 6, chord: "E♭", beat: 20, duration: 4 },
+      { measure: 7, chord: "F", beat: 24, duration: 4 },
+      { measure: 8, chord: "B♭", beat: 28, duration: 4 },
+    ],
+    scales: [{ label: "B♭ major", beat: 0, duration: 32 }],
+  },
+  {
     id: "f-major-related-ii-ballad",
     title: "F Major Ballad",
     revision: "r001",
