@@ -37,7 +37,9 @@ Read [tonal-reasoning.md](references/tonal-reasoning.md) for key, borrowed-chord
 
 ## Default Response
 
-Write in readable Korean unless the user requests another language. Scale detail to the question:
+Write in readable Korean unless the user requests another language. In Korean chord analyses, present music-theory terms in Korean followed by English in parentheses, including in tables: e.g., 으뜸화음(Tonic), 세컨더리 도미넌트(Secondary Dominant), 모달 인터체인지(Modal Interchange), 일시적 으뜸화음화(Tonicization), 전조(Modulation), 기만 진행(Deceptive Progression), 성부 진행(Voice Leading), and 이끎음(Leading Tone). Keep chord symbols and Roman numerals unchanged, and pair functional labels with bilingual explanations where useful, e.g., `F#7 → Bm = V7/ii → ii`, 세컨더리 도미넌트(Secondary Dominant)의 해결(Resolution). Honor an explicit request for a different terminology format.
+
+Scale detail to the question:
 
 - Source and coverage: what Moises shows and where it was observed.
 - Key interpretation: displayed key, interpreted center, confidence, and plausible alternatives.
