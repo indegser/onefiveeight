@@ -1,0 +1,73 @@
+{
+  "run_id": "moises-harmony-skill-20261031",
+  "goal": "Replace retired recognition with Moises-derived harmony interpretation",
+  "revision": 1,
+  "phase": "done",
+  "status": "done",
+  "next_agent": "none",
+  "stack": {
+    "frontend": "not applicable",
+    "ui": "not applicable",
+    "backend": "not applicable",
+    "language": "Markdown/YAML"
+  },
+  "inputs": {
+    "idea_file": ".ai/runs/moises-harmony-skill-20261031/requirements.md",
+    "constraints": [
+      "Moises chord results are the exclusive harmonic observation source",
+      "No raw-audio chord inference or external chart substitution",
+      "No product code, commits, or pushes"
+    ],
+    "brand_critical": false
+  },
+  "artifacts": {
+    "plan": ".ai/runs/moises-harmony-skill-20261031/plan.json",
+    "design": ".ai/runs/moises-harmony-skill-20261031/design.json",
+    "build": ".ai/runs/moises-harmony-skill-20261031/build.json",
+    "verify": ".ai/runs/moises-harmony-skill-20261031/verify.json"
+  },
+  "approvals": {
+    "brand": false,
+    "data_model": false,
+    "destructive_flows": false
+  },
+  "blockers": [],
+  "decisions": [
+    "Reuse task worktree; dirty changes belong to the same retirement request.",
+    "Supervisor routes role emulation; no UI surface involved."
+  ],
+  "risks": [
+    "The main checkout remains unchanged until branch integration."
+  ],
+  "refinement_notes": [],
+  "history": [
+    {
+      "at": "2026-10-31T07:30:32.078094+00:00",
+      "event": "Supervisor initialized explicit run and routed Planner."
+    },
+    {
+      "at": "2026-10-31T07:30:32.078094+00:00",
+      "event": "Planner defined source, musical judgment and deployment acceptance; Supervisor routed Design Agent."
+    },
+    {
+      "at": "2026-10-31T07:30:32.078094+00:00",
+      "event": "Design Agent specified readable non-UI output and source boundary; Supervisor approved Builder scope."
+    },
+    {
+      "at": "2026-10-31T07:32:24.514108+00:00",
+      "event": "Builder implemented and installed source-preserving harmony skill; Supervisor routed Verifier."
+    },
+    {
+      "at": "2026-10-31T07:33:02.265334+00:00",
+      "event": "Verifier passed source, installation, inventory and four independent realistic scenario checks."
+    },
+    {
+      "at": "2026-10-31T07:33:02.265334+00:00",
+      "event": "Design Critic and Code Critic approved; parent independently reviewed all skill/routing diffs and reran validation."
+    },
+    {
+      "at": "2026-10-31T07:33:02.533357+00:00",
+      "event": "Supervisor completed approved skill replacement after all applicable checks and reviews passed."
+    }
+  ]
+}

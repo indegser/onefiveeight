@@ -1,0 +1,31 @@
+{
+  "checks": [
+    {
+      "name": "Retirement and caller verification",
+      "status": "passed",
+      "details": "Retired directory absent in worktree and installed skills; no active delegation references; historical proposal marked."
+    },
+    {
+      "name": "Skill validation",
+      "status": "passed",
+      "details": "quick_validate.py skills/audio-to-score exited 0."
+    },
+    {
+      "name": "Installed source consistency",
+      "status": "passed",
+      "details": "npm run skill:check -- audio-to-score exited 0; source and installed hashes match."
+    },
+    {
+      "name": "Whitespace",
+      "status": "passed",
+      "details": "git diff --check HEAD exited 0."
+    },
+    {
+      "name": "Application build/lint/typecheck/tests",
+      "status": "skipped",
+      "details": "No app code changed; removed self-contained skill scripts have no active callers."
+    }
+  ],
+  "passed": true,
+  "blocking_issues": []
+}

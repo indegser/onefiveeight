@@ -1,0 +1,28 @@
+{
+  "approved": true,
+  "preview_evidence": [
+    "skills/moises-harmony-analysis/SKILL.md",
+    "skills/moises-harmony-analysis/references/tonal-reasoning.md",
+    "skills/README.md"
+  ],
+  "summary": {
+    "status": "pass",
+    "rationale": "No rendered UI change. Korean output separates source evidence, key interpretation, functions, modal findings and composition takeaways. Parent independently approved full skill and reference."
+  },
+  "findings": [],
+  "section_scores": [],
+  "profile_assessment": {
+    "selected_profile_id": null,
+    "fit_score": 0,
+    "anti_patterns_detected": [],
+    "notes": [
+      "Non-UI workflow; aesthetic score not applicable."
+    ]
+  },
+  "gates": {
+    "hard_rules_passed": true,
+    "needs_human_review": false,
+    "requires_refinement": false
+  },
+  "next_steps": []
+}

@@ -1,0 +1,26 @@
+{
+  "approved": true,
+  "preview_evidence": [
+    "Non-UI skill/document diff; no rendered surface changed."
+  ],
+  "summary": {
+    "status": "pass",
+    "rationale": "No UI design scope; user-selected source is explicit and outdated delegation removed."
+  },
+  "findings": [],
+  "section_scores": [],
+  "profile_assessment": {
+    "selected_profile_id": null,
+    "fit_score": 0,
+    "anti_patterns_detected": [],
+    "notes": [
+      "Not applicable: no rendered surface."
+    ]
+  },
+  "gates": {
+    "hard_rules_passed": true,
+    "needs_human_review": false,
+    "requires_refinement": false
+  },
+  "next_steps": []
+}

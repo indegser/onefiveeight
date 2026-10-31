@@ -1,0 +1,4 @@
+interface:
+  display_name: "Moises Harmony Analysis"
+  short_description: "Explain key, chord function, and modal interchange"
+  default_prompt: "Use $moises-harmony-analysis to explain the key, chord functions, and modal interchange in these Moises results."

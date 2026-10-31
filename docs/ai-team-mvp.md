@@ -1,5 +1,7 @@
 # AI Team MVP
 
+> Historical MVP documentation. The Supervisor skill was retired on 2026-10-31; this workflow is not required for current tasks. See AGENTS.md for current rules.
+
 ## What This Adds
 
 - A repo-level `AGENTS.md` for system-wide operating rules

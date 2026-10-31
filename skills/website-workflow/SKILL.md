@@ -12,14 +12,13 @@ Use this skill as the routing contract for rendered web work in this repository.
 ## Required Local Reads
 
 - `AGENTS.md`
-- `skills/ai-team-supervisor/SKILL.md`
 - `skills/design-rule-engine/SKILL.md`
 - `specs/design-rule-engine/README.md`
 - `specs/design-rule-engine/design-principles.md`
 - `specs/design-rule-engine/ux-heuristics.md`
 - `specs/design-rule-engine/aesthetic-profile.json`
 - `specs/design-rule-engine/theme-usage.md`
-- Relevant `agents/*.md` prompt for the current phase
+- Relevant `agents/*.md` prompt only when explicitly using optional legacy roles
 
 ## Skill Stack
 
@@ -46,7 +45,7 @@ If an Anthropic skill is requested but not installed, state that it is not avail
 ## Workflow
 
 1. Confirm the task is non-trivial. If it will edit repository files, work in a task-specific worktree unless the user explicitly provides a different path or the task is a trivial read-only answer.
-2. Create or resume the required `./.ai/runs/<run_id>` supervisor workflow before product-code changes, then let `$ai-team-supervisor` own routing decisions.
+2. Implement the requested task directly; no Supervisor or run initialization is required. Keep the relevant requirements and verification evidence with the task.
 3. For visual UI tasks, inspect the current rendered page in a browser before proposing or editing layout, spacing, typography, color, or component styling.
 4. Design Agent: read `skills/design-rule-engine` first, select the active profile/register from `aesthetic-profile.json`, apply `theme-usage.md`, then define component map, states, visual constraints, and browser review targets.
 5. Builder: implement with existing repo patterns and relevant Vercel skills. Prefer shadcn/Radix/lucide/Geist conventions and semantic Tailwind/shadcn utilities before adding new UI abstractions or runtime tokens.

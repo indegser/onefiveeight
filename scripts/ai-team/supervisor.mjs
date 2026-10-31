@@ -46,7 +46,7 @@ function printUsage() {
   console.log(`Usage:
   npm run ai:init -- <idea-file>
   npm run ai:refine -- --run-id <run_id> [agent] <note>
-  npm run ai:route -- --run-id <run_id>  # legacy advisory helper; $ai-team-supervisor owns routing judgment
+  npm run ai:route -- --run-id <run_id>  # legacy advisory helper; the caller owns any explicitly requested legacy routing judgment
   npm run ai:work -- <agent> --run-id <run_id>
   npm run ai:validate -- --run-id <run_id>`);
 }
@@ -237,7 +237,7 @@ async function routeRun(runId) {
   const routeSuggestion = {
     advisory: true,
     message:
-      "$ai-team-supervisor owns routing judgment. This command is a deterministic suggestion and does not write run.json.",
+      "the caller owns any explicitly requested legacy routing judgment. This command is a deterministic suggestion and does not write run.json.",
     run_id: run.run_id,
     phase,
     status,

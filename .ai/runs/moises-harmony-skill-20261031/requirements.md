@@ -1,0 +1,1 @@
+Create a Moises-results-only harmony analysis skill with a composer/harmony educator persona. Preserve observed chords separately from analysis, explain tonal center and modal interchange, distinguish actual motion from expected resolution, route standalone code analysis away from audio-to-score, and inventory all six project skills. No product code, commits, or pushes.

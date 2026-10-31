@@ -8,8 +8,8 @@
 
 ## Global Protocol
 
-- Shared state is the source of truth. Agents must read from and write to the active run directory under `./.ai/runs/<run_id>`.
-- Supervisor skill operations and helper commands that operate on an existing run must require an explicit `run_id`; do not rely on any repo-global active-run pointer.
+- Historical AI-team runs remain under `./.ai/runs/<run_id>`. They are optional records, not a required workflow for new tasks.
+- Legacy helper commands that operate on an existing run must require an explicit `run_id`; do not rely on any repo-global active-run pointer.
 - Repo-local helper scripts and action wrappers must also require an explicit `run_id`; do not infer a target run from global or recent state.
 - At the start of each new session, check the current git branch before doing substantive work.
 - Prefer starting from `main`. If the current branch is not `main`, do not assume that branch should be reused; report the branch state and choose deliberately.
@@ -18,10 +18,8 @@
 - Do not assume an existing local feature branch is still the correct target just because it has the right name. Remote branch status and PR status take precedence over local assumptions.
 - Do not auto-pull if the worktree has local changes, if the pull would require a merge or rebase decision, or if updating would risk overwriting in-progress work. In those cases, report the state instead.
 - For non-trivial coding, documentation, AI-team, website, data, release, or workflow tasks, create or reuse a task-specific worktree before editing files unless the user explicitly provides a different target checkout.
-- Agent outputs must be valid JSON that conforms to a schema in `./.ai/schemas`.
-- The system uses a strict phase loop: `plan -> design -> build -> verify -> review -> refine/done`.
-- The `Supervisor` is the only agent allowed to route work to another agent. Use `./skills/ai-team-supervisor/SKILL.md` as the routing authority; scripts are deterministic helpers, not the owner of routing judgment.
-- Any task that changes product code must be executed through the `Supervisor` workflow first. Create or resume an active run, produce the required state artifacts for each phase, and only then apply or update code as `Builder` work.
+- When using the optional legacy run tools, structured outputs must conform to a schema in `./.ai/schemas`.
+- New tasks do not require the legacy AI-team phase loop or Supervisor routing.
 - Visual UI tasks, including layout, spacing, typography, color, component styling, and other rendered-surface changes, must be checked in the browser before edits and after edits; code-only judgment is not sufficient.
 - Free-form prose is allowed inside prompt files and docs, but agent handoffs must stay structured.
 
@@ -65,6 +63,11 @@
 - `Design Agent` and `Design Critic` must not define, alter, restyle, or aesthetically review the score surface inside Songs. Their scope is limited to the surrounding page shell.
 - `Builder` implements the approved score specification, and `Verifier` checks its structural and browser-rendered acceptance criteria.
 
+## Music Harmony Analysis Protocol
+
+- Musical `코드 분석` means harmony analysis, not software code review. Read and use `./skills/moises-harmony-analysis/SKILL.md` for chord function, key, and modal interchange.
+- Use observed Moises results as the chord source. Do not replace them with raw-audio chord recognition, another detector, external charts, or remembered chords. Keep observed symbols separate from harmonic interpretation.
+
 ## Song Credit Discovery Protocol
 
 - Any task that starts from a named song, recording, or Spotify link and asks for credits, personnel-based recommendations, music lineage, exact Spotify links, or a derived playlist must read and follow `./skills/trace-song-credits/SKILL.md`.
@@ -78,7 +81,7 @@
 - After merging to `main`, confirm the production Vercel deployment reaches `Ready` and verify the public production URL responds successfully.
 - Report the PR URL, merge commit, production deployment URL, and public access URL.
 
-## Role Boundaries
+## Optional Legacy Role Boundaries
 
 - `Planner`: decomposes requirements, defines tasks and acceptance criteria, never writes code.
 - `Design Agent`: defines UX structure, component map, and interface rules, never writes code.
@@ -86,7 +89,6 @@
 - `Verifier`: runs checks and reports failures, never edits code.
 - `Design Critic`: reviews UX quality and consistency, never edits code.
 - `Code Critic`: reviews implementation quality and maintainability, never edits code.
-- `Supervisor`: manages state, routing, escalation, and completion, never writes product code.
 
 ## Repository Locations
 
@@ -94,8 +96,7 @@
 - Schemas: `./.ai/schemas`
 - Agent prompts: `./agents`
 - Design rule engine specs: `./specs/design-rule-engine`
-- Supervisor skill: `./skills/ai-team-supervisor/SKILL.md`
-- Supervisor helper scripts: `./scripts/ai-team`
+- Legacy run helper scripts: `./scripts/ai-team`
 - Long-form design docs: `./docs`
 - Optional repo-local skills: `./skills`
 - Optional repo-local action wrappers: `./actions`
@@ -133,7 +134,7 @@
 - Human approval is required for brand-critical screens.
 - Human approval is required before destructive workflow finalization.
 - Human approval is recommended after auth/RBAC or data-model decisions.
-- The supervisor must stop routing into implementation if a required approval is missing.
+- Do not begin implementation while a required approval is missing.
 
 ## Quality Gates
 
@@ -150,4 +151,4 @@
 - Keep the AI team system additive and isolated from unrelated app code.
 - When extending the MVP, update schemas before changing inter-agent message formats.
 - Prefer small composable scripts over one large orchestrator.
-- For every code edit, route the work through `$ai-team-supervisor`, keep the run artifacts in sync with the actual implementation, and run `validate` before considering the task complete. Treat `npm run ai:route` as a legacy advisory helper, not the source of routing judgment.
+- Implement requested changes directly and run applicable checks; the retired Supervisor and audio-to-score skills are not prerequisites.

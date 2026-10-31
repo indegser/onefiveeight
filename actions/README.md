@@ -21,6 +21,6 @@ Current wrappers:
 
 - `actions/capture-screenshot --run-id <run_id> <url> [output-path]`
 - `actions/run-lint-changed --run-id <run_id> [file ...]`
-- `actions/route-and-validate --run-id <run_id>` validates state and prints the legacy advisory route suggestion; `$ai-team-supervisor` owns actual routing updates.
+- `actions/route-and-validate --run-id <run_id>` validates state and prints the legacy advisory route suggestion; the explicit legacy-run caller owns any routing updates.
 
 In the MVP, the supervisor provides protocol and routing. Action wrappers should stay deterministic, repo-local, easy to inspect, and explicit about which run they target.

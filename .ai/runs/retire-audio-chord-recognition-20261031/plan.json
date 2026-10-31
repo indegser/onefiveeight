@@ -1,0 +1,41 @@
+{
+  "epics": [
+    {
+      "id": "retire",
+      "title": "Retire obsolete recognition skill",
+      "tasks": [
+        {
+          "id": "retire-source",
+          "title": "Remove skill and active callers",
+          "acceptance_criteria": [
+            "Retired skill directory absent",
+            "No active skill or README delegates to retired skill",
+            "Historical idea explicitly marked superseded",
+            "Installed audio-to-score matches updated repo source"
+          ],
+          "dependencies": []
+        },
+        {
+          "id": "verify-retirement",
+          "title": "Verify source, installed copy and run contracts",
+          "acceptance_criteria": [
+            "Skill validator passes",
+            "Skill sync check passes",
+            "AI run validator passes",
+            "No product source changed"
+          ],
+          "dependencies": [
+            "retire-source"
+          ]
+        }
+      ]
+    }
+  ],
+  "assumptions": [
+    "No standalone installed copy exists.",
+    "Historical run artifacts remain immutable."
+  ],
+  "risks": [
+    "Shared main retains old source until branch integration; no merge authorized in this subtask."
+  ]
+}
