@@ -1,0 +1,31 @@
+{
+  "completed_tasks": [
+    "retire-source"
+  ],
+  "changed_files": [
+    "docs/ideas/audio-to-score-form-first-skill.md",
+    "skills/README.md",
+    "skills/audio-chord-recognition/SKILL.md",
+    "skills/audio-chord-recognition/agents/openai.yaml",
+    "skills/audio-chord-recognition/references/agent-contracts.md",
+    "skills/audio-chord-recognition/references/chord-heuristics.md",
+    "skills/audio-chord-recognition/references/evidence-contract.md",
+    "skills/audio-chord-recognition/scripts/extract_harmony_evidence.py",
+    "skills/audio-chord-recognition/scripts/preprocess_audio.py",
+    "skills/audio-chord-recognition/scripts/test_extract_harmony_evidence.py",
+    "skills/audio-chord-recognition/scripts/test_preprocess_audio.py",
+    "skills/audio-chord-recognition/scripts/test_validate_analysis.py",
+    "skills/audio-chord-recognition/scripts/test_validate_evidence.py",
+    "skills/audio-chord-recognition/scripts/validate_analysis.py",
+    "skills/audio-chord-recognition/scripts/validate_evidence.py",
+    "skills/audio-to-score/SKILL.md"
+  ],
+  "notes": [
+    "Deleted 13 tracked skill files; Git retains recovery history.",
+    "No installed audio-chord-recognition directory existed.",
+    "Updated repository audio-to-score and synced deployment with npm run skill:install -- audio-to-score.",
+    "Marked old design proposal historical; historical .ai runs unchanged.",
+    "Symlinked ignored node_modules to shared checkout dependencies to run existing validator."
+  ],
+  "open_issues": []
+}

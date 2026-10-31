@@ -1,0 +1,23 @@
+{
+  "completed_tasks": [
+    "source-and-judgment",
+    "routing-and-inventory"
+  ],
+  "changed_files": [
+    "AGENTS.md",
+    "skills/README.md",
+    "skills/moises-harmony-analysis/SKILL.md",
+    "skills/moises-harmony-analysis/agents/openai.yaml",
+    "skills/moises-harmony-analysis/references/tonal-reasoning.md",
+    "skills/audio-to-score/SKILL.md",
+    "skills/audio-to-score/references/artifact-contracts.md"
+  ],
+  "notes": [
+    "Added composer/harmony educator reasoning persona without credential claims.",
+    "Defined Moises-only observations, uncertainty, key alternatives, modal sources, and actual forward progression versus expected resolution.",
+    "Updated project routing protocol, exact six-skill inventory, and notation harmony provenance.",
+    "Installed both skills using existing repository sync command.",
+    "No new scripts, schema changes, application source, commits, or pushes."
+  ],
+  "open_issues": []
+}

@@ -1,5 +1,7 @@
 # Form-First Audio-to-Score Skill
 
+> Historical proposal. The audio-to-score and audio-chord-recognition skills were retired at the user’s request on 2026-10-31. Current musical harmony analysis uses `skills/moises-harmony-analysis/SKILL.md`.
+
 Create a repository-owned `audio-to-score` Codex skill whose final objective is a reviewable melody score plus practical accompaniment derived from an input audio file.
 
 ## Product Direction

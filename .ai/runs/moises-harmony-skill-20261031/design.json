@@ -1,0 +1,47 @@
+{
+  "screens": [],
+  "ux_rules": [
+    "Korean by default; distinguish observed source from musical interpretation.",
+    "Explain musical mechanisms in plain language with a compact chord/function table."
+  ],
+  "component_map": [],
+  "human_checkpoints": [],
+  "design_rule_engine": {
+    "profile_id": null,
+    "hard_rule_sets": [],
+    "heuristic_sets": [],
+    "allowed_pattern_sets": [],
+    "banned_pattern_sets": [],
+    "review_rubric_id": "not-applicable-non-ui"
+  },
+  "screen_contexts": [],
+  "builder_constraints": [
+    {
+      "screen_id": "skill",
+      "constraints": [
+        "Concise entrypoint with focused tonal-reasoning reference",
+        "No source reconstruction, raw-audio chord inference, or substitutions",
+        "Do not invent professional credentials",
+        "Retain notation skill contracts and historical evidence"
+      ],
+      "open_decisions": []
+    }
+  ],
+  "review_targets": [
+    {
+      "screen_id": "skill",
+      "critical_judgments": [
+        "Source fidelity",
+        "Actual versus implied resolution",
+        "Tonal-center uncertainty and modal borrowing evidence"
+      ],
+      "must_not_regress": [
+        "Score form authority and provenance",
+        "Existing installed Moises session"
+      ]
+    }
+  ],
+  "visual_constraints": [
+    "No rendered app surface changed; browser evidence not applicable."
+  ]
+}

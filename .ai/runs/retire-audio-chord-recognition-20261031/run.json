@@ -1,0 +1,71 @@
+{
+  "run_id": "retire-audio-chord-recognition-20261031",
+  "goal": "Retire audio-chord-recognition and honor user-selected Moises chord results",
+  "revision": 1,
+  "phase": "done",
+  "status": "done",
+  "next_agent": "none",
+  "stack": {
+    "frontend": "not applicable",
+    "ui": "not applicable",
+    "backend": "not applicable",
+    "language": "Markdown/Python deletion"
+  },
+  "inputs": {
+    "idea_file": ".ai/runs/retire-audio-chord-recognition-20261031/requirements.md",
+    "constraints": [
+      "No product code edits",
+      "No commit or push",
+      "Use user-selected chord source; Moises results only for this music request"
+    ],
+    "brand_critical": false
+  },
+  "artifacts": {
+    "plan": ".ai/runs/retire-audio-chord-recognition-20261031/plan.json",
+    "design": ".ai/runs/retire-audio-chord-recognition-20261031/design.json",
+    "build": ".ai/runs/retire-audio-chord-recognition-20261031/build.json",
+    "verify": ".ai/runs/retire-audio-chord-recognition-20261031/verify.json"
+  },
+  "approvals": {
+    "brand": false,
+    "data_model": false,
+    "destructive_flows": true
+  },
+  "blockers": [],
+  "decisions": [
+    "User explicitly requested skill retirement; tracked files remain recoverable in Git.",
+    "Worktree is task-specific, clean and at origin/main; matching PR search returned no PR."
+  ],
+  "risks": [],
+  "refinement_notes": [],
+  "history": [
+    {
+      "at": "2026-10-31T07:20:30.777454+00:00",
+      "event": "Supervisor initialized explicit retirement run and routed Planner."
+    },
+    {
+      "at": "2026-10-31T07:20:30.777454+00:00",
+      "event": "Planner produced plan; Supervisor routed non-UI Design Agent."
+    },
+    {
+      "at": "2026-10-31T07:20:30.777454+00:00",
+      "event": "Design Agent recorded non-UI constraints; Supervisor approved Builder retirement scope."
+    },
+    {
+      "at": "2026-10-31T07:20:58.048252+00:00",
+      "event": "Builder removed retired skill and deployed updated audio-to-score; Supervisor routed Verifier."
+    },
+    {
+      "at": "2026-10-31T07:20:58.519492+00:00",
+      "event": "Verifier passed applicable checks; Supervisor routed non-UI Design Critic."
+    },
+    {
+      "at": "2026-10-31T07:21:07.058531+00:00",
+      "event": "Design Critic approved non-UI scope; Supervisor routed Code Critic."
+    },
+    {
+      "at": "2026-10-31T07:21:07.600522+00:00",
+      "event": "Code Critic approved; Supervisor completed applicable retirement scope after validation."
+    }
+  ]
+}

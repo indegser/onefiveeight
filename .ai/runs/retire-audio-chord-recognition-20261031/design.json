@@ -1,0 +1,43 @@
+{
+  "screens": [],
+  "ux_rules": [
+    "No rendered UI changes. Preserve the user-selected chord source."
+  ],
+  "component_map": [],
+  "human_checkpoints": [],
+  "design_rule_engine": {
+    "profile_id": null,
+    "hard_rule_sets": [],
+    "heuristic_sets": [],
+    "allowed_pattern_sets": [],
+    "banned_pattern_sets": [],
+    "review_rubric_id": "not-applicable-non-ui"
+  },
+  "screen_contexts": [],
+  "builder_constraints": [
+    {
+      "screen_id": "non-ui",
+      "constraints": [
+        "Remove only the retired skill and direct active dependencies",
+        "Deploy installed audio-to-score using existing sync command",
+        "Do not replace Moises with automatic audio chord recognition"
+      ],
+      "open_decisions": []
+    }
+  ],
+  "review_targets": [
+    {
+      "screen_id": "non-ui",
+      "critical_judgments": [
+        "No dangling active skill dependency",
+        "Historical evidence remains intact"
+      ],
+      "must_not_regress": [
+        "Existing score form and notation workflow"
+      ]
+    }
+  ],
+  "visual_constraints": [
+    "No visual surface changed; browser evidence not applicable."
+  ]
+}

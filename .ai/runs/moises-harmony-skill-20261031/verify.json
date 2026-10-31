@@ -1,0 +1,36 @@
+{
+  "checks": [
+    {
+      "name": "Independent realistic scenario review",
+      "status": "passed",
+      "details": "Four cases passed: actual sequence versus expected resolution, borrowed iv, secondary dominant, missing source. See evidence/independent-scenario-review.json."
+    },
+    {
+      "name": "Skill validation",
+      "status": "passed",
+      "details": "quick_validate.py accepted both moises-harmony-analysis and audio-to-score; parent independently reran both."
+    },
+    {
+      "name": "Installed consistency",
+      "status": "passed",
+      "details": "skill:check passed for both skills with matching hashes; parent independently reran both."
+    },
+    {
+      "name": "Inventory and routing",
+      "status": "passed",
+      "details": "Exactly six repo skill directories; retired directory absent locally and installed; active callers removed; links resolve."
+    },
+    {
+      "name": "Whitespace",
+      "status": "passed",
+      "details": "git diff --check HEAD exited 0; parent independently confirmed."
+    },
+    {
+      "name": "App build/lint/typecheck/tests",
+      "status": "skipped",
+      "details": "No application code, executable scripts or schemas changed; only skills/docs/run artifacts."
+    }
+  ],
+  "passed": true,
+  "blocking_issues": []
+}

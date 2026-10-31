@@ -35,18 +35,18 @@ test("installs one skill, records a receipt, and reports clean", async (context)
   await mkdir(unrelated, { recursive: true });
   await writeFile(path.join(unrelated, "SKILL.md"), "unrelated\n");
 
-  const install = run(codexHome, "install", "audio-to-score");
+  const install = run(codexHome, "install", "moises-harmony-analysis");
   assert.equal(install.status, 0, install.stderr);
   const installed = JSON.parse(install.stdout);
   assert.equal(installed.status, "clean");
 
   const receipt = JSON.parse(
     await readFile(
-      path.join(codexHome, "skills", "audio-to-score", ".codex-source.json"),
+      path.join(codexHome, "skills", "moises-harmony-analysis", ".codex-source.json"),
       "utf8",
     ),
   );
-  assert.equal(receipt.skill, "audio-to-score");
+  assert.equal(receipt.skill, "moises-harmony-analysis");
   assert.match(receipt.source_content_hash, /^[0-9a-f]{64}$/);
   assert.equal(
     await readFile(path.join(unrelated, "SKILL.md"), "utf8"),
@@ -54,13 +54,13 @@ test("installs one skill, records a receipt, and reports clean", async (context)
   );
 
   const beforeReceipt = JSON.stringify(receipt);
-  const check = run(codexHome, "check", "audio-to-score");
+  const check = run(codexHome, "check", "moises-harmony-analysis");
   assert.equal(check.status, 0, check.stderr);
   assert.equal(JSON.parse(check.stdout).status, "clean");
   const afterReceipt = JSON.stringify(
     JSON.parse(
       await readFile(
-        path.join(codexHome, "skills", "audio-to-score", ".codex-source.json"),
+        path.join(codexHome, "skills", "moises-harmony-analysis", ".codex-source.json"),
         "utf8",
       ),
     ),
@@ -76,17 +76,17 @@ test("detects drift and a subsequent explicit install repairs it", async (contex
     const { rm } = await import("node:fs/promises");
     await rm(codexHome, { recursive: true, force: true });
   });
-  assert.equal(run(codexHome, "install", "audio-to-score").status, 0);
+  assert.equal(run(codexHome, "install", "moises-harmony-analysis").status, 0);
   await appendFile(
-    path.join(codexHome, "skills", "audio-to-score", "SKILL.md"),
+    path.join(codexHome, "skills", "moises-harmony-analysis", "SKILL.md"),
     "\nlocal drift\n",
   );
 
-  const drift = run(codexHome, "check", "audio-to-score");
+  const drift = run(codexHome, "check", "moises-harmony-analysis");
   assert.equal(drift.status, 1);
   assert.equal(JSON.parse(drift.stdout).status, "drifted");
 
-  const reinstall = run(codexHome, "install", "audio-to-score");
+  const reinstall = run(codexHome, "install", "moises-harmony-analysis");
   assert.equal(reinstall.status, 0, reinstall.stderr);
   assert.equal(JSON.parse(reinstall.stdout).status, "clean");
 });
@@ -101,6 +101,6 @@ test("rejects implicit, missing, and traversing targets", async (context) => {
   });
 
   assert.equal(run(codexHome, "check").status, 2);
-  assert.equal(run(codexHome, "check", "../audio-to-score").status, 1);
+  assert.equal(run(codexHome, "check", "../moises-harmony-analysis").status, 1);
   assert.equal(run(codexHome, "check", "missing-skill").status, 1);
 });

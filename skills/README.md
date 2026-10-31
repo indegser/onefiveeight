@@ -1,51 +1,42 @@
 # Repo-Local Skills
 
-This directory is reserved for reusable decision frameworks that support the multi-agent system.
-
-Suggested skills:
-
-- `ai-team-supervisor`
-- `website-workflow`
-- `decompose-requirements`
-- `design-rule-engine`
-- `internal-tool-ux`
-- `shadcn-selection`
-- `supabase-guardrails`
-- `code-review-rubric`
-
 Repository skill directories are the source of truth. Installed copies under the Codex skill
 directory are generated deployments and must not be edited directly.
 
-## Supervisor
+## Inventory
 
-Use `ai-team-supervisor` as the active routing skill for AI-team runs. It owns the judgment for which agent and skill should run next. `scripts/ai-team` remains as a deterministic helper for run initialization, work-package printing, schema validation, and legacy advisory checks.
+These four skills exist in this repository:
 
-## Website Work
+| Skill | Purpose |
+| --- | --- |
+| `website-workflow` | Implement and verify rendered web surfaces using the local design rules. |
+| `design-rule-engine` | Apply structured hard rules, UX heuristics, and aesthetic profiles. |
+| `moises-harmony-analysis` | Interpret Moises chords: tonal center, function, modal interchange, and composition. |
+| `trace-song-credits` | Verify recording credits and build evidence-backed music discovery paths. |
 
-Use `website-workflow` for rendered web surfaces, Next.js page work, shadcn/ui component work, layout, styling, visual verification, and web design reviews.
+## Routing
 
-Use `design-rule-engine` as the local source of design judgment before applying external guidance. `website-workflow` binds that local design system to the Vercel skill stack and Anthropic public design-skill references.
+Work directly on requested tasks. The legacy `scripts/ai-team` helpers and historical run records
+remain available for explicit use, but Supervisor routing and run initialization are not required.
 
-## Audio to Score
+For website work, use `website-workflow` and the repository `design-rule-engine` before external
+style references or implementation-specific framework guidance.
 
-Use `audio-to-score` as the form-first orchestrator for turning recorded audio into melody,
-harmony, a verified linear score, optional generated accompaniment, and written-form notation.
+For musical `코드 분석`, use `moises-harmony-analysis`. Its chord source is the observed Moises
+result; preserve symbols and provenance separately from tonal/function interpretation. The
+previous automatic chord-recognition skill has been retired and must not be invoked.
 
-Use `audio-chord-recognition` as its downstream form-aware harmony module or for standalone
-estimated chord-chart requests.
+Stem import/separation can use the separately installed `moises-stems` skill; it is not a
+repository directory and is not counted in this inventory. Transcription and Supervisor skills
+have been retired.
 
-## Song Credit Discovery
+Use `trace-song-credits` for exact recording identity, writers, arrangers, producers, session
+musicians, and personnel-based listening paths. Keep this separate from audio similarity and
+require approval of the exact manifest before Spotify playlist writes.
 
-Use `trace-song-credits` to lock an exact recording, verify its writers, arrangers, producers,
-and session musicians, and turn those credits into evidence-backed listening paths with exact
-Spotify links. It keeps audio-derived similarity outside the workflow and separates read-only
-Spotify resolution from user-approved playlist writes.
-
-Check or install one explicit skill with:
+Check or install an explicit skill by name:
 
 ```bash
-npm run skill:check -- audio-to-score
-npm run skill:install -- audio-to-score
-npm run skill:check -- trace-song-credits
-npm run skill:install -- trace-song-credits
+npm run skill:check -- moises-harmony-analysis
+npm run skill:install -- moises-harmony-analysis
 ```

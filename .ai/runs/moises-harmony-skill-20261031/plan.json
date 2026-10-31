@@ -1,0 +1,53 @@
+{
+  "epics": [
+    {
+      "id": "moises-harmony",
+      "title": "Moises-only harmony interpretation",
+      "tasks": [
+        {
+          "id": "source-and-judgment",
+          "title": "Define provenance, interpretation, and uncertainty boundaries",
+          "acceptance_criteria": [
+            "Observed Moises symbols retained with exact position and source",
+            "Key, Roman numerals, secondary dominants and borrowing are interpretations",
+            "Actual sequence is distinguished from expected harmonic resolution",
+            "Missing evidence never causes chord invention"
+          ],
+          "dependencies": []
+        },
+        {
+          "id": "routing-and-inventory",
+          "title": "Update active skill routing and deploy",
+          "acceptance_criteria": [
+            "New skill available for musical 코드 분석",
+            "audio-to-score uses Moises-derived harmony and handles notation only",
+            "README lists exactly six existing repo skills",
+            "Both revised skills installed with matching hashes"
+          ],
+          "dependencies": [
+            "source-and-judgment"
+          ]
+        },
+        {
+          "id": "verify",
+          "title": "Validate skill contracts and realistic cases",
+          "acceptance_criteria": [
+            "Skill validators and run validator pass",
+            "Scenario review covers deceptive motion, no borrowing, and missing source",
+            "No retired skill or app code returns"
+          ],
+          "dependencies": [
+            "routing-and-inventory"
+          ]
+        }
+      ]
+    }
+  ],
+  "assumptions": [
+    "Moises stem-import skill is installed outside this repository.",
+    "No automatic chord detector is needed."
+  ],
+  "risks": [
+    "Moises predictions may be uncertain; do not silently correct them."
+  ]
+}
